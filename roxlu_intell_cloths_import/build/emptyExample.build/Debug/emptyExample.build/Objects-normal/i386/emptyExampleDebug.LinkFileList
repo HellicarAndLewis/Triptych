@@ -1,6 +1,6 @@
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/main.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/testApp.o
-/Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/ParticleMeshCreator.o
+/Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/ParticleMesh.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/ArcBall.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/Camera.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/EasyCam.o
@@ -67,3 +67,5 @@
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/Particles.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/Snot.o
 /Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/Spring.o
+/Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/SphereSystem.o
+/Users/diederickhuijbers/Documents/programming/c++/of/TripTych/apps/TriptychForIntel/roxlu_intell_cloths_import/build/emptyExample.build/Debug/emptyExample.build/Objects-normal/i386/SphereUnit.o

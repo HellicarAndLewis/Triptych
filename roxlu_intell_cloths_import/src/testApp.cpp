@@ -3,6 +3,7 @@
 testApp::testApp()
 	:gui("Settings", 300)
 	,creator(ps)
+	,ss(creator)
 {
 }
 
@@ -24,7 +25,7 @@ void testApp::setup(){
 	ax.setup(10);
 	creator.setup();
 	cam.translate(0,0,5);
-	
+	ss.setup();
 	debug = false;
 }
 
@@ -46,12 +47,13 @@ void testApp::operator()(int i) {
 void testApp::update(){
 	gui.update();
 	creator.update();
+	ss.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
-
+	
 	if(!debug) {
 		creator.draw(cam.pm(), cam.vm());
 	}
@@ -59,6 +61,7 @@ void testApp::draw(){
 		cam.place();
 		ax.draw();
 		creator.debugDraw();
+		ss.debugDraw();
 	}
 	//gui.draw();
 }

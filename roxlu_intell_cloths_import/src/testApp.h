@@ -2,9 +2,11 @@
 
 #include "ofMain.h"
 #include "Roxlu.h"
-#include "Buttons.h"
-#include "ParticleMeshCreator.h"
 #include "PBD.h"
+#include "Buttons.h"
+#include "SphereSystem.h"
+#include "ParticleMesh.h"
+
 
 using namespace pbd;
 
@@ -31,7 +33,8 @@ class testApp : public ofBaseApp{
 		EasyCam cam;
 		Axis ax;
 		Particles ps;
-		ParticleMeshCreator creator;
+		ParticleMesh creator;
+		SphereSystem ss;
 		buttons::Buttons gui;
 		buttons::Radio<testApp>* modes;
 };
