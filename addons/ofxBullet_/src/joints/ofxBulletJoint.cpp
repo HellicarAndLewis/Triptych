@@ -36,7 +36,9 @@ void ofxBulletJoint::create( btDiscreteDynamicsWorld* a_world, ofxBulletBaseShap
 	btTransform frameInB = btTransform::getIdentity();
 	frameInB.setOrigin( btVector3(btScalar(0.), btScalar(0.), btScalar(0.)) );
 	
-	_joint = new btGeneric6DofConstraint(*a_shape2->getRigidBody(), *a_shape1->getRigidBody(), frameInA, frameInB, true);
+	_joint = new btGeneric6DofSpringConstraint(*a_shape2->getRigidBody(), *a_shape1->getRigidBody(), frameInA, frameInB, true);
+	
+	
 	
 	_setDefaults();
 	
@@ -119,6 +121,7 @@ void ofxBulletJoint::setAngularUpperLimit( float a_x, float a_y, float a_z ) {
 void ofxBulletJoint::add() {
 	_world->addConstraint(_joint, true);
 	_bAdded = true;
+
 }
 
 //--------------------------------------------------------------

@@ -33,8 +33,9 @@ Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
 		joints[i-1]->create(world.world, nodes[i-1], nodes[i]);
 		
 		//these values are so arbitrary!!!
-		joints[i-1]->setLinearLowerLimit(-0.001, 0, 0);
-		joints[i-1]->setLinearUpperLimit(0.001, 0, 0);
+		//edit: i don't think changing them does fuck all!!!
+		joints[i-1]->setLinearLowerLimit(-0, 0, 0);
+		joints[i-1]->setLinearUpperLimit(0, 0, 0);
 		joints[i-1]->setAngularUpperLimit(0.1, 0, 0);
 		joints[i-1]->setAngularLowerLimit(0, 0, 0);
 		joints[i-1]->setParam(BT_CONSTRAINT_STOP_CFM, 0.5);
@@ -46,17 +47,19 @@ Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
 //	refPoints.push_back(ofVec4f(0, 0, 0, 1));
 	refPoints.push_back(ofVec4f(0, 1, 0, 1));
 
-//	for (int i = 0; i < refPoints.size(); i++) {
-//		refPoints[i]*= 2;
-//		refPoints[i].w = 1;
-//	}
-	
-	
-	
 	
 	points.resize(nodes.size() * refPoints.size());
 	mesh = ofMesh(OF_PRIMITIVE_TRIANGLE_STRIP, points);
+
+	vector<ofVec3f> normals;
+	normals.resize(nodes.size() * refPoints.size());
+	mesh.addNormals(normals);
 	
+	
+	material.setAmbientColor(ofFloatColor(0, 0, 0));
+	material.setDiffuseColor(ofFloatColor(0, 0, 0));
+	material.setSpecularColor(ofFloatColor(1, 1, 1));
+	material.setShininess(80);
 
 	
 	//not using a texture anymore...
@@ -76,8 +79,10 @@ Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
 //		mesh.addTexCoord(ofVec2f(img.width * wtcoord, img.height));
 //	}
 	
-		
+	mesh.enableNormals();
 	setupAnchorPoint();
+	
+	width = 10;
 }
 
 Ribbon::~Ribbon() {
@@ -85,33 +90,56 @@ Ribbon::~Ribbon() {
 	delete anchorPoint;
 }
 
+ofVec3f findNormal(ofVec3f a, ofVec3f b, ofVec3f ref) {
+	a = a - ref;
+	b = b - ref;
+	ofVec3f v = a.cross(b);
+	v.normalize();
+	return v;
+}
+
 void Ribbon::update() {
 
 	world.update();
 	
-	for (int i = 1; i < nodes.size(); i++) {
+	//only have an even length...
+	assert(!(nodes.size() % 2));
+	
+	for (int i = 0; i < nodes.size()-1; i+=2) {
 		
+		//			 2     4
+		//		  / \   /
+		//		 /   \ /
+		//		1     3
 
-		ofMatrix4x4 transMat = nodes[i]->getTransformationMatrix();
+		//this was used for a variable width... 
+//		ofVec3f newPos = ofMatrix4x4::getTransposedOf(transMat) * refPoints[0];
+//		ofVec3f lastPos = mesh.getVertex(i * refPoints.size());
+//		float vel = (newPos - lastPos).length();
+//		vel = 20;
+		
+		ofVec3f subpoints[4];
+		
+		//this is horrible....
+		for (int j = 0; j < 2; j++) {
+			ofMatrix4x4 transMat = nodes[i+j]->getTransformationMatrix();
+			for (int k = 0; k < 2; k++) {
+				
+				ofVec3f multiplier = refPoints[k] * width;
+				ofVec3f v = ofMatrix4x4::getTransposedOf(transMat) * multiplier;	
+				mesh.setVertex((i+j) * refPoints.size() + k, v);
+				subpoints[j*2+k] = v;
+				
+			}
 			
-		ofNoFill();
-		
-		ofVec3f newPos = ofMatrix4x4::getTransposedOf(transMat) * refPoints[0];
-		ofVec3f lastPos = mesh.getVertex(i * refPoints.size());
-		float vel = (newPos - lastPos).length();
-		vel = 100;
-		
-		for (int j = 0; j < refPoints.size(); j++) {
-			ofVec3f width = refPoints[j] * vel * 0.5;
-			ofVec3f v = ofMatrix4x4::getTransposedOf(transMat) * width;			
-			mesh.setVertex((i-1) * refPoints.size() + j, v);
 		}
 		
-		for (int j = 0; j < refPoints.size(); j++) {
-			ofVec3f width = refPoints[j] * vel * 0.5;
-			ofVec3f v = ofMatrix4x4::getTransposedOf(transMat) * width;
-			mesh.setVertex((i) * refPoints.size() + j, v);
-		}
+		
+		mesh.setNormal((i-1) * refPoints.size() + 0, findNormal(subpoints[2], subpoints[1], subpoints[0]));
+		mesh.setNormal((i-1) * refPoints.size() + 1, findNormal(subpoints[0], subpoints[2], subpoints[1]));
+		mesh.setNormal((i) * refPoints.size() + 0, findNormal(subpoints[3], subpoints[1], subpoints[2]));
+		mesh.setNormal((i) * refPoints.size() + 1, findNormal(subpoints[1], subpoints[2], subpoints[3]));
+		
 		
 		
 //		//just to debug...
@@ -147,9 +175,14 @@ void Ribbon::draw() {
 //	img.bind();
 
 //	ofSetHexColor(0xff00ff);
+	
 	ofSetColor(250, 20, 140);
 	ofFill();
+	material.begin();
 	mesh.draw();
+	material.end();
+	
+	
 //	img.unbind();
 	
 //	ofSetHexColor(0xffffff);

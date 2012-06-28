@@ -35,6 +35,8 @@ public:
 	ofImage img;
 	ofTexture tex;
 	
+	float width;
+	
 protected:
 	int nNodes;
 	
@@ -43,4 +45,7 @@ protected:
 	
 private:
 	void setupAnchorPoint();
+	
+	
+	ofMaterial material;
 };

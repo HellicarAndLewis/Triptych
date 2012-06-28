@@ -7,7 +7,17 @@ void testApp::setup() {
 	
 	
 	ribbon = new Ribbon(30, &cam);
-		
+
+	
+	glEnable(GL_LIGHTING);
+	light.setPointLight();
+	
+//	light.setSpecularColor(ofFloatColor(1, 1, 1));
+	light.enable();
+	
+//	glEnable(GL_NORMALIZE);
+	
+	stopMoving = false;
 }
 
 testApp::~testApp() {
@@ -24,8 +34,6 @@ void testApp::update() {
 
 void testApp::draw() {
 	ofBackgroundHex(0x0);
-
-//	glEnable(GL_LIGHTING);
 	
 	ribbon->draw();
 
@@ -34,7 +42,13 @@ void testApp::draw() {
 
 void testApp::keyPressed(int key) {
 	
-
+	switch (key) {
+		case ' ':
+			stopMoving = !stopMoving;
+			break;
+		default:
+			break;
+	}
 	
 }
 
@@ -46,7 +60,14 @@ void testApp::keyReleased(int key) {
 
 void testApp::mouseMoved(int x, int y) {
 	
-	ribbon->setAnchorPoint(ofVec3f(x, y, 0));
+	
+	if (!stopMoving) {
+		ribbon->setAnchorPoint(ofVec3f(x, y, 0));
+	}
+	else {
+		light.setPosition(mouseX, 300, mouseY-200);
+	}
+
 	
 }
 

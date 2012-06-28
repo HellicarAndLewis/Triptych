@@ -28,4 +28,7 @@ public:
 
 	Ribbon *ribbon;
 	
+	ofLight light;
+	
+	bool stopMoving;
 };
