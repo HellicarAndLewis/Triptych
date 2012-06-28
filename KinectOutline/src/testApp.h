@@ -25,7 +25,7 @@ public:
 
 	KinectOutline kinect;
 	ofxCvContourFinder contours;
-	vector<BoundBlob> people;
+	map<int,BoundBlob> people;
 	ofxBlobTracker blobTracker;
 	ofxBlobEventLister blobEvents;
 };

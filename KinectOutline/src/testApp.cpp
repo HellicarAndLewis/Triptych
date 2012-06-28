@@ -48,14 +48,32 @@ void testApp::doPersonTracking() {
 	
 	
 	// run the blob tracker
-	vector<ofVec2f> blobs;
+	vector<ofVec3f> blobs;
 	ofVec2f dims(kinect.getWidth(), kinect.getHeight()); 
+	
+	// use the z coordinate.
 	for(int i = 0; i < contours.blobs.size(); i++) {
-		blobs.push_back(ofVec2f(contours.blobs[i].centroid.x, contours.blobs[i].centroid.y)/dims);
+		ofVec3f b = ofVec3f(contours.blobs[i].centroid.x/(float)kinect.getWidth(), 
+							contours.blobs[i].centroid.y/(float)kinect.getHeight(), i);
+		blobs.push_back(b);
 	}
+	
+	
 	
 	blobTracker.track(blobs);
 	
+	ofxBlobEvent e;
+	while(blobEvents.getNextEvent(e)) {
+		if(e.eventType==ofxBlobTracker_entered) {
+			people[e.blobId] = BoundBlob();
+			people[e.blobId].init(contours.blobs[(int)e.pos.z]);
+			
+		} else if(e.eventType==ofxBlobTracker_moved) {
+			people[e.blobId].update(contours.blobs[(int)e.pos.z]);
+		} else if(e.eventType==ofxBlobTracker_exited) {
+			people.erase(e.blobId);
+		}
+	}
 	
 	/*if(contours.blobs.size()==people.size()) { // match the nearest
 		for(int i = 0; i < contours.blobs.size(); i++) {
@@ -72,8 +90,12 @@ void testApp::draw(){
 	kinect.drawDebug();
 	contours.draw();
 	
-	for(int i = 0; i < people.size(); i++) {
-		people[i].draw();
+	
+	map<int,BoundBlob>::iterator it;
+	for(it = people.begin(); it != people.end(); it++) {
+		(*it).second.draw();
+		ofDrawBitmapString(ofToString((*it).first), (*it).second.centroid);
+		
 	}
 	gui.draw();
 }

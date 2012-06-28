@@ -94,7 +94,7 @@ public:
 	ofVec3f pos;
 	int blobId;
 	ofxBlobEventType eventType;
-	
+	ofxBlobEvent() {}
 	ofxBlobEvent(ofVec3f pos, int blobId, ofxBlobEventType eventType) {
 		this->pos = pos;
 		this->blobId = blobId;
