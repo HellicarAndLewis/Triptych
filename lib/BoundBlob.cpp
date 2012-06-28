@@ -66,3 +66,10 @@ void BoundBlob::draw() {
 	ofCircle(bottom, 5);
 
 }
+
+void BoundBlob::setDepth(float depth) {
+	top.z = depth;
+	bottom.z = depth;
+	left.z = depth;
+	right.z = depth;
+}

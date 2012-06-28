@@ -22,7 +22,6 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void doPersonTracking();
-
 	KinectOutline kinect;
 	ofxCvContourFinder contours;
 	map<int,BoundBlob> people;
