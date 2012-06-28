@@ -28,6 +28,7 @@ struct AppSettings {
 	float min_particle_size;
 	float max_particle_size;
 	float max_particle_trail_width;
+	float convergence;
 };
 
 extern AppSettings app_settings;

@@ -26,6 +26,8 @@ void testApp::setup(){
 	gui.addFloat("Max particle trail width", app_settings.max_particle_trail_width).setMin(0.01).setMax(0.08f); 
 	gui.addFloat("Perlin influence", app_settings.perlin_influence).setMin(0.0).setMax(0.5);
 	gui.addFloat("Perlin scale", app_settings.perlin_scale).setMin(0.0).setMax(8.0);
+	gui.addFloat("Eye separation", scam.eye_separation).setMin(-0.5f).setMax(0.5f);
+	gui.addFloat("Convergence ",app_settings.convergence).setMin(-2.05f).setMax(2.05f);
 	gui.addButton<testApp>("Remove particle trails",1,this);
 	gui.addButton<testApp>("Reset particle sizes",2,this);
 	gui.addButton<testApp>("save",0,this);
@@ -37,6 +39,8 @@ void testApp::setup(){
 	cam.translate(0,4,5);
 	debug = false;
 	show_gui = true;
+	
+	scam.setNear(0.1);
 }
 
 void testApp::operator()(int i) {
@@ -56,6 +60,9 @@ void testApp::operator()(int i) {
 
 //--------------------------------------------------------------
 void testApp::update(){
+	scam.setConvergence(app_settings.convergence);
+	scam.updateProjectionMatrices();
+
 	gui.update();
 	creator.update();
 	ss.update();
@@ -68,8 +75,22 @@ void testApp::draw(){
 	if(!debug) {
 		Vec3 right, up;
 		cam.getBillboardVectors(right, up);
-		creator.draw(cam.pm(), cam.vm());
-		ss.draw(cam.pm(), cam.vm(), right, up);
+		
+		bool anaglyphic = false;
+		if(anaglyphic) {
+			scam.setupLeft();
+			scam.view_matrix = cam.view_matrix;
+			ss.draw(scam.pml(), cam.vm(), right, up);
+			
+			scam.setupRight();
+			ss.draw(scam.pmr(), cam.vm(), right, up);
+		}
+		else {
+			creator.draw(cam.pm(), cam.vm());
+			ss.draw(cam.pm(), cam.vm(), right, up);
+		}
+
+		
 	}
 	else {
 		cam.place();

@@ -32,7 +32,7 @@ class testApp : public ofBaseApp{
 		bool show_gui;
 		
 	//	Billboard bb;
-
+		StereoCam scam;
 		EasyCam cam;
 		Axis ax;
 

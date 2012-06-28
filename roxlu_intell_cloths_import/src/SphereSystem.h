@@ -8,6 +8,8 @@
 #include "PBD.h"
 
 using namespace pbd;
+
+/*
 struct ChangeSpringStrength {
 	ChangeSpringStrength(const float& f):f(f){}
 	
@@ -16,6 +18,7 @@ struct ChangeSpringStrength {
 	}
 	float f;
 };
+*/
 
 class SphereSystem {
 public:
