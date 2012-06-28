@@ -10,6 +10,7 @@
 		54A2EF79159C653F00324C31 /* interactive_mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = 54A2EF77159C653F00324C31 /* interactive_mesh.frag */; };
 		54A2EF7A159C653F00324C31 /* interactive_mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = 54A2EF78159C653F00324C31 /* interactive_mesh.vert */; };
 		54B42145159C9D0A00269FE1 /* SphereUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54B42144159C9D0A00269FE1 /* SphereUnit.cpp */; };
+		54B42148159CC8C600269FE1 /* AppSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54B42147159CC8C600269FE1 /* AppSettings.cpp */; };
 		54C33166159C85C900AE4E03 /* libglog32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C330D9159C85C900AE4E03 /* libglog32.a */; };
 		54C33167159C85C900AE4E03 /* ArcBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C330DC159C85C900AE4E03 /* ArcBall.cpp */; };
 		54C33168159C85C900AE4E03 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C330DE159C85C900AE4E03 /* Camera.cpp */; };
@@ -135,6 +136,8 @@
 		54A2EF78159C653F00324C31 /* interactive_mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = interactive_mesh.vert; path = bin/data/interactive_mesh.vert; sourceTree = SOURCE_ROOT; };
 		54B42142159C9C3F00269FE1 /* SphereUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereUnit.h; sourceTree = "<group>"; };
 		54B42144159C9D0A00269FE1 /* SphereUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereUnit.cpp; sourceTree = "<group>"; };
+		54B42146159CC61600269FE1 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
+		54B42147159CC8C600269FE1 /* AppSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppSettings.cpp; sourceTree = "<group>"; };
 		54C330D9159C85C900AE4E03 /* libglog32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglog32.a; sourceTree = "<group>"; };
 		54C330DC159C85C900AE4E03 /* ArcBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArcBall.cpp; sourceTree = "<group>"; };
 		54C330DD159C85C900AE4E03 /* ArcBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcBall.h; sourceTree = "<group>"; };
@@ -717,6 +720,8 @@
 				54C331D6159C8B5F00AE4E03 /* SphereSystem.h */,
 				54B42142159C9C3F00269FE1 /* SphereUnit.h */,
 				54B42144159C9D0A00269FE1 /* SphereUnit.cpp */,
+				54B42146159CC61600269FE1 /* AppSettings.h */,
+				54B42147159CC8C600269FE1 /* AppSettings.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -889,6 +894,7 @@
 				54C331C6159C85D900AE4E03 /* Spring.cpp in Sources */,
 				54C331D7159C8B5F00AE4E03 /* SphereSystem.cpp in Sources */,
 				54B42145159C9D0A00269FE1 /* SphereUnit.cpp in Sources */,
+				54B42148159CC8C600269FE1 /* AppSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
