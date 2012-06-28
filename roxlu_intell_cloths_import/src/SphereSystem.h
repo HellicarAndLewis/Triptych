@@ -26,6 +26,10 @@ public:
 	void draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up);
 	void debugDraw();
 	
+	// Tweaking:
+	void removeTrails();
+	void resetParticleSizes();
+	
 	Billboard particle_bb;
 	Texture particle_tex;
 	

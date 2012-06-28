@@ -10,6 +10,7 @@ SphereUnit::SphereUnit(Billboard& bb)
 
 void SphereUnit::setup(Particle* c) {
 	centerp = c;
+	trails.setup();
 }
 
 void SphereUnit::addParticles(const unsigned int& num) {
@@ -22,12 +23,12 @@ void SphereUnit::addParticles(const unsigned int& num) {
 	Vec3 lhpos = centerp->position;
 	Spring* s;
 	for(int i = 0; i < num; ++i) {
-		pos = lhpos + randomVec3() * 2;
+		pos = lhpos + randomVec3() *0.3;
 		Particle* p = ps.createParticle(pos);
 		ps.addParticle(p);
-//		p->lifespan = random(30.0f, 150.0f);
-		p->lifespan = FLT_MAX;
-		p->size = random(0.1f, 1.4f);
+		//p->lifespan = random(30.0f, 150.0f);
+		p->aging = false;
+		p->size = random(app_settings.minParticleSize(),app_settings.maxParticleSize());
 		s = ps.addSpring(ps.createSpring(p, centerp));
 		s->k = 1.1;
 	}
@@ -38,10 +39,13 @@ void SphereUnit::update() {
 	ps.removeDeadParticles();
 	
 	// add some new particles
-	int num = 3;
+	int num = 7;
 	Vec3 pos;
 	Vec3& center = centerp->position;
 	Particle* p;
+	
+	// ADDING MORE PARTICLES CAUSES THE APP TO RUN SLOW.. NEED TO IMPLEMENT 3D BINNING
+	/* 
 	for(int i = 0; i < num; ++i) {
 		pos = randomVec3();
 		pos.y = 1;
@@ -49,13 +53,13 @@ void SphereUnit::update() {
 		p->velocity = pos;
 		p->velocity.x = random(0.0025,0.0013);
 		p->velocity.z = random(0.0025,0.0013);
-
 		p->velocity.y = -random(0.2, 0.04);
 		p->size = random(app_settings.minParticleSize(), app_settings.maxParticleSize());
-		//printf("%f\n", p->velocity.y);
-		p->lifespan = random(10.0f, 15.0f);
+		p->lifespan = random(30.0f, 55.0f);
 		ps.addParticle(p);
 	}
+	*/
+	
 	//printf("%zu\n", ps.particles.size());
 	float s = Timer::millis()* 0.0001;
 	float f = app_settings.perlinInfluence();
@@ -65,35 +69,33 @@ void SphereUnit::update() {
 			Particle& p = *(*it);
 			Vec3& pos = p.position;
 			float pf = noise3(pos.x * f, pos.y * f, pos.z * f);
-			p.addForce(pf * perlin_scale, pf *perlin_scale , pf * perlin_scale);
+			p.addForce(pf * perlin_scale, pf *perlin_scale , 0);
 		}
-
+		
+	}
+	if(app_settings.useParticleTrail()) {
+		trails.reset();
+		for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
+			Particle& p = *(*it);
+			if(p.springs.size() > 0) {
+				p.trail.push_back(p.position);
+				if(p.trail.size() > app_settings.particleTrailLength()) {
+					p.trail.pop_front();
+				}
+			}
+			trails.createTrail(p.trail, 1.0);
+		}
+		trails.update();
 	}
 	
-//	ps.addForce(0,13*s,0);
-	ps.repel(0.0003);
+	ps.repel(0.3);
 	ps.update(0.3);
+	
 
-	// test destroying springs
-	/*	
-	for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
-		Particle& p = *(*it);
-		if(p.agep > 0.6) {
-			if(p.agep > 0.95) {
-			//	p.springs[0]->enable();
-			}
-			else {
-			//	p.springs[0]->disable();
-			}
-		}
-	}
-	*/
 }
 
 void SphereUnit::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up) {
 	glEnable(GL_BLEND);
-//	glBlendFunc(GL_ONE, GL_ONE);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glColor3f(1,1,1);
 	glBindVertexArrayAPPLE(0);
@@ -101,17 +103,20 @@ void SphereUnit::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const V
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
-//	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_FALSE);
+	
+	trails.draw(pm, vm);
 	
 	particle_bb.start(pm, vm, right, up);
 	for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
 		Particle& p = *(*it);
-		if(p.springs.size() == 0) {
+		if(p.springs.size() > 0) {
 			particle_bb.draw(p.position, p.size, 0.0, 1.0 - p.agep);
 		}
 	}
 	particle_bb.stop();
+	
+	
 	glDepthMask(GL_TRUE);
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
@@ -121,4 +126,31 @@ void SphereUnit::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const V
 void SphereUnit::debugDraw() {
 	glDisable(GL_BLEND);
 	ps.draw();
+	
+	if(app_settings.useParticleTrail()) {
+		for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
+			Particle& p = *(*it);
+			glBegin(GL_LINES);
+			for(deque<Vec3>::iterator vit = p.trail.begin(); vit != p.trail.end(); ++vit) {
+				glVertex3fv((*vit).getPtr());
+			}
+			glEnd();
+		}
+	}
 }
+
+void SphereUnit::removeTrails() {
+	for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
+		Particle& p = *(*it);
+		p.trail.clear();
+	}	
+	trails.reset();
+}
+
+void SphereUnit::resetParticleSizes() {
+	for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
+		Particle& p = *(*it);
+		p.size = random(app_settings.minParticleSize(), app_settings.maxParticleSize());
+	}
+}
+

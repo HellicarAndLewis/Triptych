@@ -4,6 +4,7 @@
 #include "AppSettings.h"
 #include "Roxlu.h"
 #include "PBD.h"
+#include "Trails.h"
 
 using namespace pbd;
 
@@ -16,10 +17,15 @@ public:
 	void draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up);
 	void debugDraw();
 	
+	// tweaking....
+	void removeTrails();
+	void resetParticleSizes();
 	
 	Billboard& particle_bb;
 	Particles ps;
 	Particle* centerp;
+	Trails trails;
+	
 };
 
 #endif

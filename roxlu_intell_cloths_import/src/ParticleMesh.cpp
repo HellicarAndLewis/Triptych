@@ -54,9 +54,9 @@ void ParticleMesh::importModel(const string& filename,  const string& group) {
 	
 	for(int i = 0; i < vd.getNumTriangles(); ++i) {
 		Triangle& tr = vd.triangles[i];
-		ps.addSpring(ps.createSpring(ps[tr.va], ps[tr.vb]));
-		ps.addSpring(ps.createSpring(ps[tr.vb], ps[tr.vc]));
-		ps.addSpring(ps.createSpring(ps[tr.vc], ps[tr.va]));
+		ps.addSpring(ps.createSpring(ps[tr.va], ps[tr.vb]))->k = 1.0;
+		ps.addSpring(ps.createSpring(ps[tr.vb], ps[tr.vc]))->k = 1.0;
+		ps.addSpring(ps.createSpring(ps[tr.vc], ps[tr.va]))->k = 1.0;
 		
 		if(use_indices) {
 			vertex_indices.add(tr.va);

@@ -29,6 +29,7 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		bool debug;
+		bool show_gui;
 		
 	//	Billboard bb;
 
