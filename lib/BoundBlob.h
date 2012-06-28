@@ -16,9 +16,18 @@
  */
 
 #pragma once
+#include "ofxOpenCv.h"
 
-class BlobBounds {
+class BoundBlob {
 public:
 	
+	void init(const ofxCvBlob &blob);
+	void draw();
 	
+	ofVec2f top;
+	ofVec2f left;
+	ofVec2f right;
+	ofVec2f bottom;
+		
+
 };

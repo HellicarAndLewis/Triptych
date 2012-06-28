@@ -32,7 +32,8 @@ public:
 
 	ofxCvGrayscaleImage &getOutline();
 
-	
+	int getWidth() { return kinect.getWidth(); }
+	int getHeight() { return kinect.getHeight(); }
 	
 	
 	
