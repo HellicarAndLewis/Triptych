@@ -6,7 +6,7 @@
 #include "Buttons.h"
 #include "SphereSystem.h"
 #include "ParticleMesh.h"
-
+#include "AppSettings.h"
 
 using namespace pbd;
 
@@ -30,11 +30,15 @@ class testApp : public ofBaseApp{
 		
 		bool debug;
 		
+	//	Billboard bb;
+
 		EasyCam cam;
 		Axis ax;
+
 		Particles ps;
 		ParticleMesh creator;
 		SphereSystem ss;
 		buttons::Buttons gui;
 		buttons::Radio<testApp>* modes;
+
 };

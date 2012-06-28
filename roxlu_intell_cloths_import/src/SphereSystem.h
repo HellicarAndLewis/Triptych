@@ -1,6 +1,7 @@
 #ifndef ROXLU_SPHERESYSTEMH
 #define ROXLU_SPHERESYSTEMH
 
+#include "ofMain.h"
 #include "ParticleMesh.h"
 #include "SphereUnit.h"
 #include "Roxlu.h"
@@ -22,14 +23,17 @@ public:
 	~SphereSystem();
 	void setup();
 	void update();
-	void draw();
+	void draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up);
 	void debugDraw();
+	
+	Billboard particle_bb;
+	Texture particle_tex;
 	
 	SphereUnit su;
 	VertexData sphere_vd;
 	Particles left_hand_ps;
 	ParticleMesh& pm;
-	
+
 	
 	//vector<Particle*> spheres;
 };

@@ -2,6 +2,7 @@
 
 SphereSystem::SphereSystem(ParticleMesh& pm)
 	:pm(pm)
+	,su(particle_bb)
 {
 }
 
@@ -9,6 +10,16 @@ SphereSystem::~SphereSystem() {
 }
 
 void SphereSystem::setup() {
+	// load particle texture
+	ofImage particle_img;
+	if(!particle_img.loadImage("particle_glow.png")) {
+		printf("Cannot load particle image.\n");
+		::exit(0);
+	}
+	particle_tex.setPixels(particle_img.getPixels(), particle_img.getWidth(), particle_img.getHeight(), GL_RGBA);
+	particle_bb.setTexture(particle_tex.getID());
+	printf("id: %d\n", particle_tex.getID());
+	
 	// load the sphere vertices
 	OBJ sphere_loader;
 	sphere_loader.import(File::toDataPath("sphere.obj"));
@@ -77,7 +88,8 @@ void SphereSystem::update() {
 	
 }
 
-void SphereSystem::draw() {
+void SphereSystem::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up) {
+	su.draw(pm, vm, right, up);
 }
 
 void SphereSystem::debugDraw() {

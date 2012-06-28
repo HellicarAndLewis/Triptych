@@ -188,6 +188,7 @@ void ParticleMesh::draw(const Mat4& pm, const Mat4& vm) {
 	glEnable(GL_DEPTH_TEST);
 	//glEnable(GL_CULL_FACE);
 	glBindVertexArrayAPPLE(vao);
+	glDisable(GL_BLEND);
 	shader.enable();
 	shader.uniformMat4fv("u_modelview_matrix", vm.getPtr());
 	shader.uniformMat4fv("u_projection_matrix", pm.getPtr());
@@ -204,6 +205,7 @@ void ParticleMesh::draw(const Mat4& pm, const Mat4& vm) {
 	
 	shader.disable();
 	glBindVertexArrayAPPLE(0);
+	
 }
 
 void ParticleMesh::debugDraw() {
@@ -293,4 +295,6 @@ void ParticleMesh::setupShader() {
 	
 	glBindVertexArrayAPPLE(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	shader.disable();
 }
