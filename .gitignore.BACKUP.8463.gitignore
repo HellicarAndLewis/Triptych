@@ -1,0 +1,40 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+*.obj
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+*.sdf
+*.sui
+*.tlog
+*.cache
+*.log
+*.manifest
+*.manifest.res
+*.lastbuildstate
+*.dat
+<<<<<<< HEAD
+*.app
+=======
+
+*.mode1v3
+*.pbxuser
+*.app
+*.xcworkspacedata
+*.xcuserstate
+*.xcscheme
+>>>>>>> b40c12c2af7c8893190eaf49f9bebfd416ff1106

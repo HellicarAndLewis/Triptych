@@ -2,7 +2,8 @@
 
 #include "ofMain.h"
 #include "KinectOutline.h"
-
+#include "BoundBlob.h"
+#include "ofxBlobTracker.h"
 
 class testApp : public ofBaseApp{
 
@@ -20,7 +21,11 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-	
+	void doPersonTracking();
 
 	KinectOutline kinect;
+	ofxCvContourFinder contours;
+	vector<BoundBlob> people;
+	ofxBlobTracker blobTracker;
+	ofxBlobEventLister blobEvents;
 };
