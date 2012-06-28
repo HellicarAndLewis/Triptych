@@ -2,6 +2,7 @@
 
 #include "ofxSimpleGuiToo.h"
 
+bool recording = false;
 //--------------------------------------------------------------
 void testApp::setup(){
 	
@@ -42,6 +43,7 @@ void testApp::update(){
 }
 
 
+
 void testApp::doPersonTracking() {
 	
 //	people.clear();
@@ -67,9 +69,44 @@ void testApp::doPersonTracking() {
 		if(e.eventType==ofxBlobTracker_entered) {
 			people[e.blobId] = BoundBlob();
 			people[e.blobId].init(contours.blobs[(int)e.pos.z]);
+			people[e.blobId].setDepth(kinect.getDepth(contours.blobs[(int)e.pos.z]));
 			
+			if(recording) {
+				ofVec3f bounds(640,480, 255);
+
+				ofVec3f f = people[e.blobId].left/bounds;
+				anim.addFrame("hand_left", (const float*)&f.x);
+				
+				f = people[e.blobId].right/bounds;
+
+				anim.addFrame("hand_right", (const float*)&f.x);
+				
+				f = people[e.blobId].top/bounds;
+				anim.addFrame("top", (const float*)&f.x);
+				
+				f = people[e.blobId].bottom/bounds;
+				anim.addFrame("bottom", (const float*)&f.x);
+			}
 		} else if(e.eventType==ofxBlobTracker_moved) {
 			people[e.blobId].update(contours.blobs[(int)e.pos.z]);
+			
+			if(recording) {
+				ofVec3f bounds(640,480, 255);
+				
+				ofVec3f f = people[e.blobId].left/bounds;
+				anim.addFrame("hand_left", (const float*)&f.x);
+				
+				f = people[e.blobId].right/bounds;
+				anim.addFrame("hand_right", (const float*)&f.x);
+				
+				f = people[e.blobId].top/bounds;
+				anim.addFrame("top", (const float*)&f.x);
+				
+				f = people[e.blobId].bottom/bounds;
+				anim.addFrame("bottom", (const float*)&f.x);
+			}
+			
+			
 		} else if(e.eventType==ofxBlobTracker_exited) {
 			people.erase(e.blobId);
 		}
@@ -110,6 +147,17 @@ void testApp::keyPressed(int key){
 			
 		case 'f':
 			ofToggleFullscreen();
+			break;
+		case 'b': kinect.learnBackground = true; break;
+			
+		case 'r':
+			recording ^= true;
+			if(!recording) { // just finished recording
+				
+				anim.save(ofToDataPath(ofGetTimestampString()+".txt"));
+				anim.animations.clear();
+				
+			}
 			break;
 	}
 }

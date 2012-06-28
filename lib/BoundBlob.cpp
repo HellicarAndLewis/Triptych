@@ -45,10 +45,11 @@ void BoundBlob::update(const ofxCvBlob &blob) {
 	ofVec2f newRight = ps[tricks::math::findRightmostPoint(ps)];
 	ofVec2f newBottom = ps[tricks::math::findBottommostPoint(ps)];
 	
-	top = newTop;
-	left = newLeft;
-	right = newRight;
-	bottom = newBottom;
+	float l = 0.7;
+	top = top *l  + newTop*(1.f-l);
+	left = left*l + newLeft*(1.f-l);
+	right = right*l + newRight*(1.f-l);
+	bottom = bottom*l + newBottom*(1.f-l);
 	
 	centroid = ofVec2f(blob.centroid.x, blob.centroid.y);
 }
@@ -64,4 +65,11 @@ void BoundBlob::draw() {
 	ofSetHexColor(0xFF00ff);
 	ofCircle(bottom, 5);
 
+}
+
+void BoundBlob::setDepth(float depth) {
+	top.z = depth;
+	bottom.z = depth;
+	left.z = depth;
+	right.z = depth;
 }

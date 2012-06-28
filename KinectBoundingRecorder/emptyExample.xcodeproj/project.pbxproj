@@ -30,6 +30,7 @@
 		EA01FA4E159C805200DBD05C /* ofxBlobSmoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA47159C805200DBD05C /* ofxBlobSmoother.cpp */; };
 		EA01FA4F159C805200DBD05C /* ofxBlobTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA49159C805200DBD05C /* ofxBlobTracker.cpp */; };
 		EA01FA50159C805200DBD05C /* ofxCvKalman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA4C159C805200DBD05C /* ofxCvKalman.cpp */; };
+		EA01FA58159C94E500DBD05C /* SimpleAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA56159C94E500DBD05C /* SimpleAnim.cpp */; };
 		EA4DD4DD1598B31C00009049 /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD4801598B31C00009049 /* cameras.c */; };
 		EA4DD4DE1598B31C00009049 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD4831598B31C00009049 /* core.c */; };
 		EA4DD4DF1598B31C00009049 /* freenect.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA4DD4891598B31C00009049 /* freenect.lib */; };
@@ -283,6 +284,8 @@
 		EA01FA4A159C805200DBD05C /* ofxBlobTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobTracker.h; sourceTree = "<group>"; };
 		EA01FA4C159C805200DBD05C /* ofxCvKalman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvKalman.cpp; sourceTree = "<group>"; };
 		EA01FA4D159C805200DBD05C /* ofxCvKalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvKalman.h; sourceTree = "<group>"; };
+		EA01FA56159C94E500DBD05C /* SimpleAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleAnim.cpp; path = ../../addons/roxlu/roxlu/src/experimental/SimpleAnim.cpp; sourceTree = "<group>"; };
+		EA01FA57159C94E500DBD05C /* SimpleAnim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleAnim.h; path = ../../addons/roxlu/roxlu/src/experimental/SimpleAnim.h; sourceTree = "<group>"; };
 		EA4DD47F1598B31C00009049 /* APACHE20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
 		EA4DD4801598B31C00009049 /* cameras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cameras.c; sourceTree = "<group>"; };
 		EA4DD4811598B31C00009049 /* cameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameras.h; sourceTree = "<group>"; };
@@ -908,6 +911,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EA01FA56159C94E500DBD05C /* SimpleAnim.cpp */,
+				EA01FA57159C94E500DBD05C /* SimpleAnim.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -2187,6 +2192,7 @@
 				EA01FA4E159C805200DBD05C /* ofxBlobSmoother.cpp in Sources */,
 				EA01FA4F159C805200DBD05C /* ofxBlobTracker.cpp in Sources */,
 				EA01FA50159C805200DBD05C /* ofxCvKalman.cpp in Sources */,
+				EA01FA58159C94E500DBD05C /* SimpleAnim.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
