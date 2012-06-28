@@ -1,0 +1,30 @@
+<controls>
+    <SliderFloat_fov>
+        <name>fov</name>
+        <value>37.15</value>
+    </SliderFloat_fov>
+    <SliderFloat_CamX>
+        <name>CamX</name>
+        <value>0.04</value>
+    </SliderFloat_CamX>
+    <SliderFloat_CamY>
+        <name>CamY</name>
+        <value>0.0700001</value>
+    </SliderFloat_CamY>
+    <SliderFloat_CamZ>
+        <name>CamZ</name>
+        <value>-3.25</value>
+    </SliderFloat_CamZ>
+    <SliderFloat_LightZ>
+        <name>LightZ</name>
+        <value>-2.84</value>
+    </SliderFloat_LightZ>
+    <SliderFloat_Ambient>
+        <name>Ambient</name>
+        <value>0.99</value>
+    </SliderFloat_Ambient>
+    <SliderFloat_Diffuse>
+        <name>Diffuse</name>
+        <value>1</value>
+    </SliderFloat_Diffuse>
+</controls>
