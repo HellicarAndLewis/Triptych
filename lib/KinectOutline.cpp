@@ -96,3 +96,18 @@ void KinectOutline::drawDebug() {
 ofxCvGrayscaleImage &KinectOutline::getOutline() {
 	return thresh;
 }
+
+
+unsigned char KinectOutline::getDepth(const ofxCvBlob &blob) {
+	unsigned char *c = depth.getPixels();
+	unsigned char p = 0;
+	ofRectangle r = blob.boundingRect;
+	for(int x = r.x; x < r.x+r.width; x++) {
+		for(int y = r.y; y < r.y+r.height; y++) {
+			unsigned char pix = c[x + (int)(y*r.width)];
+			if(pix>p) p = pix;
+		}
+	}
+	
+	return p;
+}

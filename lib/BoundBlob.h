@@ -25,12 +25,13 @@ public:
 	
 	void update(const ofxCvBlob &blob);
 	
+	void setDepth(float depth);
 	void draw();
 	
-	ofVec2f top;
-	ofVec2f left;
-	ofVec2f right;
-	ofVec2f bottom;
+	ofVec3f top;
+	ofVec3f left;
+	ofVec3f right;
+	ofVec3f bottom;
 	
 	ofVec2f centroid;
 		
