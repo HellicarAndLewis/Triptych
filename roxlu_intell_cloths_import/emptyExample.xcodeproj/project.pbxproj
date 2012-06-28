@@ -78,6 +78,7 @@
 		54C331C4159C85D900AE4E03 /* Particles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C331B4159C85D900AE4E03 /* Particles.cpp */; };
 		54C331C5159C85D900AE4E03 /* Snot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C331B7159C85D900AE4E03 /* Snot.cpp */; };
 		54C331C6159C85D900AE4E03 /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C331B9159C85D900AE4E03 /* Spring.cpp */; };
+		54C331D7159C8B5F00AE4E03 /* SphereSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C331D5159C8B5F00AE4E03 /* SphereSystem.cpp */; };
 		54F2732C159AF0A0003D1573 /* ParticleMeshCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54F2732A159AF0A0003D1573 /* ParticleMeshCreator.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -287,6 +288,8 @@
 		54C331B8159C85D900AE4E03 /* Snot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snot.h; sourceTree = "<group>"; };
 		54C331B9159C85D900AE4E03 /* Spring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spring.cpp; sourceTree = "<group>"; };
 		54C331BA159C85D900AE4E03 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
+		54C331D5159C8B5F00AE4E03 /* SphereSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereSystem.cpp; sourceTree = "<group>"; };
+		54C331D6159C8B5F00AE4E03 /* SphereSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereSystem.h; sourceTree = "<group>"; };
 		54F2732A159AF0A0003D1573 /* ParticleMeshCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleMeshCreator.cpp; sourceTree = "<group>"; };
 		54F2732B159AF0A0003D1573 /* ParticleMeshCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleMeshCreator.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -707,6 +710,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				54F2732A159AF0A0003D1573 /* ParticleMeshCreator.cpp */,
 				54F2732B159AF0A0003D1573 /* ParticleMeshCreator.h */,
+				54C331D5159C8B5F00AE4E03 /* SphereSystem.cpp */,
+				54C331D6159C8B5F00AE4E03 /* SphereSystem.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -877,6 +882,7 @@
 				54C331C4159C85D900AE4E03 /* Particles.cpp in Sources */,
 				54C331C5159C85D900AE4E03 /* Snot.cpp in Sources */,
 				54C331C6159C85D900AE4E03 /* Spring.cpp in Sources */,
+				54C331D7159C8B5F00AE4E03 /* SphereSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,12 +2,13 @@
 
 ParticleMeshCreator::ParticleMeshCreator(Particles& ps)
 	:ps(ps)
+	,use_indices(true)
 {
 }
 
 void ParticleMeshCreator::setup() {
 	ofRegisterMouseEvents(this);
-	
+
 	// load the mesh we use to deform.
 	importModel("grid.rox", "Grid");
 //	importModel("grid.rox", "mesh");
@@ -41,8 +42,10 @@ void ParticleMeshCreator::importModel(const string& filename,  const string& gro
 		start_positions.push_back(vd.getVertex(i));
 		start_forces.push_back(vd.getVertex(i).normalize() * 0.5);
 		
-		pn.set(vd.getVertex(i), vd.getNormal(i));
-		vertices.add(pn);
+		if(use_indices) {
+			pn.set(vd.getVertex(i), vd.getNormal(i));
+			vertices.add(pn);
+		}
 	}	
 	
 	
@@ -51,20 +54,23 @@ void ParticleMeshCreator::importModel(const string& filename,  const string& gro
 		ps.addSpring(ps.createSpring(ps[tr.va], ps[tr.vb]));
 		ps.addSpring(ps.createSpring(ps[tr.vb], ps[tr.vc]));
 		ps.addSpring(ps.createSpring(ps[tr.vc], ps[tr.va]));
-		vertex_indices.add(tr.va);
-		vertex_indices.add(tr.vb);
-		vertex_indices.add(tr.vc);
-		// no indices.
-		/*
-		pn.set(vd.getVertex(tr.va), vd.getNormal(tr.va));
-		vertices.add(pn);
 		
-		pn.set(vd.getVertex(tr.vb), vd.getNormal(tr.vb));
-		vertices.add(pn);
-		
-		pn.set(vd.getVertex(tr.vc), vd.getNormal(tr.vc));
-		vertices.add(pn);
-		*/
+		if(use_indices) {
+			vertex_indices.add(tr.va);
+			vertex_indices.add(tr.vb);
+			vertex_indices.add(tr.vc);
+		}
+		else {
+			// no indices.
+			pn.set(vd.getVertex(tr.va), vd.getNormal(tr.va));
+			vertices.add(pn);
+			
+			pn.set(vd.getVertex(tr.vb), vd.getNormal(tr.vb));
+			vertices.add(pn);
+			
+			pn.set(vd.getVertex(tr.vc), vd.getNormal(tr.vc));
+			vertices.add(pn);
+		}	
 	}
 	
 	
@@ -153,6 +159,19 @@ void ParticleMeshCreator::update() {
 		vertices[tr.vb].setNorm(n);
 		vertices[tr.vc].setNorm(n);
 	}
+	if(!use_indices) {
+		for(int i = 0; i < vd.getNumTriangles(); ++i) {
+			Triangle& tri = vd.triangles[i];
+		
+			Vec3& a = ps[tri.va]->position;
+			Vec3& b = ps[tri.vb]->position;
+			Vec3& c = ps[tri.vc]->position;
+			
+			vertices[tri.va].setPos(a);
+			vertices[tri.vb].setPos(b);
+			vertices[tri.vc].setPos(c);
+		}
+	}
 	
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.numBytes(), vertices.getPtr());
@@ -166,14 +185,15 @@ void ParticleMeshCreator::draw(const Mat4& pm, const Mat4& vm) {
 	shader.enable();
 	shader.uniformMat4fv("u_modelview_matrix", vm.getPtr());
 	shader.uniformMat4fv("u_projection_matrix", pm.getPtr());
-
+	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	shader.uniform1i("u_mode", 0);
-	glDrawElements(GL_TRIANGLES, vertex_indices.size(), GL_UNSIGNED_INT, (void*)0);
+	drawTriangles();
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	shader.uniform1i("u_mode", 1);
-	glDrawElements(GL_TRIANGLES, vertex_indices.size(), GL_UNSIGNED_INT, (void*)0);
+	drawTriangles();
+	//glDrawElements(GL_TRIANGLES, vertex_indices.size(), GL_UNSIGNED_INT, (void*)0);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	
 	shader.disable();
@@ -244,9 +264,11 @@ void ParticleMeshCreator::setupShader() {
 	glGenVertexArraysAPPLE(1, &vao); 
 	glBindVertexArrayAPPLE(vao);
 	
-	glGenBuffers(1, &vbo_indices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_indices);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertex_indices.numBytes(), vertex_indices.getPtr(), GL_DYNAMIC_DRAW);
+	if(use_indices) {
+		glGenBuffers(1, &vbo_indices);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_indices);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertex_indices.numBytes(), vertex_indices.getPtr(), GL_DYNAMIC_DRAW);
+	}
 	
 	glGenBuffers(1, &vbo); 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

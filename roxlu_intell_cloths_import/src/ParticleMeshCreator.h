@@ -36,6 +36,7 @@ public:
 	void setup();
 	void update();
 	void draw(const Mat4& pm, const Mat4& vm);
+	
 	void debugDraw();
 
 	void mouseMoved(ofMouseEventArgs& args);
@@ -55,12 +56,26 @@ public:
 	VerticesPN vertices;
 	VertexIndices vertex_indices;
 	VertexData vd;
+	bool use_indices;
 private:
 	void setupShader();
+	void drawTriangles();
+
 	Shader shader;
 	GLuint vbo;
 	GLuint vao;
 	GLuint vbo_indices;
 };
+
+
+inline void ParticleMeshCreator::drawTriangles() {
+
+	if(use_indices) {
+		glDrawElements(GL_TRIANGLES, vertex_indices.size(), GL_UNSIGNED_INT, (void*)0);
+	}
+	else {
+	//	glDrawArrays(GL_TRIANGLES, 0, vertices.size() * 6);
+	}
+}
 
 #endif
