@@ -22,12 +22,17 @@ class BoundBlob {
 public:
 	
 	void init(const ofxCvBlob &blob);
+	
+	void update(const ofxCvBlob &blob);
+	
 	void draw();
 	
 	ofVec2f top;
 	ofVec2f left;
 	ofVec2f right;
 	ofVec2f bottom;
+	
+	ofVec2f centroid;
 		
 
 };

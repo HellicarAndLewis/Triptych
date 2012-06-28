@@ -27,6 +27,30 @@ void BoundBlob::init(const ofxCvBlob &blob) {
 	bottom = ps[tricks::math::findBottommostPoint(ps)];
 	
 	
+	centroid = ofVec2f(blob.centroid.x, blob.centroid.y);
+}
+
+void BoundBlob::update(const ofxCvBlob &blob) { 
+	vector<ofVec2f> ps;
+	ps.resize(blob.pts.size());
+	
+	for(int i = 0; i < blob.pts.size(); i++) {
+		ps[i].x = blob.pts[i].x;
+		ps[i].y = blob.pts[i].y;
+	}
+	
+	
+	ofVec2f newTop = ps[tricks::math::findTopmostPoint(ps)];
+	ofVec2f newLeft = ps[tricks::math::findLeftmostPoint(ps)];
+	ofVec2f newRight = ps[tricks::math::findRightmostPoint(ps)];
+	ofVec2f newBottom = ps[tricks::math::findBottommostPoint(ps)];
+	
+	top = newTop;
+	left = newLeft;
+	right = newRight;
+	bottom = newBottom;
+	
+	centroid = ofVec2f(blob.centroid.x, blob.centroid.y);
 }
 
 void BoundBlob::draw() {
