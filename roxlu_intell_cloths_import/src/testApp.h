@@ -31,7 +31,6 @@ class testApp : public ofBaseApp{
 		bool debug;
 		bool show_gui;
 		
-	//	Billboard bb;
 		StereoCam scam;
 		EasyCam cam;
 		Axis ax;
@@ -41,5 +40,6 @@ class testApp : public ofBaseApp{
 		SphereSystem ss;
 		buttons::Buttons gui;
 		buttons::Radio<testApp>* modes;
+
 
 };

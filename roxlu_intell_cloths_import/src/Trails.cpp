@@ -27,6 +27,9 @@ void Trails::setup() {
 }
 
 void Trails::createTrail(deque<Vec3>& points, const float& agep) {
+	if(points.size() < 5) {
+		return;
+	}
 	size_t new_nodes =((points.size()-1) * 2);
 	next_node += new_nodes;
 	allocateBuffer();
@@ -81,7 +84,6 @@ void Trails::allocateBuffer() {
 	if(next_node >= allocated_nodes) {
 		size_t to_allocate = std::max<size_t>(2 * allocated_nodes, 1024);
 		allocated_nodes = to_allocate;
-		printf("allocated for: %zu nodes.\n", allocated_nodes);
 		
 		// update vbo.
 		size_t num_bytes = to_allocate * sizeof(VertexPC);
