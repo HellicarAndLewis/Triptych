@@ -17,8 +17,12 @@ void ParticleMesh::setup() {
 	// load animations
 	//anim.load(File::toDataPath("hand.anim"));
 	if(anim.load(File::toDataPath("marek3.txt"))) {
-		anim.setFPS(30);
+		anim.setFPS(10);
 		anim.play();
+	}
+	else {
+		printf("Cannot load animation data.\n");
+		::exit(0);
 	}
 }
 
