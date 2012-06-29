@@ -11,6 +11,11 @@ SphereUnit::SphereUnit(Billboard& bb)
 void SphereUnit::setup(Particle* c) {
 	centerp = c;
 	trails.setup();
+	
+	// testing with repel force
+	repeller = ps.createParticle(c->position);
+	repeller->position.x += 0.1;
+	ps.addParticle(repeller);
 }
 
 void SphereUnit::addParticles(const unsigned int& num) {
@@ -23,7 +28,7 @@ void SphereUnit::addParticles(const unsigned int& num) {
 	Vec3 lhpos = centerp->position;
 	Spring* s;
 	for(int i = 0; i < num; ++i) {
-		pos = lhpos + randomVec3() *0.3;
+		pos = lhpos + randomVec3() * 0.2;
 		Particle* p = ps.createParticle(pos);
 		ps.addParticle(p);
 		//p->lifespan = random(30.0f, 150.0f);

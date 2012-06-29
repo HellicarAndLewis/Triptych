@@ -25,6 +25,7 @@ public:
 	Particles ps;
 	Particle* centerp;
 	Trails trails;
+	Particle* repeller;
 	
 };
 
