@@ -20,6 +20,7 @@ void testApp::setup(){
 	
 	gui.addBool("Enable perlin noise", app_settings.use_perlin);
 	gui.addBool("Create particle trails", app_settings.use_particle_trail);
+	gui.addBool("Debug draw spheres", app_settings.debug_draw_spheres);
 	gui.addInt("Particle trail length", app_settings.particle_trail_length).setMin(10).setMax(200);
 	gui.addFloat("Min particle size", app_settings.min_particle_size).setMin(0.01f).setMax(3.0f);
 	gui.addFloat("Max particle size", app_settings.max_particle_size).setMin(0.01).setMax(5.0f);

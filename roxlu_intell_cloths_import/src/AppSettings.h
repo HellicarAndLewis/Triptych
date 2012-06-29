@@ -21,6 +21,8 @@ struct AppSettings {
 	
 	bool use_particle_trail;
 	bool use_perlin;
+	bool debug_draw_spheres;
+	
 	int particle_trail_length;
 	
 	float perlin_influence;

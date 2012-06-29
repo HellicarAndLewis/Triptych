@@ -27,8 +27,8 @@ void SphereSystem::setup() {
 	
 	// create some test particles
 	int num_particles = 200;
-	if(pm.left_hand != NULL) {
-		su.setup(pm.left_hand);
+	if(pm.left_hand != NULL && pm.right_hand != NULL) {
+		su.setup(pm.left_hand, pm.left_hand, pm.right_hand);
 		su.addParticles(num_particles);
 	}
 }
@@ -43,21 +43,23 @@ void SphereSystem::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const
 }
 
 void SphereSystem::debugDraw() {
-	if(pm.left_hand != NULL) {
-		Vec3& pos = pm.left_hand->position;
-		glColor3f(1,1,1);
-		glPushMatrix();
-			glTranslatef(pos.x, pos.y, pos.z);
-			sphere_vd.debugDraw();
-		glPopMatrix();
-	}
-	if(pm.right_hand != NULL) {
-		Vec3& pos = pm.right_hand->position;
-		glColor3f(1,1,1);
-		glPushMatrix();
-			glTranslatef(pos.x, pos.y, pos.z);
-			sphere_vd.debugDraw();
-		glPopMatrix();
+	if(app_settings.debug_draw_spheres) {
+		if(pm.left_hand != NULL) {
+			Vec3& pos = pm.left_hand->position;
+			glColor3f(1,1,1);
+			glPushMatrix();
+				glTranslatef(pos.x, pos.y, pos.z);
+				sphere_vd.debugDraw();
+			glPopMatrix();
+		}
+		if(pm.right_hand != NULL) {
+			Vec3& pos = pm.right_hand->position;
+			glColor3f(1,1,1);
+			glPushMatrix();
+				glTranslatef(pos.x, pos.y, pos.z);
+				sphere_vd.debugDraw();
+			glPopMatrix();
+		}
 	}
 	su.debugDraw();
 }
