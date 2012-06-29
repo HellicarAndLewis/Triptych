@@ -86,6 +86,9 @@ void testApp::doPersonTracking() {
 				
 				f = people[e.blobId].bottom/bounds;
 				anim.addFrame("bottom", (const float*)&f.x);
+				
+				f = people[e.blobId].centroid/bounds;
+				anim.addFrame("centroid", (const float*)&f.x);
 			}
 		} else if(e.eventType==ofxBlobTracker_moved) {
 			people[e.blobId].update(contours.blobs[(int)e.pos.z]);
@@ -104,6 +107,9 @@ void testApp::doPersonTracking() {
 				
 				f = people[e.blobId].bottom/bounds;
 				anim.addFrame("bottom", (const float*)&f.x);
+				
+				f = people[e.blobId].centroid/bounds;
+				anim.addFrame("centroid", (const float*)&f.x);
 			}
 			
 			
