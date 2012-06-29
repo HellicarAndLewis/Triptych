@@ -28,6 +28,8 @@ struct AppSettings {
 	float min_particle_size;
 	float max_particle_size;
 	float max_particle_trail_width;
+	float repulsive_force; // testing
+	float repulsive_radius; // testing
 	float convergence;
 };
 
@@ -41,4 +43,5 @@ inline float 	AppSettings::perlinInfluence() 		{	return perlin_influence;			}
 inline float 	AppSettings::minParticleSize() 		{	return min_particle_size;			}
 inline float 	AppSettings::maxParticleSize() 		{	return max_particle_size;			}
 inline float 	AppSettings::maxParticleTrailWidth(){	return max_particle_trail_width;	}
+
 #endif

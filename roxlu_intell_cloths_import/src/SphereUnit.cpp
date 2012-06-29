@@ -15,14 +15,18 @@ void SphereUnit::setup(Particle* c) {
 	// testing with repel force
 	repeller = ps.createParticle(c->position);
 	repeller->position.x += 0.1;
+	repeller->disable();
 	ps.addParticle(repeller);
+	
+	repeller_bottom = ps.createParticle(c->position);
+	repeller_bottom->position.y += 0.1;
+	repeller_bottom->disable();
+	ps.addParticle(repeller_bottom);
+	
 }
 
 void SphereUnit::addParticles(const unsigned int& num) {
-	if(centerp == NULL) {
-		printf("Cannot add particles because no center particle was set yet.\n");
-		return;
-	}
+	assert(centerp != NULL);
 	
 	Vec3 pos;
 	Vec3 lhpos = centerp->position;
@@ -65,7 +69,7 @@ void SphereUnit::update() {
 	}
 	*/
 	
-	//printf("%zu\n", ps.particles.size());
+	// APPLY PERLIN NOISE
 	float s = Timer::millis()* 0.0001;
 	float f = app_settings.perlinInfluence();
 	float perlin_scale = app_settings.perlinScale();
@@ -78,6 +82,8 @@ void SphereUnit::update() {
 		}
 		
 	}
+	
+	// CREATE TRAIL
 	if(app_settings.useParticleTrail()) {
 		trails.reset();
 		for(vector<Particle*>::iterator it = ps.particles.begin(); it != ps.particles.end(); ++it) {
@@ -93,13 +99,24 @@ void SphereUnit::update() {
 		trails.update();
 	}
 	
+	repeller->position = centerp->position;
+	repeller->position.y += 1.6;
+	repeller_bottom->position = centerp->position;
+	repeller_bottom->position.y -= 1.6;
+	repeller_bottom->position.x -= 1.6;
+	
+	// APPLY GENERAL REPEL FORCE AND UPDATE
 	ps.repel(0.3);
+	ps.repel(repeller, app_settings.repulsive_radius, app_settings.repulsive_force);
+	ps.repel(repeller_bottom, app_settings.repulsive_radius, app_settings.repulsive_force);
 	ps.update(0.3);
 	
 
 }
 
 void SphereUnit::draw(const Mat4& pm, const Mat4& vm, const Vec3& right, const Vec3& up) {
+	assert(centerp != NULL);
+	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glColor3f(1,1,1);
@@ -142,6 +159,15 @@ void SphereUnit::debugDraw() {
 			glEnd();
 		}
 	}
+	
+	glPointSize(10.0f);
+	glColor3f(0,1,0);
+	glBegin(GL_POINTS);
+		glVertex3fv(repeller->position.getPtr());
+	glEnd();
+	glColor3f(1,1,1);
+	glPointSize(1.0f);
+	
 }
 
 void SphereUnit::removeTrails() {
