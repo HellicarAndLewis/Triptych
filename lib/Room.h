@@ -26,4 +26,5 @@ public:
 	ofVboMesh mesh;
 	ofShader shader;
 	ofImage tex;
+	float aoAmt;
 };

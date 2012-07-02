@@ -19,7 +19,7 @@ void testApp::setup(){
 	gui.addSlider("LightZ", lightZ, -5, 1);
 	gui.addSlider("Ambient", ambient, 0, 1);
 	gui.addSlider("Diffuse", diffuse, 0, 1);
-	
+	gui.addSlider("AO Amount", room.aoAmt, 0, 1.5);
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	

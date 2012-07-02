@@ -13,11 +13,11 @@
     </SliderFloat_CamY>
     <SliderFloat_CamZ>
         <name>CamZ</name>
-        <value>-2.25</value>
+        <value>-3.2</value>
     </SliderFloat_CamZ>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-1.67</value>
+        <value>-3.71</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
@@ -27,4 +27,8 @@
         <name>Diffuse</name>
         <value>1</value>
     </SliderFloat_Diffuse>
+    <SliderFloat_AO_Amount>
+        <name>AO Amount</name>
+        <value>0.9975</value>
+    </SliderFloat_AO_Amount>
 </controls>
