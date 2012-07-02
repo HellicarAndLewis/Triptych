@@ -11,6 +11,8 @@ bool KinectMesh::tint = false;
 int KinectMesh::borderResolution = 20;
 int KinectMesh::fillResolution = 40;
 
+p2t::CDT *KinectMesh::delaunay = NULL;
+
 void KinectMesh::setupGui() {
 	gui.addTitle("Mesh");
 	gui.addToggle("Tint", tint);
@@ -18,7 +20,25 @@ void KinectMesh::setupGui() {
 	gui.addSlider("Fill Res", fillResolution, 5, 50);
 }
 
+bool KinectMesh::triangleTouchesCorner(p2t::Triangle *t) {
+	for(int i = 0; i < 3; i++) {
+		if(
+		   (t->GetPoint(i)->x==0 && t->GetPoint(i)->y==0)
+		   ||
+		   (t->GetPoint(i)->x==640 && t->GetPoint(i)->y==0)
+		   ||
+		   (t->GetPoint(i)->x==640 && t->GetPoint(i)->y==480)
+		   ||
+		   (t->GetPoint(i)->x==0 && t->GetPoint(i)->y==480)
+		   ) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigned char *rgb) {
+
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 	age = 0;
 	int step = borderResolution;
@@ -54,26 +74,48 @@ bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigne
 	
 	
 	// triangulate!!
-	ofxDelaunay delaunay;
+	//ofxDelaunay delaunay;
+	if(delaunay!=NULL) {
+		delete delaunay;
+	}
+		vector<p2t::Point*> bounding;
+		bounding.push_back(new p2t::Point(0,0));
+		bounding.push_back(new p2t::Point(640,0));
+		bounding.push_back(new p2t::Point(640,480));
+		bounding.push_back(new p2t::Point(0,480));
+		
+		delaunay = new p2t::CDT(bounding);
+	//}
+	//delaunay->reset();
+	
 	for(int i = 0; i < outline.size(); i++) {
-		delaunay.addPoint(outline[i].x, outline[i].y);
+//		delaunay->addPoint(outline[i].x, outline[i].y);
+		delaunay->AddPoint(new p2t::Point(outline[i].x, outline[i].y));
 	}
 	for(int i = 0; i < insides.size(); i++) {
-		delaunay.addPoint(insides[i].x, insides[i].y);
+		
+//		delaunay->addPoint(insides[i].x, insides[i].y);
+		delaunay->AddPoint(new p2t::Point(insides[i].x, insides[i].y));
 	}
 	
 	
-	delaunay.triangulate();
+	delaunay->Triangulate();
 	
-	XYZ *points = delaunay.getPoints();
-	ITRIANGLE *tris = delaunay.getTriangles();
+	//XYZ *points = delaunay->getPoints();
+	//ITRIANGLE *tris = delaunay->getTriangles();
+	vector<p2t::Triangle*> tris = delaunay->GetTriangles();
 	
-	int numTris = delaunay.getNumTriangles();
+	
+	int numTris = tris.size();
 	
 	unsigned char *depth = grey.getPixels();
 	for(int i = 0; i < numTris; i++) {
+		
+		if(triangleTouchesCorner(tris[i])) {
+			continue;
+		}
 		triangles.push_back(Triangle());
-		triangles.back().set(tris[i], points);
+		triangles.back().set(tris[i]);
 		ofVec2f c = triangles.back().centre;
 		int pos = ((int)c.x)+ ((int)c.y)*grey.getWidth();
 		if(depth[pos]>0) {

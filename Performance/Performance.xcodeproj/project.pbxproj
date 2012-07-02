@@ -28,8 +28,6 @@
 		EA01FA4F159C805200DBD05C /* ofxBlobTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA49159C805200DBD05C /* ofxBlobTracker.cpp */; };
 		EA01FA50159C805200DBD05C /* ofxCvKalman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA01FA4C159C805200DBD05C /* ofxCvKalman.cpp */; };
 		EA1D691E159DFBAC00CCE21C /* contourutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1D691C159DFBAC00CCE21C /* contourutils.cpp */; };
-		EA1D6926159DFD9A00CCE21C /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1D6921159DFD9A00CCE21C /* Delaunay.cpp */; };
-		EA1D6927159DFD9A00CCE21C /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1D6924159DFD9A00CCE21C /* ofxDelaunay.cpp */; };
 		EA1D692F159E11D500CCE21C /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1D692D159E11D400CCE21C /* Room.cpp */; };
 		EA4DD4DD1598B31C00009049 /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD4801598B31C00009049 /* cameras.c */; };
 		EA4DD4DE1598B31C00009049 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD4831598B31C00009049 /* core.c */; };
@@ -219,6 +217,11 @@
 		EA4DD84E1598CA8900009049 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */; };
 		EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectOutline.cpp */; };
 		EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59D915A1C15600841687 /* KinectMesh.cpp */; };
+		EA9D59FC15A1D8AC00841687 /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59EF15A1D8AC00841687 /* shapes.cc */; };
+		EA9D59FD15A1D8AC00841687 /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F415A1D8AC00841687 /* advancing_front.cc */; };
+		EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F615A1D8AC00841687 /* cdt.cc */; };
+		EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F815A1D8AC00841687 /* sweep.cc */; };
+		EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59FA15A1D8AC00841687 /* sweep_context.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,10 +285,6 @@
 		EA1D691A159DF8A600CCE21C /* KinectMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectMesh.h; sourceTree = "<group>"; };
 		EA1D691C159DFBAC00CCE21C /* contourutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = contourutils.cpp; path = ../../lib/marektricks/contourutils.cpp; sourceTree = "<group>"; };
 		EA1D691D159DFBAC00CCE21C /* contourutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = contourutils.h; path = ../../lib/marektricks/contourutils.h; sourceTree = "<group>"; };
-		EA1D6921159DFD9A00CCE21C /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
-		EA1D6922159DFD9A00CCE21C /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
-		EA1D6924159DFD9A00CCE21C /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
-		EA1D6925159DFD9A00CCE21C /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		EA1D692D159E11D400CCE21C /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Room.cpp; path = ../../lib/Room.cpp; sourceTree = "<group>"; };
 		EA1D692E159E11D400CCE21C /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../../lib/Room.h; sourceTree = "<group>"; };
 		EA4DD47F1598B31C00009049 /* APACHE20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
@@ -700,6 +699,18 @@
 		EA7FABB415A1A7520022034E /* KinectOutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectOutline.cpp; path = ../../lib/KinectOutline.cpp; sourceTree = "<group>"; };
 		EA7FABB515A1A7520022034E /* KinectOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectOutline.h; path = ../../lib/KinectOutline.h; sourceTree = "<group>"; };
 		EA9D59D915A1C15600841687 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectMesh.cpp; sourceTree = "<group>"; };
+		EA9D59EF15A1D8AC00841687 /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
+		EA9D59F015A1D8AC00841687 /* shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes.h; sourceTree = "<group>"; };
+		EA9D59F115A1D8AC00841687 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		EA9D59F215A1D8AC00841687 /* poly2tri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poly2tri.h; sourceTree = "<group>"; };
+		EA9D59F415A1D8AC00841687 /* advancing_front.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advancing_front.cc; sourceTree = "<group>"; };
+		EA9D59F515A1D8AC00841687 /* advancing_front.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancing_front.h; sourceTree = "<group>"; };
+		EA9D59F615A1D8AC00841687 /* cdt.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cdt.cc; sourceTree = "<group>"; };
+		EA9D59F715A1D8AC00841687 /* cdt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdt.h; sourceTree = "<group>"; };
+		EA9D59F815A1D8AC00841687 /* sweep.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep.cc; sourceTree = "<group>"; };
+		EA9D59F915A1D8AC00841687 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
+		EA9D59FA15A1D8AC00841687 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
+		EA9D59FB15A1D8AC00841687 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -841,7 +852,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				EA1D691F159DFD9A00CCE21C /* ofxDelaunay */,
+				EA9D59ED15A1D8AC00841687 /* poly2tri */,
 				EA01FA46159C805200DBD05C /* ofxBlobTracker */,
 				EA01FA4B159C805200DBD05C /* ofxCvKalman */,
 				EA4DD8101598CA8900009049 /* ofxMSAInteractiveObject */,
@@ -958,34 +969,6 @@
 			);
 			name = ofxCvKalman;
 			path = ../addons/ofxCvKalman;
-			sourceTree = "<group>";
-		};
-		EA1D691F159DFD9A00CCE21C /* ofxDelaunay */ = {
-			isa = PBXGroup;
-			children = (
-				EA1D6920159DFD9A00CCE21C /* libs */,
-				EA1D6923159DFD9A00CCE21C /* src */,
-			);
-			name = ofxDelaunay;
-			path = ../addons/ofxDelaunay;
-			sourceTree = "<group>";
-		};
-		EA1D6920159DFD9A00CCE21C /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				EA1D6921159DFD9A00CCE21C /* Delaunay.cpp */,
-				EA1D6922159DFD9A00CCE21C /* Delaunay.h */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		EA1D6923159DFD9A00CCE21C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				EA1D6924159DFD9A00CCE21C /* ofxDelaunay.cpp */,
-				EA1D6925159DFD9A00CCE21C /* ofxDelaunay.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		EA4DD4691598B31C00009049 /* ofxKinect */ = {
@@ -2037,6 +2020,42 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		EA9D59ED15A1D8AC00841687 /* poly2tri */ = {
+			isa = PBXGroup;
+			children = (
+				EA9D59EE15A1D8AC00841687 /* common */,
+				EA9D59F215A1D8AC00841687 /* poly2tri.h */,
+				EA9D59F315A1D8AC00841687 /* sweep */,
+			);
+			name = poly2tri;
+			path = ../addons/roxlu/addons/Poly2Tri/poly2tri;
+			sourceTree = "<group>";
+		};
+		EA9D59EE15A1D8AC00841687 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				EA9D59EF15A1D8AC00841687 /* shapes.cc */,
+				EA9D59F015A1D8AC00841687 /* shapes.h */,
+				EA9D59F115A1D8AC00841687 /* utils.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		EA9D59F315A1D8AC00841687 /* sweep */ = {
+			isa = PBXGroup;
+			children = (
+				EA9D59F415A1D8AC00841687 /* advancing_front.cc */,
+				EA9D59F515A1D8AC00841687 /* advancing_front.h */,
+				EA9D59F615A1D8AC00841687 /* cdt.cc */,
+				EA9D59F715A1D8AC00841687 /* cdt.h */,
+				EA9D59F815A1D8AC00841687 /* sweep.cc */,
+				EA9D59F915A1D8AC00841687 /* sweep.h */,
+				EA9D59FA15A1D8AC00841687 /* sweep_context.cc */,
+				EA9D59FB15A1D8AC00841687 /* sweep_context.h */,
+			);
+			path = sweep;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2202,11 +2221,14 @@
 				EA01FA4F159C805200DBD05C /* ofxBlobTracker.cpp in Sources */,
 				EA01FA50159C805200DBD05C /* ofxCvKalman.cpp in Sources */,
 				EA1D691E159DFBAC00CCE21C /* contourutils.cpp in Sources */,
-				EA1D6926159DFD9A00CCE21C /* Delaunay.cpp in Sources */,
-				EA1D6927159DFD9A00CCE21C /* ofxDelaunay.cpp in Sources */,
 				EA1D692F159E11D500CCE21C /* Room.cpp in Sources */,
 				EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */,
 				EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */,
+				EA9D59FC15A1D8AC00841687 /* shapes.cc in Sources */,
+				EA9D59FD15A1D8AC00841687 /* advancing_front.cc in Sources */,
+				EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */,
+				EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */,
+				EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,7 @@
 float nearThreshold = 255;
 float farThreshold = 0;
 
-//deque<
-vector<KinectMesh> 
-//>
-meshes;
+deque<vector<KinectMesh> > meshes;
 
 
 
@@ -63,26 +60,26 @@ void testApp::update(){
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
 		unsigned char *rgb = kinect.getPixels();
 			
-	/*	
-		if(meshes.size()>0) {
+	
+		if(meshes.size()>20) {
 			meshes.pop_back();
 		}
 		
 		meshes.push_front(vector<KinectMesh>());
-		*/
-		meshes.clear();
+		
+		//meshes.clear();
 		for(int i = 0; i < contours.blobs.size(); i++) {
-			meshes.push_back(KinectMesh());
+			/*meshes.push_back(KinectMesh());
 			if(!meshes.back().setup(contours.blobs[i], kinect.getOutline(), rgb)) {
 				meshes.pop_back();
 				printf("Mesh too small\n");
-			}
-			/*
+			}*/
+			
 			meshes.front().push_back(KinectMesh());
 			if(!meshes.front().back().setup(contours.blobs[i], kinect.getOutline(), rgb)) {
 				meshes.front().pop_back();
 				printf("Mesh too small\n");
-			}*/
+			}
 		}
 	}
 
@@ -119,7 +116,7 @@ void testApp::draw(){
 			//glColor4f(1, 1,1, 0.2);
 			ofSetHexColor(0xFFFFFF);
 
-			/*deque<vector<KinectMesh> >::reverse_iterator it;
+			deque<vector<KinectMesh> >::reverse_iterator it;
 			
 			int x = -400;
 			for(it = meshes.rbegin(); it != meshes.rend(); it++) {
@@ -133,10 +130,13 @@ void testApp::draw(){
 					}
 				}
 				glPopMatrix();
-			}*/
+			}
+			
+			
+			 /*
 			for(int i = 0; i < meshes.size(); i++) {
 				meshes[i].draw();
-			}
+			}*/
 
 		}
 		glPopMatrix();
