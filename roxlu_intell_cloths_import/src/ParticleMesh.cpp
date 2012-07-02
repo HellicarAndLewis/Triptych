@@ -20,6 +20,10 @@ void ParticleMesh::setup() {
 		anim.setFPS(10);
 		anim.play();
 	}
+	else {
+		printf("Cannot load animation data.\n");
+		::exit(0);
+	}
 }
 
 
@@ -101,7 +105,7 @@ void ParticleMesh::importModel(const string& filename,  const string& group) {
 		Vec3 pos = ps[vert_group[0]]->position;
 		pos.z += 0.5f;
 		left_foot = ps.addParticle(ps.createParticle(pos));
-	//	left_foot->disable();
+		left_foot->disable();
 		
 		for(int i = 0; i < vert_group.size(); ++i) {
 			ps.addSpring(ps.createSpring(left_foot, ps[vert_group[i]]));
@@ -111,7 +115,7 @@ void ParticleMesh::importModel(const string& filename,  const string& group) {
 		Vec3 pos = ps[vert_group[0]]->position;
 		pos.z += 0.5f;
 		right_foot = ps.addParticle(ps.createParticle(pos));
-	//	right_foot->disable();
+		right_foot->disable();
 		
 		for(int i = 0; i < vert_group.size(); ++i) {
 			ps.addSpring(ps.createSpring(right_foot, ps[vert_group[i]]));

@@ -20,6 +20,7 @@ void testApp::setup(){
 	
 	gui.addBool("Enable perlin noise", app_settings.use_perlin);
 	gui.addBool("Create particle trails", app_settings.use_particle_trail);
+	gui.addBool("Debug draw spheres", app_settings.debug_draw_spheres);
 	gui.addInt("Particle trail length", app_settings.particle_trail_length).setMin(10).setMax(200);
 	gui.addFloat("Min particle size", app_settings.min_particle_size).setMin(0.01f).setMax(3.0f);
 	gui.addFloat("Max particle size", app_settings.max_particle_size).setMin(0.01).setMax(5.0f);
@@ -28,6 +29,8 @@ void testApp::setup(){
 	gui.addFloat("Perlin scale", app_settings.perlin_scale).setMin(0.0).setMax(8.0);
 	gui.addFloat("Eye separation", scam.eye_separation).setMin(-0.5f).setMax(0.5f);
 	gui.addFloat("Convergence ",app_settings.convergence).setMin(-2.05f).setMax(2.05f);
+	gui.addFloat("Repulsive force", app_settings.repulsive_force).setMin(0.001).setMax(100.0f);
+	gui.addFloat("Repulsive radius", app_settings.repulsive_radius).setMin(0.001).setMax(10.0f);
 	gui.addButton<testApp>("Remove particle trails",1,this);
 	gui.addButton<testApp>("Reset particle sizes",2,this);
 	gui.addButton<testApp>("save",0,this);
@@ -137,13 +140,17 @@ void testApp::mouseMoved(int x, int y){
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 	gui.onMouseMoved(x,y);
-	cam.onMouseDragged(x,y);
+	if(!gui.isMouseInsidePanel()) {
+		cam.onMouseDragged(x,y);
+	}
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
 	gui.onMouseDown(x,y);
-	cam.onMouseDown(x,y);
+	if(!gui.isMouseInsidePanel()) {
+		cam.onMouseDown(x,y);
+	}
 }
 
 //--------------------------------------------------------------
