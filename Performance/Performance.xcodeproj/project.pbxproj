@@ -218,6 +218,7 @@
 		EA4DD84D1598CA8900009049 /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83B1598CA8900009049 /* ofxSimpleGuiToo.cpp */; };
 		EA4DD84E1598CA8900009049 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */; };
 		EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectOutline.cpp */; };
+		EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59D915A1C15600841687 /* KinectMesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -698,6 +699,7 @@
 		EA4DD83E1598CA8900009049 /* ofxSimpleGuiValueControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiValueControl.h; sourceTree = "<group>"; };
 		EA7FABB415A1A7520022034E /* KinectOutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectOutline.cpp; path = ../../lib/KinectOutline.cpp; sourceTree = "<group>"; };
 		EA7FABB515A1A7520022034E /* KinectOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectOutline.h; path = ../../lib/KinectOutline.h; sourceTree = "<group>"; };
+		EA9D59D915A1C15600841687 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectMesh.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -920,6 +922,7 @@
 				EA1D691D159DFBAC00CCE21C /* contourutils.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				EA1D691A159DF8A600CCE21C /* KinectMesh.h */,
+				EA9D59D915A1C15600841687 /* KinectMesh.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 			);
@@ -2203,6 +2206,7 @@
 				EA1D6927159DFD9A00CCE21C /* ofxDelaunay.cpp in Sources */,
 				EA1D692F159E11D500CCE21C /* Room.cpp in Sources */,
 				EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */,
+				EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

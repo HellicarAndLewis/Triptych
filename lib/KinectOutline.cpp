@@ -86,7 +86,7 @@ bool KinectOutline::update() {
 		
 		return true;
 	}
-	return false;
+	return true;
 }
 
 void KinectOutline::drawDebug() {

@@ -22,17 +22,9 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-//	ofxKinect kinect;
-	ofxCvGrayscaleImage grey;
+	Room room;
 	ofxCvContourFinder contours;
 	KinectOutline kinect;
 	
-	ofCamera camera;
-	ofLight light;
-	Room room;
-	float fov;
-	float lightZ;
-	float ambient;
-	float diffuse;
-	ofVec3f camPos;
+	
 };

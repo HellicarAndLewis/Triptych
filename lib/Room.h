@@ -20,11 +20,35 @@
 
 class Room {
 public:
-	void setup();
-	void addQuad(ofVec3f *quad);
+	void setup(float aspect = 1);
+	void setupGui();
+	
+	
+	void update();
 	void draw();
+	void begin();
+	void end();
+	
+	
+	
+	float aoAmt;
+	void setAspect(float aspect);
+	
+	ofCamera camera;
+	ofLight light;
+
+	float fov;
+	float lightZ;
+	float ambient;
+	float diffuse;
+	ofVec3f camPos;
+	ofVec3f lightPos;
+
+private:
+	void createMesh(float aspect);
+	float aspect;
 	ofVboMesh mesh;
 	ofShader shader;
 	ofImage tex;
-	float aoAmt;
+	void addQuad(ofVec3f *quad);
 };
