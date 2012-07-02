@@ -98,6 +98,10 @@ ofxCvGrayscaleImage &KinectOutline::getOutline() {
 }
 
 
+unsigned char *KinectOutline::getPixels() {
+	return kinect.getPixels();
+}
+
 unsigned char KinectOutline::getDepth(const ofxCvBlob &blob) {
 	unsigned char *c = depth.getPixels();
 	unsigned char p = 0;

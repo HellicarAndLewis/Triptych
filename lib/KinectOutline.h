@@ -36,6 +36,7 @@ public:
 	int getHeight() { return kinect.getHeight(); }
 	
 	unsigned char getDepth(const ofxCvBlob &blob);
+	unsigned char *getPixels();
 	
 	
 	
