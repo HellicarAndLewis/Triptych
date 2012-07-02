@@ -46,7 +46,7 @@ public:
 	static bool tint;
 	static int borderResolution;
 	static int fillResolution;
-	
+	static void setupGui();
 	
 	/**
 	 * Returns false if the blob is too small to create a mesh from

@@ -27,7 +27,7 @@ void testApp::setup(){
 	kinect.setup();
 	kinect.setupGui();
 	room.setupGui();	
-	
+	KinectMesh::setupGui();
 	
 	
 	gui.loadFromXML();

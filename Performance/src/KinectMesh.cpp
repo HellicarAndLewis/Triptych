@@ -5,18 +5,29 @@
  */
 
 #include "KinectMesh.h"
+#include "ofxSimpleGuiToo.h"
 
 bool KinectMesh::tint = false;
 int KinectMesh::borderResolution = 20;
 int KinectMesh::fillResolution = 40;
 
-
+void KinectMesh::setupGui() {
+	gui.addTitle("Mesh");
+	gui.addToggle("Tint", tint);
+	gui.addSlider("Border Res", borderResolution, 5, 50);
+	gui.addSlider("Fill Res", fillResolution, 5, 50);
+}
 
 bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigned char *rgb) {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 	age = 0;
 	int step = borderResolution;
 	int insideStep = fillResolution;
+	
+	// make sure nothing crazy happens here.
+	if(step<5) step = 5;
+	if(insideStep<5) insideStep = 5;
+	
 	if(blob.pts.size()/step<3) return false;
 	for(int i = 0; i < blob.pts.size(); i+= step) {
 		outline.push_back(ofVec2f(blob.pts[i].x, blob.pts[i].y));
