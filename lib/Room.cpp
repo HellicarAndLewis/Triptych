@@ -11,6 +11,7 @@ void Room::setup() {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 	tex.loadImage("room.png");
 	
+	aoAmt = 0.5;
 	ofVec3f quad[4];
 
 	// back face
@@ -105,6 +106,7 @@ void Room::draw() {
 	ofSetHexColor(0xFFFFFF);
 	
 	shader.begin();
+	shader.setUniform1f("amt", aoAmt);
 	shader.setUniformTexture("tex", tex.getTextureReference(), 0);
 //	tex.bind();
 	mesh.draw();
