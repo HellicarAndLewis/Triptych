@@ -3,6 +3,9 @@
 #include "ofMain.h"
 #include "ofxBullet.h"
 #include "Ribbon.h"
+#include "Room.h"
+#include "Bloom.h"
+
 
 class testApp : public ofBaseApp{
 
@@ -31,4 +34,7 @@ public:
 	ofLight light;
 	
 	bool stopMoving;
+	ofFbo fbo;
+	Room room;
+	tricks::gl::effects::Bloom bloom;
 };
