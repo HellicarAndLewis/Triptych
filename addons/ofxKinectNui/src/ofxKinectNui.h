@@ -13,6 +13,9 @@
 #ifndef OFX_KINECT_NUI_H
 #define OFX_KINECT_NUI_H
 
+
+// you need this sneaky line to make the kinect libraries compile.
+#define interface __interface
 #include "kinect/nui/Kinect.h" // this should be before ofMain.h
 #include "kinect/nui/ImageFrame.h" // for VideoFrame and DepthFrame
 #include "ofMain.h"
