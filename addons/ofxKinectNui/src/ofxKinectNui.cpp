@@ -448,12 +448,12 @@ void ofxKinectNui::update(UINT flag){
 				}
 			}
 		}
-		if(depthDraw_ && (flag & UPDATE_FLAG_DEPTH)) {
+		/*if(depthDraw_ && (flag & UPDATE_FLAG_DEPTH)) {
 			depthDraw_->setSource(depthPixels);
 		}
 		if(labelDraw_ && (flag & UPDATE_FLAG_LABEL)) {
 			labelDraw_->setSource(labelPixels);
-		}
+		}*/
 	}
 	if(flag & UPDATE_FLAG_GROUP_SKELETON){
 		// Get the skeleton data of next frame
