@@ -11,18 +11,15 @@
 
 Ribbon::Ribbon(): nNodes(10) {}
 
-Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
-
-	world.setup();
-	world.enableGrabbing();
-	world.setCamera(cam);
-	world.setGravity( ofVec3f(0, 0, 0) );
+Ribbon::Ribbon(int nNodes, ofCamera *cam, ofxBulletWorldRigid *world): nNodes(nNodes) {
+	this->world = world;
+	
 	
 	for (int i = 0; i < nNodes; i++) {
 		nodes.push_back(new ofxBulletBox());
 
 		nodes[i]->init(10, 10, 10);
-		nodes[i]->create(world.world, ofVec3f(i*5, 0, 0), 10, 1, 1, 1);
+		nodes[i]->create(world->world, ofVec3f(i*5, 0, 0), 10, 1, 1, 1);
 		
 		nodes[i]->add();
 	}
@@ -30,7 +27,7 @@ Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
 	
 	for (int i = 1; i < nodes.size(); i++) {
 		joints.push_back(new ofxBulletJoint());
-		joints[i-1]->create(world.world, nodes[i-1], nodes[i]);
+		joints[i-1]->create(world->world, nodes[i-1], nodes[i]);
 		
 		//these values are so arbitrary!!!
 		//edit: i don't think changing them does fuck all!!!
@@ -86,7 +83,7 @@ Ribbon::Ribbon(int nNodes, ofCamera *cam): nNodes(nNodes) {
 }
 
 Ribbon::~Ribbon() {
-	world.world->removeConstraint(anchorPoint);
+	world->world->removeConstraint(anchorPoint);
 	delete anchorPoint;
 }
 
@@ -100,7 +97,7 @@ ofVec3f findNormal(ofVec3f a, ofVec3f b, ofVec3f ref) {
 
 void Ribbon::update() {
 
-	world.update();
+
 	
 	//only have an even length...
 	assert(!(nodes.size() % 2));
@@ -215,7 +212,7 @@ void Ribbon::setupAnchorPoint() {
 	anchorPoint->setAngularLowerLimit(btVector3(0,0,0));
 	anchorPoint->setAngularUpperLimit(btVector3(0,0,0));
 	
-	world.world->addConstraint(anchorPoint);
+	world->world->addConstraint(anchorPoint);
 	
 	for (int i = 0; i < 6; i++) {
 		anchorPoint->setParam(BT_CONSTRAINT_STOP_CFM,0.8,i);

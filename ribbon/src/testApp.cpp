@@ -1,11 +1,18 @@
 #include "testApp.h"
 #include "ofxSimpleGuiToo.h"
 
-bool clearedFbo = false;
+//bool clearedFbo = false;
 
 void testApp::setup() {
-	bloom.setup(true);
-	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
+	
+	world.setup();
+	world.enableGrabbing();
+	world.setCamera(&cam);
+	world.setGravity( ofVec3f(0, 0, 0) );
+	
+	
+	//bloom.setup(true);
+	//fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
 	ofSetFrameRate(30);
 	
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
@@ -14,7 +21,7 @@ void testApp::setup() {
 	
 	gui.setAutoSave(true);
 	gui.loadFromXML();
-	ribbon = new Ribbon(60, &cam);
+
 
 	
 	glEnable(GL_LIGHTING);
@@ -26,18 +33,98 @@ void testApp::setup() {
 //	glEnable(GL_NORMALIZE);
 	
 	stopMoving = false;
+	kinect.setup();
+
 }
 
 testApp::~testApp() {
-	
-	delete ribbon;
+	kinect.exit();
+
 
 }
 
 
+void testApp::updateFromSkeletons() {
+	// mark all skeletons as dead, only unmark them if they 
+	// still exist in the next bit of code (when updating the skels)
+	map<int,RibbonSkeleton>::iterator it;
+	for(it = skeletons.begin(); it != skeletons.end(); it++) {
+		(*it).second.alive = false;
+	}
+	
+	
+	// check for new or updated skeletons
+	for(int i = 0; i < kinect.getNumSkeletons(); i++) {
+		
+		KinectSkeleton s = kinect.getSkeleton(i);
+		if(skeletons.find(s.id)==skeletons.end()) {
+			
+			// we have a new skeleton
+			skeletons[s.id] = RibbonSkeleton();
+			skeletons[s.id].setup(s, cam, &world);
+			skeletons[s.id].alive = true;
+		} else {
+			// we have a skeleton to update.
+			skeletons[s.id].update(s);
+			skeletons[s.id].alive = true;
+		}
+	}
+	
+	// remove any skeletons that weren't marked as still alive
+	// in the previous bit of code.
+	for(it = skeletons.begin(); it != skeletons.end(); it++) {
+		if(!(*it).second.alive) {
+			
+			deadRibbons.push_back((*it).second.ribbonLeft);
+			deadRibbons.push_back((*it).second.ribbonRight);
+			
+			skeletons.erase((*it).first);
+		}
+	}
+}
+
+void testApp::updateRibbons() {
+	world.update();
+	map<int,RibbonSkeleton>::iterator it;
+	// now update all the ribbons.
+	for(it = skeletons.begin(); it != skeletons.end(); it++) {
+		(*it).second.ribbonLeft->update();
+		(*it).second.ribbonRight->update();
+	}
+	
+	
+	// this includes any ribbons that have detached themselves
+	// from a skeleton (i.e. the skeleton disappeared).
+	for(int i = 0; i < deadRibbons.size(); i++) {
+		deadRibbons[i]->update();
+	}
+}
+
 void testApp::update() {
-	ribbon->update();
+	
+	kinect.update();
+	
+	
+	updateFromSkeletons();
+	updateRibbons();
 	room.update();
+}
+
+
+void testApp::drawRibbons() {
+	map<int,RibbonSkeleton>::iterator it;
+	// now update all the ribbons.
+	for(it = skeletons.begin(); it != skeletons.end(); it++) {
+		(*it).second.ribbonLeft->draw();
+		(*it).second.ribbonRight->draw();
+	}
+	
+	
+	// this includes any ribbons that have detached themselves
+	// from a skeleton (i.e. the skeleton disappeared).
+	for(int i = 0; i < deadRibbons.size(); i++) {
+		deadRibbons[i]->draw();
+	}
 }
 
 
@@ -46,18 +133,21 @@ void testApp::draw() {
 	ofBackground(0);
 	
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-	ofSetHexColor(0xFF0000);
-	glPushMatrix();
-	//glTranslatef(0, 0, 1);
-	ofCircle(100, 100, 100);
-	glPopMatrix();
+	
+	
 	ofSetHexColor(0xFFFFFF);
-	bloom.begin();
-	ribbon->draw();
-	bloom.end();
+	room.draw();
+	//bloom.begin();
+	kinect.drawDebug();
+	
+	drawRibbons();
+	
+	
+	//bloom.end();
+
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);	
 	ofSetHexColor(0xFFFFFF);
-	bloom.getOutput()->draw(0,0);
+	//bloom.getOutput()->draw(100,100);
 	/*
 	fbo.begin();
 	if(!clearedFbo) {
@@ -72,6 +162,7 @@ void testApp::draw() {
 	room.draw();
 	
 	fbo.draw(0,0);*/
+	
 	gui.draw();
 }
 
@@ -84,6 +175,9 @@ void testApp::keyPressed(int key) {
 			break;
 		case 's':
 			stopMoving = !stopMoving;
+			break;
+		case 'f':
+			ofToggleFullscreen();
 			break;
 		default:
 			break;
@@ -101,7 +195,7 @@ void testApp::mouseMoved(int x, int y) {
 	
 	
 	if (!stopMoving) {
-		ribbon->setAnchorPoint(ofVec3f(x, y, 0));
+		//ribbon->setAnchorPoint(ofVec3f(x, y, 0));
 	}
 	else {
 		light.setPosition(mouseX, 300, mouseY-200);

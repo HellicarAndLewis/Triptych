@@ -77,11 +77,14 @@ bool KinectOutline::update() {
 	
 	
 	
-	
+#ifdef _WIN32
 	kinect.update(ofxKinectNui::UPDATE_FLAG_VIDEO	
 		| ofxKinectNui::UPDATE_FLAG_DEPTH	 
 		//| ofxKinectNui::UPDATE_FLAG_CALIBRATED_VIDEO
 		);
+#else
+	kinect.update();
+#endif
 
 	printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {

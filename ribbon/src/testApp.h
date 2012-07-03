@@ -5,7 +5,31 @@
 #include "Ribbon.h"
 #include "Room.h"
 #include "Bloom.h"
+#include "KinectSkeletons.h"
 
+
+class RibbonSkeleton {
+public:
+	Ribbon *ribbonLeft;
+	Ribbon *ribbonRight;
+	KinectSkeleton skeleton;
+	bool alive;
+	void setup(KinectSkeleton skel, ofCamera &cam, ofxBulletWorldRigid *world) {
+		alive = true;
+		ribbonLeft = new Ribbon(60, &cam, world);
+		ribbonRight = new Ribbon(60, &cam, world);
+		update(skel);
+		printf("\n\n\nCRATING RIBBONS!!!!!\n\n\n");
+		
+	}
+	void update(KinectSkeleton skel) {
+		printf("Updating ribbons %f %f\n", skel.leftHand.x, skel.leftHand.y);
+		this->skeleton = skel;
+		ribbonLeft->setAnchorPoint(skeleton.leftHand);
+		ribbonRight->setAnchorPoint(skeleton.rightHand);
+	}
+	
+};
 
 class testApp : public ofBaseApp{
 
@@ -28,13 +52,24 @@ public:
 		
 	
 	ofCamera cam;
-
-	Ribbon *ribbon;
-	
+	void updateRibbons();
+	void drawRibbons();
+	void updateFromSkeletons();
 	ofLight light;
 	
 	bool stopMoving;
-	ofFbo fbo;
+//	ofFbo fbo;
+//	ofFbo roomFbo;
 	Room room;
-	tricks::gl::effects::Bloom bloom;
+	//tricks::gl::effects::Bloom bloom;
+	KinectSkeletons kinect;
+	
+	// these are the skeletons currently on the scene
+	map<int,RibbonSkeleton> skeletons;
+	
+	// these are the ribbons that have been disassocated with any skeleton.
+	vector<Ribbon*> deadRibbons;
+	
+	ofxBulletWorldRigid	world;
+	
 };
