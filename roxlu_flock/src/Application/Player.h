@@ -4,6 +4,7 @@
 #include "SimpleAnim.h"
 #include "BoidTypes.h"
 #include "Settings.h"
+#include "Boid.h"
 
 // A user in front of the installation (or test mode).
 
@@ -27,7 +28,8 @@ public:
 	Particle3* cloth_top_left;
 	Particle3* cloth_top_right;
 	vector<Triangle> tris;
-
+	
+	Boid boid; // test
 };
 
 inline void Player::operator()(Boid2& a, Boid2& b, Vec2& dir, float f, float ls, int what) {

@@ -12,7 +12,6 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	ofEnableNormalizedTexCoords();
-	
 	show_gui = true;
 	debug = true;
 	app.setup();
@@ -57,6 +56,18 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	ofColor start_color(33,33,53);
+	ofBackgroundGradient(start_color, ofColor::black, OF_GRADIENT_CIRCULAR);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(45.0f, ofGetWidth()/ofGetHeight(), 0.1, 100);
+		
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glTranslatef(0,0,-10);
+		app.debugDraw();		
+		return;
+		
 	if(!debug) {
 		Mat3 nm(cam.vm());
         nm.inverse();
@@ -65,7 +76,7 @@ void testApp::draw(){
 		app.draw(cam.pm(), cam.vm(), nm);
 	}
 	else {
-		app.debugDraw();		
+		
 	}
 	if(show_gui) {
 		gui.draw();

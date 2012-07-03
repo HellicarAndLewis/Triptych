@@ -12,7 +12,7 @@ Controller::Controller(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, 
 
 void Controller::setup() {
 	// add some boids
-	int num = 500;
+	int num = 400;
 	Vec2 pos;
 	float cx = w * 0.5f;
 	float cy = h * 0.5f;
@@ -40,7 +40,7 @@ void Controller::update() {
 	for(vector<Boid2*>::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
 		Boid2& b = **it;
 		Vec2& pos = b.position;
-		
+
 		// PERLIN
 		if(settings.flocking_apply_perlin) {
 			pf = noise2(pos.x * settings.flocking_perlin_influence, pos.y * settings.flocking_perlin_influence);

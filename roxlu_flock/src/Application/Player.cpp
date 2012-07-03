@@ -56,6 +56,9 @@ void Player::setup() {
 	cloth_top_left->disable();
 	cloth_top_right = cloth[10];
 	cloth_top_right->disable();
+	
+
+	boid.setup(); 	// test
 }
 
 void Player::update() {
@@ -94,4 +97,6 @@ void Player::update() {
 	cloth.addForce(Vec3(0.0f,1.0f, sin(Timer::now())*15));
 	cloth.update(0.5);
 
+	boid.position = cloth_top_left->position;
+	boid.update(); 	// test
 }

@@ -100,11 +100,10 @@ void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
 }
 
 void Visualizer::debugDraw() {
-	// Cloth
-	//for(vector<Player*>::iterator it = players.begin(); it != players.end(); ++it) {
-//		::draw((*it)->cloth);
-//	}
-	
+	// test
+	players[0]->boid.debugDraw();
+	return;
+
 	// FX 
 	glColor3f(0,1,1);
 	::draw(fx_ps);	
@@ -144,4 +143,5 @@ void Visualizer::debugDraw() {
 	}
 
 	
+		
 }
