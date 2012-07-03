@@ -23,10 +23,14 @@ public:
 		
 	}
 	void update(KinectSkeleton skel) {
-		printf("Updating ribbons %f %f\n", skel.leftHand.x, skel.leftHand.y);
+
 		this->skeleton = skel;
-		ribbonLeft->setAnchorPoint(skeleton.leftHand);
-		ribbonRight->setAnchorPoint(skeleton.rightHand);
+		
+		// we want to rescale to screen coords - we also want to remove the z component
+		// (for now)
+		ofVec3f factor = ofVec3f((float)ofGetWidth()/640.f, (float)ofGetHeight()/480.f, 0);
+		ribbonLeft->setAnchorPoint(skeleton.leftHand*factor);
+		ribbonRight->setAnchorPoint(skeleton.rightHand*factor);
 	}
 	
 };

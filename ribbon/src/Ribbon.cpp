@@ -196,6 +196,11 @@ void Ribbon::setAnchorPoint(ofVec3f p) {
 	
 }
 
+ofVec3f Ribbon::getAnchorPoint() {
+	btVector3 &b = anchorPoint->getFrameOffsetA().getOrigin();
+	ofVec3f a(b.x(), b.y(), b.z());
+	return a;
+}
 
 void Ribbon::setupAnchorPoint() {
 	btRigidBody *firstNode = nodes[0]->getRigidBody();

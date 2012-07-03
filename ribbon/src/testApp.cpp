@@ -96,6 +96,8 @@ void testApp::updateRibbons() {
 	// this includes any ribbons that have detached themselves
 	// from a skeleton (i.e. the skeleton disappeared).
 	for(int i = 0; i < deadRibbons.size(); i++) {
+		// head south if detached.
+		deadRibbons[i]->setAnchorPoint(deadRibbons[i]->getAnchorPoint()+ofVec3f(0, 3, 0));
 		deadRibbons[i]->update();
 	}
 }
@@ -138,7 +140,7 @@ void testApp::draw() {
 	ofSetHexColor(0xFFFFFF);
 	room.draw();
 	//bloom.begin();
-	kinect.drawDebug();
+	//kinect.drawDebug();
 	
 	drawRibbons();
 	

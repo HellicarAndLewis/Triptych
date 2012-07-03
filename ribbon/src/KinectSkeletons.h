@@ -33,6 +33,7 @@ public:
 	void drawDebug();
 	void exit();
 	int getNumSkeletons();
+	unsigned char *getDepth();
 	KinectSkeleton getSkeleton(int index);
 	ofxOpenNI kinect;
 };
