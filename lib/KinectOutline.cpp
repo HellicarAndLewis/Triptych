@@ -86,7 +86,7 @@ bool KinectOutline::update() {
 		
 		return true;
 	}
-	return false;
+	return true;
 }
 
 void KinectOutline::drawDebug() {
@@ -97,6 +97,10 @@ ofxCvGrayscaleImage &KinectOutline::getOutline() {
 	return thresh;
 }
 
+
+unsigned char *KinectOutline::getPixels() {
+	return kinect.getPixels();
+}
 
 unsigned char KinectOutline::getDepth(const ofxCvBlob &blob) {
 	unsigned char *c = depth.getPixels();

@@ -10,45 +10,46 @@
  *    \  \:\        \  \:\         |  |:/       \  \::/       \  \::/        |  |:|   
  *     \__\/         \__\/         |__|/         \__\/         \__\/         |__|/   
  *
- *  Description: 
+ *  Description: A bloom shader. The simplest way to use it is to just call
+ *				 begin() and end() around the parts you want bloomed.
+ * 
+ *				 However, if you want to draw the result to an FBO, pass in
+ *				 drawToFbo as true to setup() and use getOutput to get the fbo
  *				 
- *  Room.h, created by Marek Bereza on 28/06/2012.
+ *  Bloom.h, created by Marek Bereza on 05/10/2011.
  */
 
 #pragma once
 #include "ofMain.h"
+namespace tricks { 
+	namespace gl { 
+		namespace effects {
+			class Bloom {
+			public:
+				
+				void setup(bool drawToFbo = false);
+				void resize(int width, int height);
+				void begin();
+				void end();
+				
+				// only use this if you set it up with drawFbo = true
+				ofFbo *getOutput();
+			private:
+				bool drawToFbo;
+				
+				void loadShader();
 
-class Room {
-public:
-	void setup(float aspect = 1);
-	void setupGui();
-	
-	
-	void update();
-	void draw();
-	void begin();
-	void end();
-	
-	
-	
-	float aoAmt;
-	void setAspect(float aspect);
-	
-	ofCamera camera;
-	ofLight light;
+				ofFbo output;
+				ofFbo out1;
+				ofFbo out2;
+				
+				ofShader shader;
+				
+				
+				ofVec2f blurX;
+				ofVec2f blurY;
 
-	float fov;
-	float lightZ;
-	float ambient;
-	float diffuse;
-	ofVec3f camPos;
-	ofVec3f lightPos;
-
-private:
-	void createMesh(float aspect);
-	float aspect;
-	ofVboMesh mesh;
-	ofShader shader;
-	ofImage tex;
-	void addQuad(ofVec3f *quad);
-};
+			};
+		}
+	}
+}

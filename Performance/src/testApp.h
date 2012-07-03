@@ -1,17 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBullet.h"
-#include "Ribbon.h"
+#include "KinectOutline.h"
+#include "ofxOpenCv.h"
 #include "Room.h"
-#include "Bloom.h"
-
 
 class testApp : public ofBaseApp{
 
 public:
-	~testApp();
-	
 	void setup();
 	void update();
 	void draw();
@@ -25,16 +21,10 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-		
-	
-	ofCamera cam;
 
-	Ribbon *ribbon;
-	
-	ofLight light;
-	
-	bool stopMoving;
-	ofFbo fbo;
 	Room room;
-	tricks::gl::effects::Bloom bloom;
+	ofxCvContourFinder contours;
+	KinectOutline kinect;
+	
+	
 };

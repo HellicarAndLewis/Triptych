@@ -1,12 +1,20 @@
 #include "testApp.h"
+#include "ofxSimpleGuiToo.h"
 
+bool clearedFbo = false;
 
 void testApp::setup() {
+	bloom.setup(true);
+	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
+	ofSetFrameRate(30);
 	
-	ofSetFrameRate(60);
+	room.setup((float)ofGetWidth()/(float)ofGetHeight());
+	room.setupGui();
 	
 	
-	ribbon = new Ribbon(30, &cam);
+	gui.setAutoSave(true);
+	gui.loadFromXML();
+	ribbon = new Ribbon(60, &cam);
 
 	
 	glEnable(GL_LIGHTING);
@@ -29,14 +37,42 @@ testApp::~testApp() {
 
 void testApp::update() {
 	ribbon->update();
+	room.update();
 }
 
 
 void testApp::draw() {
-	ofBackgroundHex(0x0);
+	ofEnableAlphaBlending();
+	ofBackground(0);
 	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	ofSetHexColor(0xFF0000);
+	glPushMatrix();
+	//glTranslatef(0, 0, 1);
+	ofCircle(100, 100, 100);
+	glPopMatrix();
+	ofSetHexColor(0xFFFFFF);
+	bloom.begin();
 	ribbon->draw();
-
+	bloom.end();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);	
+	ofSetHexColor(0xFFFFFF);
+	bloom.getOutput()->draw(0,0);
+	/*
+	fbo.begin();
+	if(!clearedFbo) {
+		clearedFbo = true;
+		ofClear(0,0,0,0);
+	}
+	glColor4f(0,0,0,0.03);
+	ofRect(0,0,ofGetWidth(),ofGetHeight());
+	bloom.getOutput()->draw(0, 0);
+	fbo.end();
+	
+	room.draw();
+	
+	fbo.draw(0,0);*/
+	gui.draw();
 }
 
 
@@ -44,6 +80,9 @@ void testApp::keyPressed(int key) {
 	
 	switch (key) {
 		case ' ':
+			gui.toggleDraw();
+			break;
+		case 's':
 			stopMoving = !stopMoving;
 			break;
 		default:
@@ -90,7 +129,7 @@ void testApp::mouseReleased(int x, int y, int button){
 
 
 void testApp::windowResized(int w, int h) {
-	
+	room.setup((float)w/(float)h);	
 }
 
 
