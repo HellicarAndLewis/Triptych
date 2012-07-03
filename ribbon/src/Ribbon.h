@@ -15,15 +15,16 @@ class Ribbon {
 
 public:
 	Ribbon();
-	Ribbon(int nNodes, ofCamera *cam);
+	Ribbon(int nNodes, ofCamera *cam, ofxBulletWorldRigid *world);
 	~Ribbon();
 	
 	void update();
 	void draw();
 	
+	ofxBulletWorldRigid *world;
 	void setAnchorPoint(ofVec3f p);
 	
-	ofxBulletWorldRigid	world;
+	ofVec3f getAnchorPoint();
 	
 	vector<ofxBulletBox*> nodes;
 	vector<ofxBulletJoint*> joints;

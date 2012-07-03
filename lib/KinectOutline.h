@@ -17,8 +17,11 @@
 
 #pragma once
 #include "ofxOpenCv.h"
+#ifdef _WIN32
+#include "ofxKinectNui.h"
+#else
 #include "ofxKinect.h"
-
+#endif
 class KinectOutline {
 public:
 	
@@ -32,15 +35,19 @@ public:
 
 	ofxCvGrayscaleImage &getOutline();
 
-	int getWidth() { return kinect.getWidth(); }
-	int getHeight() { return kinect.getHeight(); }
+	int getWidth() {   /*return kinect.getWidth();*/ return VISION_WIDTH; }
+	int getHeight() { /*return kinect.getHeight();*/ return VISION_HEIGHT; }
 	
 	unsigned char getDepth(const ofxCvBlob &blob);
 	unsigned char *getPixels();
 	
 	
 	
+#ifdef _WIN32
+	ofxKinectNui kinect;
+#else
 	ofxKinect kinect;
+#endif
 	ofxCvGrayscaleImage depth;
 	ofxCvGrayscaleImage thresh;
 	ofxCvGrayscaleImage background;

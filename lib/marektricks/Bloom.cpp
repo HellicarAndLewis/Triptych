@@ -29,7 +29,7 @@ void tricks::gl::effects::Bloom::end() {
 	
 	
 	out1.begin();
-	ofClear(0, 0, 0, 255);
+	ofClear(0, 0, 0, 0);
 	// convolution 1
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
@@ -42,7 +42,7 @@ void tricks::gl::effects::Bloom::end() {
 	
 	
 	out2.begin();
-	ofClear(0, 0, 0, 255);
+	ofClear(0, 0, 0, 0);
 	// convolution 2
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
@@ -180,7 +180,7 @@ void tricks::gl::effects::Bloom::loadShader() {
 "		sum += texture2DRect( tDiffuse, imageCoord ) * 0.001110*t;\n"
 		
 "		gl_FragColor = sum;\n"
-		
+//"		if(sum.r>0.0) gl_FragColor.a = 1.0; \n"
 	"}\n";
 	
 	//printf("%s\n", frag.c_str());

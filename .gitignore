@@ -34,3 +34,4 @@
 *.xcworkspacedata
 *.xcuserstate
 *.xcscheme
+*/build/*

@@ -7,12 +7,39 @@
 #include "KinectOutline.h"
 #include "ofxSimpleGuiToo.h"
 void KinectOutline::setup() {
-	kinect.init();
-	kinect.open();
-	kinect.setRegistration(true);
+#ifdef _WIN32
+	kinect.init(//bool grabVideo = 
+				true,
+				//bool grabDepth = 
+				true,
+				//bool grabAudio = 
+				false,
+				//bool grabLabel = 
+				false,
+				//bool grabSkeleton = 
+				false,
+				//bool grabCalibratedVideo = 
+				//true,
+				false,
+				//bool grabLabelCv = 
+				false,
+				//NUI_IMAGE_RESOLUTION videoResolution = 
+				NUI_IMAGE_RESOLUTION_640x480,
+				//NUI_IMAGE_RESOLUTION depthResolution = 
+				NUI_IMAGE_RESOLUTION_640x480);
+	VISION_WIDTH  = 640;
+	VISION_HEIGHT = 480;
+#else
 	
-	VISION_WIDTH = kinect.getWidth();
-	VISION_HEIGHT = kinect.getHeight();
+	kinect.init();
+	kinect.setRegistration(true);
+	VISION_WIDTH  = 640;
+	VISION_HEIGHT = 480;
+#endif
+	kinect.open();
+	
+
+	
 	
 	depth.allocate(VISION_WIDTH, VISION_HEIGHT);
 	background.allocate(VISION_WIDTH, VISION_HEIGHT);
@@ -46,10 +73,26 @@ void KinectOutline::setupGui() {
 }
 
 bool KinectOutline::update() {
+	float t = ofGetElapsedTimef();
+	
+	
+	
+#ifdef _WIN32
+	kinect.update(ofxKinectNui::UPDATE_FLAG_VIDEO	
+		| ofxKinectNui::UPDATE_FLAG_DEPTH	 
+		//| ofxKinectNui::UPDATE_FLAG_CALIBRATED_VIDEO
+		);
+#else
 	kinect.update();
+#endif
+
+	printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
+#ifdef _WIN32
+		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);
+#else
 		depth.setFromPixels(kinect.getDepthPixels(), VISION_WIDTH, VISION_HEIGHT);
-		
+#endif
 		if(learnBackground) {
 			learnBackground = false;
 			background = depth;
@@ -99,7 +142,11 @@ ofxCvGrayscaleImage &KinectOutline::getOutline() {
 
 
 unsigned char *KinectOutline::getPixels() {
+#ifdef _WIN32
+	return kinect.getVideoPixels().getPixels();
+#else
 	return kinect.getPixels();
+#endif
 }
 
 unsigned char KinectOutline::getDepth(const ofxCvBlob &blob) {
