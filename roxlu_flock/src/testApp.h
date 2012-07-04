@@ -29,7 +29,7 @@ class testApp : public ofBaseApp{
 		bool debug;
 		Camera cam;
 		Application app;
-		buttons::Buttons gui;
+		buttons::Buttons _gui;
 		
 		Particles2 ps;
 		

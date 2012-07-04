@@ -95,6 +95,9 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		EAE2A67715A445FC00327E97 /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67515A445FC00327E97 /* Room.cpp */; };
+		EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67815A4461000327E97 /* BoundBlob.cpp */; };
+		EAE2A67D15A4461000327E97 /* KinectOutline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67A15A4461000327E97 /* KinectOutline.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +319,12 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		EAE2A67515A445FC00327E97 /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Room.cpp; path = ../lib/Room.cpp; sourceTree = "<group>"; };
+		EAE2A67615A445FC00327E97 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../lib/Room.h; sourceTree = "<group>"; };
+		EAE2A67815A4461000327E97 /* BoundBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundBlob.cpp; path = ../lib/BoundBlob.cpp; sourceTree = "<group>"; };
+		EAE2A67915A4461000327E97 /* BoundBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundBlob.h; path = ../lib/BoundBlob.h; sourceTree = "<group>"; };
+		EAE2A67A15A4461000327E97 /* KinectOutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectOutline.cpp; path = ../lib/KinectOutline.cpp; sourceTree = "<group>"; };
+		EAE2A67B15A4461000327E97 /* KinectOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectOutline.h; path = ../lib/KinectOutline.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -713,6 +722,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				EAE2A67E15A4461900327E97 /* lib */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
@@ -739,6 +749,19 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		EAE2A67E15A4461900327E97 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EAE2A67815A4461000327E97 /* BoundBlob.cpp */,
+				EAE2A67915A4461000327E97 /* BoundBlob.h */,
+				EAE2A67A15A4461000327E97 /* KinectOutline.cpp */,
+				EAE2A67B15A4461000327E97 /* KinectOutline.h */,
+				EAE2A67515A445FC00327E97 /* Room.cpp */,
+				EAE2A67615A445FC00327E97 /* Room.h */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -897,6 +920,9 @@
 				54E0CDBC15A2CC0800045537 /* Storage.cpp in Sources */,
 				54E0CDBD15A2CC0800045537 /* Toggle.cpp in Sources */,
 				54E0CDC015A2DEF600045537 /* Boid.cpp in Sources */,
+				EAE2A67715A445FC00327E97 /* Room.cpp in Sources */,
+				EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */,
+				EAE2A67D15A4461000327E97 /* KinectOutline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
