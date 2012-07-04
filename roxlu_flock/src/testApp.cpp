@@ -51,7 +51,7 @@ void testApp::setup(){
 	flock_gui.load(ofToDataPath("gui.bin",true));
 
 	cam.translate(0,0,5);
-	cam.orthoBottomLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
+	cam.orthoTopLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
 }
 
 //--------------------------------------------------------------
@@ -63,34 +63,24 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-/*	ofColor start_color(33,33,53);
-	ofBackgroundGradient(start_color, ofColor::black, OF_GRADIENT_CIRCULAR);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluPerspective(45.0f, ofGetWidth()/ofGetHeight(), 0.1, 100);
 		
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-		glTranslatef(0,0,-10);
-		app.debugDraw();		
-		return;
-		*/
 	room.draw();
+	
 	if(!debug) {
 		Mat3 nm(cam.vm());
         nm.inverse();
         nm.transpose();
-		
-		
-        
 		app.draw(cam.pm(), cam.vm(), nm);
 	}
 	else {
-		
+		cam.place();
+		app.debugDraw();		
 	}
+	
 	if(show_gui) {
 		flock_gui.draw();
 	}
+	
 	gui.draw();
 	
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);

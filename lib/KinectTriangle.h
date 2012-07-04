@@ -19,7 +19,7 @@
 
 #include "ofMain.h"
 
-struct Triangle {
+struct KinectTriangle {
 	
 	// the 3 points in the triangle
 	ofVec2f points[3];

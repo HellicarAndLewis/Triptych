@@ -40,7 +40,9 @@ void ExplosionTrails::debugDraw() {
 }
 
 void ExplosionTrails::update() {
-
+	// @todo check buffer alloc 
+	return;
+	
 	// Update trail traingles
 	trails.clear();
 	for(Boids2::iterator it = ps.begin(); it != ps.end(); ++it) {
@@ -67,6 +69,7 @@ void ExplosionTrails::update() {
 		printf("Allocated for trail buffer: %zu\n", allocated_bytes);
 		
 		vao.bind();
+		// @todo fix, buffer is corrupt
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, allocated_bytes, vertices.getPtr(), GL_DYNAMIC_DRAW);
 		glEnableVertexAttribArray(0); // pos

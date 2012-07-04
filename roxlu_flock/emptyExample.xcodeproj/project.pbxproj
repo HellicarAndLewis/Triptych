@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423515A4C18500A50CC3 /* KinectInput.cpp */; };
+		549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423E15A4C54600A50CC3 /* KinectMesh.cpp */; };
+		549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A424015A4C54600A50CC3 /* KinectThresholder.cpp */; };
+		549A424615A4C60900A50CC3 /* PolyTri.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A424515A4C60900A50CC3 /* PolyTri.cpp */; };
+		549A425715A4C67000A50CC3 /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A424A15A4C67000A50CC3 /* shapes.cc */; };
+		549A425815A4C67000A50CC3 /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A424F15A4C67000A50CC3 /* advancing_front.cc */; };
+		549A425915A4C67000A50CC3 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A425115A4C67000A50CC3 /* cdt.cc */; };
+		549A425A15A4C67000A50CC3 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A425315A4C67000A50CC3 /* sweep.cc */; };
+		549A425B15A4C67000A50CC3 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A425515A4C67000A50CC3 /* sweep_context.cc */; };
+		549A42AE15A4D42B00A50CC3 /* KinectDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A42AC15A4D42B00A50CC3 /* KinectDrawer.cpp */; };
 		54E0CCD315A2CB5D00045537 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC115A2CB5D00045537 /* Application.cpp */; };
 		54E0CCD415A2CB5D00045537 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC415A2CB5D00045537 /* Controller.cpp */; };
 		54E0CCD515A2CB5D00045537 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC615A2CB5D00045537 /* Player.cpp */; };
@@ -82,7 +92,6 @@
 		E96F81A915A469B600548852 /* Toggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96F81A215A469B600548852 /* Toggle.cpp */; };
 		EAE2A67715A445FC00327E97 /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67515A445FC00327E97 /* Room.cpp */; };
 		EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67815A4461000327E97 /* BoundBlob.cpp */; };
-		EAE2A67D15A4461000327E97 /* KinectOutline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67A15A4461000327E97 /* KinectOutline.cpp */; };
 		EAE2A71015A4471900327E97 /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A68D15A4471800327E97 /* cameras.c */; };
 		EAE2A71115A4471900327E97 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A69015A4471800327E97 /* core.c */; };
 		EAE2A71315A4471900327E97 /* registration.c in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A69A15A4471800327E97 /* registration.c */; };
@@ -154,6 +163,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		549A423515A4C18500A50CC3 /* KinectInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectInput.cpp; sourceTree = "<group>"; };
+		549A423615A4C18500A50CC3 /* KinectInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInput.h; sourceTree = "<group>"; };
+		549A423E15A4C54600A50CC3 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectMesh.cpp; path = ../lib/KinectMesh.cpp; sourceTree = "<group>"; };
+		549A423F15A4C54600A50CC3 /* KinectMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectMesh.h; path = ../lib/KinectMesh.h; sourceTree = "<group>"; };
+		549A424015A4C54600A50CC3 /* KinectThresholder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectThresholder.cpp; path = ../lib/KinectThresholder.cpp; sourceTree = "<group>"; };
+		549A424115A4C54600A50CC3 /* KinectThresholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectThresholder.h; path = ../lib/KinectThresholder.h; sourceTree = "<group>"; };
+		549A424415A4C55000A50CC3 /* KinectTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectTriangle.h; path = ../lib/KinectTriangle.h; sourceTree = "<group>"; };
+		549A424515A4C60900A50CC3 /* PolyTri.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PolyTri.cpp; path = ../addons/roxlu/addons/PolyTri/src/polytri/PolyTri.cpp; sourceTree = "<group>"; };
+		549A424715A4C61300A50CC3 /* PolyTri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PolyTri.h; path = ../addons/roxlu/addons/PolyTri/include/polytri/PolyTri.h; sourceTree = "<group>"; };
+		549A424A15A4C67000A50CC3 /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
+		549A424B15A4C67000A50CC3 /* shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes.h; sourceTree = "<group>"; };
+		549A424C15A4C67000A50CC3 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		549A424D15A4C67000A50CC3 /* poly2tri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poly2tri.h; sourceTree = "<group>"; };
+		549A424F15A4C67000A50CC3 /* advancing_front.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advancing_front.cc; sourceTree = "<group>"; };
+		549A425015A4C67000A50CC3 /* advancing_front.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancing_front.h; sourceTree = "<group>"; };
+		549A425115A4C67000A50CC3 /* cdt.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cdt.cc; sourceTree = "<group>"; };
+		549A425215A4C67000A50CC3 /* cdt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdt.h; sourceTree = "<group>"; };
+		549A425315A4C67000A50CC3 /* sweep.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep.cc; sourceTree = "<group>"; };
+		549A425415A4C67000A50CC3 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
+		549A425515A4C67000A50CC3 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
+		549A425615A4C67000A50CC3 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
+		549A42AC15A4D42B00A50CC3 /* KinectDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectDrawer.cpp; sourceTree = "<group>"; };
+		549A42AD15A4D42B00A50CC3 /* KinectDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = KinectDrawer.h; sourceTree = "<group>"; };
 		54E0CCC115A2CB5D00045537 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		54E0CCC215A2CB5D00045537 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		54E0CCC315A2CB5D00045537 /* BoidTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidTypes.h; sourceTree = "<group>"; };
@@ -247,8 +279,6 @@
 		EAE2A67615A445FC00327E97 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../lib/Room.h; sourceTree = "<group>"; };
 		EAE2A67815A4461000327E97 /* BoundBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundBlob.cpp; path = ../lib/BoundBlob.cpp; sourceTree = "<group>"; };
 		EAE2A67915A4461000327E97 /* BoundBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundBlob.h; path = ../lib/BoundBlob.h; sourceTree = "<group>"; };
-		EAE2A67A15A4461000327E97 /* KinectOutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectOutline.cpp; path = ../lib/KinectOutline.cpp; sourceTree = "<group>"; };
-		EAE2A67B15A4461000327E97 /* KinectOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectOutline.h; path = ../lib/KinectOutline.h; sourceTree = "<group>"; };
 		EAE2A68C15A4471800327E97 /* APACHE20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
 		EAE2A68D15A4471800327E97 /* cameras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cameras.c; sourceTree = "<group>"; };
 		EAE2A68E15A4471800327E97 /* cameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameras.h; sourceTree = "<group>"; };
@@ -456,6 +486,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		549A423815A4C30F00A50CC3 /* polytri */ = {
+			isa = PBXGroup;
+			children = (
+				549A424815A4C67000A50CC3 /* lib */,
+				549A424715A4C61300A50CC3 /* PolyTri.h */,
+				549A424515A4C60900A50CC3 /* PolyTri.cpp */,
+			);
+			name = polytri;
+			sourceTree = "<group>";
+		};
+		549A424815A4C67000A50CC3 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				549A424915A4C67000A50CC3 /* common */,
+				549A424D15A4C67000A50CC3 /* poly2tri.h */,
+				549A424E15A4C67000A50CC3 /* sweep */,
+			);
+			name = lib;
+			path = ../addons/roxlu/addons/PolyTri/lib;
+			sourceTree = "<group>";
+		};
+		549A424915A4C67000A50CC3 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				549A424A15A4C67000A50CC3 /* shapes.cc */,
+				549A424B15A4C67000A50CC3 /* shapes.h */,
+				549A424C15A4C67000A50CC3 /* utils.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		549A424E15A4C67000A50CC3 /* sweep */ = {
+			isa = PBXGroup;
+			children = (
+				549A424F15A4C67000A50CC3 /* advancing_front.cc */,
+				549A425015A4C67000A50CC3 /* advancing_front.h */,
+				549A425115A4C67000A50CC3 /* cdt.cc */,
+				549A425215A4C67000A50CC3 /* cdt.h */,
+				549A425315A4C67000A50CC3 /* sweep.cc */,
+				549A425415A4C67000A50CC3 /* sweep.h */,
+				549A425515A4C67000A50CC3 /* sweep_context.cc */,
+				549A425615A4C67000A50CC3 /* sweep_context.h */,
+			);
+			path = sweep;
+			sourceTree = "<group>";
+		};
 		54E0CCC015A2CB5D00045537 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +546,8 @@
 				54E0CCC915A2CB5D00045537 /* Settings.h */,
 				54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */,
 				54E0CCCB15A2CB5D00045537 /* Visualizer.h */,
+				549A423515A4C18500A50CC3 /* KinectInput.cpp */,
+				549A423615A4C18500A50CC3 /* KinectInput.h */,
 				54E0CCCC15A2CB5D00045537 /* Visuals */,
 			);
 			path = Application;
@@ -486,6 +564,8 @@
 				54E0CCD215A2CB5D00045537 /* Trails.h */,
 				54E0CDBE15A2DEF600045537 /* Boid.cpp */,
 				54E0CDBF15A2DEF600045537 /* Boid.h */,
+				549A42AC15A4D42B00A50CC3 /* KinectDrawer.cpp */,
+				549A42AD15A4D42B00A50CC3 /* KinectDrawer.h */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
@@ -493,6 +573,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				549A423815A4C30F00A50CC3 /* polytri */,
 				E96F819B15A469B600548852 /* buttons */,
 				E96F814015A469A300548852 /* roxlu */,
 				EAE2A73515A4477000327E97 /* ofxOpenCv */,
@@ -714,11 +795,14 @@
 		EAE2A67E15A4461900327E97 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				549A424415A4C55000A50CC3 /* KinectTriangle.h */,
+				549A423E15A4C54600A50CC3 /* KinectMesh.cpp */,
+				549A423F15A4C54600A50CC3 /* KinectMesh.h */,
+				549A424015A4C54600A50CC3 /* KinectThresholder.cpp */,
+				549A424115A4C54600A50CC3 /* KinectThresholder.h */,
 				EAE2A89E15A4493300327E97 /* marektricks */,
 				EAE2A67815A4461000327E97 /* BoundBlob.cpp */,
 				EAE2A67915A4461000327E97 /* BoundBlob.h */,
-				EAE2A67A15A4461000327E97 /* KinectOutline.cpp */,
-				EAE2A67B15A4461000327E97 /* KinectOutline.h */,
 				EAE2A67515A445FC00327E97 /* Room.cpp */,
 				EAE2A67615A445FC00327E97 /* Room.h */,
 			);
@@ -1327,7 +1411,6 @@
 				54E0CDC015A2DEF600045537 /* Boid.cpp in Sources */,
 				EAE2A67715A445FC00327E97 /* Room.cpp in Sources */,
 				EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */,
-				EAE2A67D15A4461000327E97 /* KinectOutline.cpp in Sources */,
 				EAE2A71015A4471900327E97 /* cameras.c in Sources */,
 				EAE2A71115A4471900327E97 /* core.c in Sources */,
 				EAE2A71315A4471900327E97 /* registration.c in Sources */,
@@ -1412,6 +1495,16 @@
 				E96F81A715A469B600548852 /* Slider.cpp in Sources */,
 				E96F81A815A469B600548852 /* Storage.cpp in Sources */,
 				E96F81A915A469B600548852 /* Toggle.cpp in Sources */,
+				549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */,
+				549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */,
+				549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */,
+				549A424615A4C60900A50CC3 /* PolyTri.cpp in Sources */,
+				549A425715A4C67000A50CC3 /* shapes.cc in Sources */,
+				549A425815A4C67000A50CC3 /* advancing_front.cc in Sources */,
+				549A425915A4C67000A50CC3 /* cdt.cc in Sources */,
+				549A425A15A4C67000A50CC3 /* sweep.cc in Sources */,
+				549A425B15A4C67000A50CC3 /* sweep_context.cc in Sources */,
+				549A42AE15A4D42B00A50CC3 /* KinectDrawer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1440,6 +1533,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
@@ -1476,6 +1570,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
@@ -1513,6 +1608,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
+					./../addons/roxlu/addons/PolyTri/lib/,
+					./../addons/roxlu/addons/PolyTri/include/,
 					./../addons/roxlu/addons/PositionBasedDynamics/include/,
 					./../addons/roxlu/addons/Buttons/include/,
 					./../addons/roxlu/lib/include,
@@ -1633,6 +1730,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
+					./../addons/roxlu/addons/PolyTri/lib/,
+					./../addons/roxlu/addons/PolyTri/include/,
 					./../addons/roxlu/addons/PositionBasedDynamics/include/,
 					./../addons/roxlu/addons/Buttons/include/,
 					./../addons/roxlu/lib/include,

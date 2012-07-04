@@ -1,11 +1,12 @@
 #include "ofMain.h"
 #include "Visualizer.h"
 
-Visualizer::Visualizer(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players)
+Visualizer::Visualizer(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, KinectInput& kinect)
 	:flock_ps(flockPS)
 	,fx_ps(fxPS)
 	,players(players)
 	,explosion_trails(fxPS)
+	,kinect_input(kinect)
 {
 }
 
@@ -46,6 +47,10 @@ void Visualizer::update() {
 	for(vector<Cloak*>::iterator it = cloaks.begin(); it != cloaks.end(); ++it) {
 		Cloak& cl = **it;
 		cl.update();
+	}
+	
+	if(kinect_input.update()) {
+		kinect_drawer.update(kinect_input.getKinectMeshes());
 	}
 }
 
@@ -101,8 +106,8 @@ void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
 
 void Visualizer::debugDraw() {
 	// test
-	players[0]->boid.debugDraw();
-	return;
+	//players[0]->boid.debugDraw();
+
 
 	// FX 
 	glColor3f(0,1,1);
@@ -142,6 +147,8 @@ void Visualizer::debugDraw() {
 		cl.debugDraw();
 	}
 
-	
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	kinect_drawer.debugDraw();
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		
 }

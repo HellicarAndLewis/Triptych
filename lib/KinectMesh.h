@@ -39,9 +39,10 @@ public:
 	
 	// the triangulated output as a vbo mesh
 	ofVboMesh mesh;
+
 	
 	// the individual triangles.
-	vector<Triangle> triangles;
+	vector<KinectTriangle> triangles;
 
 	// depth for a mesh is a single value - [0,255]
 	float depth;
@@ -67,7 +68,7 @@ private:
 	
 	void addTriangle(const ofVec2f &a, const ofVec2f &b, const ofVec2f &c, 
 					 const ofFloatColor &c0, const ofFloatColor &c1, const ofFloatColor &c2);
-	void addTriangle(const Triangle &tri);
+	void addTriangle(const KinectTriangle &tri);
 	static p2t::CDT *delaunay;
 	bool triangleTouchesCorner(p2t::Triangle *t);
 };

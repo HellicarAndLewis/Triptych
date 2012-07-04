@@ -119,7 +119,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		if(triangleTouchesCorner(tris[i])) {
 			continue;
 		}
-		triangles.push_back(Triangle());
+		triangles.push_back(KinectTriangle());
 		triangles.back().set(tris[i]);
 		ofVec2f c = triangles.back().centre;
 		int pos = ((int)c.x)+ ((int)c.y)*grey.getWidth();
@@ -181,7 +181,7 @@ void KinectMesh::draw() {
 
 
 
-void KinectMesh::addTriangle(const Triangle &tri) {
+void KinectMesh::addTriangle(const KinectTriangle &tri) {
 	addTriangle(tri.points[0], tri.points[1], tri.points[2], tri.colors[0], tri.colors[1], tri.colors[2]);
 	
 	

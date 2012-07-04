@@ -10,6 +10,7 @@
 #include <pbd/PBD.h>
 #include <application/BoidTypes.h>
 #include <application/Player.h>
+#include <application/KinectInput.h>
 
 class Controller {
 public:
@@ -23,6 +24,7 @@ public:
 	Boids2& fx_ps;
 	int w;
 	int h;
+
 };
 
 #endif

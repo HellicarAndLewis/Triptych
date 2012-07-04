@@ -1,8 +1,8 @@
-#include "Application.h"
+#include <application/Application.h>
 
 Application::Application(const int w, const int h)
 	:flock(flock_ps.particles, 50, 5)
-	,viz(flock_ps, fx_ps, players)
+	,viz(flock_ps, fx_ps, players, kinect)
 	,control(flock_ps, fx_ps, players, w, h)
 {
 }
@@ -15,14 +15,14 @@ void Application::setup() {
 		p->setup();
 		players.push_back(p);
 	}
-		
-	// setup input controller	
+
+	kinect.setup();
 	control.setup();
-	
 	viz.setup();
 }
 
 void Application::update() {
+	kinect.update();
 	flock.setMaxSpeed(settings.flocking_max_speed);
 	flock.update();
 	
