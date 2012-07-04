@@ -1,8 +1,13 @@
 #ifndef ROXLU_CLOAKH
 #define ROXLU_CLOAKH
 
+/*
 #include "Roxlu.h"
 #include "PBD.h"
+*/
+
+#include <roxlu/Roxlu.h>
+#include <pbd/PBD.h>
 
 class Cloak {
 public:

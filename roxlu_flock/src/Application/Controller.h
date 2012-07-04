@@ -1,9 +1,15 @@
 #ifndef ROXLU_CONTROLLERH
 #define ROXLU_CONTROLLERH
 
+/*
 #include "PBD.h"
 #include "BoidTypes.h"
 #include "Player.h"
+*/
+
+#include <pbd/PBD.h>
+#include <application/BoidTypes.h>
+#include <application/Player.h>
 
 class Controller {
 public:

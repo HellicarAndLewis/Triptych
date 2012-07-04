@@ -4,7 +4,7 @@
 //bool clearedFbo = false;
 
 void testApp::setup() {
-	
+
 	world.setup();
 	world.enableGrabbing();
 	world.setCamera(&cam);
@@ -141,7 +141,10 @@ void testApp::draw() {
 	room.draw();
 	//bloom.begin();
 	//kinect.drawDebug();
-	
+	glPushMatrix();
+	glScalef((float)ofGetWidth()/640.f, (float)ofGetHeight()/480.f, 1);
+	kinect.kinect.drawSkeletons();
+	glPopMatrix();
 	drawRibbons();
 	
 	

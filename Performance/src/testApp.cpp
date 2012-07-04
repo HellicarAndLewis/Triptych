@@ -1,16 +1,6 @@
 #include "testApp.h"
 
 #include "ofxSimpleGuiToo.h"
-#include "ofxOpenCv.h"
-#include "KinectMesh.h"
-#include "Room.h"
-
-float nearThreshold = 255;
-float farThreshold = 0;
-
-deque<vector<KinectMesh> > meshes;
-
-
 
 
 //--------------------------------------------------------------
@@ -30,38 +20,23 @@ void testApp::setup(){
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
-	
-	
-	
-	
 
 	ofDisableSetupScreen();
 	ofBackgroundHex(0);
 
 	
-	
+	meshShader.load("mesh.vert", "mesh.frag");
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
-
+void testApp::update() {
 	
-	if(nearThreshold==farThreshold) {
-		nearThreshold = farThreshold+1;
-	}
-
-	kinect.update();
-	
-	int numPix = kinect.getWidth()*kinect.getHeight()*3;
-	
-
 	if(kinect.update()) {
 		
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
-		unsigned char *rgb = kinect.getPixels();
 			
-	
-		if(meshes.size()>20) {
+		// store 100 sets of meshes of history.
+		if(meshes.size()>100) {
 			meshes.pop_back();
 		}
 		
@@ -69,16 +44,12 @@ void testApp::update(){
 		
 		//meshes.clear();
 		for(int i = 0; i < contours.blobs.size(); i++) {
-			/*meshes.push_back(KinectMesh());
-			if(!meshes.back().setup(contours.blobs[i], kinect.getOutline(), rgb)) {
-				meshes.pop_back();
-				printf("Mesh too small\n");
-			}*/
+		
 			
 			meshes.front().push_back(KinectMesh());
-			if(!meshes.front().back().setup(contours.blobs[i], kinect.getOutline(), rgb)) {
+			if(!meshes.front().back().setup(contours.blobs[i], kinect)) {
 				meshes.front().pop_back();
-				printf("Mesh too small\n");
+
 			}
 		}
 	}
@@ -92,10 +63,14 @@ void testApp::update(){
 	ofDisableSetupScreen();
 }
 
-
+float lastTimeShaderLoaded = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
 
+	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
+		lastTimeShaderLoaded = ofGetElapsedTimef();
+		meshShader.load("mesh.vert", "mesh.frag");
+	}
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
@@ -109,42 +84,56 @@ void testApp::draw(){
 		ofSetupScreen();
 
 	
-	
+		
+		
+		//glEnable(GL_DEPTH_TEST);
 		glPushMatrix();
 		{
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			//glColor4f(1, 1,1, 0.2);
 			ofSetHexColor(0xFFFFFF);
 
-			deque<vector<KinectMesh> >::reverse_iterator it;
-			
-			int x = -400;
-			for(it = meshes.rbegin(); it != meshes.rend(); it++) {
-				x += 20;
-				glPushMatrix();
-				{
-					
-					glTranslatef(0, 0, x);
-					for(int i = 0; i < (*it).size(); i++) {
-						(*it)[i].draw();
-					}
-				}
-				glPopMatrix();
+			ofEnableBlendMode(OF_BLENDMODE_ADD);
+			if(meshes.size()>75) {
+				drawLayer(meshes[75], -75, 3);
+			}
+			if(meshes.size()>50) {
+				drawLayer(meshes[50], -80, 2);
 			}
 			
+			if(meshes.size()>25) {
+				drawLayer(meshes[25], -40, 1);
+			}
+			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			if(meshes.size()>0) {
+				drawLayer(meshes[0], 0, 0);
+			}
 			
-			 /*
-			for(int i = 0; i < meshes.size(); i++) {
-				meshes[i].draw();
-			}*/
-
 		}
 		glPopMatrix();
+		ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+		glDisable(GL_DEPTH_TEST);
 			
 		gui.draw();
 	}
 	glPopMatrix();
 }
+
+void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
+	
+	meshShader.begin();
+	meshShader.setUniform1i("layer", layer);
+	for(int i = 0; i < mesh.size(); i++) {
+		glPushMatrix();
+		glTranslatef(0, 0, z*5-mesh[i].depth);
+		mesh[i].draw();				
+		glPopMatrix();
+	}
+	meshShader.end();
+
+}
+
+
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){

@@ -215,13 +215,17 @@
 		EA4DD84C1598CA8900009049 /* ofxSimpleGuiPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD8391598CA8900009049 /* ofxSimpleGuiPage.cpp */; };
 		EA4DD84D1598CA8900009049 /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83B1598CA8900009049 /* ofxSimpleGuiToo.cpp */; };
 		EA4DD84E1598CA8900009049 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */; };
-		EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectOutline.cpp */; };
-		EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59D915A1C15600841687 /* KinectMesh.cpp */; };
+		EA7FABB615A1A7520022034E /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectThresholder.cpp */; };
 		EA9D59FC15A1D8AC00841687 /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59EF15A1D8AC00841687 /* shapes.cc */; };
 		EA9D59FD15A1D8AC00841687 /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F415A1D8AC00841687 /* advancing_front.cc */; };
 		EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F615A1D8AC00841687 /* cdt.cc */; };
 		EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F815A1D8AC00841687 /* sweep.cc */; };
 		EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59FA15A1D8AC00841687 /* sweep_context.cc */; };
+		EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C615A4761D00327E97 /* mesh.frag */; };
+		EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C715A4761D00327E97 /* mesh.vert */; };
+		EAE2A8DC15A4872500327E97 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */; };
+		EAE2A8E015A48FC800327E97 /* pointlight.frag in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8DE15A48FC700327E97 /* pointlight.frag */; };
+		EAE2A8E115A48FC800327E97 /* pointlight.vert in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8DF15A48FC700327E97 /* pointlight.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,7 +286,6 @@
 		EA01FA4A159C805200DBD05C /* ofxBlobTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobTracker.h; sourceTree = "<group>"; };
 		EA01FA4C159C805200DBD05C /* ofxCvKalman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvKalman.cpp; sourceTree = "<group>"; };
 		EA01FA4D159C805200DBD05C /* ofxCvKalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvKalman.h; sourceTree = "<group>"; };
-		EA1D691A159DF8A600CCE21C /* KinectMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectMesh.h; sourceTree = "<group>"; };
 		EA1D691C159DFBAC00CCE21C /* contourutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = contourutils.cpp; path = ../../lib/marektricks/contourutils.cpp; sourceTree = "<group>"; };
 		EA1D691D159DFBAC00CCE21C /* contourutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = contourutils.h; path = ../../lib/marektricks/contourutils.h; sourceTree = "<group>"; };
 		EA1D692D159E11D400CCE21C /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Room.cpp; path = ../../lib/Room.cpp; sourceTree = "<group>"; };
@@ -696,9 +699,8 @@
 		EA4DD83C1598CA8900009049 /* ofxSimpleGuiToo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiToo.h; sourceTree = "<group>"; };
 		EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleGuiValueControl.cpp; sourceTree = "<group>"; };
 		EA4DD83E1598CA8900009049 /* ofxSimpleGuiValueControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiValueControl.h; sourceTree = "<group>"; };
-		EA7FABB415A1A7520022034E /* KinectOutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectOutline.cpp; path = ../../lib/KinectOutline.cpp; sourceTree = "<group>"; };
-		EA7FABB515A1A7520022034E /* KinectOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectOutline.h; path = ../../lib/KinectOutline.h; sourceTree = "<group>"; };
-		EA9D59D915A1C15600841687 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectMesh.cpp; sourceTree = "<group>"; };
+		EA7FABB415A1A7520022034E /* KinectThresholder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectThresholder.cpp; path = ../../lib/KinectThresholder.cpp; sourceTree = "<group>"; };
+		EA7FABB515A1A7520022034E /* KinectThresholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectThresholder.h; path = ../../lib/KinectThresholder.h; sourceTree = "<group>"; };
 		EA9D59EF15A1D8AC00841687 /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
 		EA9D59F015A1D8AC00841687 /* shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes.h; sourceTree = "<group>"; };
 		EA9D59F115A1D8AC00841687 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
@@ -711,6 +713,13 @@
 		EA9D59F915A1D8AC00841687 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
 		EA9D59FA15A1D8AC00841687 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
 		EA9D59FB15A1D8AC00841687 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
+		EAE2A8C615A4761D00327E97 /* mesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.frag; path = bin/data/mesh.frag; sourceTree = SOURCE_ROOT; };
+		EAE2A8C715A4761D00327E97 /* mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.vert; path = bin/data/mesh.vert; sourceTree = SOURCE_ROOT; };
+		EAE2A8D915A4871800327E97 /* KinectTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectTriangle.h; path = ../../lib/KinectTriangle.h; sourceTree = "<group>"; };
+		EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectMesh.cpp; path = ../../lib/KinectMesh.cpp; sourceTree = "<group>"; };
+		EAE2A8DB15A4872500327E97 /* KinectMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectMesh.h; path = ../../lib/KinectMesh.h; sourceTree = "<group>"; };
+		EAE2A8DE15A48FC700327E97 /* pointlight.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = pointlight.frag; path = bin/data/pointlight.frag; sourceTree = SOURCE_ROOT; };
+		EAE2A8DF15A48FC700327E97 /* pointlight.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = pointlight.vert; path = bin/data/pointlight.vert; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -925,17 +934,18 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				EA7FABB415A1A7520022034E /* KinectOutline.cpp */,
-				EA7FABB515A1A7520022034E /* KinectOutline.h */,
-				EA1D692D159E11D400CCE21C /* Room.cpp */,
+				EAE2A8DD15A4872B00327E97 /* lib */,
+				EAE2A8C615A4761D00327E97 /* mesh.frag */,
+				EAE2A8C715A4761D00327E97 /* mesh.vert */,
+				EAE2A8DE15A48FC700327E97 /* pointlight.frag */,
+				EAE2A8DF15A48FC700327E97 /* pointlight.vert */,
 				EA1D692E159E11D400CCE21C /* Room.h */,
-				EA1D691C159DFBAC00CCE21C /* contourutils.cpp */,
+				EA1D692D159E11D400CCE21C /* Room.cpp */,
 				EA1D691D159DFBAC00CCE21C /* contourutils.h */,
-				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				EA1D691A159DF8A600CCE21C /* KinectMesh.h */,
-				EA9D59D915A1C15600841687 /* KinectMesh.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				EA1D691C159DFBAC00CCE21C /* contourutils.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2056,6 +2066,18 @@
 			path = sweep;
 			sourceTree = "<group>";
 		};
+		EAE2A8DD15A4872B00327E97 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */,
+				EAE2A8DB15A4872500327E97 /* KinectMesh.h */,
+				EAE2A8D915A4871800327E97 /* KinectTriangle.h */,
+				EA7FABB515A1A7520022034E /* KinectThresholder.h */,
+				EA7FABB415A1A7520022034E /* KinectThresholder.cpp */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2222,13 +2244,17 @@
 				EA01FA50159C805200DBD05C /* ofxCvKalman.cpp in Sources */,
 				EA1D691E159DFBAC00CCE21C /* contourutils.cpp in Sources */,
 				EA1D692F159E11D500CCE21C /* Room.cpp in Sources */,
-				EA7FABB615A1A7520022034E /* KinectOutline.cpp in Sources */,
-				EA9D59DA15A1C15600841687 /* KinectMesh.cpp in Sources */,
+				EA7FABB615A1A7520022034E /* KinectThresholder.cpp in Sources */,
 				EA9D59FC15A1D8AC00841687 /* shapes.cc in Sources */,
 				EA9D59FD15A1D8AC00841687 /* advancing_front.cc in Sources */,
 				EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */,
 				EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */,
 				EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */,
+				EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */,
+				EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */,
+				EAE2A8DC15A4872500327E97 /* KinectMesh.cpp in Sources */,
+				EAE2A8E015A48FC800327E97 /* pointlight.frag in Sources */,
+				EAE2A8E115A48FC800327E97 /* pointlight.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

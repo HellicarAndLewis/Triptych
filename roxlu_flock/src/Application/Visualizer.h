@@ -1,6 +1,7 @@
 #ifndef ROXLU_VISUALIZERH
 #define ROXLU_VISUALIZERH
 
+/*
 
 #include "Roxlu.h"
 #include "PBD.h"
@@ -9,6 +10,17 @@
 #include "Player.h"
 #include "ExplosionTrails.h"
 #include "Cloak.h"
+*/
+
+#include <roxlu/Roxlu.h>
+#include <pbd/PBD.h>
+
+#include <application/Visualizer.h>
+#include <application/BoidTypes.h>
+#include <application/Player.h>
+#include <application/visuals/ExplosionTrails.h>
+#include <application/visuals/Cloak.h>
+
 
 class Visualizer {
 public:
