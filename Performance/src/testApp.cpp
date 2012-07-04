@@ -125,7 +125,7 @@ void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
 	meshShader.setUniform1i("layer", layer);
 	for(int i = 0; i < mesh.size(); i++) {
 		glPushMatrix();
-		glTranslatef(0, 0, z-mesh[i].depth);
+		glTranslatef(0, 0, z*5-mesh[i].depth);
 		mesh[i].draw();				
 		glPopMatrix();
 	}
