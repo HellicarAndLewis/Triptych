@@ -2,8 +2,12 @@
 #define ROXLU_TRAILSH
 
 #include <vector>
+/*
 #include "Roxlu.h"
 #include "Trail.h"
+*/
+#include <roxlu/Roxlu.h>
+#include <application/visuals/Trail.h>
 
 
 // T = Trail type

@@ -1,10 +1,17 @@
 #ifndef ROXLU_PLAYERH
 #define ROXLU_PLAYERH
 
+/*
 #include "SimpleAnim.h"
 #include "BoidTypes.h"
 #include "Settings.h"
 #include "Boid.h"
+*/
+
+#include <roxlu/experimental/SimpleAnim.h>
+#include <application/BoidTypes.h>
+#include <application/Settings.h>
+#include <application/visuals/Boid.h>
 
 // A user in front of the installation (or test mode).
 

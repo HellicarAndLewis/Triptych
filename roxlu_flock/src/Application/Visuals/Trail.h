@@ -1,9 +1,16 @@
 #ifndef ROXLU_TRAILH
 #define ROXLU_TRAILH
 
+/*
 #include "Vec3.h"
 #include "Vec2.h"
 #include "VertexTypes.h"
+#include <deque>
+*/
+
+#include <roxlu/math/Vec3.h>
+#include <roxlu/math/Vec2.h>
+#include <roxlu/3d/VertexTypes.h>
 #include <deque>
 
 // V = Vec type
