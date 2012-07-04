@@ -4,6 +4,7 @@
 #include "Application.h"
 #include "Buttons.h"
 #include "Settings.h"
+#include "Room.h"
 
 // test
 #include "PBD.h"
@@ -32,5 +33,5 @@ class testApp : public ofBaseApp{
 		buttons::Buttons _gui;
 		
 		Particles2 ps;
-		
+		Room room;
 };

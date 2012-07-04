@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "ofxSimpleGuiToo.h"
 
 testApp::testApp()
 	:_gui("Settings", 300)
