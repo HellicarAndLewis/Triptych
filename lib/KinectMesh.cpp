@@ -10,12 +10,16 @@
 int KinectMesh::borderResolution = 20;
 int KinectMesh::fillResolution = 40;
 p2t::CDT *KinectMesh::delaunay = NULL;
+bool KinectMesh::perVertexColour = false;
+float KinectMesh::edgeColourSharpening = 0.5;
 
 void KinectMesh::setupGui() {
 	
 	gui.addTitle("Mesh");
 	gui.addSlider("Border Res", borderResolution, 5, 50);
 	gui.addSlider("Fill Res", fillResolution, 5, 50);
+	gui.addToggle("Per Vertex Colour", perVertexColour);
+	gui.addSlider("Edge Colour Sharpening", edgeColourSharpening, 0, 1);
 }
 
 bool KinectMesh::triangleTouchesCorner(p2t::Triangle *t) {
@@ -41,6 +45,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 
+	depth = thresholder.getDepth(blob);
 	int step = borderResolution;
 	int insideStep = fillResolution;
 	
@@ -118,10 +123,42 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		triangles.back().set(tris[i]);
 		ofVec2f c = triangles.back().centre;
 		int pos = ((int)c.x)+ ((int)c.y)*grey.getWidth();
+		
+		
+		
+		
+		
+		
 		if(depth[pos]>0) {
 			triangles.back().hollow = false;
-			ofColor color(rgb[pos*3], rgb[pos*3+1], rgb[pos*3+2]);
-			triangles.back().color.set(color.r/255.f, color.g/255.f, color.b/255.f);
+			
+			
+			
+			
+			
+			
+			if(perVertexColour) {
+				for(int i = 0; i < 3; i++) {
+					ofVec2f c0 = triangles.back().points[i];
+					int pos0 = ((int)c0.x)+ ((int)c0.y)*grey.getWidth();
+					
+					ofColor color0(rgb[pos0*3], rgb[pos0*3+1], rgb[pos0*3+2]);
+					triangles.back().colors[i].set(color0.r/255.f, color0.g/255.f, color0.b/255.f);
+				}
+				triangles.back().sharpenEdges(edgeColourSharpening);
+				
+				
+			} else {
+				ofColor color(rgb[pos*3], rgb[pos*3+1], rgb[pos*3+2]);
+				triangles.back().colors[0].set(color.r/255.f, color.g/255.f, color.b/255.f);
+				triangles.back().colors[1] = triangles.back().colors[0];
+				triangles.back().colors[2] = triangles.back().colors[0];
+			}
+			
+			
+			
+			
+			
 		} else {
 			triangles.back().hollow = true;
 		}
@@ -145,15 +182,18 @@ void KinectMesh::draw() {
 
 
 void KinectMesh::addTriangle(const Triangle &tri) {
-	addTriangle(tri.points[0], tri.points[1], tri.points[2], tri.color);
+	addTriangle(tri.points[0], tri.points[1], tri.points[2], tri.colors[0], tri.colors[1], tri.colors[2]);
+	
+	
 }
 
-void KinectMesh::addTriangle(ofVec3f a, ofVec3f b, ofVec3f c, ofFloatColor color) {
-	mesh.addColor(color);
+void KinectMesh::addTriangle(const ofVec2f &a, const ofVec2f &b, const ofVec2f &c, 
+							 const ofFloatColor &c0, const ofFloatColor &c1, const ofFloatColor &c2) {
+	mesh.addColor(c0);
 	mesh.addVertex(a);
-	mesh.addColor(color);
+	mesh.addColor(c1);
 	mesh.addVertex(b);
-	mesh.addColor(color);
+	mesh.addColor(c2);
 	mesh.addVertex(c);
 }
 

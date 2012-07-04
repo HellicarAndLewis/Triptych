@@ -25,7 +25,7 @@ void testApp::setup(){
 	ofBackgroundHex(0);
 
 	
-	
+	meshShader.load("mesh.vert", "mesh.frag");
 }
 
 //--------------------------------------------------------------
@@ -67,10 +67,10 @@ float lastTimeShaderLoaded = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
 
-	/*if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
+	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
 		lastTimeShaderLoaded = ofGetElapsedTimef();
-		KinectMesh::shader->load("mesh.vert", "mesh.frag");
-	}*/
+		meshShader.load("mesh.vert", "mesh.frag");
+	}
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
@@ -84,46 +84,56 @@ void testApp::draw(){
 		ofSetupScreen();
 
 	
-	
-		glEnable(GL_DEPTH_TEST);
+		
+		
+		//glEnable(GL_DEPTH_TEST);
 		glPushMatrix();
 		{
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			//glColor4f(1, 1,1, 0.2);
 			ofSetHexColor(0xFFFFFF);
 
-			deque<vector<KinectMesh> >::iterator it;
-			meshShader.begin();
-			int x = 0;
-			int pos = 0;
-			int which = 0;
-			for(it = meshes.begin(); it != meshes.end(); it++) {
-
-				if((pos++)%35==0) {
-					x -= 20;
-					glPushMatrix();
-					{
-						
-						glTranslatef(0, 0, x);
-						
-						
-						for(int i = 0; i < (*it).size(); i++) {
-							(*it)[i].draw();
-						}
-						which++;
-					}
-					glPopMatrix();
-				}
+			ofEnableBlendMode(OF_BLENDMODE_ADD);
+			if(meshes.size()>75) {
+				drawLayer(meshes[75], -75, 3);
 			}
-			meshShader.end();
+			if(meshes.size()>50) {
+				drawLayer(meshes[50], -80, 2);
+			}
+			
+			if(meshes.size()>25) {
+				drawLayer(meshes[25], -40, 1);
+			}
+			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			if(meshes.size()>0) {
+				drawLayer(meshes[0], 0, 0);
+			}
+			
 		}
 		glPopMatrix();
+		ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 		glDisable(GL_DEPTH_TEST);
 			
 		gui.draw();
 	}
 	glPopMatrix();
 }
+
+void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
+	
+	meshShader.begin();
+	meshShader.setUniform1i("layer", layer);
+	for(int i = 0; i < mesh.size(); i++) {
+		glPushMatrix();
+		glTranslatef(0, 0, z-mesh[i].depth);
+		mesh[i].draw();				
+		glPopMatrix();
+	}
+	meshShader.end();
+
+}
+
+
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){

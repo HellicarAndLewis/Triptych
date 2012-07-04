@@ -85,7 +85,7 @@ bool KinectThresholder::update() {
 	kinect.update();
 #endif
 
-	printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
+	//printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
 #ifdef _WIN32
 		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);

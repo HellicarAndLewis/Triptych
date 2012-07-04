@@ -1,39 +1,29 @@
 #version 120
 
-varying vec4 diffuse,ambientGlobal, ambient;
-varying vec3 normal,lightDir,halfVector;
-varying float dist;
-uniform sampler2DRect tex;
+varying vec4 color;
+uniform int layer;
 
 void main()
 {
-	vec3 n,halfV,viewV,ldir;
-	float NdotL,NdotHV;
-	vec4 color = ambientGlobal;
-	float att;
-	/* a fragment shader can't write a varying variable, hence we need
 
-	a new variable to store the normalized interpolated normal */
-	n = normalize(normal);
-	/* compute the dot product between normal and normalized lightdir */
-
-	float quadAtt = 0.4;
-	float linAtt = 0.4;
-	NdotL = max(dot(n,normalize(lightDir)),0.0);
-//	NdotL = abs(dot(n,normalize(lightDir)));
-	if (NdotL > 0.0) {
-
-		att = 1.0 / (gl_LightSource[0].constantAttenuation +
-				linAtt * dist +
-				quadAtt * dist * dist);
-		color += att * (diffuse * NdotL + ambient);
-		halfV = normalize(halfVector);
-
-		NdotHV = max(dot(n,halfV),0.0);
-		/*color += att * gl_FrontMaterial.specular * gl_LightSource[0].specular *
-						pow(NdotHV,gl_FrontMaterial.shininess);*/
+	vec4 c = color;
+	if(layer==0) {
+		c = sqrt(c);
+	} else {
+		c.a = 0.5;
+		if(layer==1) {
+			c.r = sqrt(c.r);
+			c.g *= c.g;
+			c.b *= c.b;
+		} else if(layer==2) {
+			c.g = sqrt(c.g);
+			c.r *= c.r;
+			c.b *= c.b;
+		} else if(layer==3) {
+			c.b = sqrt(c.b);
+			c.r *= c.r;
+			c.g *= c.g;
+		}
 	}
-	
-	
-	gl_FragColor = texture2DRect(tex, gl_TexCoord[0].xy)*color;
+	gl_FragColor = c;
 }

@@ -43,7 +43,8 @@ public:
 	// the individual triangles.
 	vector<Triangle> triangles;
 
-
+	// depth for a mesh is a single value - [0,255]
+	float depth;
 
 	
 	/**
@@ -59,12 +60,13 @@ public:
 	static int borderResolution;
 	static int fillResolution;
 	static void setupGui();
-	
-	
+	static bool perVertexColour;
+	static float edgeColourSharpening;
 private:
 	
-
-	void addTriangle(ofVec3f a, ofVec3f b, ofVec3f c, ofFloatColor color);
+	
+	void addTriangle(const ofVec2f &a, const ofVec2f &b, const ofVec2f &c, 
+					 const ofFloatColor &c0, const ofFloatColor &c1, const ofFloatColor &c2);
 	void addTriangle(const Triangle &tri);
 	static p2t::CDT *delaunay;
 	bool triangleTouchesCorner(p2t::Triangle *t);

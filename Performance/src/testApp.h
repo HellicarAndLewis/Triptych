@@ -22,7 +22,8 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-
+	void drawLayer(vector<KinectMesh> &mesh, float z, int layer);
+	
 	Room room;
 	ofxCvContourFinder contours;
 	KinectThresholder kinect;

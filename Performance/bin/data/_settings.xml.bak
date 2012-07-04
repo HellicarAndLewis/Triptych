@@ -1,7 +1,7 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>214.2</value>
+        <value>238.425</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
@@ -49,34 +49,42 @@
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>0.24</value>
+        <value>-0.04</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
-        <value>0.14</value>
+        <value>0.59</value>
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-1.91</value>
+        <value>-2.6</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.18</value>
+        <value>0.525</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>1</value>
+        <value>0.515</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.585</value>
+        <value>0.515</value>
     </SliderFloat_aoAmount>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>11</value>
+        <value>19</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>7</value>
+        <value>25</value>
     </SliderInt_Fill_Res>
+    <Toggle_Per_Vertex_Colour>
+        <name>Per Vertex Colour</name>
+        <value>0</value>
+    </Toggle_Per_Vertex_Colour>
+    <SliderFloat_Edge_Colour_Sharpening>
+        <name>Edge Colour Sharpening</name>
+        <value>0.945</value>
+    </SliderFloat_Edge_Colour_Sharpening>
 </controls>

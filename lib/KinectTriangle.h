@@ -36,7 +36,7 @@ struct Triangle {
 	
 	
 	// The colour from the rgb input from the kinect.
-	ofFloatColor color;
+	ofFloatColor colors[3];
 	
 	
 	
@@ -46,5 +46,15 @@ struct Triangle {
 			points[i].set(t->GetPoint(i)->x, t->GetPoint(i)->y);
 		}
 		centre = (points[0] + points[1] + points[2])/3.f;
+	}
+	
+	void sharpenEdges(float amt) {
+		ofFloatColor avg = colors[0]/3.f + colors[1]/3.f + colors[2]/3.f;
+		avg *= amt;
+		amt = 1-amt;
+		colors[0] = colors[0]*amt + avg;
+		colors[1] = colors[1]*amt + avg;
+		colors[2] = colors[2]*amt + avg;
+		
 	}
 };
