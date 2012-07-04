@@ -50,8 +50,6 @@ void testApp::setup(){
 
 	flock_gui.load(ofToDataPath("gui.bin",true));
 
-
-	
 	cam.translate(0,0,5);
 	cam.orthoBottomLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
 }

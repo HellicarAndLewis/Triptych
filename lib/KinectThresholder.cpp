@@ -68,7 +68,6 @@ void KinectOutline::setupGui() {
 	gui.addSlider("dilations", dilations, 0, 5);
 	gui.addSlider("blurs", blurs, 0, 5);
 	gui.addSlider("blurSize", blurSize, 1, 5);
-	
 
 }
 
