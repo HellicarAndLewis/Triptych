@@ -17,6 +17,11 @@ void testApp::setup(){
 	debug = true;
 	app.setup();
 	
+	room.setup((float)ofGetWidth()/(float)ofGetHeight());
+	room.setupGui();
+	gui.loadFromXML();
+	gui.setAutoSave(true);
+	
 	_gui.addFloat("Flock high threshold (align)", app.flock.high).setMin(0.0f).setMax(1.0f);
 	_gui.addFloat("Flock low threshold (separate)", app.flock.low).setMin(0.0f).setMax(1.0f);
 	_gui.addFloat("Flock radius SQ", app.flock.zone_radius_sq).setMin(0.0f).setMax(20000.0f);
@@ -53,6 +58,7 @@ void testApp::setup(){
 void testApp::update(){
 	_gui.update();
 	app.update();
+	room.update();
 }
 
 //--------------------------------------------------------------
@@ -69,10 +75,13 @@ void testApp::draw(){
 		app.debugDraw();		
 		return;
 		*/
+	room.draw();
 	if(!debug) {
 		Mat3 nm(cam.vm());
         nm.inverse();
         nm.transpose();
+		
+		
         
 		app.draw(cam.pm(), cam.vm(), nm);
 	}
@@ -82,6 +91,7 @@ void testApp::draw(){
 	if(show_gui) {
 		_gui.draw();
 	}
+	gui.draw();
 	
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
@@ -100,6 +110,8 @@ void testApp::keyPressed(int key){
 	}
 	else if(key == 'g') {
 		show_gui = !show_gui;
+	} else if(key==' ') {
+		gui.toggleDraw();
 	}
 }
 
@@ -130,7 +142,7 @@ void testApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
-
+	room.setAspect((float)w/(float)h);
 }
 
 //--------------------------------------------------------------

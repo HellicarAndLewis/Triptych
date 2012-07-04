@@ -222,6 +222,8 @@
 		EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F615A1D8AC00841687 /* cdt.cc */; };
 		EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59F815A1D8AC00841687 /* sweep.cc */; };
 		EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA9D59FA15A1D8AC00841687 /* sweep_context.cc */; };
+		EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C615A4761D00327E97 /* mesh.frag */; };
+		EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C715A4761D00327E97 /* mesh.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -711,6 +713,8 @@
 		EA9D59F915A1D8AC00841687 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
 		EA9D59FA15A1D8AC00841687 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
 		EA9D59FB15A1D8AC00841687 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
+		EAE2A8C615A4761D00327E97 /* mesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.frag; path = bin/data/mesh.frag; sourceTree = SOURCE_ROOT; };
+		EAE2A8C715A4761D00327E97 /* mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.vert; path = bin/data/mesh.vert; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -925,17 +929,19 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				EA7FABB415A1A7520022034E /* KinectOutline.cpp */,
+				EAE2A8C615A4761D00327E97 /* mesh.frag */,
+				EAE2A8C715A4761D00327E97 /* mesh.vert */,
 				EA7FABB515A1A7520022034E /* KinectOutline.h */,
-				EA1D692D159E11D400CCE21C /* Room.cpp */,
+				EA7FABB415A1A7520022034E /* KinectOutline.cpp */,
 				EA1D692E159E11D400CCE21C /* Room.h */,
-				EA1D691C159DFBAC00CCE21C /* contourutils.cpp */,
+				EA1D692D159E11D400CCE21C /* Room.cpp */,
 				EA1D691D159DFBAC00CCE21C /* contourutils.h */,
-				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				EA1D691C159DFBAC00CCE21C /* contourutils.cpp */,
 				EA1D691A159DF8A600CCE21C /* KinectMesh.h */,
 				EA9D59D915A1C15600841687 /* KinectMesh.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -2229,6 +2235,8 @@
 				EA9D59FE15A1D8AC00841687 /* cdt.cc in Sources */,
 				EA9D59FF15A1D8AC00841687 /* sweep.cc in Sources */,
 				EA9D5A0015A1D8AC00841687 /* sweep_context.cc in Sources */,
+				EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */,
+				EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

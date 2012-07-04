@@ -61,26 +61,22 @@
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.98</value>
+        <value>0.455</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.93</value>
+        <value>0.42</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0</value>
+        <value>0.495</value>
     </SliderFloat_aoAmount>
-    <Toggle_Tint>
-        <name>Tint</name>
-        <value>1</value>
-    </Toggle_Tint>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>14</value>
+        <value>11</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>10</value>
+        <value>7</value>
     </SliderInt_Fill_Res>
 </controls>

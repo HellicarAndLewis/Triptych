@@ -48,7 +48,7 @@ public:
 	int age;
 	vector<Triangle> triangles;
 
-	static bool tint;
+
 	static int borderResolution;
 	static int fillResolution;
 	static void setupGui();
@@ -58,10 +58,13 @@ public:
 	 */
 	bool setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigned char *rgb);
 	void draw();
+	void setTint(int tint);
+	static ofShader *shader;
 private:
+	
+	int tint;
 	void addTriangle(ofVec3f a, ofVec3f b, ofVec3f c, ofFloatColor color);
 	void addTriangle(const Triangle &tri);
-	void tintColor(ofFloatColor &color);
 	static p2t::CDT *delaunay;
 	bool triangleTouchesCorner(p2t::Triangle *t);
 };

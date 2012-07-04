@@ -7,15 +7,17 @@
 #include "KinectMesh.h"
 #include "ofxSimpleGuiToo.h"
 
-bool KinectMesh::tint = false;
 int KinectMesh::borderResolution = 20;
 int KinectMesh::fillResolution = 40;
-
+ofShader *KinectMesh::shader = NULL;
 p2t::CDT *KinectMesh::delaunay = NULL;
 
 void KinectMesh::setupGui() {
+	if(shader==NULL) {
+		shader = new ofShader();
+		shader->load("mesh.vert", "mesh.frag");
+	}
 	gui.addTitle("Mesh");
-	gui.addToggle("Tint", tint);
 	gui.addSlider("Border Res", borderResolution, 5, 50);
 	gui.addSlider("Fill Res", fillResolution, 5, 50);
 }
@@ -36,7 +38,9 @@ bool KinectMesh::triangleTouchesCorner(p2t::Triangle *t) {
 	}
 	return false;
 }
-
+void KinectMesh::setTint(int tint) {
+	this->tint = tint;
+}
 bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigned char *rgb) {
 
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -122,9 +126,6 @@ bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigne
 			triangles.back().hollow = false;
 			ofColor color(rgb[pos*3], rgb[pos*3+1], rgb[pos*3+2]);
 			triangles.back().color.set(color.r/255.f, color.g/255.f, color.b/255.f);
-			if(tint) {
-				tintColor(triangles.back().color);
-			}
 		} else {
 			triangles.back().hollow = true;
 		}
@@ -139,17 +140,35 @@ bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigne
 }
 
 
-void KinectMesh::tintColor(ofFloatColor &color) {
-	float bri = (color.r+color.g+color.b)/3.f;
-	color.r = 0.5 * bri;
-	color.g = 0.5 * bri;
-	color.b = bri;
-}
 
 void KinectMesh::draw() {
 	age++;
 	
+	/*if(tint>0) {
+		glMatrixMode(GL_COLOR_MATRIX);
+
+		if(tint%3==1) {
+			glScalef(1,0,0);
+		
+		} else if(tint%3==2) {
+			glScalef(0, 1, 0);
+		} else if(tint%3==0) {
+			glScalef(0, 0, 1);
+		}
+		glMatrixMode(GL_MODELVIEW);
+	}
+	*/
+	
+	shader->setUniform1i("tint", tint);
+	
 	mesh.draw();
+
+	/*if(tint>0) {
+		glMatrixMode(GL_COLOR_MATRIX);
+		glLoadIdentity();
+		glMatrixMode(GL_MODELVIEW);
+	
+	}*/
 	
 	/*
 	float alpha = 1;//ofMap(age, 0, 20, 1, 0, true);

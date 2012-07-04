@@ -61,7 +61,7 @@ void testApp::update(){
 		unsigned char *rgb = kinect.getPixels();
 			
 	
-		if(meshes.size()>20) {
+		if(meshes.size()>100) {
 			meshes.pop_back();
 		}
 		
@@ -92,10 +92,14 @@ void testApp::update(){
 	ofDisableSetupScreen();
 }
 
-
+float lastTimeShaderLoaded = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
 
+	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
+		lastTimeShaderLoaded = ofGetElapsedTimef();
+		KinectMesh::shader->load("mesh.vert", "mesh.frag");
+	}
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
@@ -110,36 +114,41 @@ void testApp::draw(){
 
 	
 	
+		glEnable(GL_DEPTH_TEST);
 		glPushMatrix();
 		{
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			//glColor4f(1, 1,1, 0.2);
 			ofSetHexColor(0xFFFFFF);
 
-			deque<vector<KinectMesh> >::reverse_iterator it;
-			
-			int x = -400;
-			for(it = meshes.rbegin(); it != meshes.rend(); it++) {
-				x += 20;
-				glPushMatrix();
-				{
-					
-					glTranslatef(0, 0, x);
-					for(int i = 0; i < (*it).size(); i++) {
-						(*it)[i].draw();
-					}
-				}
-				glPopMatrix();
-			}
-			
-			
-			 /*
-			for(int i = 0; i < meshes.size(); i++) {
-				meshes[i].draw();
-			}*/
+			deque<vector<KinectMesh> >::iterator it;
+			KinectMesh::shader->begin();
+			int x = 0;
+			int pos = 0;
+			int which = 0;
+			for(it = meshes.begin(); it != meshes.end(); it++) {
 
+				if((pos++)%35==0) {
+					x -= 20;
+					glPushMatrix();
+					{
+						
+						glTranslatef(0, 0, x);
+						
+						
+						for(int i = 0; i < (*it).size(); i++) {
+							(*it)[i].setTint(i);
+							(*it)[i].draw();
+						}
+						which++;
+					}
+					glPopMatrix();
+				}
+			}
+			KinectMesh::shader->end();
 		}
 		glPopMatrix();
+		glDisable(GL_DEPTH_TEST);
 			
 		gui.draw();
 	}
