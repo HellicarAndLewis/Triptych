@@ -50,7 +50,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\libs\cairo\include\cairo%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\roxlu\Documents\intel\apps\TriptychForIntel\addons\roxlu\roxlu\src;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -116,10 +116,121 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\ArcBall.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Camera.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\EasyCam.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Effect.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Light.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Material.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Renderer.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\Scene.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\SceneItem.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\3d\VertexData.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\core\Noise.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\core\StringUtil.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\core\Utils.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\BitmapFont.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\ShaderGenerator.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\ShaderTypes.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\SimpleAnim.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\StereoCam.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\Text.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\TGA.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\Tween.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\Tweens.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\experimental\VertexBuffer.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\graphics\Image.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\Dictionary.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\DictionaryMap.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\File.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\INI.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\IOBuffer.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\OBJ.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\Ply.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\R3F.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\io\ROX.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Mat3.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Mat4.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Quat.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Vec2.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Vec3.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\math\Vec4.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\Billboard.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\FBO.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\MatrixStrack.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\PBO.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\Shader.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\Texture.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\VAO.cpp" />
+    <ClCompile Include="..\addons\roxlu\roxlu\src\opengl\VBO.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\ArcBall.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Camera.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\EasyCam.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Effect.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Light.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Material.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Quad.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Ray.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Renderer.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Scene.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\SceneItem.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\Triangle.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\VertexData.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\3d\VertexTypes.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\ApplicationBase.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\Constants.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\Keyboard.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\Noise.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\StringUtil.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\core\Utils.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Binning2D.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\BitmapFont.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Mesh.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\ShaderGenerator.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\ShaderTypes.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\SimpleAnim.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\StereoCam.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Text.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\TGA.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Timer.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Tween.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\Tweens.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\experimental\VertexBuffer.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\graphics\Color.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\graphics\Image.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\Dictionary.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\DictionaryMap.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\Endianness.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\File.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\INI.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\IOBuffer.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\OBJ.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\Ply.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\R3F.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\io\ROX.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Interpolator.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Mat3.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Mat4.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Quat.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Random.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Vec2.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Vec3.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\math\Vec4.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\Billboard.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\Error.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\FBO.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\MatrixStrack.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\OpenGL.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\PBO.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\Shader.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\Texture.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\VAO.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\opengl\VBO.h" />
+    <ClInclude Include="..\addons\roxlu\roxlu\src\Roxlu.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

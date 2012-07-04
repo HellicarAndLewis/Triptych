@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Noise.cpp">
+      <Filter>src\Addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\StringUtil.cpp">
+      <Filter>src\Addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Utils.cpp">
+      <Filter>src\Addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\ArcBall.cpp">
+      <Filter>src\Addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\Camera.cpp">
+      <Filter>src\Addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\EasyCam.cpp">
+      <Filter>src\Addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\VertexData.cpp">
+      <Filter>src\Addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Axis.cpp">
+      <Filter>src\Addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Box.cpp">
+      <Filter>src\Addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\IcoSphere.cpp">
+      <Filter>src\Addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Plane.cpp">
+      <Filter>src\Addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\UVSphere.cpp">
+      <Filter>src\Addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat3.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat4.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Quat.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec2.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec3.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec4.cpp">
+      <Filter>src\Addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Dictionary.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\DictionaryMap.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\File.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\IOBuffer.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\OBJ.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Ply.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\ROX.cpp">
+      <Filter>src\Addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\BitmapFont.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\SimpleAnim.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\StereoCam.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Text.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\TGA.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tween.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tweens.cpp">
+      <Filter>src\Addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Billboard.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\FBO.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\MatrixStack.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\PBO.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Shader.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Texture.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VAO.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VBO.cpp">
+      <Filter>src\Addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Button.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Buttons.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp">
+      <Filter>src\Addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Application.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Controller.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Player.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Settings.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visualizer.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\Boid.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\Cloak.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\ExplosionTrails.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Application">
+      <UniqueIdentifier>{ff9b070e-eee5-417c-92b1-29387b71b288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons">
+      <UniqueIdentifier>{cce971fe-1107-4b77-89d1-e53f05a9b02e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu">
+      <UniqueIdentifier>{8b12753a-500b-401b-a794-4c0a4a7a6b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\core">
+      <UniqueIdentifier>{6598ba35-0096-4d8f-ac87-c0c76d59b365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\3d">
+      <UniqueIdentifier>{354b7fce-8690-48aa-ab72-9b5ba78631d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\3d\shapes">
+      <UniqueIdentifier>{610293ad-d24c-4969-8c11-4cfea59be456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\math">
+      <UniqueIdentifier>{f9dd02c8-e378-46f8-9790-f839979ab8e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\io">
+      <UniqueIdentifier>{f3719f87-b856-4edd-a0fe-5ccce8f81029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\opengl">
+      <UniqueIdentifier>{03e79eed-0de1-44cb-9ac9-022745a9e8ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\roxlu\experimental">
+      <UniqueIdentifier>{50a73386-acb6-4f35-a341-b22245695474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Addons\buttons">
+      <UniqueIdentifier>{38ec1b42-5c1f-435b-bec6-68f269583042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Application\Visuals">
+      <UniqueIdentifier>{6b07e3b3-4616-4101-8041-66b410264ca2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Application.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\BoidTypes.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Controller.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Player.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Settings.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visualizer.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Boid.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Cloak.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\ExplosionTrails.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Trail.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Trails.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
