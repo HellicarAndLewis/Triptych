@@ -1,8 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "KinectOutline.h"
+#include "KinectThresholder.h"
 #include "ofxOpenCv.h"
+#include "KinectMesh.h"
 #include "Room.h"
 
 class testApp : public ofBaseApp{
@@ -24,7 +25,8 @@ public:
 
 	Room room;
 	ofxCvContourFinder contours;
-	KinectOutline kinect;
-	
+	KinectThresholder kinect;
+	ofShader meshShader;
+	deque<vector<KinectMesh> > meshes;
 	
 };

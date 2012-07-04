@@ -4,7 +4,7 @@ varying vec4 diffuse,ambientGlobal, ambient;
 varying vec3 normal,lightDir,halfVector;
 varying float dist;
 uniform sampler2DRect tex;
-
+uniform float amt;
 void main()
 {
 	vec3 n,halfV,viewV,ldir;
@@ -35,5 +35,5 @@ void main()
 	}
 	
 	
-	gl_FragColor = texture2DRect(tex, gl_TexCoord[0].xy)*color;
+	gl_FragColor = (1.0-amt)*texture2DRect(tex, gl_TexCoord[0].xy)*diffuse + (amt)*color;
 }

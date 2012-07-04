@@ -12,24 +12,77 @@
  *
  *  Description: 
  *				 
- *  KinectOutline.h, created by Marek Bereza on 25/06/2012.
+ *  KinectThresholder.h, created by Marek Bereza on 25/06/2012.
  */
 
 #pragma once
+
+
 #include "ofxOpenCv.h"
 #ifdef _WIN32
-#include "ofxKinectNui.h"
+#	include "ofxKinectNui.h"
 #else
-#include "ofxKinect.h"
+#	include "ofxKinect.h"
 #endif
-class KinectOutline {
+class KinectThresholder {
 public:
 	
 	void setup();
 	
 	void setupGui();
 
+	
+	// call this every frame.
+	// it returns false if it could 
+	// not update from the kinect
+	// (i.e. there wasn't a new frame yet)
 	bool update();
+	
+	vector<ofxCvBlob> &getContours();
+	
+	
+/*
+ 
+ 
+ // your update function should look something like this.
+ 
+ 
+ if(kinectThresholder.update()) {
+ 
+	// get your contours
+	vector<ofxCvBlob> &contours = kinectThresholder.getContours();
+ 
+	// loop through each contour and create a kinect mesh from each one.
+	for(int i = 0; i < contours.size(); i++) {
+		KinectMesh mesh;
+	
+ 
+		if(mesh.setup(contours[i], kinectThresholder)) {
+ 
+	
+			// do what you will with the contour.
+ 
+			mesh.this();
+			mesh.that();
+			mesh.whatnot();
+ 
+ 
+ 
+		} else {
+			// if mesh.setup() returns false, it means the contour is too
+			// small to bother turning into a contour.
+			continue;	
+		}
+	}
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ */
+	
 	
 	void drawDebug();
 
@@ -43,6 +96,7 @@ public:
 	
 	
 	
+	
 #ifdef _WIN32
 	ofxKinectNui kinect;
 #else
@@ -51,7 +105,7 @@ public:
 	ofxCvGrayscaleImage depth;
 	ofxCvGrayscaleImage thresh;
 	ofxCvGrayscaleImage background;
-
+	ofxCvContourFinder  contourFinder;
 	
 	bool learnBackground;
 	float nearThreshold;

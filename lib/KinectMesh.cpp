@@ -9,14 +9,10 @@
 
 int KinectMesh::borderResolution = 20;
 int KinectMesh::fillResolution = 40;
-ofShader *KinectMesh::shader = NULL;
 p2t::CDT *KinectMesh::delaunay = NULL;
 
 void KinectMesh::setupGui() {
-	if(shader==NULL) {
-		shader = new ofShader();
-		shader->load("mesh.vert", "mesh.frag");
-	}
+	
 	gui.addTitle("Mesh");
 	gui.addSlider("Border Res", borderResolution, 5, 50);
 	gui.addSlider("Fill Res", fillResolution, 5, 50);
@@ -38,13 +34,13 @@ bool KinectMesh::triangleTouchesCorner(p2t::Triangle *t) {
 	}
 	return false;
 }
-void KinectMesh::setTint(int tint) {
-	this->tint = tint;
-}
-bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigned char *rgb) {
+
+bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
+	ofxCvGrayscaleImage &grey = thresholder.getOutline(); 
+	unsigned char *rgb = thresholder.getPixels();
 
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-	age = 0;
+
 	int step = borderResolution;
 	int insideStep = fillResolution;
 	
@@ -142,57 +138,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, ofxCvGrayscaleImage &grey, unsigne
 
 
 void KinectMesh::draw() {
-	age++;
-	
-	/*if(tint>0) {
-		glMatrixMode(GL_COLOR_MATRIX);
-
-		if(tint%3==1) {
-			glScalef(1,0,0);
-		
-		} else if(tint%3==2) {
-			glScalef(0, 1, 0);
-		} else if(tint%3==0) {
-			glScalef(0, 0, 1);
-		}
-		glMatrixMode(GL_MODELVIEW);
-	}
-	*/
-	
-	shader->setUniform1i("tint", tint);
-	
 	mesh.draw();
-
-	/*if(tint>0) {
-		glMatrixMode(GL_COLOR_MATRIX);
-		glLoadIdentity();
-		glMatrixMode(GL_MODELVIEW);
-	
-	}*/
-	
-	/*
-	float alpha = 1;//ofMap(age, 0, 20, 1, 0, true);
-	for(int i = 0; i < triangles.size(); i++) {
-		
-		if(triangles[i].hollow) {
-			glColor4f(1, 1, 1, 1);
-			glBegin(GL_LINE_LOOP);
-			glVertex2f(triangles[i].points[0].x, triangles[i].points[0].y);
-			glVertex2f(triangles[i].points[1].x, triangles[i].points[1].y);
-			glVertex2f(triangles[i].points[2].x, triangles[i].points[2].y);
-			glEnd();
-		} else {
-			float bri = (triangles[i].color.r+triangles[i].color.g+triangles[i].color.b)/3.f;
-			
-			glColor4f(0.5*bri,0.5*bri, bri, alpha);
-			glBegin(GL_TRIANGLES);
-			glVertex2f(triangles[i].points[0].x, triangles[i].points[0].y);
-			glVertex2f(triangles[i].points[1].x, triangles[i].points[1].y);
-			glVertex2f(triangles[i].points[2].x, triangles[i].points[2].y);
-			glEnd();
-		}
-	}
-	 */
 }
 
 

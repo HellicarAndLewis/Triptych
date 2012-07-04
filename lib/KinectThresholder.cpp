@@ -4,9 +4,9 @@
  *  Created by Marek Bereza on 25/06/2012.
  */
 
-#include "KinectOutline.h"
+#include "KinectThresholder.h"
 #include "ofxSimpleGuiToo.h"
-void KinectOutline::setup() {
+void KinectThresholder::setup() {
 #ifdef _WIN32
 	kinect.init(//bool grabVideo = 
 				true,
@@ -55,7 +55,7 @@ void KinectOutline::setup() {
 	learnBackground = true;
 }
 
-void KinectOutline::setupGui() {
+void KinectThresholder::setupGui() {
 	
 	gui.addContent("bg", background);
 	gui.addContent("depth", depth);
@@ -71,7 +71,7 @@ void KinectOutline::setupGui() {
 
 }
 
-bool KinectOutline::update() {
+bool KinectThresholder::update() {
 	float t = ofGetElapsedTimef();
 	
 	
@@ -131,16 +131,22 @@ bool KinectOutline::update() {
 	return true;
 }
 
-void KinectOutline::drawDebug() {
+void KinectThresholder::drawDebug() {
 	thresh.draw(0, 0);
 }
 
-ofxCvGrayscaleImage &KinectOutline::getOutline() {
+ofxCvGrayscaleImage &KinectThresholder::getOutline() {
 	return thresh;
 }
 
 
-unsigned char *KinectOutline::getPixels() {
+vector<ofxCvBlob> &KinectThresholder::getContours() {
+	contourFinder.findContours(thresh, 30*30, 480*480, 20, false);
+	return contourFinder.blobs;
+}
+
+
+unsigned char *KinectThresholder::getPixels() {
 #ifdef _WIN32
 	return kinect.getVideoPixels().getPixels();
 #else
@@ -148,7 +154,7 @@ unsigned char *KinectOutline::getPixels() {
 #endif
 }
 
-unsigned char KinectOutline::getDepth(const ofxCvBlob &blob) {
+unsigned char KinectThresholder::getDepth(const ofxCvBlob &blob) {
 	unsigned char *c = depth.getPixels();
 	unsigned char p = 0;
 	ofRectangle r = blob.boundingRect;

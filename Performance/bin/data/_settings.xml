@@ -53,23 +53,23 @@
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
-        <value>0</value>
+        <value>0.14</value>
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-0.74</value>
+        <value>-1.91</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.455</value>
+        <value>1</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.42</value>
+        <value>1</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.495</value>
+        <value>0.585</value>
     </SliderFloat_aoAmount>
     <SliderInt_Border_Res>
         <name>Border Res</name>
