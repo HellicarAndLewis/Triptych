@@ -1,13 +1,22 @@
 #pragma once
 
 #include "ofMain.h"
+
+/*
 #include "Application.h"
 #include "Buttons.h"
 #include "Settings.h"
-#include "Room.h"
+
 
 // test
 #include "PBD.h"
+*/
+
+#include <application/Application.h>
+#include <application/Settings.h>
+#include <buttons/Buttons.h>
+#include <pbd/PBD.h>
+#include "Room.h"
 
 class testApp : public ofBaseApp{
 	public:
@@ -30,7 +39,7 @@ class testApp : public ofBaseApp{
 		bool debug;
 		Camera cam;
 		Application app;
-		buttons::Buttons _gui;
+		buttons::Buttons flock_gui;
 		
 		Particles2 ps;
 		Room room;

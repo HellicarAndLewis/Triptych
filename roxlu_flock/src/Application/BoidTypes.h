@@ -1,11 +1,21 @@
 #ifndef ROXLU_BOID_TYPESH
 #define ROXLU_BOID_TYPESH
 
+/*
 #include "PBD.h"
 #include "Vec2.h"
 #include <deque>
 #include "Settings.h"
 #include "Trail.h"
+*/
+
+#include <deque>
+
+#include <pbd/PBD.h>
+#include <application/Settings.h>
+#include <application/visuals/Trail.h>
+#include <roxlu/math/Vec2.h>
+
 
 template<class T>
 struct BoidParticle : public Particle<T> {

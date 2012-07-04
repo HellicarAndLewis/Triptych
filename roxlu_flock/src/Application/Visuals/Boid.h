@@ -1,8 +1,8 @@
 #ifndef ROXLU_VISUALS_BOIDH
 #define ROXLU_VISUALS_BOIDH
 
-#include "Roxlu.h"
-
+//#include "Roxlu.h"
+#include <roxlu/Roxlu.h>
 class Boid {
 public:
 	Boid();

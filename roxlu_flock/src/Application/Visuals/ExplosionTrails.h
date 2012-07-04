@@ -1,10 +1,17 @@
 #ifndef ROXLU_EXPLOSION_TRAILSH
 #define ROXLU_EXPLOSION_TRAILSH
 
+/*
 #include "Roxlu.h"
 #include "Trails.h"
 #include "BoidTypes.h"
 #include "PBD.h"
+*/
+
+#include <roxlu/Roxlu.h>
+#include <pbd/PBD.h>
+#include <application/visuals/Trails.h>
+#include <application/BoidTypes.h>
 
 class ExplosionTrails {
 public:
