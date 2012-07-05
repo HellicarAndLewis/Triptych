@@ -1,6 +1,6 @@
 #include "ExplosionTrails.h"
 
-ExplosionTrails::ExplosionTrails(Boids2& ps)
+ExplosionTrails::ExplosionTrails(Boids& ps)
 	:ps(ps)
 	,allocated_bytes(0)
 {
@@ -17,14 +17,14 @@ void ExplosionTrails::setup() {
 	vao.unbind();
 }
 
-void ExplosionTrails::draw(const Mat4& pm, const Mat4& vm) {
+void ExplosionTrails::draw(const float* pm, const float* vm) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	vao.bind();
 
 	shader.enable();
-	shader.uniformMat4fv("u_projection_matrix", pm.getPtr());
-	shader.uniformMat4fv("u_modelview_matrix", vm.getPtr());
+	shader.uniformMat4fv("u_projection_matrix", pm);
+	shader.uniformMat4fv("u_modelview_matrix", vm);
 	
 	for(Trails2PC::iterator it = trails.begin(); it != trails.end(); ++it) {	
 		Trails2PC::Info ti = *it;
@@ -45,8 +45,8 @@ void ExplosionTrails::update() {
 	
 	// Update trail traingles
 	trails.clear();
-	for(Boids2::iterator it = ps.begin(); it != ps.end(); ++it) {
-		Boid2& b = **it;
+	for(Boids::iterator it = ps.begin(); it != ps.end(); ++it) {
+		Boid& b = **it;
 		if(b.trail.size() > 0) {
 			trails.addTrail(&b.trail);
 		}

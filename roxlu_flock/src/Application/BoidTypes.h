@@ -50,8 +50,22 @@ inline void BoidParticle<T>::removeTrail() {
 }
 
 
+typedef Particles<Vec3, BoidParticle<Vec3>, Spring<Vec3> >	Boids3;
 typedef Particles<Vec2, BoidParticle<Vec2>, Spring<Vec2> >	Boids2;
+
 typedef BoidParticle<Vec2> 	Boid2;
+typedef BoidParticle<Vec3> 	Boid3;
+
 typedef Flocking<Vec2, BoidParticle<Vec2> > BoidFlocking2;
+typedef Flocking<Vec3, BoidParticle<Vec3> > BoidFlocking3;
+
+// We used these in the app, so we can switch from 2D to 3D
+//typedef Boids2 Boids;
+//typedef Boid2 Boid;
+//typedef BoidFlocking2 BoidFlocking;
+
+typedef Boids3 Boids;
+typedef Boid3 Boid;
+typedef BoidFlocking3 BoidFlocking;
 
 #endif

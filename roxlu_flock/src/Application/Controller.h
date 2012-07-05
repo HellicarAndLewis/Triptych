@@ -9,19 +9,18 @@
 
 #include <pbd/PBD.h>
 #include <application/BoidTypes.h>
-#include <application/Player.h>
 #include <application/KinectInput.h>
 
 class Controller {
 public:
-	Controller(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, int w, int h);
+	Controller(Boids& flockPS, Boids& fxPS, int w, int h);
 	void setup();
 	void update();
 	void checkBounds();
 	
-	vector<Player*>& players;
-	Boids2& flock_ps;
-	Boids2& fx_ps;
+
+	Boids& flock_ps;
+	Boids& fx_ps;
 	int w;
 	int h;
 

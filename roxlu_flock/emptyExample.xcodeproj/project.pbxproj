@@ -17,12 +17,13 @@
 		549A425A15A4C67000A50CC3 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A425315A4C67000A50CC3 /* sweep.cc */; };
 		549A425B15A4C67000A50CC3 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = 549A425515A4C67000A50CC3 /* sweep_context.cc */; };
 		549A42AE15A4D42B00A50CC3 /* KinectDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A42AC15A4D42B00A50CC3 /* KinectDrawer.cpp */; };
+		549A43E715A580AA00A50CC3 /* kinect_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 549A43E515A580AA00A50CC3 /* kinect_drawer.frag */; };
+		549A43E815A580AA00A50CC3 /* kinect_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 549A43E615A580AA00A50CC3 /* kinect_drawer.vert */; };
+		549A43EC15A5997600A50CC3 /* KinectRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A43EA15A5997200A50CC3 /* KinectRecorder.cpp */; };
 		54E0CCD315A2CB5D00045537 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC115A2CB5D00045537 /* Application.cpp */; };
 		54E0CCD415A2CB5D00045537 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC415A2CB5D00045537 /* Controller.cpp */; };
-		54E0CCD515A2CB5D00045537 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC615A2CB5D00045537 /* Player.cpp */; };
 		54E0CCD615A2CB5D00045537 /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC815A2CB5D00045537 /* Settings.cpp */; };
 		54E0CCD715A2CB5D00045537 /* Visualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */; };
-		54E0CCD815A2CB5D00045537 /* Cloak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCD15A2CB5D00045537 /* Cloak.cpp */; };
 		54E0CCD915A2CB5D00045537 /* ExplosionTrails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */; };
 		54E0CDC015A2DEF600045537 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CDBE15A2DEF600045537 /* Boid.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -185,20 +186,26 @@
 		549A425515A4C67000A50CC3 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
 		549A425615A4C67000A50CC3 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
 		549A42AC15A4D42B00A50CC3 /* KinectDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectDrawer.cpp; sourceTree = "<group>"; };
-		549A42AD15A4D42B00A50CC3 /* KinectDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = KinectDrawer.h; sourceTree = "<group>"; };
+		549A42AD15A4D42B00A50CC3 /* KinectDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectDrawer.h; sourceTree = "<group>"; };
+		549A439015A4F68000A50CC3 /* Cloth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cloth.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/Cloth.h; sourceTree = "<group>"; };
+		549A439115A4F68000A50CC3 /* Flocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flocking.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/Flocking.h; sourceTree = "<group>"; };
+		549A439215A4F68000A50CC3 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/Particle.h; sourceTree = "<group>"; };
+		549A439315A4F68000A50CC3 /* Particles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particles.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/Particles.h; sourceTree = "<group>"; };
+		549A439415A4F68000A50CC3 /* PBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBD.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/PBD.h; sourceTree = "<group>"; };
+		549A439515A4F68000A50CC3 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spring.h; path = ../addons/roxlu/addons/PositionBasedDynamics/include/pbd/Spring.h; sourceTree = "<group>"; };
+		549A43E515A580AA00A50CC3 /* kinect_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = kinect_drawer.frag; path = bin/data/kinect_drawer.frag; sourceTree = SOURCE_ROOT; };
+		549A43E615A580AA00A50CC3 /* kinect_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = kinect_drawer.vert; path = bin/data/kinect_drawer.vert; sourceTree = SOURCE_ROOT; };
+		549A43EA15A5997200A50CC3 /* KinectRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectRecorder.cpp; sourceTree = "<group>"; };
+		549A43EB15A5997400A50CC3 /* KinectRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectRecorder.h; sourceTree = "<group>"; };
 		54E0CCC115A2CB5D00045537 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		54E0CCC215A2CB5D00045537 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		54E0CCC315A2CB5D00045537 /* BoidTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidTypes.h; sourceTree = "<group>"; };
 		54E0CCC415A2CB5D00045537 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		54E0CCC515A2CB5D00045537 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		54E0CCC615A2CB5D00045537 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		54E0CCC715A2CB5D00045537 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		54E0CCC815A2CB5D00045537 /* Settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Settings.cpp; sourceTree = "<group>"; };
 		54E0CCC915A2CB5D00045537 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Visualizer.cpp; sourceTree = "<group>"; };
 		54E0CCCB15A2CB5D00045537 /* Visualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visualizer.h; sourceTree = "<group>"; };
-		54E0CCCD15A2CB5D00045537 /* Cloak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cloak.cpp; sourceTree = "<group>"; };
-		54E0CCCE15A2CB5D00045537 /* Cloak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloak.h; sourceTree = "<group>"; };
 		54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExplosionTrails.cpp; sourceTree = "<group>"; };
 		54E0CCD015A2CB5D00045537 /* ExplosionTrails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionTrails.h; sourceTree = "<group>"; };
 		54E0CCD115A2CB5D00045537 /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
@@ -238,7 +245,6 @@
 		E96F814D15A469A300548852 /* Noise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Noise.cpp; sourceTree = "<group>"; };
 		E96F814E15A469A300548852 /* StringUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtil.cpp; sourceTree = "<group>"; };
 		E96F814F15A469A300548852 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
-		E96F815115A469A300548852 /* #VertexBuffer.cpp# */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "#VertexBuffer.cpp#"; sourceTree = "<group>"; };
 		E96F815215A469A300548852 /* BitmapFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BitmapFont.cpp; sourceTree = "<group>"; };
 		E96F815315A469A300548852 /* SimpleAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleAnim.cpp; sourceTree = "<group>"; };
 		E96F815415A469A300548852 /* StereoCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StereoCam.cpp; sourceTree = "<group>"; };
@@ -532,16 +538,37 @@
 			path = sweep;
 			sourceTree = "<group>";
 		};
+		549A438F15A4F66B00A50CC3 /* pbd */ = {
+			isa = PBXGroup;
+			children = (
+				549A439015A4F68000A50CC3 /* Cloth.h */,
+				549A439115A4F68000A50CC3 /* Flocking.h */,
+				549A439215A4F68000A50CC3 /* Particle.h */,
+				549A439315A4F68000A50CC3 /* Particles.h */,
+				549A439415A4F68000A50CC3 /* PBD.h */,
+				549A439515A4F68000A50CC3 /* Spring.h */,
+			);
+			name = pbd;
+			sourceTree = "<group>";
+		};
+		549A43E415A580A000A50CC3 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				549A43E515A580AA00A50CC3 /* kinect_drawer.frag */,
+				549A43E615A580AA00A50CC3 /* kinect_drawer.vert */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
 		54E0CCC015A2CB5D00045537 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				549A43E415A580A000A50CC3 /* Shaders */,
 				54E0CCC115A2CB5D00045537 /* Application.cpp */,
 				54E0CCC215A2CB5D00045537 /* Application.h */,
 				54E0CCC315A2CB5D00045537 /* BoidTypes.h */,
 				54E0CCC415A2CB5D00045537 /* Controller.cpp */,
 				54E0CCC515A2CB5D00045537 /* Controller.h */,
-				54E0CCC615A2CB5D00045537 /* Player.cpp */,
-				54E0CCC715A2CB5D00045537 /* Player.h */,
 				54E0CCC815A2CB5D00045537 /* Settings.cpp */,
 				54E0CCC915A2CB5D00045537 /* Settings.h */,
 				54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */,
@@ -549,6 +576,8 @@
 				549A423515A4C18500A50CC3 /* KinectInput.cpp */,
 				549A423615A4C18500A50CC3 /* KinectInput.h */,
 				54E0CCCC15A2CB5D00045537 /* Visuals */,
+				549A43EA15A5997200A50CC3 /* KinectRecorder.cpp */,
+				549A43EB15A5997400A50CC3 /* KinectRecorder.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -556,8 +585,6 @@
 		54E0CCCC15A2CB5D00045537 /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
-				54E0CCCD15A2CB5D00045537 /* Cloak.cpp */,
-				54E0CCCE15A2CB5D00045537 /* Cloak.h */,
 				54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */,
 				54E0CCD015A2CB5D00045537 /* ExplosionTrails.h */,
 				54E0CCD115A2CB5D00045537 /* Trail.h */,
@@ -573,6 +600,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				549A438F15A4F66B00A50CC3 /* pbd */,
 				549A423815A4C30F00A50CC3 /* polytri */,
 				E96F819B15A469B600548852 /* buttons */,
 				E96F814015A469A300548852 /* roxlu */,
@@ -709,7 +737,6 @@
 		E96F815015A469A300548852 /* experimental */ = {
 			isa = PBXGroup;
 			children = (
-				E96F815115A469A300548852 /* #VertexBuffer.cpp# */,
 				E96F815215A469A300548852 /* BitmapFont.cpp */,
 				E96F815315A469A300548852 /* SimpleAnim.cpp */,
 				E96F815415A469A300548852 /* StereoCam.cpp */,
@@ -1403,10 +1430,8 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				54E0CCD315A2CB5D00045537 /* Application.cpp in Sources */,
 				54E0CCD415A2CB5D00045537 /* Controller.cpp in Sources */,
-				54E0CCD515A2CB5D00045537 /* Player.cpp in Sources */,
 				54E0CCD615A2CB5D00045537 /* Settings.cpp in Sources */,
 				54E0CCD715A2CB5D00045537 /* Visualizer.cpp in Sources */,
-				54E0CCD815A2CB5D00045537 /* Cloak.cpp in Sources */,
 				54E0CCD915A2CB5D00045537 /* ExplosionTrails.cpp in Sources */,
 				54E0CDC015A2DEF600045537 /* Boid.cpp in Sources */,
 				EAE2A67715A445FC00327E97 /* Room.cpp in Sources */,
@@ -1505,6 +1530,9 @@
 				549A425A15A4C67000A50CC3 /* sweep.cc in Sources */,
 				549A425B15A4C67000A50CC3 /* sweep_context.cc in Sources */,
 				549A42AE15A4D42B00A50CC3 /* KinectDrawer.cpp in Sources */,
+				549A43E715A580AA00A50CC3 /* kinect_drawer.frag in Sources */,
+				549A43E815A580AA00A50CC3 /* kinect_drawer.vert in Sources */,
+				549A43EC15A5997600A50CC3 /* KinectRecorder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

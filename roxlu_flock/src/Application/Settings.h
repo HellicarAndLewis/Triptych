@@ -7,10 +7,9 @@ struct Settings {
 		,flocking_perlin_influence(36.0f)
 		,flocking_perlin_scale(0.66f)
 		,flocking_max_speed(13.0f)
-		,player_repel_radius(333.33f)
-		,player_repel_energy(23000.00f)
 		,boid_trail_duration_millis(583.33f)
 		,boid_glow_duration_millis(833.34f)
+		,must_record_kinect(false)
 
 	{
 	}
@@ -20,8 +19,6 @@ struct Settings {
 	float flocking_perlin_influence;
 	float flocking_perlin_scale;
 	float flocking_max_speed;
-	float player_repel_radius;
-	float player_repel_energy;
 	float boid_trail_duration_millis;
 	float boid_glow_duration_millis;
 	
@@ -32,6 +29,7 @@ struct Settings {
 	float explosion_max_lifespan;
 	float explosion_perlin_influence;
 	float explosion_perlin_scale;
+	bool must_record_kinect;
 
 };
 

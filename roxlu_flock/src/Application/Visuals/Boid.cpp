@@ -23,7 +23,7 @@ void Boid::setup() {
 	
 }
 
-void Boid::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
+void Boid::draw(const float* pm, const float* vm, const float* nm) {
 
 }
 

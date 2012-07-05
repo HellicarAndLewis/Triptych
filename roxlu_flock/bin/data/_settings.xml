@@ -1,71 +1,39 @@
 <controls>
-    <SliderFloat_near_threshold>
-        <name>near threshold</name>
-        <value>255</value>
-    </SliderFloat_near_threshold>
-    <SliderFloat_far_threshold>
-        <name>far threshold</name>
-        <value>33.15</value>
-    </SliderFloat_far_threshold>
-    <SliderInt_hysteresis>
-        <name>hysteresis</name>
-        <value>17</value>
-    </SliderInt_hysteresis>
-    <Toggle_learnBackground>
-        <name>learnBackground</name>
-        <value>0</value>
-    </Toggle_learnBackground>
-    <SliderInt_erosions>
-        <name>erosions</name>
-        <value>1</value>
-    </SliderInt_erosions>
-    <SliderInt_dilations>
-        <name>dilations</name>
-        <value>0</value>
-    </SliderInt_dilations>
-    <SliderInt_blurs>
-        <name>blurs</name>
-        <value>0</value>
-    </SliderInt_blurs>
-    <SliderInt_blurSize>
-        <name>blurSize</name>
-        <value>1</value>
-    </SliderInt_blurSize>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>15</value>
+        <value>25</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>5</value>
+        <value>15</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_Per_Vertex_Colour>
     <SliderFloat_Edge_Colour_Sharpening>
         <name>Edge Colour Sharpening</name>
-        <value>0</value>
+        <value>0.76</value>
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>68.5</value>
+        <value>30</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
-        <value>0</value>
+        <value>0.56</value>
     </SliderFloat_CamX>
     <SliderFloat_CamY>
         <name>CamY</name>
-        <value>0</value>
+        <value>0.25</value>
     </SliderFloat_CamY>
     <SliderFloat_CamZ>
         <name>CamZ</name>
-        <value>-2.35</value>
+        <value>-6.3</value>
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>-0.64</value>
+        <value>0.7</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
@@ -73,18 +41,18 @@
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>1</value>
+        <value>-4.1</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.975</value>
+        <value>0.07</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.985</value>
+        <value>0.115</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.975</value>
+        <value>0.195</value>
     </SliderFloat_aoAmount>
 </controls>

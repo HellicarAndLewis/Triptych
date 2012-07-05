@@ -35,9 +35,13 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		void operator()(const int n);
+		
 		bool show_gui;
 		bool debug;
-		Camera cam;
+
+		EasyCam cam;
+		Axis ax;
 		Application app;
 		buttons::Buttons flock_gui;
 		

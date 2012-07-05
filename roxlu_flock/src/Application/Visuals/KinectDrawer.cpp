@@ -1,22 +1,94 @@
 #include "KinectDrawer.h"
 
-KinectDrawer::KinectDrawer() {
+KinectDrawer::KinectDrawer() 
+	:allocated_bytes(0)
+{
 
 }
 
-void KinectDrawer::update(deque<KinectMesh>& kmeshes) {
-	tmp_meshes = kmeshes; // just testing	
+void KinectDrawer::setup() {
+	vao.create();
+	vao.bind();
+	glGenBuffers(1, &vbo);
+
+	shader.load("kinect_drawer");
+	shader.a("a_pos",0).a("a_col",1);
+	shader.link();
+	shader.u("u_modelview_matrix").u("u_projection_matrix");
+	
+	vao.unbind();	
+}
+
+void KinectDrawer::update(KinectMesh& kmesh) {
+	// calc necessary bytes for buffer.
+	size_t necessary = kmesh.vertices.size() * sizeof(KinectVertex); // unwelded triangles
+	num_vertices = kmesh.vertices.size();
+
+	if(num_vertices <= 0) {
+		return;
+	}
+	// just tmp, no more vertices
+	if(num_vertices > 1024*1024) {
+		printf("To much vertices found.\n");
+		return; 
+	}
+	
+	// recreate buffer.
+	if(necessary > allocated_bytes) {
+		size_t to_allocate = 0;
+		while(to_allocate < necessary) {
+			to_allocate = std::max<size_t>(allocated_bytes * 2, 8192);
+			allocated_bytes = to_allocate;
+		}
+	
+		vao.bind();
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			glBufferData(GL_ARRAY_BUFFER, to_allocate, NULL, GL_DYNAMIC_DRAW); eglGetError();
+			glEnableVertexAttribArray(0); 
+			glEnableVertexAttribArray(1); 
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(KinectVertex), (GLvoid*)offsetof(KinectVertex, pos));
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(KinectVertex), (GLvoid*)offsetof(KinectVertex, col));
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+		vao.unbind();
+	}
+
+	if(allocated_bytes < necessary) {
+		printf("Not enough allocated...\n");
+		return;
+	}
+
+	// update buffer
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, necessary, &kmesh.vertices[0].pos[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 
-void KinectDrawer::draw() {
+void KinectDrawer::draw(const float* pm, const float* vm) {
+	if(num_vertices <= 0 || num_vertices > 1024*1024) {
+		return;
+	}
+	
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_TEXTURE_2D);
+	
+	shader.enable();
+	shader.uniformMat4fv("u_projection_matrix", pm);
+	shader.uniformMat4fv("u_modelview_matrix", vm);
+	
+	vao.bind();
+		glDrawArrays(GL_TRIANGLES, 0, num_vertices);
+		
+	vao.unbind();	
+	shader.disable();
+	
+	glEnable(GL_TEXTURE_2D);
+
 }
 
 
 void KinectDrawer::debugDraw() {
-	for(int i = 0; i < tmp_meshes.size(); ++i) {
-		debugDrawMesh(tmp_meshes[i]);
-	}
 }
 
 void KinectDrawer::debugDrawMesh(KinectMesh& m) {

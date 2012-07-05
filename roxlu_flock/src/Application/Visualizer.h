@@ -18,26 +18,22 @@
 #include <application/KinectInput.h>
 #include <application/Visualizer.h>
 #include <application/BoidTypes.h>
-#include <application/Player.h>
 #include <application/visuals/ExplosionTrails.h>
-#include <application/visuals/Cloak.h>
 #include <application/visuals/KinectDrawer.h>
 
 
 class Visualizer {
 public:
-	Visualizer(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, KinectInput& kinect);
+	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect);
 	void setup();
 	void update();
-	void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
+	//void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
+	void draw(const float* pm, const float* vm, const float* nm);
 	void debugDraw();
 
-
-	vector<Player*>& players;
-	vector<Cloak*> cloaks;
 	
-	Boids2& flock_ps;
-	Boids2& fx_ps; // effects!
+	Boids& flock_ps;
+	Boids& fx_ps; // effects!
 	ExplosionTrails explosion_trails;
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;

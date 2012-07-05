@@ -43,6 +43,8 @@ public:
 	
 	// the individual triangles.
 	vector<KinectTriangle> triangles;
+	KinectVertices vertices;
+	
 
 	// depth for a mesh is a single value - [0,255]
 	float depth;
@@ -64,7 +66,7 @@ public:
 	static bool perVertexColour;
 	static float edgeColourSharpening;
 private:
-	
+	size_t addVertex(const KinectVertex& kv);
 	
 	void addTriangle(const ofVec2f &a, const ofVec2f &b, const ofVec2f &c, 
 					 const ofFloatColor &c0, const ofFloatColor &c1, const ofFloatColor &c2);
@@ -73,3 +75,8 @@ private:
 	bool triangleTouchesCorner(p2t::Triangle *t);
 };
 
+inline size_t KinectMesh::addVertex(const KinectVertex& kv) {
+	return vertices.add(kv);
+//	vertices.push_back(kv);
+//	return vertices.size()-1;
+}

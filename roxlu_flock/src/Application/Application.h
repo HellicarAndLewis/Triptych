@@ -7,7 +7,6 @@
 #include <application/Settings.h>
 #include <application/Visualizer.h>
 #include <application/Controller.h>
-#include <application/Player.h>
 #include <application/KinectInput.h>
 
 class Application {
@@ -15,16 +14,16 @@ public:
 	Application(const int w, const int h);
 	void setup();
 	void update();
-	void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
+	void draw(const float* pm, const float* vm, const float* nm);
 	void debugDraw();
 	
-	vector<Player*> players;
-	Boids2 flock_ps;
-	Boids2 fx_ps; 
-	BoidFlocking2 flock;
+	Boids flock_ps;
+	Boids fx_ps; 
+	BoidFlocking flock;
 	KinectInput kinect;
 	Visualizer viz;
 	Controller control;
+	
 	
 };
 #endif

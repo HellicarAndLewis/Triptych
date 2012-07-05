@@ -2,20 +2,12 @@
 
 Application::Application(const int w, const int h)
 	:flock(flock_ps.particles, 50, 5)
-	,viz(flock_ps, fx_ps, players, kinect)
-	,control(flock_ps, fx_ps, players, w, h)
+	,viz(flock_ps, fx_ps, kinect)
+	,control(flock_ps, fx_ps, w, h)
 {
 }
 
 void Application::setup() {
-	// create players
-	int max_players = 1;
-	for(int i = 0; i < max_players; ++i) {
-		Player* p = new Player(flock_ps);
-		p->setup();
-		players.push_back(p);
-	}
-
 	kinect.setup();
 	control.setup();
 	viz.setup();
@@ -23,11 +15,11 @@ void Application::setup() {
 
 void Application::update() {
 	kinect.update();
-	flock.setMaxSpeed(settings.flocking_max_speed);
-	flock.update();
-	
-	flock_ps.update(0.3);
-	fx_ps.update(0.3);
+
+	//flock.setMaxSpeed(settings.flocking_max_speed);
+	//flock.update();
+	//flock_ps.update(0.3);
+	//fx_ps.update(0.3);
 	
 	control.update();
 	
@@ -38,7 +30,7 @@ void Application::update() {
 	viz.update();
 }
 
-void Application::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
+void Application::draw(const float* pm, const float* vm, const float* nm) {
 	viz.draw(pm, vm, nm);
 }
 

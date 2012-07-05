@@ -1,45 +1,49 @@
 #include "Controller.h"
 
 
-Controller::Controller(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, int w, int h) 
+Controller::Controller(Boids& flockPS, Boids& fxPS, int w, int h) 
 	:flock_ps(flockPS)
 	,fx_ps(fxPS)
 	,w(w)
 	,h(h)
-	,players(players)
 {
 }
 
 void Controller::setup() {
 	// add some boids
 	int num = 400;
-	Vec2 pos;
+//	Vec2 pos;
+	Vec3 pos;
 	float cx = w * 0.5f;
 	float cy = h * 0.5f;
+	float s = 3.0f;
 	for(int i = 0; i < num; ++i) {
-		pos = randomVec2() * 300.0f;
+		/*
+		pos = randomVec2() * s;
 		pos.x += cx;
 		pos.y += cy;
-	
-		Boid2* p = new Boid2(pos);
+		*/
+		
+		pos = randomVec3() * s;
+		Boid* p = new Boid(pos);
 		p->size = random(1.0f, 10.0f);
 		p->aging = false;
+		//p->disable();
 		flock_ps.addParticle(p);
 	}
-	
-	//player1.setup();
 }
+
 
 void Controller::update() {
 	
 
-	checkBounds();
+	//checkBounds();
 	
-	vector<Boid2*> new_particles;
+	vector<Boid*> new_particles;
 	float pf;
-	for(vector<Boid2*>::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
-		Boid2& b = **it;
-		Vec2& pos = b.position;
+	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
+		Boid& b = **it;
+		Boids::Vec& pos = b.position;
 
 		// PERLIN
 		if(settings.flocking_apply_perlin) {
@@ -80,7 +84,7 @@ void Controller::update() {
 			
 			for(int i = 0; i < num; ++i) {
 				Vec2 npos = b.position + randomVec2()*range;
-				Boid2* exp = new Boid2(npos);
+				Boid* exp = new Boid(npos);
 				exp->lifespan = random(settings.explosion_min_lifespan, settings.explosion_max_lifespan);
 				exp->velocity = -b.velocity ;
 			//	exp->velocity.x *= random(-settings.explosion_random_x_vel, settings.explosion_random_x_vel);
@@ -94,9 +98,9 @@ void Controller::update() {
 	
 	// EXPLOSIONS
 	float t = Timer::now() * 0.001;
-	for(Boids2::iterator it = fx_ps.begin(); it != fx_ps.end(); ++it) {  
-		Boid2& b = **it;
-		Vec2& pos = b.position;
+	for(Boids::iterator it = fx_ps.begin(); it != fx_ps.end(); ++it) {  
+		Boid& b = **it;
+		Boids::Vec& pos = b.position;
 		
 		// apply perlin.
 		float nx1 = noise2(pos.x * settings.explosion_perlin_influence, t);
@@ -120,17 +124,13 @@ void Controller::update() {
 		}
 	}
 	
-	for(vector<Player*>::iterator it = players.begin(); it != players.end(); ++it) {
-		(*it)->update();
-	}
-	//player1.update();
 }
 	
 	
 void Controller::checkBounds() {
 	
-	for(vector<Boid2* >::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
-		Boid2& p = **it;
+	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
+		Boid& p = **it;
 		if(p.position.x < 0) {
 			p.position.x = w;
 			p.removeTrail();

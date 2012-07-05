@@ -8,7 +8,7 @@ public:
 	Boid();
 	void setup();
 	void debugDraw();
-	void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
+	void draw(const float* pm, const float* vm, const float* nm);
 	void update();
 	
 

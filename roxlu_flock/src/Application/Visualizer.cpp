@@ -1,10 +1,9 @@
 #include "ofMain.h"
 #include "Visualizer.h"
 
-Visualizer::Visualizer(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, KinectInput& kinect)
+Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect)
 	:flock_ps(flockPS)
 	,fx_ps(fxPS)
-	,players(players)
 	,explosion_trails(fxPS)
 	,kinect_input(kinect)
 {
@@ -12,6 +11,8 @@ Visualizer::Visualizer(Boids2& flockPS, Boids2& fxPS, vector<Player*>& players, 
 
 void Visualizer::setup() {
 	glEnable(GL_TEXTURE_2D);
+	
+	// load glow image.
 	ofImage img;
 	if(!img.loadImage("particle_glow.png")) {	
 		printf("Cannot load particle glow image.\n");
@@ -19,55 +20,54 @@ void Visualizer::setup() {
 	}
 	glow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
 
+
+	// load image for twinkle fx
 	if(!img.loadImage("twinkle.png")) {
 		printf("Cannot load twinkle image.\n");
 		::exit(0);
 	}
 	twinkle_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
 
+	// load mega glow, shown when boid explodes
 	if(!img.loadImage("mega_glow.png")) {
 		printf("Cannot load mega glow texture.\n");
 		::exit(0);
 	}
 	mega_glow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
 
+	
 	explosion_trails.setup();	
 	
-	// create cloaks
-	for(int i = 0; i < players.size(); ++i) {
-		Cloak* cl = new Cloak(players[i]->cloth, players[i]->tris);
-		cl->setup();
-		cloaks.push_back(cl);
-	}
+	kinect_drawer.setup();
 }
 
 void Visualizer::update() {
 	explosion_trails.update();
-	
-	for(vector<Cloak*>::iterator it = cloaks.begin(); it != cloaks.end(); ++it) {
-		Cloak& cl = **it;
-		cl.update();
-	}
-	
+		
 	if(kinect_input.update()) {
-		kinect_drawer.update(kinect_input.getKinectMeshes());
+		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
+		kinect_drawer.update(meshes[0]);
 	}
 }
 
 
 
-void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
+// pm = projection matrix, vm = view matrix, nm = normal matrix
+void Visualizer::draw(const float* pm, const float* vm, const float* nm) {
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	
+	kinect_drawer.draw(pm, vm);
+	
 	// Boids: dot
+	/*
 	bb.setTexture(glow_tex.getID());
 	bb.bind(pm, vm);
-	for(Boids2::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
-		Boid2& b = **it;
+	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
+		Boid& b = **it;
 		bb.draw(b.position, b.size * 5, 0.0, 1.0);
 	}
 	bb.unbind();
@@ -75,8 +75,8 @@ void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
 	// Boids: glow
 	bb.setTexture(glow_tex.getID());
 	bb.bind(pm, vm);
-	for(Boids2::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
-		Boid2& b = **it;
+	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
+		Boid& b = **it;
 		if(b.glow_end > 0) {
 			float p = float(b.glow_end - Timer::now()) / settings.boid_glow_duration_millis;
 			bb.draw(b.position, b.size*20, 0.0, sin(p*PI));
@@ -87,8 +87,8 @@ void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
 	// Twinkles (explosions)
 	bb.setTexture(twinkle_tex.getID());
 	bb.bind(pm, vm);
-	for(Boids2::iterator it = fx_ps.begin(); it != fx_ps.end(); ++it) {
-		Boid2& b = **it;
+	for(Boids::iterator it = fx_ps.begin(); it != fx_ps.end(); ++it) {
+		Boid& b = **it;
 
 		bb.draw(b.position, b.size * 5, 0.0, sin(b.agep * PI));
 	}
@@ -97,18 +97,10 @@ void Visualizer::draw(const Mat4& pm, const Mat4& vm, const Mat3& nm) {
 	
 	// Exploision trails
 	explosion_trails.draw(pm, vm);
-	
-	for(vector<Cloak*>::iterator it = cloaks.begin(); it != cloaks.end(); ++it) {
-		Cloak& cl = **it;
-		cl.draw(pm, vm, nm);
-	}
+	*/
 }
 
 void Visualizer::debugDraw() {
-	// test
-	//players[0]->boid.debugDraw();
-
-
 	// FX 
 	glColor3f(0,1,1);
 	::draw(fx_ps);	
@@ -117,8 +109,9 @@ void Visualizer::debugDraw() {
 	glColor3f(1,1,1);
 	::draw(flock_ps);
 	
-	for(vector<Boid2*>::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
-		Boid2& b = **it;
+	
+	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
+		Boid& b = **it;
 	
 		// Boid trails
 		glBegin(GL_LINE_STRIP);
@@ -141,11 +134,6 @@ void Visualizer::debugDraw() {
 	// Explosion trails
 	explosion_trails.debugDraw();
 	
-	// Clocks debug drawing.
-	for(vector<Cloak*>::iterator it = cloaks.begin(); it != cloaks.end(); ++it) {
-		Cloak& cl = **it;
-		cl.debugDraw();
-	}
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	kinect_drawer.debugDraw();

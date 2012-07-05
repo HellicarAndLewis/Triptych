@@ -15,15 +15,15 @@
 
 class ExplosionTrails {
 public:
-	ExplosionTrails(Boids2& ps);
+	ExplosionTrails(Boids& ps);
 	void setup();
-	void draw(const Mat4& pm, const Mat4& vm);
+	void draw(const float* pm, const float* vm);
 	void debugDraw();
 	void update();
 	
 	size_t getBytesNeeded();
 			
-	Boids2& ps;
+	Boids& ps;
 	Trails2PC trails;
 	VerticesPC vertices;
 	

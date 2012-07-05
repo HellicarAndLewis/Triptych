@@ -34,8 +34,6 @@ void testApp::setup(){
 	flock_gui.addBool("Flock apply perlin noise", settings.flocking_apply_perlin);//.setColor(0.4, 0.03, 0.1);
 	flock_gui.addFloat("Flock perlin scale", settings.flocking_perlin_scale).setMin(0.0f).setMax(10.0f); //.setColor(0.4, 0.03, 0.1);
 	flock_gui.addFloat("Flock perlin influence", settings.flocking_perlin_influence).setMin(0.0f).setMax(100.0f); //.setColor(0.4, 0.03, 0.1);
-	flock_gui.addFloat("Player repel energy", settings.player_repel_energy).setMin(0.0f).setMax(100000.0f).setColor(0.1,0.4,0.0);
-	flock_gui.addFloat("Player repel radius", settings.player_repel_radius).setMin(0.0f).setMax(1000.0f).setColor(0.1,0.4,0.0);
 
 	flock_gui.addFloat("Boid trail duration (millis)", settings.boid_trail_duration_millis).setMin(0.0f).setMax(5000.0f);
 	flock_gui.addFloat("Boid glow duration (millis)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
@@ -47,11 +45,21 @@ void testApp::setup(){
 	flock_gui.addFloat("Explosion perlin scale", settings.explosion_perlin_scale).setMin(0.0f).setMax(10.0f);
 	flock_gui.addFloat("Explosion perlin influence", settings.explosion_perlin_influence).setMin(0.0f).setMax(1.0f);
 	flock_gui.addInt("Explosion trail length", settings.explosion_trail_length).setMin(0).setMax(20);
-
+	flock_gui.addBool("Record kinect", settings.must_record_kinect);
+	flock_gui.addButton<testApp>("Save kinect recording", 0, this);
 	flock_gui.load(ofToDataPath("gui.bin",true));
 
+	cam.setup(ofGetWidth(), ofGetHeight());
 	cam.translate(0,0,5);
-	cam.orthoTopLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
+	//cam.orthoTopLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
+	ax.setup(10);
+}
+
+void testApp::operator()(const int n) {
+	if(n == 0) {
+		settings.must_record_kinect = false;
+		app.kinect.recorder.save(File::toDataPath("kinect.bin"));
+	}
 }
 
 //--------------------------------------------------------------
@@ -64,16 +72,19 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 		
-	room.draw();
-	
+	//room.draw();
+	gui.draw();
 	if(!debug) {
 		Mat3 nm(cam.vm());
         nm.inverse();
         nm.transpose();
-		app.draw(cam.pm(), cam.vm(), nm);
+		cam.place();
+		ax.draw();
+		app.draw(cam.pm().getPtr(), cam.vm().getPtr(), nm.getPtr());
 	}
 	else {
 		cam.place();
+		ax.draw();
 		app.debugDraw();		
 	}
 	
@@ -81,7 +92,7 @@ void testApp::draw(){
 		flock_gui.draw();
 	}
 	
-	gui.draw();
+	
 	
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
@@ -113,16 +124,19 @@ void testApp::keyReleased(int key){
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
 	flock_gui.onMouseMoved(x,y);
+
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 	flock_gui.onMouseMoved(x,y);
+	cam.onMouseDragged(x,y);
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
 	flock_gui.onMouseDown(x,y);
+	cam.onMouseDown(x,y);
 }
 
 //--------------------------------------------------------------

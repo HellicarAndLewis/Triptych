@@ -4,16 +4,24 @@
 
 #include "ofMain.h"
 #include "KinectMesh.h"
-#include <deque>
+
+#include <roxlu/opengl/VAO.h>
+#include <roxlu/opengl/Shader.h>
 
 class KinectDrawer {
 public:
 	KinectDrawer();
-	void update(deque<KinectMesh>& kmeshes);
-	void draw();
+	void update(KinectMesh& kmeshes);
+	void setup();
+	void draw(const float* pm, const float* vm);
 	void debugDraw();
 	void debugDrawMesh(KinectMesh& m);
-	deque<KinectMesh> tmp_meshes;
+
+	int num_vertices;
+	roxlu::Shader shader;
+	roxlu::VAO vao;
+	GLuint vbo;
+	size_t allocated_bytes;
 };
 
 #endif

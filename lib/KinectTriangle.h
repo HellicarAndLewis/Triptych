@@ -18,9 +18,76 @@
 #pragma once
 
 #include "ofMain.h"
+#include "poly2tri.h"
+#include <roxlu/3d/VertexTypes.h>
+
+struct KinectVertex {
+	float pos[3];
+	float col[3];
+	
+	
+	KinectVertex() {
+		pos[0] = pos[1] = pos[2] = 0.0f;
+		col[0] = col[1] = col[2] = 1.0f;
+	}
+	
+	KinectVertex(float* p) {
+		setPos(p);
+		col[0] = col[1] = col[2] = 1.0f;
+	}
+	
+	KinectVertex(float x, float y, float z = 1.0) {
+		setPos(x,y,z);
+	}
+	
+	KinectVertex(float x, float y, float z, float r, float g, float b) {
+		setPos(x,y,z);
+		setCol(r,g,b);
+	}
+	
+	KinectVertex(float* p, float* c) {
+		setPos(p);
+		setCol(c);
+	}
+	
+	void setPos(float x, float y, float z = 0.0) {
+		pos[0] = x * 0.01;
+		pos[1] = y * 0.01;
+		pos[2] = 0.0;
+	}
+	
+	void setPos(float* p) {
+		pos[0] = p[0] * 0.01;
+		pos[1] = p[1] * 0.01;
+		//pos[3] = p[2] * 0.01;
+		pos[2] = 0.0;
+		//printf("x: %f, y: %f, z: %f\n", pos[0], pos[1], pos[2]);
+	}
+	
+	
+	void setCol(float r, float g, float b) {
+		col[0] = r;
+		col[1] = g;
+		col[2] = b;
+	}
+	
+	void setCol(float* c) {
+		col[0] = c[0];
+		col[1] = c[1];
+		col[2] = c[2];
+	}
+};
+
+
+typedef roxlu::Vertices_Template<KinectVertex>	KinectVertices;
+
+
 
 struct KinectTriangle {
-	
+	int va;
+	int vb;
+	int vc;
+		
 	// the 3 points in the triangle
 	ofVec2f points[3];
 	
