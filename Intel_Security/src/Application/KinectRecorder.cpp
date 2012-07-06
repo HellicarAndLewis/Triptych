@@ -66,6 +66,8 @@ bool KinectRecorder::save(const std::string& filepath) {
 }
 
 bool KinectRecorder::load(const std::string& filepath) {
+	//return true; // tmp, working w/o kinect input
+
 	std::ifstream ifs;
 	ifs.open(filepath.c_str(), std::ios::out | std::ios::binary);
 	if(!ifs.is_open()) {

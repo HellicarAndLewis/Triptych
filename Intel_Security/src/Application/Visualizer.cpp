@@ -39,6 +39,8 @@ void Visualizer::setup() {
 	explosion_trails.setup();	
 	
 	kinect_drawer.setup();
+	
+	boid_drawer.setup();
 }
 
 void Visualizer::update() {
@@ -61,6 +63,36 @@ void Visualizer::draw(const float* pm, const float* vm, const float* nm) {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	
 	kinect_drawer.draw(pm, vm);
+	
+	/*
+	Vec3 up(0,1,0);
+	Mat3 cs; // coordinate system
+	for(Particles3::iterator it = ps.begin(); it != ps.end(); ++it) {
+		Particle3& p = **it;
+		boid.direction = p.velocity.getNormalized();
+		boid.position = p.position;
+		cs.makeCoordinateSystem(boid.direction, up);
+		boid.debugDraw(cs);
+	}
+	*/
+	
+	// Boids
+	 
+	Mat3 cs;
+	Vec3 up(0,1,0);
+	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
+		Boid& b = **it;
+		boid_drawer.direction = b.velocity.getNormalized();
+		boid_drawer.position = b.position;
+		cs.makeCoordinateSystem(boid_drawer.direction, up);
+		boid_drawer.draw(pm, vm, nm, cs.getPtr());
+		//boid_drawer.debugDraw(cs);
+		//bb.draw(b.position, b.size * 5, 0.0, 1.0);
+	}
+	
+	/*
+	void BoidDrawer::draw(const float* pm, const float* vm, const float* nm, const float* coordinateSystem) {
+	*/
 	
 	// Boids: dot
 	/*
@@ -109,7 +141,7 @@ void Visualizer::debugDraw() {
 	glColor3f(1,1,1);
 	::draw(flock_ps);
 	
-	
+	/*
 	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
 		Boid& b = **it;
 	
@@ -133,6 +165,18 @@ void Visualizer::debugDraw() {
 	
 	// Explosion trails
 	explosion_trails.debugDraw();
+	*/
+	
+	Mat3 cs;
+	Vec3 up(0,1,0);
+	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
+		Boid& b = **it;
+		boid_drawer.direction = b.velocity.getNormalized();
+		boid_drawer.position = b.position;
+		cs.makeCoordinateSystem(boid_drawer.direction, up);
+		boid_drawer.debugDraw(cs);
+		//bb.draw(b.position, b.size * 5, 0.0, 1.0);
+	}
 	
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

@@ -1,16 +1,7 @@
 #ifndef ROXLU_BOID_TYPESH
 #define ROXLU_BOID_TYPESH
 
-/*
-#include "PBD.h"
-#include "Vec2.h"
 #include <deque>
-#include "Settings.h"
-#include "Trail.h"
-*/
-
-#include <deque>
-
 #include <pbd/PBD.h>
 #include <application/Settings.h>
 #include <application/visuals/Trail.h>
@@ -23,7 +14,6 @@ struct BoidParticle : public Particle<T> {
 	void update(const float dt);
 	void removeTrail();
 	
-//	std::deque<T> trail;
 	Trail2PC trail;
 	uint64_t grow_trail_end;
 	uint64_t glow_end;

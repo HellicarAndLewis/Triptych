@@ -79,12 +79,11 @@ void KinectDrawer::draw(const float* pm, const float* vm) {
 	
 	vao.bind();
 		glDrawArrays(GL_TRIANGLES, 0, num_vertices);
-		
 	vao.unbind();	
+	
 	shader.disable();
 	
 	glEnable(GL_TEXTURE_2D);
-
 }
 
 

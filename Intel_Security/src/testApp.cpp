@@ -23,17 +23,18 @@ void testApp::setup(){
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
-	
-	flock_gui.addFloat("Flock high threshold (align)", app.flock.high).setMin(0.0f).setMax(1.0f);
-	flock_gui.addFloat("Flock low threshold (separate)", app.flock.low).setMin(0.0f).setMax(1.0f);
-	flock_gui.addFloat("Flock radius SQ", app.flock.zone_radius_sq).setMin(0.0f).setMax(20000.0f);
-	flock_gui.addFloat("Flock max speed", settings.flocking_max_speed).setMin(0.0f).setMax(50.0f).setColor(0.6,0.1,0.1);
-	flock_gui.addFloat("Flock align energy", app.flock.align_energy).setMin(0.0f).setMax(100.0f);
-	flock_gui.addFloat("Flock separate energy", app.flock.separate_energy).setMin(0.0f).setMax(100.0f);
-	flock_gui.addFloat("Flock attract energy", app.flock.attract_energy).setMin(0.0f).setMax(100.0f);
-	flock_gui.addBool("Flock apply perlin noise", settings.flocking_apply_perlin);//.setColor(0.4, 0.03, 0.1);
-	flock_gui.addFloat("Flock perlin scale", settings.flocking_perlin_scale).setMin(0.0f).setMax(10.0f); //.setColor(0.4, 0.03, 0.1);
-	flock_gui.addFloat("Flock perlin influence", settings.flocking_perlin_influence).setMin(0.0f).setMax(100.0f); //.setColor(0.4, 0.03, 0.1);
+	float flock_col[3] = {0.38,0.38,0.06};
+	flock_gui.addFloat("Flock radius SQ", app.flock.zone_radius_sq).setMin(0.0f).setMax(2.4).setColor(flock_col);
+	flock_gui.addFloat("Flock high threshold (align)", app.flock.high).setMin(0.0f).setMax(1.0f).setColor(flock_col);
+	flock_gui.addFloat("Flock low threshold (separate)", app.flock.low).setMin(0.0f).setMax(1.0f).setColor(flock_col);
+	flock_gui.addFloat("Flock align energy", app.flock.align_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
+	flock_gui.addFloat("Flock separate energy", app.flock.separate_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
+	flock_gui.addFloat("Flock attract energy", app.flock.attract_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
+	flock_gui.addFloat("Flock center energy", settings.flocking_center_energy).setMin(0.0f).setMax(5.0f).setColor(flock_col);
+	flock_gui.addFloat("Flock sphere size", settings.flocking_sphere_size).setMin(3.0f).setMax(10.0f).setColor(flock_col);
+	//flock_gui.addBool("Flock apply perlin noise", settings.flocking_apply_perlin);//.setColor(0.4, 0.03, 0.1);
+	//flock_gui.addFloat("Flock perlin scale", settings.flocking_perlin_scale).setMin(0.0f).setMax(10.0f); //.setColor(0.4, 0.03, 0.1);
+	//flock_gui.addFloat("Flock perlin influence", settings.flocking_perlin_influence).setMin(0.0f).setMax(100.0f); //.setColor(0.4, 0.03, 0.1);
 
 	flock_gui.addFloat("Boid trail duration (millis)", settings.boid_trail_duration_millis).setMin(0.0f).setMax(5000.0f);
 	flock_gui.addFloat("Boid glow duration (millis)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
@@ -71,6 +72,8 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
+	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
 		
 	//room.draw();
 	gui.draw();
@@ -94,8 +97,7 @@ void testApp::draw(){
 	
 	
 	
-	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
-	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
+	
 }
 
 //--------------------------------------------------------------

@@ -17,7 +17,6 @@ public:
 	void setup();
 	void update();
 	void checkBounds();
-	
 
 	Boids& flock_ps;
 	Boids& fx_ps;
