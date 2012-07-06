@@ -106,4 +106,14 @@ void KinectDrawer::debugDrawMesh(KinectMesh& m) {
 		//printf("%f, f\n", tri.points[0][0], tri.points[0][1
 	}
 	glEnd();
+	
+	// outline
+	glColor3f(1,0,0);
+	glBegin(GL_LINE_STRIP);
+		for(int i = 0; i < m.outline.size(); ++i) {	
+			ofVec2f v = m.outline[i];
+			v *= 0.01;
+			glVertex2f(v.x, -v.y);
+		}
+	glEnd();
 }

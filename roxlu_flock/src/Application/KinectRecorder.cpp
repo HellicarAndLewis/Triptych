@@ -18,9 +18,10 @@ KinectRecorder::~KinectRecorder() {
 	}
 }
 
-void KinectRecorder::addFrame(KinectVertices& vertices) {
+void KinectRecorder::addFrame(const KinectVertices& vertices, const vector<ofVec2f>& outline) {
 	KinectRecorderFrame* f = new KinectRecorderFrame();
 	f->vertices = vertices;
+	f->outline = outline;
 	frames.push_back(f);
 	printf("New kinect frame: %zu\n", frames.size());
 }
@@ -48,6 +49,15 @@ bool KinectRecorder::save(const std::string& filepath) {
 			ofs.write((char*)kv.pos, sizeof(float) * 3);
 			ofs.write((char*)kv.col, sizeof(float) * 3);
 		}
+		
+		// store the outline
+		size_t outline_num = frame.outline.size();
+		ofs.write((char*)&outline_num, sizeof(size_t));
+		for(int i = 0; i < outline_num; ++i) {
+			ofVec2f& v = frame.outline[i];
+			ofs.write((char*)&v.x,sizeof(float));
+			ofs.write((char*)&v.y,sizeof(float));
+		}
 	}
 	
 	ofs.close();
@@ -68,7 +78,9 @@ bool KinectRecorder::load(const std::string& filepath) {
 
 	for(int i = 0; i < num_frames; ++i) {
 		KinectVertices verts;
-		size_t num_vertices;
+		
+		// get vertices
+		size_t num_vertices = 0;
 		ifs.read((char*)&num_vertices, sizeof(size_t));
 
 		for(int j = 0; j <  num_vertices; ++j) {
@@ -77,8 +89,19 @@ bool KinectRecorder::load(const std::string& filepath) {
 			ifs.read((char*)kv.col, sizeof(float) * 3);
 			verts.add(kv);
 		}
+		
+		// get outline
+		vector<ofVec2f> outline;
+		size_t outline_num = 0;
+		ifs.read((char*)&outline_num, sizeof(size_t));
+		for(int i = 0; i < outline_num; ++i) {
+			ofVec2f v;
+			ifs.read((char*)&v.x,sizeof(float));
+			ifs.read((char*)&v.y,sizeof(float));
+			outline.push_back(v);
+		}
 
-		addFrame(verts);
+		addFrame(verts, outline);
 	}
 	is_loaded = true;
 	return true;

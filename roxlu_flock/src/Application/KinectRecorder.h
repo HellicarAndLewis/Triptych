@@ -2,6 +2,8 @@
 #define ROXLU_KINECTRECORDERH
 
 #include "KinectTriangle.h"
+#include "ofMain.h"
+
 #include <string>
 #include <vector>
 #include <fstream>
@@ -10,6 +12,7 @@
 
 struct KinectRecorderFrame {
 	KinectVertices vertices;
+	vector<ofVec2f> outline;
 };
 
 enum KinectRecorderTypes {
@@ -20,7 +23,7 @@ class KinectRecorder {
 public:
 	KinectRecorder();
 	~KinectRecorder();
-	void addFrame(KinectVertices& vertices);	
+	void addFrame(const KinectVertices& vertices, const vector<ofVec2f>& outline);	
 	bool save(const std::string& filepath);
 	bool load(const std::string& filepath);	
 	bool update();

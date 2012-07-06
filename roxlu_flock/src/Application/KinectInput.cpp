@@ -60,6 +60,7 @@ bool KinectInput::update() {
 		KinectRecorderFrame& frame = recorder.getCurrentFrame();
 		KinectMesh km;
 		km.vertices = frame.vertices;
+		km.outline = frame.outline;
 		kmeshes.push_back(km);
 		is_updated = true;
 		return true;
@@ -78,7 +79,7 @@ bool KinectInput::update() {
 			kmeshes.push_back(km);
 			
 			if(settings.must_record_kinect) {
-				recorder.addFrame(km.vertices);
+				recorder.addFrame(km.vertices, km.outline);
 			}
 		}
 		

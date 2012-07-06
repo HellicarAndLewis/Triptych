@@ -137,6 +137,11 @@ void Visualizer::debugDraw() {
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	kinect_drawer.debugDraw();
+	
+	deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
+	if(meshes.size() > 0) {
+		kinect_drawer.debugDrawMesh(meshes[0]);
+	}
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		
 }
