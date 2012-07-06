@@ -1,11 +1,11 @@
 <controls>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>25</value>
+        <value>10</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>15</value>
+        <value>16</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -13,7 +13,7 @@
     </Toggle_Per_Vertex_Colour>
     <SliderFloat_Edge_Colour_Sharpening>
         <name>Edge Colour Sharpening</name>
-        <value>0.76</value>
+        <value>0.32</value>
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>

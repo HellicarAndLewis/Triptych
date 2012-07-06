@@ -12,23 +12,14 @@ Controller::Controller(Boids& flockPS, Boids& fxPS, int w, int h)
 void Controller::setup() {
 	// add some boids
 	int num = 400;
-//	Vec2 pos;
-	Vec3 pos;
-	float cx = w * 0.5f;
-	float cy = h * 0.5f;
-	float s = 3.0f;
+	float s = 5.0f;
+	Boids::Vec pos;
 	for(int i = 0; i < num; ++i) {
-		/*
-		pos = randomVec2() * s;
-		pos.x += cx;
-		pos.y += cy;
-		*/
-		
 		pos = randomVec3() * s;
 		Boid* p = new Boid(pos);
 		p->size = random(1.0f, 10.0f);
 		p->aging = false;
-		//p->disable();
+		p->velocity = randomVec3()*0.1;
 		flock_ps.addParticle(p);
 	}
 }
@@ -37,8 +28,9 @@ void Controller::setup() {
 void Controller::update() {
 	
 
-	//checkBounds();
+	checkBounds();
 	
+	/*
 	vector<Boid*> new_particles;
 	float pf;
 	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
@@ -123,31 +115,22 @@ void Controller::update() {
 			
 		}
 	}
-	
+	*/
 }
 	
 	
 void Controller::checkBounds() {
-	
+	// Make sure the boids stay in a sphere.
+	float ls;
+	float range_sq = settings.flocking_sphere_size * settings.flocking_sphere_size;
 	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
 		Boid& p = **it;
-		if(p.position.x < 0) {
-			p.position.x = w;
-			p.removeTrail();
-		}
-		else if(p.position.x > w) {
-			p.position.x = 0;
-			p.removeTrail();
-		}
-		if(p.position.y < 0) {
-			p.position.y = h;
-//			p.position.set(320,320);
-			p.removeTrail();
-		}
-		else if(p.position.y > h) {
-			p.position.y = 0;
-//			p.position.set(320,320);
-			p.removeTrail();
+		Boids::Vec dir = -p.position;
+		ls = dir.lengthSquared();
+		if(ls > range_sq)  {
+			float F = 1.0f/ls;
+			dir.normalize();
+			p.addForce(dir * (F * settings.flocking_center_energy) );
 		}
 	}
 	

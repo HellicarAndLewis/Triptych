@@ -17,8 +17,8 @@ void Application::update() {
 	kinect.update();
 
 	//flock.setMaxSpeed(settings.flocking_max_speed);
-	//flock.update();
-	//flock_ps.update(0.3);
+	flock.update();
+	flock_ps.update(0.3);
 	//fx_ps.update(0.3);
 	
 	control.update();

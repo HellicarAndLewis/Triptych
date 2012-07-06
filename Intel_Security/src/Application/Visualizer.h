@@ -20,6 +20,7 @@
 #include <application/BoidTypes.h>
 #include <application/visuals/ExplosionTrails.h>
 #include <application/visuals/KinectDrawer.h>
+#include <application/visuals/BoidDrawer.h>
 
 
 class Visualizer {
@@ -37,6 +38,7 @@ public:
 	ExplosionTrails explosion_trails;
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
+	BoidDrawer boid_drawer;
 	
 	Billboard bb;
 	Texture glow_tex;
