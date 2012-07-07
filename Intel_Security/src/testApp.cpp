@@ -38,6 +38,7 @@ void testApp::setup(){
 
 	flock_gui.addFloat("Boid trail duration (millis)", settings.boid_trail_duration_millis).setMin(0.0f).setMax(5000.0f);
 	flock_gui.addFloat("Boid glow duration (millis)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
+	flock_gui.addBool("Boid glows", settings.boid_draw_glows);
 
 	flock_gui.addFloat("Explosion random x velocity", settings.explosion_random_x_vel).setMin(0.0f).setMax(15.0f);
 	flock_gui.addFloat("Explosion random y velocity", settings.explosion_random_y_vel).setMin(0.0f).setMax(15.0f);
@@ -48,7 +49,10 @@ void testApp::setup(){
 	flock_gui.addInt("Explosion trail length", settings.explosion_trail_length).setMin(0).setMax(20);
 	flock_gui.addBool("Record kinect", settings.must_record_kinect);
 	flock_gui.addButton<testApp>("Save kinect recording", 0, this);
+	flock_gui.addBool("Draw grid", settings.draw_axis);
+	
 	flock_gui.load(ofToDataPath("gui.bin",true));
+	
 
 	cam.setup(ofGetWidth(), ofGetHeight());
 	cam.translate(0,0,5);
@@ -78,16 +82,22 @@ void testApp::draw(){
 	//room.draw();
 	gui.draw();
 	if(!debug) {
+		Vec3 right, up;
+		cam.getBillboardVectors(right, up);
 		Mat3 nm(cam.vm());
         nm.inverse();
         nm.transpose();
 		cam.place();
-		ax.draw();
-		app.draw(cam.pm().getPtr(), cam.vm().getPtr(), nm.getPtr());
+		if(settings.draw_axis) {
+			ax.draw();
+		}
+		app.draw(cam.pm().getPtr(), cam.vm().getPtr(), nm.getPtr(), right.getPtr(), up.getPtr());
 	}
 	else {
 		cam.place();
-		ax.draw();
+		if(settings.draw_axis) {
+			ax.draw();
+		}
 		app.debugDraw();		
 	}
 	

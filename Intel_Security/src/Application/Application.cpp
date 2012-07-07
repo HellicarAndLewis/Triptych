@@ -31,8 +31,8 @@ void Application::update() {
 	viz.update();
 }
 
-void Application::draw(const float* pm, const float* vm, const float* nm) {
-	viz.draw(pm, vm, nm);
+void Application::draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec) {
+	viz.draw(pm, vm, nm, rightVec, upVec);
 }
 
 void Application::debugDraw() {

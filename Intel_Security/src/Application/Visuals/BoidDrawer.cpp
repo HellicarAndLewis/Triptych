@@ -37,9 +37,9 @@ void BoidDrawer::setup() {
 		Vec3& va = vd[tri.va];
 		Vec3& vb = vd[tri.vb];
 		Vec3& vc = vd[tri.vc];
-		Vec3 ab = vb - va;
-		Vec3 ac = vc - va;
-		Vec3 norm = cross(ab, ac);
+//		Vec3 ab = vb - va;
+//		Vec3 ac = vc - va;
+//		Vec3 norm = cross(ab, ac);
 		Vec2& ta = vd.texcoords[tri.tc_a];
 		Vec2& tb = vd.texcoords[tri.tc_b];
 		Vec2& tc = vd.texcoords[tri.tc_c];
@@ -127,6 +127,9 @@ void BoidDrawer::draw(const float* pm, const float* vm, const float* nm, const M
 	
 		shader.disable();
 	vao.unbind();
+	glDisable(GL_TEXTURE_2D);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void BoidDrawer::debugDraw(const Mat3& cs) {

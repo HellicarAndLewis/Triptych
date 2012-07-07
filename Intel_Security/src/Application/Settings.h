@@ -9,6 +9,8 @@ struct Settings {
 		,boid_trail_duration_millis(583.33f)
 		,boid_glow_duration_millis(833.34f)
 		,must_record_kinect(false)
+		,boid_draw_glows(false)
+		,draw_axis(false)
 
 	{
 	}
@@ -22,6 +24,7 @@ struct Settings {
 	
 	float boid_trail_duration_millis;
 	float boid_glow_duration_millis;
+	bool boid_draw_glows;
 	
 	int explosion_trail_length;
 	float explosion_random_x_vel;
@@ -31,6 +34,7 @@ struct Settings {
 	float explosion_perlin_influence;
 	float explosion_perlin_scale;
 	bool must_record_kinect;
+	bool draw_axis;
 
 };
 

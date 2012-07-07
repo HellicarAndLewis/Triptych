@@ -22,6 +22,17 @@
 #include <application/visuals/KinectDrawer.h>
 #include <application/visuals/BoidDrawer.h>
 
+typedef std::pair<int,int> BoidConnection;
+
+class DebugTrail {
+public:
+	void operator()(const float perc, Vec4& col) {
+		col.set(1.0-perc, perc*0.5, perc*0.2, perc);
+	}
+};
+
+
+
 
 class Visualizer {
 public:
@@ -29,7 +40,7 @@ public:
 	void setup();
 	void update();
 	//void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
-	void draw(const float* pm, const float* vm, const float* nm);
+	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
 
 	
@@ -44,6 +55,12 @@ public:
 	Texture glow_tex;
 	Texture twinkle_tex;
 	Texture mega_glow_tex;
+	
+	// TESTING WITH TRAILS
+	vector<BoidConnection> connections;
+	Boid* connection_boid;
+	vector<Vec3> connection_points;
+	Trail3PC	test_trail;
 	
 private:
 };

@@ -51,7 +51,7 @@ void ExplosionTrails::update() {
 			trails.addTrail(&b.trail);
 		}
 	}
-	trails.createTriangleStrips(3.0f, vertices);
+	//trails.createTriangleStrips(3.0f, vertices);
 			
 	// fill buffer
 	size_t needed = trails.getNumBytesForTriangleStrips();

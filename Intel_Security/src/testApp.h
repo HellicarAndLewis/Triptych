@@ -2,16 +2,6 @@
 
 #include "ofMain.h"
 
-/*
-#include "Application.h"
-#include "Buttons.h"
-#include "Settings.h"
-
-
-// test
-#include "PBD.h"
-*/
-
 #include <application/Application.h>
 #include <application/Settings.h>
 #include <buttons/Buttons.h>

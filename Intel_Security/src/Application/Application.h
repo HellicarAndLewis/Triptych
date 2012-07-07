@@ -14,7 +14,7 @@ public:
 	Application(const int w, const int h);
 	void setup();
 	void update();
-	void draw(const float* pm, const float* vm, const float* nm);
+	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
 	
 	Boids flock_ps;
