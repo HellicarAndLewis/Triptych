@@ -104,11 +104,12 @@ void BoidDrawer::draw(const float* pm, const float* vm, const float* nm, const M
 	//glDisable(GL_CULL_FACE);
 	//glDisable(GL_DEPTH_TEST);
 	
-	
+	// @todo 
 	Mat4 m1 = Mat4::rotation(cs);
 	Mat4 m2 = Mat4::translation(position);
 	Mat4 model = m2 * m1;
 	model.scale(size);
+	
 	vao.bind();
 		shader.enable();
 		

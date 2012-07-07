@@ -77,7 +77,7 @@ void Visualizer::draw(const float* pm, const float* vm, const float* nm) {
 	*/
 	
 	// Boids
-//	glDisable(GL_BLEND);
+	glDisable(GL_BLEND);
 	glEnable(GL_CULL_FACE);
 //	glEnable(GL_DEPTH_TEST);
 	Mat3 cs;
