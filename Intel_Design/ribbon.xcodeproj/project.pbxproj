@@ -160,7 +160,6 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		EA2AA55C15A336E40067DB6C /* KinectSkeletons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectSkeletons.cpp; sourceTree = "<group>"; };
 		EA2AA55D15A336E40067DB6C /* KinectSkeletons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectSkeletons.h; sourceTree = "<group>"; };
-		EA2AA56115A337850067DB6C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EA2AA56215A337850067DB6C /* GPL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPL.txt; sourceTree = "<group>"; };
 		EA2AA56515A337850067DB6C /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
 		EA2AA56715A337850067DB6C /* XnCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XnCommon.h; sourceTree = "<group>"; };
@@ -582,7 +581,6 @@
 			isa = PBXGroup;
 			children = (
 				EA2AA5F815A33F1E0067DB6C /* lib */,
-				EA2AA56115A337850067DB6C /* .gitignore */,
 				EA2AA56215A337850067DB6C /* GPL.txt */,
 				EA2AA56315A337850067DB6C /* include */,
 				EA2AA5ED15A337850067DB6C /* LGPL.txt */,
