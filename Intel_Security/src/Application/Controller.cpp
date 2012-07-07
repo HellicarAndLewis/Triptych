@@ -19,7 +19,7 @@ void Controller::setup() {
 		Boid* p = new Boid(pos);
 		p->size = random(1.0f, 10.0f);
 		p->aging = false;
-		p->velocity = randomVec3()*0.1;
+		//p->velocity = randomVec3()* 2.0;
 		flock_ps.addParticle(p);
 	}
 }

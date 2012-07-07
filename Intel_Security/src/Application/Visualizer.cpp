@@ -77,15 +77,18 @@ void Visualizer::draw(const float* pm, const float* vm, const float* nm) {
 	*/
 	
 	// Boids
-	 
+//	glDisable(GL_BLEND);
+	glEnable(GL_CULL_FACE);
+//	glEnable(GL_DEPTH_TEST);
 	Mat3 cs;
 	Vec3 up(0,1,0);
 	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
 		Boid& b = **it;
 		boid_drawer.direction = b.velocity.getNormalized();
 		boid_drawer.position = b.position;
+		boid_drawer.size = b.size  * 0.1;
 		cs.makeCoordinateSystem(boid_drawer.direction, up);
-		boid_drawer.draw(pm, vm, nm, cs.getPtr());
+		boid_drawer.draw(pm, vm, nm, cs);
 		//boid_drawer.debugDraw(cs);
 		//bb.draw(b.position, b.size * 5, 0.0, 1.0);
 	}
@@ -130,6 +133,13 @@ void Visualizer::draw(const float* pm, const float* vm, const float* nm) {
 	// Exploision trails
 	explosion_trails.draw(pm, vm);
 	*/
+	
+	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_BLEND);
+	
+
 }
 
 void Visualizer::debugDraw() {

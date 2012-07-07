@@ -8,6 +8,7 @@ Application::Application(const int w, const int h)
 }
 
 void Application::setup() {
+
 	kinect.setup();
 	control.setup();
 	viz.setup();

@@ -37,7 +37,7 @@
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
-        <value>-0.36</value>
+        <value>0.94</value>
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
@@ -45,11 +45,11 @@
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.07</value>
+        <value>1</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.115</value>
+        <value>0.99</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
