@@ -45,12 +45,29 @@ inline void createTrailLineStripData(Vec2& point, float perc, VerticesPC& vd) {
 }
 
 
+// Create a triangle strip with position + texture coords
+class TrailTriangleVerticesPT {
+public:
+	void operator()(Vec3& a, Vec3& b, Vec3& dir, const float width, float perc, VerticesPT& vd) {
+		Vec3 up(0,1,0);
+		Vec3 crossed = cross(up, dir);
+		crossed.normalize();
+		crossed *= width;
+		
+		vd.add(VertexPT(a-crossed, Vec2(perc, 1.0)));
+		vd.add(VertexPT(b+crossed, Vec2(perc, 0.0)));
+	}
+};
+
+
+
 // colorizer
 struct TrailTriangleVerticesPCColor {
 	void operator()(const float perc, Vec4& color) {
 		color.set(perc, perc*0.2, 1.0-perc, perc);
 	}
 };	
+
 
 template<class T>
 class TrailTriangleVerticesPC {
@@ -88,7 +105,7 @@ public:
 		point_b.setCol(col);
 		vd.add(point_b);
 	}
-	
+		
 	void operator()(Vec2& a, Vec2& b, Vec2& dir, const float width, float perc, VerticesPC& vd) {
 		Vec2 perp(-a.y, a.x); // or rotate 90 over Z?
 		perp.normalize();
@@ -187,6 +204,7 @@ public:
 	template<class W, class T>
 	void createTriangleStrip(const float maxWidth, C& vd, W widthFunctor, T triFunctor);
 	void createTriangleStrip(const float maxWidth, C& vd);
+	void createTriangleStripPT(const float maxWidth, C& vd);
 	
 	typename std::deque<V>::iterator begin();
 	typename std::deque<V>::iterator end();
@@ -273,6 +291,13 @@ inline void Trail<V,D,C>::createTriangleStrip(const float maxWidth, C& vd) {
 }
 
 template<class V, class D, class C>
+inline void Trail<V,D,C>::createTriangleStripPT(const float maxWidth, C& vd) {
+	TrailPercentageWidth wf;
+	TrailTriangleVerticesPT trip;
+	createTriangleStrip<TrailPercentageWidth, TrailTriangleVerticesPT>(maxWidth, vd, wf, trip);	
+}
+
+template<class V, class D, class C>
 template<class W, class T>
 inline void Trail<V, D, C>::createTriangleStrip(const float maxWidth, C& vd, W widthFunctor, T triFunctor) {
 	float w = 0.0f;
@@ -292,7 +317,9 @@ inline void Trail<V, D, C>::createTriangleStrip(const float maxWidth, C& vd, W w
 typedef Trail<Vec2, VertexP, VerticesP> Trail2P; // Position
 typedef Trail<Vec2, VertexPC, VerticesPC> Trail2PC; // Position and Color
 
+
 typedef Trail<Vec3, VertexP, VerticesP> Trail3P;
 typedef Trail<Vec3, VertexPC, VerticesPC> Trail3PC;
+typedef Trail<Vec3, VertexPT, VerticesPT> Trail3PT; // Position and texture
 
 #endif

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */; };
+		5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */; };
 		549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423515A4C18500A50CC3 /* KinectInput.cpp */; };
 		549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423E15A4C54600A50CC3 /* KinectMesh.cpp */; };
 		549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A424015A4C54600A50CC3 /* KinectThresholder.cpp */; };
@@ -24,7 +26,7 @@
 		54E0CCD415A2CB5D00045537 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC415A2CB5D00045537 /* Controller.cpp */; };
 		54E0CCD615A2CB5D00045537 /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCC815A2CB5D00045537 /* Settings.cpp */; };
 		54E0CCD715A2CB5D00045537 /* Visualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */; };
-		54E0CCD915A2CB5D00045537 /* ExplosionTrails.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */; };
+		54E0CCD915A2CB5D00045537 /* TrailsDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCF15A2CB5D00045537 /* TrailsDrawer.cpp */; };
 		54E0CDC015A2DEF600045537 /* BoidDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CDBE15A2DEF600045537 /* BoidDrawer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -166,6 +168,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.frag; path = bin/data/trails_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.vert; path = bin/data/trails_drawer.vert; sourceTree = SOURCE_ROOT; };
 		549A423515A4C18500A50CC3 /* KinectInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectInput.cpp; sourceTree = "<group>"; };
 		549A423615A4C18500A50CC3 /* KinectInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInput.h; sourceTree = "<group>"; };
 		549A423E15A4C54600A50CC3 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectMesh.cpp; path = ../lib/KinectMesh.cpp; sourceTree = "<group>"; };
@@ -208,9 +212,9 @@
 		54E0CCC915A2CB5D00045537 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Visualizer.cpp; sourceTree = "<group>"; };
 		54E0CCCB15A2CB5D00045537 /* Visualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visualizer.h; sourceTree = "<group>"; };
-		54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExplosionTrails.cpp; sourceTree = "<group>"; };
-		54E0CCD015A2CB5D00045537 /* ExplosionTrails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplosionTrails.h; sourceTree = "<group>"; };
-		54E0CCD115A2CB5D00045537 /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
+		54E0CCCF15A2CB5D00045537 /* TrailsDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrailsDrawer.cpp; sourceTree = "<group>"; };
+		54E0CCD015A2CB5D00045537 /* TrailsDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailsDrawer.h; sourceTree = "<group>"; };
+		54E0CCD115A2CB5D00045537 /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		54E0CCD215A2CB5D00045537 /* Trails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trails.h; sourceTree = "<group>"; };
 		54E0CDBE15A2DEF600045537 /* BoidDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoidDrawer.cpp; sourceTree = "<group>"; };
 		54E0CDBF15A2DEF600045537 /* BoidDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidDrawer.h; sourceTree = "<group>"; };
@@ -235,8 +239,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E9677EA015A7330C00E081DE /* boid_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = boid_drawer.frag; path = bin/data/boid_drawer.frag; sourceTree = SOURCE_ROOT; };
-		E9677EA115A7330C00E081DE /* boid_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = boid_drawer.vert; path = bin/data/boid_drawer.vert; sourceTree = SOURCE_ROOT; };
+		E9677EA015A7330C00E081DE /* boid_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = boid_drawer.frag; path = bin/data/boid_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		E9677EA115A7330C00E081DE /* boid_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = boid_drawer.vert; path = bin/data/boid_drawer.vert; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		E96F814215A469A300548852 /* ArcBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArcBall.cpp; sourceTree = "<group>"; };
 		E96F814315A469A300548852 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		E96F814415A469A300548852 /* EasyCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EasyCam.cpp; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 		549A43E415A580A000A50CC3 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */,
+				5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */,
 				E9677EA015A7330C00E081DE /* boid_drawer.frag */,
 				E9677EA115A7330C00E081DE /* boid_drawer.vert */,
 				549A43E515A580AA00A50CC3 /* kinect_drawer.frag */,
@@ -591,8 +597,8 @@
 		54E0CCCC15A2CB5D00045537 /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
-				54E0CCCF15A2CB5D00045537 /* ExplosionTrails.cpp */,
-				54E0CCD015A2CB5D00045537 /* ExplosionTrails.h */,
+				54E0CCCF15A2CB5D00045537 /* TrailsDrawer.cpp */,
+				54E0CCD015A2CB5D00045537 /* TrailsDrawer.h */,
 				54E0CCD115A2CB5D00045537 /* Trail.h */,
 				54E0CCD215A2CB5D00045537 /* Trails.h */,
 				54E0CDBE15A2DEF600045537 /* BoidDrawer.cpp */,
@@ -1438,7 +1444,7 @@
 				54E0CCD415A2CB5D00045537 /* Controller.cpp in Sources */,
 				54E0CCD615A2CB5D00045537 /* Settings.cpp in Sources */,
 				54E0CCD715A2CB5D00045537 /* Visualizer.cpp in Sources */,
-				54E0CCD915A2CB5D00045537 /* ExplosionTrails.cpp in Sources */,
+				54E0CCD915A2CB5D00045537 /* TrailsDrawer.cpp in Sources */,
 				54E0CDC015A2DEF600045537 /* BoidDrawer.cpp in Sources */,
 				EAE2A67715A445FC00327E97 /* Room.cpp in Sources */,
 				EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */,
@@ -1541,6 +1547,8 @@
 				549A43EC15A5997600A50CC3 /* KinectRecorder.cpp in Sources */,
 				E9677EA215A7330C00E081DE /* boid_drawer.frag in Sources */,
 				E9677EA315A7330C00E081DE /* boid_drawer.vert in Sources */,
+				5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */,
+				5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

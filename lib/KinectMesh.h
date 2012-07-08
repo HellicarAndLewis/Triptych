@@ -65,6 +65,11 @@ public:
 	static void setupGui();
 	static bool perVertexColour;
 	static float edgeColourSharpening;
+	
+	// used to normalize input
+	float video_w;
+	float video_h;
+	
 private:
 	size_t addVertex(const KinectVertex& kv);
 	
@@ -77,6 +82,4 @@ private:
 
 inline size_t KinectMesh::addVertex(const KinectVertex& kv) {
 	return vertices.add(kv);
-//	vertices.push_back(kv);
-//	return vertices.size()-1;
 }

@@ -32,8 +32,14 @@ public:
 	size_t getNumBytesForTriangleStrips();
 
 	void createLineStrips(C& vd);
+	
+	// W = WidthFunction
+	// T = Triangulator
+	template<class WIDTH_F, class TRI_F>
+	void createTriangleStrips(const float maxWidth, C& vd, WIDTH_F widthFunctor, TRI_F triFunctor);
 	void createTriangleStrips(const float maxWidth, C& vd);
-
+	void createTriangleStrips3PT(const float maxWidth, C& vd);
+	
 	void clear();
 
 	typedef typename std::vector<TrailInfo<T> >::iterator iterator;
@@ -90,7 +96,7 @@ inline size_t Trails<T, C>::getNumBytesForTriangleStrips() {
 }
 
 template<class T, class C>
-inline void Trails<T,C>::createLineStrips(C& vd) {
+inline void Trails<T,C>::createTriangleStrips(const float maxWidth, C& vd) {
 	vd.clear();
 	int prev = 0;
 	for(typename std::vector<TrailInfo<T> >::iterator it = trails.begin(); it != trails.end(); ++it) {
@@ -101,19 +107,29 @@ inline void Trails<T,C>::createLineStrips(C& vd) {
 	}
 }
 
+
 template<class T, class C>
-inline void Trails<T,C>::createTriangleStrips(const float maxWidth, C& vd) {
+inline void Trails<T,C>::createTriangleStrips3PT(const float maxWidth, C& vd) {
+	TrailPercentageWidth wf;
+	TrailTriangleVerticesPT trip;
+	createTriangleStrips(maxWidth, vd, wf, trip);
+}
+
+template<class T, class C>
+template<class WIDTH_F, class TRI_F>
+inline void Trails<T,C>::createTriangleStrips(const float maxWidth, C& vd, WIDTH_F widthFunctor, TRI_F triFunctor) {
 	vd.clear();
 	int prev = 0;
 	for(typename std::vector<TrailInfo<T> >::iterator it = trails.begin(); it != trails.end(); ++it) {
 		TrailInfo<T>& ti = *it;
 		ti.start_index = vd.size();
-		ti.trail->createTriangleStrip(maxWidth, vd);
+		ti.trail->createTriangleStrip(maxWidth, vd, widthFunctor, triFunctor);
 		ti.num_elements = vd.size() - ti.start_index;
 	}
 }
 
-typedef Trails<Trail<Vec2, VertexPC, VerticesPC>, VerticesPC > Trails2PC; // Position, Color
+typedef Trails<Trail<Vec2, VertexPC, VerticesPC>, VerticesPC > Trails2PC; // 2D: Position, Color 
+typedef Trails<Trail<Vec3, VertexPT, VerticesPT>, VerticesPT > Trails3PT; // 3D: Position, TexCoord 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -14,7 +14,7 @@ struct BoidParticle : public Particle<T> {
 	void update(const float dt);
 	void removeTrail();
 	
-	Trail2PC trail;
+	Trail3PT trail;
 	uint64_t grow_trail_end;
 	uint64_t glow_end;
 };

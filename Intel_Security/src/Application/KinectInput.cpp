@@ -20,8 +20,6 @@ KinectInput::KinectInput()
 }
 
 void KinectInput::setup() {
-	
-	
 	if(use_recording) {
 		if(!recorder.load(roxlu::File::toDataPath("kinect.bin"))) {
 			printf("Cannot use recording.\n");

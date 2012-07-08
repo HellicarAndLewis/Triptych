@@ -11,7 +11,7 @@ Controller::Controller(Boids& flockPS, Boids& fxPS, int w, int h)
 
 void Controller::setup() {
 	// add some boids
-	int num = 400;
+	int num = 300;
 	float s = 5.0f;
 	Boids::Vec pos;
 	for(int i = 0; i < num; ++i) {
@@ -29,6 +29,13 @@ void Controller::update() {
 	
 
 	checkBounds();
+	
+	// create trails.
+	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
+		Boid& b = **it;
+		b.trail.push_back(b.position);
+		b.trail.limitLength(50);
+	}
 	
 	/*
 	vector<Boid*> new_particles;

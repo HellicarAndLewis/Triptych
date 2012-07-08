@@ -14,7 +14,7 @@ void KinectDrawer::setup() {
 	shader.load("kinect_drawer");
 	shader.a("a_pos",0).a("a_col",1);
 	shader.link();
-	shader.u("u_modelview_matrix").u("u_projection_matrix");
+	shader.u("u_modelview_matrix").u("u_projection_matrix").u("u_model");
 	
 	vao.unbind();	
 }
@@ -69,14 +69,18 @@ void KinectDrawer::draw(const float* pm, const float* vm) {
 		return;
 	}
 	
+	glDisable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_TEXTURE_2D);
 	
 	shader.enable();
+	roxlu::Mat4 model = roxlu::Mat4::scaling(settings.kinect_scale, settings.kinect_scale, settings.kinect_scale);
+	
 	shader.uniformMat4fv("u_projection_matrix", pm);
 	shader.uniformMat4fv("u_modelview_matrix", vm);
-	
+	shader.uniformMat4fv("u_model", model.getPtr());
+
 	vao.bind();
 		glDrawArrays(GL_TRIANGLES, 0, num_vertices);
 	vao.unbind();	

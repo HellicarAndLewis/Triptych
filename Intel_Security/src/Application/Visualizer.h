@@ -1,28 +1,17 @@
 #ifndef ROXLU_VISUALIZERH
 #define ROXLU_VISUALIZERH
 
-/*
-
-#include "Roxlu.h"
-#include "PBD.h"
-#include "Visualizer.h"
-#include "Boidtypes.h"
-#include "Player.h"
-#include "ExplosionTrails.h"
-#include "Cloak.h"
-*/
-
 #include <roxlu/Roxlu.h>
 #include <pbd/PBD.h>
 
 #include <application/KinectInput.h>
 #include <application/Visualizer.h>
 #include <application/BoidTypes.h>
-#include <application/visuals/ExplosionTrails.h>
+
+#include <application/visuals/TrailsDrawer.h>
 #include <application/visuals/KinectDrawer.h>
 #include <application/visuals/BoidDrawer.h>
 
-typedef std::pair<int,int> BoidConnection;
 
 class DebugTrail {
 public:
@@ -31,8 +20,11 @@ public:
 	}
 };
 
-
-
+struct BoidPartitioner {
+	bool operator()(Boid* boid) {
+		return boid->position.z < 0;
+	}
+};
 
 class Visualizer {
 public:
@@ -41,12 +33,13 @@ public:
 	void update();
 	//void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
 	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
+	void drawBoids(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
+	void drawGlows(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
-
 	
 	Boids& flock_ps;
 	Boids& fx_ps; // effects!
-	ExplosionTrails explosion_trails;
+	TrailsDrawer trails_drawer;
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
 	BoidDrawer boid_drawer;
@@ -57,9 +50,6 @@ public:
 	Texture mega_glow_tex;
 	
 	// TESTING WITH TRAILS
-	vector<BoidConnection> connections;
-	Boid* connection_boid;
-	vector<Vec3> connection_points;
 	Trail3PC	test_trail;
 	
 private:

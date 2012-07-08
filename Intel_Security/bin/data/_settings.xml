@@ -5,7 +5,7 @@
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>16</value>
+        <value>9</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>

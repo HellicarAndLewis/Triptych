@@ -96,6 +96,9 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 	bounding.push_back(new p2t::Point(640,0));
 	bounding.push_back(new p2t::Point(640,480));
 	bounding.push_back(new p2t::Point(0,480));
+	
+	video_w = 640;
+	video_h = 480;
 		
 	delaunay = new p2t::CDT(bounding);
 	
@@ -127,13 +130,12 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 			triangles.back().hollow = false;
 			
 			// store a triangle we can use as vbo (as it's unwraped we actually don't need the indices)
-			//KinectTriangle& tri = triangles.back();
 			p2t::Point* p;
 			int cdx = pos * 3;
 			float inv_col = 1.0f/256.0f;
-			p = tris[i]->GetPoint(0); addVertex(KinectVertex(p->x, -p->y, 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
-			p = tris[i]->GetPoint(1); addVertex(KinectVertex(p->x, -p->y, 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
-			p = tris[i]->GetPoint(2); addVertex(KinectVertex(p->x, -p->y, 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
+			p = tris[i]->GetPoint(0); addVertex(KinectVertex(-0.5 + p->x/video_w, 0.5+(-p->y/video_h), 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
+			p = tris[i]->GetPoint(1); addVertex(KinectVertex(-0.5 + p->x/video_w, 0.5+(-p->y/video_h), 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
+			p = tris[i]->GetPoint(2); addVertex(KinectVertex(-0.5 + p->x/video_w, 0.5+(-p->y/video_h), 0.0, rgb[cdx+0] * inv_col, rgb[cdx+1] * inv_col, rgb[cdx+2] * inv_col));
 		
 			if(perVertexColour) {
 				for(int i = 0; i < 3; i++) {
@@ -172,16 +174,12 @@ void KinectMesh::draw() {
 	mesh.draw();
 }
 
-
-
-
 void KinectMesh::addTriangle(const KinectTriangle &tri) {
 	addTriangle(tri.points[0], tri.points[1], tri.points[2], tri.colors[0], tri.colors[1], tri.colors[2]);
 }
 
 void KinectMesh::addTriangle(const ofVec2f &a, const ofVec2f &b, const ofVec2f &c, 
 							 const ofFloatColor &c0, const ofFloatColor &c1, const ofFloatColor &c2) {
-
 	
 	mesh.addColor(c0);
 	mesh.addVertex(a);

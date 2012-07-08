@@ -37,9 +37,11 @@ void BoidDrawer::setup() {
 		Vec3& va = vd[tri.va];
 		Vec3& vb = vd[tri.vb];
 		Vec3& vc = vd[tri.vc];
-//		Vec3 ab = vb - va;
-//		Vec3 ac = vc - va;
+		Vec3 ab = vb - va;
+		Vec3 ac = vc - va;
 //		Vec3 norm = cross(ab, ac);
+//		norm.normalize();
+		
 		Vec2& ta = vd.texcoords[tri.tc_a];
 		Vec2& tb = vd.texcoords[tri.tc_b];
 		Vec2& tc = vd.texcoords[tri.tc_c];
@@ -51,6 +53,10 @@ void BoidDrawer::setup() {
 		vertices.add(VertexPTN(va, ta, vd.normals[tri.na]));		
 		vertices.add(VertexPTN(vb, tb, vd.normals[tri.nb]));		
 		vertices.add(VertexPTN(vc, tc, vd.normals[tri.nc]));		
+//		vertices.add(VertexPTN(va, ta, norm));		
+//		vertices.add(VertexPTN(vb, tb, norm));		
+//		vertices.add(VertexPTN(vc, tc, norm));		
+
 		/*
 		vertices.add(VertexPN(vd[tri.va], vd.getNormal(tri.va)));		
 		vertices.add(VertexPN(vd[tri.vb], vd.getNormal(tri.vb)));

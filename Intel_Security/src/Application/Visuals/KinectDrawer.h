@@ -5,8 +5,10 @@
 #include "ofMain.h"
 #include "KinectMesh.h"
 
+#include <application/Settings.h>
 #include <roxlu/opengl/VAO.h>
 #include <roxlu/opengl/Shader.h>
+#include <roxlu/math/Mat4.h>
 
 class KinectDrawer {
 public:
