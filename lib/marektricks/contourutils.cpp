@@ -155,7 +155,7 @@ ofRectangle tricks::math::getBoundingBox(vector<ofVec2f> &contour) {
 
 
 //--------------------------------------------------
-bool tricks::math::pointInsidePolygon(ofVec2f &p, const vector<ofVec2f> &polygon){
+bool tricks::math::pointInsidePolygon(ofVec2f &p, const vector<ofVec2f> &polygon, int resolution){
 	int counter = 0;
 	int i;
 	double xinters;
@@ -167,7 +167,7 @@ bool tricks::math::pointInsidePolygon(ofVec2f &p, const vector<ofVec2f> &polygon
 	int N = polygon.size();
 	
 	p1 = polygon[0];
-	for (i=1;i<=N;i++) {
+	for (i=1;i<=N;i+=resolution) {
 		p2 = polygon[i % N];
 		if (y > MIN(p1.y,p2.y)) {
 			if (y <= MAX(p1.y,p2.y)) {

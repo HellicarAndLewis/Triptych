@@ -75,10 +75,11 @@ void Room::begin() {
 		shader.setUniformTexture("tex", tex.getTextureReference(), 0);
 		
 		mesh.draw();	
+		shader.end();
 }
 
 void Room::end() {
-	shader.end();
+
 	
 
 	camera.end();

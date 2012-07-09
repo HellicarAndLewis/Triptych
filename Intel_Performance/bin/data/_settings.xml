@@ -49,7 +49,7 @@
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>-0.43</value>
+        <value>0.98</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
@@ -73,11 +73,11 @@
     </SliderFloat_aoAmount>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>19</value>
+        <value>8</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>25</value>
+        <value>20</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -89,30 +89,30 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_Low_threshold>
         <name>Low threshold</name>
-        <value>0.41</value>
+        <value>0.42</value>
     </SliderFloat_Low_threshold>
     <SliderFloat_High_threshold>
         <name>High threshold</name>
-        <value>0.685</value>
+        <value>0.66</value>
     </SliderFloat_High_threshold>
     <SliderFloat_Align_energy>
         <name>Align energy</name>
-        <value>0.0056</value>
+        <value>0.00035</value>
     </SliderFloat_Align_energy>
     <SliderFloat_Separate_energy>
         <name>Separate energy</name>
-        <value>0.00275</value>
+        <value>0.0003</value>
     </SliderFloat_Separate_energy>
     <SliderFloat_Attract_energy>
         <name>Attract energy</name>
-        <value>0.0041</value>
+        <value>0.0002</value>
     </SliderFloat_Attract_energy>
     <SliderFloat_Center_energy>
         <name>Center energy</name>
-        <value>2.44</value>
+        <value>4</value>
     </SliderFloat_Center_energy>
     <SliderFloat_Bounding_sphere_size>
         <name>Bounding sphere size</name>
-        <value>4.2</value>
+        <value>2.6</value>
     </SliderFloat_Bounding_sphere_size>
 </controls>

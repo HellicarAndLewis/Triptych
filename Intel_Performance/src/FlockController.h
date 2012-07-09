@@ -34,6 +34,8 @@ public:
 	BoidFlocking3 flock;
 	float center_energy;
 	float sphere_size;
+	ofImage fluff;
+	
 };
 
 #endif

@@ -56,6 +56,6 @@ namespace tricks {
 		ofRectangle getBoundingBox(vector<ofVec2f> &contour);
 		
 		
-		bool pointInsidePolygon(ofVec2f &p, const vector<ofVec2f> &polygon);		
+		bool pointInsidePolygon(ofVec2f &p, const vector<ofVec2f> &polygon, int resolution = 1);		
 	}
 }
