@@ -33,7 +33,7 @@
     </SliderInt_blurSize>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>34.95</value>
+        <value>39.35</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
@@ -87,32 +87,36 @@
         <name>Edge Colour Sharpening</name>
         <value>0.945</value>
     </SliderFloat_Edge_Colour_Sharpening>
+    <SliderFloat_Zone_radius_squared>
+        <name>Zone radius squared</name>
+        <value>0.05995</value>
+    </SliderFloat_Zone_radius_squared>
     <SliderFloat_Low_threshold>
         <name>Low threshold</name>
         <value>0.41</value>
     </SliderFloat_Low_threshold>
     <SliderFloat_High_threshold>
         <name>High threshold</name>
-        <value>0.685</value>
+        <value>0.655</value>
     </SliderFloat_High_threshold>
     <SliderFloat_Align_energy>
         <name>Align energy</name>
-        <value>0.0056</value>
+        <value>1.5e-05</value>
     </SliderFloat_Align_energy>
     <SliderFloat_Separate_energy>
         <name>Separate energy</name>
-        <value>0.00275</value>
+        <value>2.5e-05</value>
     </SliderFloat_Separate_energy>
     <SliderFloat_Attract_energy>
         <name>Attract energy</name>
-        <value>0.0041</value>
+        <value>1.5e-05</value>
     </SliderFloat_Attract_energy>
     <SliderFloat_Center_energy>
         <name>Center energy</name>
-        <value>2.44</value>
+        <value>0.1</value>
     </SliderFloat_Center_energy>
     <SliderFloat_Bounding_sphere_size>
         <name>Bounding sphere size</name>
-        <value>4.2</value>
+        <value>0.8</value>
     </SliderFloat_Bounding_sphere_size>
 </controls>

@@ -91,8 +91,9 @@ void testApp::draw(){
 	ofEnableAlphaBlending();
 	
 
-	room.draw();
+	room.begin();
 	flock.debugDraw();
+	room.end();
 	
 	glPushMatrix();
 	{
