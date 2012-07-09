@@ -32,7 +32,7 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update() {
-	flock.update();
+	flock.update(kinect.getOutline().getPixels());
 	
 	if(kinect.update()) {
 		
@@ -143,7 +143,7 @@ void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
 	meshShader.setUniform1i("layer", layer);
 	for(int i = 0; i < mesh.size(); i++) {
 		glPushMatrix();
-		float ss = sin(layer*ofGetElapsedTimef()*0.3)*50*(layer>0?1:0);
+		float ss = sin(layer*ofGetElapsedTimef()*0.3)*10*(layer>0?1:0);
 		glTranslatef(ss, 0, 0);
 		//glTranslatef(0, 0, z*5-mesh[i].depth);
 		mesh[i].draw();				

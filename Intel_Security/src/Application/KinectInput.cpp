@@ -15,7 +15,7 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,use_recording(true)
+	,use_recording(false)
 {
 }
 
@@ -40,6 +40,7 @@ void KinectInput::setup() {
 void KinectInput::setupInputFromKinect() {
 	kinect.setup();
 	kinect.setupGui();
+	kinect.setListener(this);
 }
 
 bool KinectInput::update() {
@@ -54,7 +55,6 @@ bool KinectInput::update() {
 			kmeshes.clear();
 		}
 		
-		
 		KinectRecorderFrame& frame = recorder.getCurrentFrame();
 		KinectMesh km;
 		km.vertices = frame.vertices;
@@ -68,7 +68,8 @@ bool KinectInput::update() {
 		if(!kinect.update()) {
 			return false;
 		}
-		
+		interactive_points.clear();
+		kinect.trackBlobs();
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
 		kmeshes.clear();
 		for(int i = 0; i < contours.blobs.size(); ++i) {
@@ -88,5 +89,16 @@ bool KinectInput::update() {
 	return false;
 }
 
+
+void KinectInput::boundBlobEntered(const BoundBlob &blob) {
+}
+
+void KinectInput::boundBlobMoved(const BoundBlob &blob) {
+	interactive_points.push_back(roxlu::Vec3(-0.5 + blob.left.x/640, 0.5 + -blob.left.y/480, 0.0));
+}
+
+void KinectInput::boundBlobExited(const BoundBlob &blob) {
+	
+}
 
 

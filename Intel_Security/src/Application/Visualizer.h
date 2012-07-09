@@ -51,7 +51,7 @@ public:
 	
 	// TESTING WITH TRAILS
 	Trail3PC	test_trail;
-
+	Boid* test_boid;
 	
 private:
 };

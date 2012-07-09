@@ -15,7 +15,9 @@
  *  BoundBlobListener.h, created by Marek Bereza on 09/07/2012.
  */
 
+#pragma once
 
+#include "BoundBlob.h"
 
 class BoundBlobListener {
 public:

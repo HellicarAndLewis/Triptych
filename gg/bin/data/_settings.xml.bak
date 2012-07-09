@@ -1,0 +1,30 @@
+<controls>
+    <SliderInt_trail_max_length>
+        <name>trail max length</name>
+        <value>500</value>
+    </SliderInt_trail_max_length>
+    <SliderInt_reduction_speed>
+        <name>reduction speed</name>
+        <value>10</value>
+    </SliderInt_reduction_speed>
+    <SliderFloat_interpolation_factor>
+        <name>interpolation factor</name>
+        <value>0.65</value>
+    </SliderFloat_interpolation_factor>
+    <SliderFloat_sine_multiplier>
+        <name>sine multiplier</name>
+        <value>0</value>
+    </SliderFloat_sine_multiplier>
+    <SliderFloat_sine_increment>
+        <name>sine increment</name>
+        <value>0.62</value>
+    </SliderFloat_sine_increment>
+    <Toggle_draw_info>
+        <name>draw info</name>
+        <value>1</value>
+    </Toggle_draw_info>
+    <Toggle_draw_wireframe>
+        <name>draw wireframe</name>
+        <value>0</value>
+    </Toggle_draw_wireframe>
+</controls>
