@@ -93,7 +93,7 @@ void testApp::draw(){
 
 	room.begin();
 //	room.draw();
-	flock.debugDraw();
+//	flock.debugDraw();
 	room.end();
 	glPushMatrix();
 	{
@@ -120,10 +120,10 @@ void testApp::draw(){
 			if(meshes.size()>25) {
 				drawLayer(meshes[25], -40, 1);
 			}
-			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+		/*	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 			if(meshes.size()>0) {
 				drawLayer(meshes[0], 0, 0);
-			}
+			}*/
 			
 		}
 		glPopMatrix();

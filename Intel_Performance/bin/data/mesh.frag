@@ -13,16 +13,16 @@ void main()
 		c.a = 0.5;
 		if(layer==1) {
 			c.r = sqrt(c.r);
-			c.g *= c.g;
-			c.b *= c.b;
+			c.g *= c.g*0.1;
+			c.b *= c.b*0.1;
 		} else if(layer==2) {
 			c.g = sqrt(c.g);
-			c.r *= c.r;
-			c.b *= c.b;
+			c.r *= c.r*0.1;
+			c.b *= c.b*0.1;
 		} else if(layer==3) {
 			c.b = sqrt(c.b);
-			c.r *= c.r;
-			c.g *= c.g;
+			c.r *= c.r*0.1;
+			c.g *= c.g*0.1;
 		}
 	}
 	gl_FragColor = c;
