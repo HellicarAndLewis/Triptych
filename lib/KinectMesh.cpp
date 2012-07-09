@@ -129,7 +129,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		if(depth[pos]>0) {
 			triangles.back().hollow = false;
 			
-			// store a triangle we can use as vbo (as it's unwraped we actually don't need the indices)
+			// store a triangle we can use as vbo (as it's unwrapped we actually don't need the indices)
 			p2t::Point* p;
 			int cdx = pos * 3;
 			float inv_col = 1.0f/256.0f;

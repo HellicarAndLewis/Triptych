@@ -23,7 +23,7 @@ void Application::update() {
 	fx_ps.update(0.3);
 	
 	control.update();
-	
+	flock_ps.limitSpeed(0.4);
 	
 	flock_ps.removeDeadParticles();
 	fx_ps.removeDeadParticles();

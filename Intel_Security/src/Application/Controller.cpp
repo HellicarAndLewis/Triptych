@@ -160,7 +160,7 @@ void Controller::checkBounds() {
 		Boids::Vec dir = -p.position;
 		ls = dir.lengthSquared();
 		if(ls > range_sq)  {
-			float F = 1.0f/ls;
+			float F = 1.0 - (1.0f/ls);
 			dir.normalize();
 			p.addForce(dir * (F * settings.flocking_center_energy) );
 		}

@@ -42,6 +42,9 @@ void Visualizer::setup() {
 	kinect_drawer.setup();
 	
 	boid_drawer.setup();
+	
+	test_boid = flock_ps.createParticle(Vec3(0,0,0));
+	test_boid->disable();
 }
 
 void Visualizer::update() {
@@ -182,8 +185,7 @@ void Visualizer::debugDraw() {
 
 	// draw trails
 	trails_drawer.debugDraw();
-	
-	
+	/*
 	glColor3f(1,1,1);
 	glLineWidth(0.1);
 	glBegin(GL_LINES);
@@ -199,36 +201,16 @@ void Visualizer::debugDraw() {
 		}
 		ita++;
 	}	
-	
 	glEnd();
-	
-	
-	/*		
-		test_trail.push_back(connection_boid->position);
-		
-		
-		// test: generate a triangle strip, with vertices+color and use a custom color generator.
-		VerticesPC trail_verts;
-		DebugTrail col;
-		TrailTriangleVerticesPC<DebugTrail> vert_gen(col);
-		TrailPercentageWidth wf;
-		
-		test_trail.createTriangleStrip(0.1f, trail_verts, wf, vert_gen);
-		glBegin(GL_TRIANGLE_STRIP);
-			for(int i = 0; i < trail_verts.size(); ++i) {
-				glColor4fv(trail_verts[i].col.getPtr());
-				glVertex3fv(trail_verts[i].pos.getPtr());
-			}
-		glEnd();
-		test_trail.limitLength(50);
-		
-		
-		glPointSize(10.0f);
-		glColor3f(1,1,0);
-		glBegin(GL_POINTS);
-			glVertex3fv(connection_boid->position.getPtr());
-		glEnd();
-		
+	*/
+	glPointSize(5.0f);
+	glColor3f(1,0,0);
+	glBegin(GL_POINTS);
+	for(int i = 0; i < kinect_input.interactive_points.size(); ++i) {
+		test_boid->position = kinect_input.interactive_points[i];
+		flock_ps.repel(test_boid, settings.attract_to_user_radius, settings.attract_to_user_energy);
+		Vec3& p = kinect_input.interactive_points[i];
+		glVertex3f(p.x * settings.kinect_scale, p.y * settings.kinect_scale, p.z * settings.kinect_scale);
 	}
-	*/	
+	glEnd();
 }
