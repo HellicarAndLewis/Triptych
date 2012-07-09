@@ -16,7 +16,7 @@ void main() {
 	
 	gl_FragColor.a = 1.0;
 	vec3 light_col = vec3(0.5,0.0,0.0);
-	gl_FragColor.rgb =  mix(v_norm,  texc.rgb * (ndotl+0.1) + ndotl * light_col, 0.8) +spec_color;
+	gl_FragColor.rgb =  mix(v_norm,  texc.rgb * (ndotl+0.1) + ndotl * light_col, 0.2) +spec_color;
 	
 	
 	

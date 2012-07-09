@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545B641715AB337400917B72 /* FlockController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545B641515AB337400917B72 /* FlockController.cpp */; };
 		5DA0ABCC15A5A28100E0819F /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABBC15A5A28100E0819F /* shapes.cc */; };
 		5DA0ABCD15A5A28100E0819F /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABC115A5A28100E0819F /* advancing_front.cc */; };
 		5DA0ABCE15A5A28100E0819F /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABC315A5A28100E0819F /* cdt.cc */; };
@@ -151,6 +152,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		545B641515AB337400917B72 /* FlockController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlockController.cpp; sourceTree = "<group>"; };
+		545B641615AB337400917B72 /* FlockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlockController.h; sourceTree = "<group>"; };
 		5DA0ABB815A5A28100E0819F /* PolyTri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolyTri.h; sourceTree = "<group>"; };
 		5DA0ABB915A5A28100E0819F /* INSTALL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL.txt; sourceTree = "<group>"; };
 		5DA0ABBC15A5A28100E0819F /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
@@ -762,6 +765,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				545B641515AB337400917B72 /* FlockController.cpp */,
+				545B641615AB337400917B72 /* FlockController.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1559,6 +1564,7 @@
 				5DA0AC2C15A5A51500E0819F /* tilt.c in Sources */,
 				5DA0AC2D15A5A51500E0819F /* usb_libusb10.c in Sources */,
 				5DA0AC2F15A5A51500E0819F /* ofxKinect.cpp in Sources */,
+				545B641715AB337400917B72 /* FlockController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1645,6 +1651,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
+					./../addons/roxlu/lib/include,
+					./../addons/roxlu/addons/PositionBasedDynamics/include,
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
@@ -1771,6 +1779,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
+					./../addons/roxlu/lib/include,
+					./../addons/roxlu/addons/PositionBasedDynamics/include,
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
