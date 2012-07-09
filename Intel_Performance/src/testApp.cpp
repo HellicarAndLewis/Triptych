@@ -92,9 +92,9 @@ void testApp::draw(){
 	
 
 	room.begin();
+//	room.draw();
 	flock.debugDraw();
 	room.end();
-	
 	glPushMatrix();
 	{
 		
@@ -143,7 +143,9 @@ void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
 	meshShader.setUniform1i("layer", layer);
 	for(int i = 0; i < mesh.size(); i++) {
 		glPushMatrix();
-		glTranslatef(0, 0, z*5-mesh[i].depth);
+		float ss = sin(layer*ofGetElapsedTimef()*0.3)*50*(layer>0?1:0);
+		glTranslatef(ss, 0, 0);
+		//glTranslatef(0, 0, z*5-mesh[i].depth);
 		mesh[i].draw();				
 		glPopMatrix();
 	}

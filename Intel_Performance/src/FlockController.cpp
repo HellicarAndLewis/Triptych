@@ -16,10 +16,12 @@ void FlockController::setup() {
 	
 	flock.zone_radius_sq = 3.60f;
 	flock.low = 0.4f;  
-	flock.high == 0.6f;
+	flock.high = 0.6f;
 	flock.align_energy = 0.0013f; 
 	flock.separate_energy = 0.0012f;
 	flock.attract_energy = 0.0011f;
+	fluff.loadImage("fluff.png");
+	fluff.setAnchorPercent(0.5, 0.5);
 }
 
 void FlockController::setupGui() {
@@ -42,13 +44,21 @@ void FlockController::update() {
 }
 
 void FlockController::debugDraw() {
+	ofDisableLighting();
+	ofEnableAlphaBlending();
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	glColor3f(1,1,1);
-	glPointSize(3.0f);
+	/*glPointSize(3.0f);
 	glBegin(GL_POINTS);
 	for(int i = 0; i < ps.size(); ++i) {
 		glVertex3fv(ps[i]->position.getPtr());	
 	}
-	glEnd();
+	glEnd();*/
+	
+	for(int i = 0; i < ps.size(); ++i) {
+		fluff.draw(ps[i]->position, 0.06, 0.06);
+	}
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }
 
 void FlockController::checkBounds() {
@@ -57,7 +67,7 @@ void FlockController::checkBounds() {
 		BoidParticle3& p = **it;
 		float ls = p.position.lengthSquared();
 		if(ls > range_sq) {
-			float F = 1.0f/ls;
+			float F = 1.0 - (1.0f/ls);
 			ofVec3f dir = -p.position;
 			dir.normalize();
 			dir *= F * center_energy;

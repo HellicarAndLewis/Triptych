@@ -43,15 +43,17 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 	ofxCvGrayscaleImage &grey = thresholder.getOutline(); 
 	unsigned char *rgb = thresholder.getPixels();
 
+	float t = ofGetElapsedTimef();
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 
-	depth = thresholder.getDepth(blob);
+	depth = 0;//thresholder.getDepth(blob);
 	int step = borderResolution;
 	int insideStep = fillResolution;
 	
 	// make sure nothing crazy happens here.
-	step = std::min<int>(step, 5);
-	insideStep = std::min<int>(insideStep, 5);
+	step = std::max<int>(step, 5);
+	insideStep = std::max<int>(insideStep, 5);
+	
 	
 	if(blob.pts.size()/step<3) {
 		return false;
@@ -60,6 +62,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 	for(int i = 0; i < blob.pts.size(); i+= step) {
 		outline.push_back(ofVec2f(blob.pts[i].x, blob.pts[i].y));
 	}
+	
 	
 	ofRectangle r = blob.boundingRect;
 	int ryOffset = 0;
@@ -74,13 +77,13 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		
 		for(int j = 0; j < r.y + r.height; j+= insideStep) {
 			ofVec2f jitter(
-				 ofNoise(i*ofGetElapsedTimef()*0.006,j*ofGetElapsedTimef()*0.006,ofGetElapsedTimef()*0.01)*20
-				,ofSignedNoise(ofGetElapsedTimef()*0.0007*i, ofGetElapsedTimef()*0.0007*j)*20.f
+				 ofNoise(i*t*0.006,j*t*0.006,t*0.01)*20
+				,ofSignedNoise(t*0.0007*i, t*0.0007*j)*20.f
 			);
 				
 			ofVec2f p = ofVec2f(i, j+ryOffset) + jitter;
 			
-			if(tricks::math::pointInsidePolygon(p, outline)) {
+			if(tricks::math::pointInsidePolygon(p, outline, 2)) {
 				insides.push_back(p);
 			}
 		}

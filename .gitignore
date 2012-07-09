@@ -33,4 +33,7 @@
 *.app
 *.xcworkspacedata
 *.xcuserstate
+KinectVideoDelayThing/bin/data/*.txt
+KinectBoundingRecorder/bin/data/*.txt
+
 */build/*
