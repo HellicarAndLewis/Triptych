@@ -65,7 +65,7 @@ void FlockController::checkBounds() {
 		BoidParticle3& p = **it;
 		float ls = p.position.lengthSquared();
 		if(ls > range_sq) {
-			float F = 1.0f/ls;
+			float F = 1.0 - (1.0f/ls);
 			ofVec3f dir = -p.position;
 			dir.normalize();
 			dir *= F * center_energy;
