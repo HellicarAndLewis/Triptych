@@ -1,0 +1,34 @@
+<controls>
+    <SliderFloat_near_threshold>
+        <name>near threshold</name>
+        <value>255</value>
+    </SliderFloat_near_threshold>
+    <SliderFloat_far_threshold>
+        <name>far threshold</name>
+        <value>168.3</value>
+    </SliderFloat_far_threshold>
+    <SliderInt_hysteresis>
+        <name>hysteresis</name>
+        <value>9</value>
+    </SliderInt_hysteresis>
+    <Toggle_learnBackground>
+        <name>learnBackground</name>
+        <value>0</value>
+    </Toggle_learnBackground>
+    <SliderInt_erosions>
+        <name>erosions</name>
+        <value>2</value>
+    </SliderInt_erosions>
+    <SliderInt_dilations>
+        <name>dilations</name>
+        <value>2</value>
+    </SliderInt_dilations>
+    <SliderInt_blurs>
+        <name>blurs</name>
+        <value>2</value>
+    </SliderInt_blurs>
+    <SliderInt_blurSize>
+        <name>blurSize</name>
+        <value>2</value>
+    </SliderInt_blurSize>
+</controls>

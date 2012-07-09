@@ -37,8 +37,10 @@ void KinectThresholder::setup() {
 	VISION_HEIGHT = 480;
 #endif
 	kinect.open();
-	
-
+		
+	foundBlobs = false;
+	listener = NULL;
+	blobTracker.addListener(&blobEvents);
 	
 	
 	depth.allocate(VISION_WIDTH, VISION_HEIGHT);
@@ -87,6 +89,7 @@ bool KinectThresholder::update() {
 
 	//printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
+		foundBlobs = false;
 #ifdef _WIN32
 		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);
 #else
@@ -133,6 +136,16 @@ bool KinectThresholder::update() {
 
 void KinectThresholder::drawDebug() {
 	thresh.draw(0, 0);
+	if(foundBlobs) {
+		contourFinder.draw();
+		
+		map<int,BoundBlob>::iterator it;
+		for(it = people.begin(); it != people.end(); it++) {
+			(*it).second.draw();
+			ofDrawBitmapString(ofToString((*it).first), (*it).second.centroid);
+			
+		}
+	}
 }
 
 ofxCvGrayscaleImage &KinectThresholder::getOutline() {
@@ -141,8 +154,117 @@ ofxCvGrayscaleImage &KinectThresholder::getOutline() {
 
 
 vector<ofxCvBlob> &KinectThresholder::getContours() {
-	contourFinder.findContours(thresh, 30*30, 480*480, 20, false);
+	if(!foundBlobs) {
+		
+		int minBlobSize = 40;
+		int maxBlobSize = kinect.getHeight();
+		
+		contourFinder.findContours(thresh, minBlobSize*minBlobSize, maxBlobSize*maxBlobSize, 20, false, true);
+		
+
+		foundBlobs = true;
+	}
 	return contourFinder.blobs;
+}
+
+void KinectThresholder::trackBlobs() {
+	
+	//	people.clear();
+	
+	
+	// run the blob tracker
+	vector<ofVec3f> blobs;
+	ofVec2f dims(kinect.getWidth(), kinect.getHeight()); 
+	vector<ofxCvBlob> &contoursBlobs = getContours();
+	// use the z coordinate.
+	for(int i = 0; i < contoursBlobs.size(); i++) {
+		ofVec3f b = ofVec3f(contoursBlobs[i].centroid.x/(float)kinect.getWidth(), 
+							contoursBlobs[i].centroid.y/(float)kinect.getHeight(), i);
+		blobs.push_back(b);
+	}
+	
+	
+	
+	blobTracker.track(blobs);
+	
+	ofxBlobEvent e;
+	while(blobEvents.getNextEvent(e)) {
+		if(e.eventType==ofxBlobTracker_entered) {
+			people[e.blobId] = BoundBlob();
+			people[e.blobId].init(contoursBlobs[(int)e.pos.z], e.blobId);
+			people[e.blobId].setDepth(getDepth(contoursBlobs[(int)e.pos.z]));
+			
+			if(listener!=NULL) {
+				listener->boundBlobEntered(people[e.blobId]);
+			}
+			/*if(recording) {
+			 ofVec3f bounds(640,480, 255);
+			 
+			 ofVec3f f = people[e.blobId].left/bounds;
+			 anim.addFrame("hand_left", (const float*)&f.x);
+			 
+			 f = people[e.blobId].right/bounds;
+			 
+			 anim.addFrame("hand_right", (const float*)&f.x);
+			 
+			 f = people[e.blobId].top/bounds;
+			 anim.addFrame("top", (const float*)&f.x);
+			 
+			 f = people[e.blobId].bottom/bounds;
+			 anim.addFrame("bottom", (const float*)&f.x);
+			 
+			 f = people[e.blobId].centroid/bounds;
+			 anim.addFrame("centroid", (const float*)&f.x);
+			 }*/
+		} else if(e.eventType==ofxBlobTracker_moved) {
+			people[e.blobId].update(contoursBlobs[(int)e.pos.z]);
+			
+			if(listener!=NULL) {
+				listener->boundBlobMoved(people[e.blobId]);
+			}
+			/*if(recording) {
+			 ofVec3f bounds(640,480, 255);
+			 
+			 ofVec3f f = people[e.blobId].left/bounds;
+			 anim.addFrame("hand_left", (const float*)&f.x);
+			 
+			 f = people[e.blobId].right/bounds;
+			 anim.addFrame("hand_right", (const float*)&f.x);
+			 
+			 f = people[e.blobId].top/bounds;
+			 anim.addFrame("top", (const float*)&f.x);
+			 
+			 f = people[e.blobId].bottom/bounds;
+			 anim.addFrame("bottom", (const float*)&f.x);
+			 
+			 f = people[e.blobId].centroid/bounds;
+			 anim.addFrame("centroid", (const float*)&f.x);
+			 }
+			 */
+			
+		} else if(e.eventType==ofxBlobTracker_exited) {
+			if(listener!=NULL) {
+				listener->boundBlobExited(people[e.blobId]);
+			}
+			people.erase(e.blobId);
+		}
+	}
+	
+	
+	
+	/*if(contours.blobs.size()==people.size()) { // match the nearest
+	 for(int i = 0; i < contours.blobs.size(); i++) {
+	 people.push_back(BoundBlob());
+	 people.back().init(contours.blobs[i]);
+	 }
+	 } else if() {
+	 
+	 }*/
+}
+
+
+void KinectThresholder::setListener(BoundBlobListener *listener) {
+	this->listener = listener;
 }
 
 

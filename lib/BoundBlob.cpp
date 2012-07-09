@@ -9,9 +9,10 @@
 #include "contourutils.h"
 
 
-void BoundBlob::init(const ofxCvBlob &blob) {
+void BoundBlob::init(const ofxCvBlob &blob, int id) {
 
-
+	this->id = id;
+	
 	vector<ofVec2f> ps;
 	ps.resize(blob.pts.size());
 	

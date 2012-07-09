@@ -1,11 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "KinectOutline.h"
+#include "KinectThresholder.h"
 #include "BoundBlob.h"
 #include "ofxBlobTracker.h"
-#include "SimpleAnim.h"
-class testApp : public ofBaseApp{
+//#include "SimpleAnim.h"
+class testApp : public ofBaseApp, public BoundBlobListener {
 
 public:
 	void setup();
@@ -22,11 +22,11 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	void doPersonTracking();
-	KinectOutline kinect;
-	ofxCvContourFinder contours;
+	KinectThresholder kinect;
 	map<int,BoundBlob> people;
-	ofxBlobTracker blobTracker;
-	ofxBlobEventLister blobEvents;
 	
-	SimpleAnim anim;
+	void boundBlobEntered(const BoundBlob &blob);
+	void boundBlobMoved(const BoundBlob &blob);
+	void boundBlobExited(const BoundBlob &blob);
+	//SimpleAnim anim;
 };

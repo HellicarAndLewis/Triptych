@@ -7,8 +7,6 @@ bool recording = false;
 void testApp::setup(){
 	
 	kinect.setup();
-	
-	
 	kinect.setupGui();
 	
 	gui.loadFromXML();
@@ -19,8 +17,7 @@ void testApp::setup(){
 	ofSetFrameRate(30);
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
-	
-	blobTracker.addListener(&blobEvents);
+	kinect.setListener(this);
 }
 
 //--------------------------------------------------------------
@@ -29,13 +26,9 @@ void testApp::update(){
 
 	bool newFrame = kinect.update();
 	if(newFrame) {
-		int minBlobSize = 40;
-		int maxBlobSize = kinect.getHeight();
-	
-		contours.findContours(kinect.getOutline(), minBlobSize*minBlobSize, maxBlobSize*maxBlobSize, 20, false, true);
 		
-		
-		doPersonTracking();
+		kinect.trackBlobs();
+		//doPersonTracking();
 
 	}
 	
@@ -43,103 +36,14 @@ void testApp::update(){
 }
 
 
-
-void testApp::doPersonTracking() {
-	
-//	people.clear();
-	
-	
-	// run the blob tracker
-	vector<ofVec3f> blobs;
-	ofVec2f dims(kinect.getWidth(), kinect.getHeight()); 
-	
-	// use the z coordinate.
-	for(int i = 0; i < contours.blobs.size(); i++) {
-		ofVec3f b = ofVec3f(contours.blobs[i].centroid.x/(float)kinect.getWidth(), 
-							contours.blobs[i].centroid.y/(float)kinect.getHeight(), i);
-		blobs.push_back(b);
-	}
-	
-	
-	
-	blobTracker.track(blobs);
-	
-	ofxBlobEvent e;
-	while(blobEvents.getNextEvent(e)) {
-		if(e.eventType==ofxBlobTracker_entered) {
-			people[e.blobId] = BoundBlob();
-			people[e.blobId].init(contours.blobs[(int)e.pos.z]);
-			people[e.blobId].setDepth(kinect.getDepth(contours.blobs[(int)e.pos.z]));
-			
-			if(recording) {
-				ofVec3f bounds(640,480, 255);
-
-				ofVec3f f = people[e.blobId].left/bounds;
-				anim.addFrame("hand_left", (const float*)&f.x);
-				
-				f = people[e.blobId].right/bounds;
-
-				anim.addFrame("hand_right", (const float*)&f.x);
-				
-				f = people[e.blobId].top/bounds;
-				anim.addFrame("top", (const float*)&f.x);
-				
-				f = people[e.blobId].bottom/bounds;
-				anim.addFrame("bottom", (const float*)&f.x);
-				
-				f = people[e.blobId].centroid/bounds;
-				anim.addFrame("centroid", (const float*)&f.x);
-			}
-		} else if(e.eventType==ofxBlobTracker_moved) {
-			people[e.blobId].update(contours.blobs[(int)e.pos.z]);
-			
-			if(recording) {
-				ofVec3f bounds(640,480, 255);
-				
-				ofVec3f f = people[e.blobId].left/bounds;
-				anim.addFrame("hand_left", (const float*)&f.x);
-				
-				f = people[e.blobId].right/bounds;
-				anim.addFrame("hand_right", (const float*)&f.x);
-				
-				f = people[e.blobId].top/bounds;
-				anim.addFrame("top", (const float*)&f.x);
-				
-				f = people[e.blobId].bottom/bounds;
-				anim.addFrame("bottom", (const float*)&f.x);
-				
-				f = people[e.blobId].centroid/bounds;
-				anim.addFrame("centroid", (const float*)&f.x);
-			}
-			
-			
-		} else if(e.eventType==ofxBlobTracker_exited) {
-			people.erase(e.blobId);
-		}
-	}
-	
-	/*if(contours.blobs.size()==people.size()) { // match the nearest
-		for(int i = 0; i < contours.blobs.size(); i++) {
-			people.push_back(BoundBlob());
-			people.back().init(contours.blobs[i]);
-		}
-	} else if() {
-		
-	}*/
-}
 //--------------------------------------------------------------
 void testApp::draw(){
 	
 	kinect.drawDebug();
-	contours.draw();
+	//contours.draw();
 	
 	
-	map<int,BoundBlob>::iterator it;
-	for(it = people.begin(); it != people.end(); it++) {
-		(*it).second.draw();
-		ofDrawBitmapString(ofToString((*it).first), (*it).second.centroid);
-		
-	}
+	
 	gui.draw();
 }
 
@@ -154,9 +58,11 @@ void testApp::keyPressed(int key){
 		case 'f':
 			ofToggleFullscreen();
 			break;
-		case 'b': kinect.learnBackground = true; break;
+		case 'b': 
+			kinect.learnBackground = true; 
+			break;
 			
-		case 'r':
+	/*	case 'r':
 			recording ^= true;
 			if(!recording) { // just finished recording
 				
@@ -164,7 +70,7 @@ void testApp::keyPressed(int key){
 				anim.animations.clear();
 				
 			}
-			break;
+			break;*/
 	}
 }
 
@@ -212,4 +118,16 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void testApp::boundBlobEntered(const BoundBlob &blob) {
+	people[blob.id] = blob;
+}
+
+void testApp::boundBlobMoved(const BoundBlob &blob) {
+	people[blob.id] = blob;
+}
+
+void testApp::boundBlobExited(const BoundBlob &blob) {
+	if(people.find(blob.id)!=people.end()) people.erase(blob.id);
 }
