@@ -11,7 +11,7 @@
 #include <application/visuals/TrailsDrawer.h>
 #include <application/visuals/KinectDrawer.h>
 #include <application/visuals/BoidDrawer.h>
-
+#include <application/Blur.h> // test
 
 class DebugTrail {
 public:
@@ -51,6 +51,7 @@ public:
 	
 	// TESTING WITH TRAILS
 	Trail3PC	test_trail;
+
 	
 private:
 };

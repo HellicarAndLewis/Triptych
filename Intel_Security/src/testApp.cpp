@@ -40,6 +40,7 @@ void testApp::setup(){
 	flock_gui.addFloat("Boid glow duration (millis)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
 	flock_gui.addFloat("Boid scale",settings.boid_scale).setMin(0.0f).setMax(1.0f);
 	flock_gui.addFloat("Boid trail width", settings.boid_trail_width).setMin(0.01f).setMax(2.1f);
+	flock_gui.addBool("Boid create trails", settings.boid_create_trails);
 
 	flock_gui.addFloat("Explosion random x velocity", settings.explosion_random_x_vel).setMin(0.0f).setMax(15.0f);
 	flock_gui.addFloat("Explosion random y velocity", settings.explosion_random_y_vel).setMin(0.0f).setMax(15.0f);

@@ -31,7 +31,7 @@ void TrailsDrawer::setup() {
 		::exit(0);
 	}
 	trail_tex.setWrap(GL_REPEAT);
-	trail_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
+	trail_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGB);
 	
 	if(!img.loadImage("flowmap.png")) {
 		printf("Cannot load flowmap.png. Update git?");
@@ -47,12 +47,13 @@ void TrailsDrawer::setup() {
 
 void TrailsDrawer::draw(const float* pm, const float* vm) {
 
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
+	//glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-	glDepthMask(GL_FALSE);
+	glBlendFunc(GL_ONE, GL_ONE);
+	//glDepthMask(GL_FALSE);
 	glColor3f(1,1,1);
+	
 	vao.bind();
 
 	shader.enable();
@@ -61,8 +62,8 @@ void TrailsDrawer::draw(const float* pm, const float* vm) {
 	
 	float time = Timer::millis() * 0.001;
 	shader.uniform1f("u_time", time);
-	
-	
+
+
 	glActiveTexture(GL_TEXTURE1);
 	flow_tex.bind();
 	shader.uniform1i("u_flow", 1);
@@ -79,25 +80,38 @@ void TrailsDrawer::draw(const float* pm, const float* vm) {
 	vao.unbind();
 	shader.disable();
 
-	glDepthMask(TRUE);
+	glDepthMask(GL_TRUE);
+	
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, 0);
+
 	glDisable(GL_TEXTURE_2D);
+	
 	glDisable(GL_BLEND);
+	//glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_CULL_FACE);
 
 }
 
 void TrailsDrawer::debugDraw() {
-	VerticesPT trail_verts;
-	for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
-		trail_verts.clear();
-		Boid& b = **it;
-		b.trail.createTriangleStripPT(settings.boid_trail_width, trail_verts);
-		glBegin(GL_TRIANGLE_STRIP);
-			for(int i = 0; i < trail_verts.size(); ++i) {
-				glVertex3fv(trail_verts[i].getPtr());
-			}
-		glEnd();
+	if(settings.boid_create_trails) {
+		VerticesPT trail_verts;
+		for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
+			trail_verts.clear();
+			Boid& b = **it;
+			b.trail.createTriangleStripPT(settings.boid_trail_width, trail_verts);
+			glBegin(GL_TRIANGLE_STRIP);
+				for(int i = 0; i < trail_verts.size(); ++i) {
+					glVertex3fv(trail_verts[i].getPtr());
+				}
+			glEnd();
+		}
 	}
 }
 

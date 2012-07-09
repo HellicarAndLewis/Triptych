@@ -11,6 +11,7 @@ struct Settings {
 		,boid_trail_width(0.06)
 		,must_record_kinect(false)
 		,boid_draw_glows(false)
+		,boid_create_trails(false)
 		,draw_axis(false)
 		,draw_flock(false)
 	{
@@ -28,6 +29,7 @@ struct Settings {
 	bool boid_draw_glows;
 	float boid_scale;
 	float boid_trail_width;
+	bool boid_create_trails;
 	
 	int explosion_trail_length;
 	float explosion_random_x_vel;
