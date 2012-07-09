@@ -111,6 +111,7 @@ inline void Trails<T,C>::createTriangleStrips(const float maxWidth, C& vd) {
 template<class T, class C>
 inline void Trails<T,C>::createTriangleStrips3PT(const float maxWidth, C& vd) {
 	TrailPercentageWidth wf;
+	//TrailStaticWidth wf;
 	TrailTriangleVerticesPT trip;
 	createTriangleStrips(maxWidth, vd, wf, trip);
 }

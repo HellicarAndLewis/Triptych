@@ -11,6 +11,7 @@ Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect)
 
 void Visualizer::setup() {
 	glEnable(GL_TEXTURE_2D);
+
 	
 	// load glow image.
 	ofImage img;
@@ -29,11 +30,11 @@ void Visualizer::setup() {
 	twinkle_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
 
 	// load mega glow, shown when boid explodes
-	if(!img.loadImage("mega_glow.png")) {
+	if(!img.loadImage("nebula.png")) {
 		printf("Cannot load mega glow texture.\n");
 		::exit(0);
 	}
-	mega_glow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
+	mega_glow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGB);
 
 	
 	trails_drawer.setup();	
@@ -57,34 +58,35 @@ void Visualizer::update() {
 // pm = projection matrix, vm = view matrix, nm = normal matrix
 void Visualizer::draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec) {
 			
-	// z-sort.
-	Boids::iterator boids_behind = std::partition(flock_ps.begin(), flock_ps.end(), BoidPartitioner());
+	// z-sort (not necessary, depth buffer takes care of this)
+	//Boids::iterator boids_behind = std::partition(flock_ps.begin(), flock_ps.end(), BoidPartitioner());
 	
-	
+
+
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
 	// BEHIND KINECT
 	if(settings.boid_draw_glows) {
 		drawGlows(flock_ps.begin(), boids_behind, pm, vm, nm, rightVec, upVec);
 	}
 	
-	if(settings.draw_flock) {
-		drawBoids(flock_ps.begin(), boids_behind, pm, vm, nm, rightVec, upVec);
-	}
-	
-	
 	// KINECT
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
 	kinect_drawer.draw(pm, vm);
-	
-	
-	// IN FRONT OF KINECT
-	if(settings.boid_draw_glows) {
-		drawGlows(boids_behind, flock_ps.end(), pm, vm, nm, rightVec, upVec);
-	}
 	if(settings.draw_flock) {
-		drawBoids(boids_behind, flock_ps.end(), pm, vm, nm, rightVec, upVec);
+		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 	
+	glDepthMask(GL_FALSE);
+	if(settings.boid_draw_glows) {
+		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
+	}
 	trails_drawer.draw(pm, vm);
-	
+	glDepthMask(GL_TRUE);
+
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
@@ -101,9 +103,8 @@ void Visualizer::drawGlows(
 		,const float* upVec
 )
 {
-	glEnable(GL_CULL_FACE);
 	glEnable(GL_TEXTURE_2D);
-	glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
@@ -181,6 +182,26 @@ void Visualizer::debugDraw() {
 
 	// draw trails
 	trails_drawer.debugDraw();
+	
+	
+	glColor3f(1,1,1);
+	glLineWidth(0.1);
+	glBegin(GL_LINES);
+	for(Boids::iterator ita = flock_ps.begin(); ita != flock_ps.end();) {
+		Boid& a = **ita;
+		for(Boids::iterator itb = ita++; itb != flock_ps.end(); ++itb) {
+			Boid& b = **itb;
+			float sq = (b.position - a.position).lengthSquared();
+			if(sq < 1.0f) {
+				glVertex3fv(a.position.getPtr());
+				glVertex3fv(b.position.getPtr());
+			}
+		}
+		ita++;
+	}	
+	
+	glEnd();
+	
 	
 	/*		
 		test_trail.push_back(connection_boid->position);

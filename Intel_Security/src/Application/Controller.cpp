@@ -31,11 +31,36 @@ void Controller::update() {
 	checkBounds();
 	
 	// create trails.
+	if(settings.boid_create_trails) {
+		for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
+			Boid& b = **it;
+			b.trail.push_back(b.position);
+			b.trail.limitLength(50);
+		}
+	}
+	
+	// test fx px.
+	/*
 	for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
 		Boid& b = **it;
-		b.trail.push_back(b.position);
-		b.trail.limitLength(50);
+		Boid* p = fx_ps.addParticle(b.position);
+		p->velocity = -b.velocity;
+		p->lifespan = random(5.0f,7.0f);
+		//break;
+		
 	}
+	
+	float s = 0.01;
+	for(Boids::iterator it = fx_ps.begin(); it != fx_ps.end(); ++it) {
+		Boid& b = **it;
+		float nx = noise3(b.position.x+0.1 * s, b.position.y * s, b.position.z * s);
+		float ny = noise3(b.position.x * s, b.position.y+0.1* s, b.position.z * s);
+		float nz = noise3(b.position.x * s, b.position.y * s, b.position.z+0.1 * s);
+		b.addForce(Vec3(nx,ny,nz));
+		
+	}
+	*/
+//	fx_ps.addForce(Vec3(0,0.1,0));
 	
 	/*
 	vector<Boid*> new_particles;
