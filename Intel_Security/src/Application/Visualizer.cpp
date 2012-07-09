@@ -68,9 +68,9 @@ void Visualizer::draw(const float* pm, const float* vm, const float* nm, const f
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
 	// BEHIND KINECT
-	if(settings.boid_draw_glows) {
-		drawGlows(flock_ps.begin(), boids_behind, pm, vm, nm, rightVec, upVec);
-	}
+	//if(settings.boid_draw_glows) {
+	//	drawGlows(flock_ps.begin(), boids_behind, pm, vm, nm, rightVec, upVec);
+	//}
 	
 	// KINECT
 	glEnable(GL_DEPTH_TEST);

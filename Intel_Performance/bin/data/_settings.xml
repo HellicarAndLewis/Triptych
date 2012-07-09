@@ -21,7 +21,7 @@
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>0</value>
+        <value>1</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
@@ -29,7 +29,7 @@
     </SliderInt_blurs>
     <SliderInt_blurSize>
         <name>blurSize</name>
-        <value>2</value>
+        <value>3</value>
     </SliderInt_blurSize>
     <SliderFloat_fov>
         <name>fov</name>
@@ -49,15 +49,15 @@
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>-0.04</value>
+        <value>-0.43</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
-        <value>0.59</value>
+        <value>-0.31</value>
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-2.6</value>
+        <value>-1.85</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
@@ -87,4 +87,32 @@
         <name>Edge Colour Sharpening</name>
         <value>0.945</value>
     </SliderFloat_Edge_Colour_Sharpening>
+    <SliderFloat_Low_threshold>
+        <name>Low threshold</name>
+        <value>0.41</value>
+    </SliderFloat_Low_threshold>
+    <SliderFloat_High_threshold>
+        <name>High threshold</name>
+        <value>0.685</value>
+    </SliderFloat_High_threshold>
+    <SliderFloat_Align_energy>
+        <name>Align energy</name>
+        <value>0.0056</value>
+    </SliderFloat_Align_energy>
+    <SliderFloat_Separate_energy>
+        <name>Separate energy</name>
+        <value>0.00275</value>
+    </SliderFloat_Separate_energy>
+    <SliderFloat_Attract_energy>
+        <name>Attract energy</name>
+        <value>0.0041</value>
+    </SliderFloat_Attract_energy>
+    <SliderFloat_Center_energy>
+        <name>Center energy</name>
+        <value>2.44</value>
+    </SliderFloat_Center_energy>
+    <SliderFloat_Bounding_sphere_size>
+        <name>Bounding sphere size</name>
+        <value>4.2</value>
+    </SliderFloat_Bounding_sphere_size>
 </controls>

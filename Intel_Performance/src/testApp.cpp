@@ -16,12 +16,14 @@ void testApp::setup(){
 	room.setupGui();	
 	KinectMesh::setupGui();
 	
+	flock.setup();
+	flock.setupGui();
 	
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
 
-	ofDisableSetupScreen();
+	//ofDisableSetupScreen();
 	ofBackgroundHex(0);
 
 	
@@ -30,6 +32,7 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update() {
+	flock.update();
 	
 	if(kinect.update()) {
 		
@@ -60,13 +63,25 @@ void testApp::update() {
 	
 	
 	room.update();
-	ofDisableSetupScreen();
+	//ofDisableSetupScreen();
 }
 
 float lastTimeShaderLoaded = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
 
+	// UNCOMMENT THIS TO SEE FLOCKING!
+	/*
+	gui.draw();
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0f, ofGetWidth()/ofGetHeight(), 0.1, 100.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(0,0,-15.0f);
+	flock.debugDraw();
+	 */
+	
 	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
 		lastTimeShaderLoaded = ofGetElapsedTimef();
 		meshShader.load("mesh.vert", "mesh.frag");
@@ -77,13 +92,13 @@ void testApp::draw(){
 	
 
 	room.draw();
+	flock.debugDraw();
 	
 	glPushMatrix();
 	{
 		
 		ofSetupScreen();
 
-	
 		
 		
 		//glEnable(GL_DEPTH_TEST);
@@ -117,6 +132,8 @@ void testApp::draw(){
 		gui.draw();
 	}
 	glPopMatrix();
+	
+	
 }
 
 void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
