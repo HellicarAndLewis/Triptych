@@ -24,6 +24,11 @@
 #else
 #	include "ofxKinect.h"
 #endif
+
+#include "BoundBlob.h"
+#include "BoundBlobListener.h"
+#include "ofxBlobTracker.h"
+
 class KinectThresholder {
 public:
 	
@@ -32,10 +37,12 @@ public:
 	void setupGui();
 
 	
-	// call this every frame.
-	// it returns false if it could 
-	// not update from the kinect
-	// (i.e. there wasn't a new frame yet)
+	/**
+	 * call this every frame.
+	 * it returns false if it could 
+	 * not update from the kinect
+	 * (i.e. there wasn't a new frame yet)
+	 */
 	bool update();
 	
 	vector<ofxCvBlob> &getContours();
@@ -80,6 +87,18 @@ public:
  */
 	
 	
+
+	/**
+	 * This lets you track the blobs in the space. When you call this, it will
+	 * fire the listener
+	 */
+	void trackBlobs();
+	
+	/**
+	 * Set your listener here.
+	 */
+	void setListener(BoundBlobListener *listener);
+	
 	void drawDebug();
 
 	ofxCvGrayscaleImage &getOutline();
@@ -116,4 +135,14 @@ public:
 	
 	int VISION_WIDTH;
 	int VISION_HEIGHT;
+	
+	
+	
+	// stuff for blob tracking
+	bool foundBlobs;
+	
+	ofxBlobTracker blobTracker;
+	ofxBlobEventLister blobEvents;
+	BoundBlobListener *listener;
+	map<int,BoundBlob> people;
 };

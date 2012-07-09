@@ -1,4 +1,4 @@
-/**
+  /**
  *  KinectMesh.cpp
  *
  *  Created by Marek Bereza on 02/07/2012.

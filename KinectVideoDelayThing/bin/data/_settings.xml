@@ -1,0 +1,30 @@
+<controls>
+    <SliderInt_Depth_Min>
+        <name>Depth Min</name>
+        <value>20</value>
+    </SliderInt_Depth_Min>
+    <SliderInt_Depth_Max>
+        <name>Depth Max</name>
+        <value>186</value>
+    </SliderInt_Depth_Max>
+    <SliderInt_Blurs>
+        <name>Blurs</name>
+        <value>0</value>
+    </SliderInt_Blurs>
+    <SliderInt_Blur_Size>
+        <name>Blur Size</name>
+        <value>5</value>
+    </SliderInt_Blur_Size>
+    <SliderFloat_accum>
+        <name>accum</name>
+        <value>0.88</value>
+    </SliderFloat_accum>
+    <SliderFloat_gain>
+        <name>gain</name>
+        <value>1.04</value>
+    </SliderFloat_gain>
+    <SliderFloat_atten>
+        <name>atten</name>
+        <value>0.965</value>
+    </SliderFloat_atten>
+</controls>

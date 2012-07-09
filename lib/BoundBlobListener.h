@@ -12,28 +12,14 @@
  *
  *  Description: 
  *				 
- *  BlobBounds.h, created by Marek Bereza on 28/06/2012.
+ *  BoundBlobListener.h, created by Marek Bereza on 09/07/2012.
  */
 
-#pragma once
-#include "ofxOpenCv.h"
 
-class BoundBlob {
+
+class BoundBlobListener {
 public:
-	
-	void init(const ofxCvBlob &blob, int id);
-	
-	void update(const ofxCvBlob &blob);
-	
-	void setDepth(float depth);
-	void draw();
-	int id;
-	ofVec3f top;
-	ofVec3f left;
-	ofVec3f right;
-	ofVec3f bottom;
-	
-	ofVec2f centroid;
-		
-
+	virtual void boundBlobEntered(const BoundBlob &blob) = 0;
+	virtual void boundBlobMoved(const BoundBlob &blob) = 0;
+	virtual void boundBlobExited(const BoundBlob &blob) = 0;
 };
