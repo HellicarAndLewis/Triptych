@@ -5,6 +5,7 @@
 #include "ofxOpenCv.h"
 #include "KinectMesh.h"
 #include "Room.h"
+#include "FlockController.h"
 
 class testApp : public ofBaseApp{
 
@@ -29,5 +30,5 @@ public:
 	KinectThresholder kinect;
 	ofShader meshShader;
 	deque<vector<KinectMesh> > meshes;
-	
+	FlockController flock;	
 };
