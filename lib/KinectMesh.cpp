@@ -83,7 +83,7 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 				
 			ofVec2f p = ofVec2f(i, j+ryOffset) + jitter;
 			
-			if(tricks::math::pointInsidePolygon(p, outline, 2)) {
+			if(tricks::math::pointInsidePolygon(p, outline)) {
 				insides.push_back(p);
 			}
 		}

@@ -37,10 +37,38 @@ void FlockController::setupGui() {
 
 }
 
-void FlockController::update() {
+void FlockController::update(unsigned char *img) {
 	flock.update();
 	ps.update(0.3);
 	checkBounds();
+	
+	int numDeaders = 0;
+	for(int i = 0; i < ps.size(); i++) {
+		float x = ps[i]->position.x;
+		float y = ps[i]->position.y;
+		if(x<-1 || x>1 || y<-1 || y>1) {
+			// particle offscreen
+		} else {
+			x = ofMap(x, 1, -1, 0, 640);
+			y = ofMap(y, 1, -1, 0, 480);
+			int offset = ((int)x) + ((int)y)*640;
+			if(img[offset]>0) {
+				ps[i]->kill();
+				explosions.push_back(Explosion());
+				explosions.back().init(ps[i]->position);
+				numDeaders++;
+//			} else {
+//				ps[i]->intersecting = false;
+			}
+		}
+	}
+	
+	ps.removeDeadParticles();
+	for(int i = 0; i < numDeaders; i++){
+		ofVec3f pos(2, 0);
+		pos.rotate(ofRandom(0, 360), ofVec3f(0, 0, 1));
+		ps.addParticle(pos);
+	}
 }
 
 void FlockController::debugDraw() {
@@ -48,14 +76,14 @@ void FlockController::debugDraw() {
 	ofEnableAlphaBlending();
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	glColor3f(1,1,1);
-	/*glPointSize(3.0f);
-	glBegin(GL_POINTS);
-	for(int i = 0; i < ps.size(); ++i) {
-		glVertex3fv(ps[i]->position.getPtr());	
-	}
-	glEnd();*/
+	
 	
 	for(int i = 0; i < ps.size(); ++i) {
+		/*if(ps[i]->intersecting) {
+			glColor3f(1,0,0);
+		} else {
+			glColor3f(1,1,1);
+		}*/
 		fluff.draw(ps[i]->position, 0.06, 0.06);
 	}
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
