@@ -15,8 +15,9 @@ void testApp::setup(){
 	ofEnableNormalizedTexCoords();
 	show_gui = true;
 	debug = true;
-	app.setup();
 	
+	app.setup();
+
 
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
 	room.setupGui();
@@ -41,6 +42,8 @@ void testApp::setup(){
 	flock_gui.addFloat("Boid scale",settings.boid_scale).setMin(0.0f).setMax(1.0f);
 	flock_gui.addFloat("Boid trail width", settings.boid_trail_width).setMin(0.01f).setMax(2.1f);
 	flock_gui.addBool("Boid create trails", settings.boid_create_trails);
+	flock_gui.addFloat("Boid attract to user energy", settings.attract_to_user_energy).setMin(0.00f).setMax(0.5f);
+	flock_gui.addFloat("Boid attract to user radius", settings.attract_to_user_radius).setMin(0.00f).setMax(3.0f);
 
 	flock_gui.addFloat("Explosion random x velocity", settings.explosion_random_x_vel).setMin(0.0f).setMax(15.0f);
 	flock_gui.addFloat("Explosion random y velocity", settings.explosion_random_y_vel).setMin(0.0f).setMax(15.0f);
@@ -63,6 +66,7 @@ void testApp::setup(){
 	cam.translate(0,0,5);
 	//cam.orthoTopLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
 	ax.setup(10);
+	
 }
 
 void testApp::operator()(const int n) {
@@ -83,8 +87,9 @@ void testApp::update(){
 void testApp::draw(){
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
-		
+
 	//room.draw();
+	
 	gui.draw();
 	if(!debug) {
 		Vec3 right, up;
@@ -109,10 +114,7 @@ void testApp::draw(){
 	if(show_gui) {
 		flock_gui.draw();
 	}
-	
-	
-	
-	
+
 }
 
 //--------------------------------------------------------------
@@ -128,8 +130,12 @@ void testApp::keyPressed(int key){
 	}
 	else if(key == 'g') {
 		show_gui = !show_gui;
-	} else if(key==' ') {
+	}
+	else if(key==' ') {
 		gui.toggleDraw();
+	}
+	else if(key == 'f') {
+		ofToggleFullscreen();
 	}
 }
 

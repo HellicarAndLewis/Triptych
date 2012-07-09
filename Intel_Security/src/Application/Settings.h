@@ -40,6 +40,8 @@ struct Settings {
 	float explosion_perlin_scale;
 	
 	float kinect_scale;
+	float attract_to_user_energy;
+	float attract_to_user_radius;
 
 	bool must_record_kinect;
 	bool draw_axis;

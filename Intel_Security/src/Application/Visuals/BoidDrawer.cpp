@@ -1,4 +1,7 @@
 #include "BoidDrawer.h"
+#include <string>
+using namespace std;
+
 
 BoidDrawer::BoidDrawer() 
 	:size(1.0)
@@ -8,24 +11,23 @@ BoidDrawer::BoidDrawer()
 void BoidDrawer::setup() {
 	// Load boid data from obj file.
 	OBJ obj;
-	
 	if(!obj.import(File::toDataPath("boid.obj"))) {
-		printf("Cannot load boid obj.\n");
+		ofSystemAlertDialog("Cannot load boid obj file.");
 		::exit(0);
 	}
 	obj.print();
 	
 	vd = obj["boid"];
 	if(vd.getNumVertices() == 0) {
-		printf("No vertices found for boid.");
+		ofSystemAlertDialog("No vertices found in obj file.");
 		::exit(0);
 	}
 	if(vd.getNumNormals() == 0) {
-		printf("No normals found. Make sure to export with normals.");
+		ofSystemAlertDialog("No normals found. Make sure to export with normals.");
 		::exit(0);
 	}
 	if(vd.getNumTexCoords() == 0) {
-		printf("No texture coordinates found for boid!\n");
+		ofSystemAlertDialog("No texture coordinates found for boid!\n");
 		::exit(0);
 	}
 	
