@@ -19,7 +19,8 @@ void Room::setup(float aspect) {
 	diffuse = 1.0;
 	light.setPointLight();
 	fov = 60;
-	camera.setPosition(0, 0, -10);
+	
+	camera.setPosition(0, 0, -30);
 	camera.lookAt(ofVec3f(0,0,0));
 	camera.setNearClip(0.001);
 	

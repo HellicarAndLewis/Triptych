@@ -33,7 +33,7 @@
     </SliderInt_blurSize>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>34.95</value>
+        <value>39.35</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
@@ -49,7 +49,7 @@
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>0.98</value>
+        <value>-0.43</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
@@ -73,11 +73,11 @@
     </SliderFloat_aoAmount>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>8</value>
+        <value>19</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>20</value>
+        <value>25</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -87,32 +87,36 @@
         <name>Edge Colour Sharpening</name>
         <value>0.945</value>
     </SliderFloat_Edge_Colour_Sharpening>
+    <SliderFloat_Zone_radius_squared>
+        <name>Zone radius squared</name>
+        <value>0.05995</value>
+    </SliderFloat_Zone_radius_squared>
     <SliderFloat_Low_threshold>
         <name>Low threshold</name>
-        <value>0.42</value>
+        <value>0.41</value>
     </SliderFloat_Low_threshold>
     <SliderFloat_High_threshold>
         <name>High threshold</name>
-        <value>0.66</value>
+        <value>0.655</value>
     </SliderFloat_High_threshold>
     <SliderFloat_Align_energy>
         <name>Align energy</name>
-        <value>0.00035</value>
+        <value>1.5e-05</value>
     </SliderFloat_Align_energy>
     <SliderFloat_Separate_energy>
         <name>Separate energy</name>
-        <value>0.0003</value>
+        <value>2.5e-05</value>
     </SliderFloat_Separate_energy>
     <SliderFloat_Attract_energy>
         <name>Attract energy</name>
-        <value>0.0002</value>
+        <value>1.5e-05</value>
     </SliderFloat_Attract_energy>
     <SliderFloat_Center_energy>
         <name>Center energy</name>
-        <value>4</value>
+        <value>0.1</value>
     </SliderFloat_Center_energy>
     <SliderFloat_Bounding_sphere_size>
         <name>Bounding sphere size</name>
-        <value>2.6</value>
+        <value>0.8</value>
     </SliderFloat_Bounding_sphere_size>
 </controls>

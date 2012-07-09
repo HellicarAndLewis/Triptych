@@ -13,7 +13,7 @@ void FlockController::setup() {
 		ofVec3f pos(ofRandom(-r,r),ofRandom(-r,r),ofRandom(-r,r));
 		ps.addParticle(pos);
 	}
-
+	
 	flock.zone_radius_sq = 3.60f;
 	flock.low = 0.4f;  
 	flock.high = 0.6f;
@@ -26,13 +26,15 @@ void FlockController::setup() {
 
 void FlockController::setupGui() {
 	gui.addTitle("Flocking");
+	gui.addSlider("Zone radius squared", flock.zone_radius_sq, 0.01, 10.0f);
 	gui.addSlider("Low threshold", flock.low, 0.0f, 1.0f);
 	gui.addSlider("High threshold", flock.high, 0.0f, 1.0f);
-	gui.addSlider("Align energy", flock.align_energy, 0.0f, 0.01);
-	gui.addSlider("Separate energy", flock.separate_energy, 0.0f, 0.01);
-	gui.addSlider("Attract energy", flock.attract_energy, 0.0f, 0.01);
-	gui.addSlider("Center energy", center_energy, 0.0f, 4.0f);
-	gui.addSlider("Bounding sphere size", sphere_size, 0.0f, 5.0f);
+	gui.addSlider("Align energy", flock.align_energy, 0.0f, 0.001);
+	gui.addSlider("Separate energy", flock.separate_energy, 0.0f, 0.001);
+	gui.addSlider("Attract energy", flock.attract_energy, 0.0f, 0.001);
+	gui.addSlider("Center energy", center_energy, 0.0f, 0.1f);
+	gui.addSlider("Bounding sphere size", sphere_size, 0.0f, 1.5f);
+
 }
 
 void FlockController::update() {
