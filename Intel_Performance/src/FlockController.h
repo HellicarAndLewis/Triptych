@@ -5,6 +5,7 @@
 #include <pbd/PBD.h>
 #include "ofMain.h"
 
+
 template<class T>
 struct BoidParticle : public Particle<T> {
 	BoidParticle(const T& pos, float mass)
@@ -26,12 +27,53 @@ struct BoidParticle : public Particle<T> {
 	}
 };
 
+class Bit {
+public:
+	ofVec3f pos, vel;
+	void setup(ofVec3f start) {
+		pos = start;
+		vel = ofVec3f(ofRandom(-0.001, 0.001), ofRandom(-0.001, 0.001), 0);
+	}
+	
+	void update() {
+		pos += vel;
+		
+	}
+	
+	void draw() {
+		ofRect(pos.x, pos.y, 0.01, 0.01);
+	}
+};
+
+
 class Explosion {
 public:
 	ofVec3f pos;
+	int maxLife;
+	vector<Bit> bits;
 	void init(const ofVec3f &pos) {
 		this->pos = pos;
+		maxLife = 100;
+		for(int i = 0; i < 30; i++) {
+			bits.push_back(Bit());
+			bits.back().setup(pos);
+		}
 	}
+	
+	void draw() {
+		life++;
+		for(int i = 0; i < bits.size(); i++) {
+			bits[i].update();
+			bits[i].draw();
+		}
+	}
+	
+	
+	
+	bool isDead() {
+		return life>maxLife;
+	}
+	int life;
 };
 
 

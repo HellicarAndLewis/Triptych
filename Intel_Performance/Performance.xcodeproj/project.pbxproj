@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		545B641715AB337400917B72 /* FlockController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545B641515AB337400917B72 /* FlockController.cpp */; };
 		5DA0ABCC15A5A28100E0819F /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABBC15A5A28100E0819F /* shapes.cc */; };
 		5DA0ABCD15A5A28100E0819F /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABC115A5A28100E0819F /* advancing_front.cc */; };
 		5DA0ABCE15A5A28100E0819F /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0ABC315A5A28100E0819F /* cdt.cc */; };
@@ -114,6 +113,7 @@
 		EA4DD84D1598CA8900009049 /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83B1598CA8900009049 /* ofxSimpleGuiToo.cpp */; };
 		EA4DD84E1598CA8900009049 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */; };
 		EA7FABB615A1A7520022034E /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectThresholder.cpp */; };
+		EA9068CE15AB351B000CADEC /* FlockController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9068CC15AB351B000CADEC /* FlockController.cpp */; };
 		EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C615A4761D00327E97 /* mesh.frag */; };
 		EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C715A4761D00327E97 /* mesh.vert */; };
 		EAE2A8DC15A4872500327E97 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */; };
@@ -152,8 +152,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		545B641515AB337400917B72 /* FlockController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlockController.cpp; sourceTree = "<group>"; };
-		545B641615AB337400917B72 /* FlockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlockController.h; sourceTree = "<group>"; };
 		5DA0ABB815A5A28100E0819F /* PolyTri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolyTri.h; sourceTree = "<group>"; };
 		5DA0ABB915A5A28100E0819F /* INSTALL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL.txt; sourceTree = "<group>"; };
 		5DA0ABBC15A5A28100E0819F /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
@@ -468,6 +466,8 @@
 		EA4DD83E1598CA8900009049 /* ofxSimpleGuiValueControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleGuiValueControl.h; sourceTree = "<group>"; };
 		EA7FABB415A1A7520022034E /* KinectThresholder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectThresholder.cpp; path = ../../lib/KinectThresholder.cpp; sourceTree = "<group>"; };
 		EA7FABB515A1A7520022034E /* KinectThresholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectThresholder.h; path = ../../lib/KinectThresholder.h; sourceTree = "<group>"; };
+		EA9068CC15AB351B000CADEC /* FlockController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlockController.cpp; sourceTree = "<group>"; };
+		EA9068CD15AB351B000CADEC /* FlockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlockController.h; sourceTree = "<group>"; };
 		EAE2A8C615A4761D00327E97 /* mesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.frag; path = bin/data/mesh.frag; sourceTree = SOURCE_ROOT; };
 		EAE2A8C715A4761D00327E97 /* mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.vert; path = bin/data/mesh.vert; sourceTree = SOURCE_ROOT; };
 		EAE2A8D915A4871800327E97 /* KinectTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectTriangle.h; path = ../../lib/KinectTriangle.h; sourceTree = "<group>"; };
@@ -759,14 +759,14 @@
 				EAE2A8DE15A48FC700327E97 /* pointlight.frag */,
 				EAE2A8DF15A48FC700327E97 /* pointlight.vert */,
 				EA1D692E159E11D400CCE21C /* Room.h */,
+				EA9068CC15AB351B000CADEC /* FlockController.cpp */,
+				EA9068CD15AB351B000CADEC /* FlockController.h */,
 				EA1D692D159E11D400CCE21C /* Room.cpp */,
 				EA1D691D159DFBAC00CCE21C /* contourutils.h */,
 				EA1D691C159DFBAC00CCE21C /* contourutils.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				545B641515AB337400917B72 /* FlockController.cpp */,
-				545B641615AB337400917B72 /* FlockController.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1564,7 +1564,7 @@
 				5DA0AC2C15A5A51500E0819F /* tilt.c in Sources */,
 				5DA0AC2D15A5A51500E0819F /* usb_libusb10.c in Sources */,
 				5DA0AC2F15A5A51500E0819F /* ofxKinect.cpp in Sources */,
-				545B641715AB337400917B72 /* FlockController.cpp in Sources */,
+				EA9068CE15AB351B000CADEC /* FlockController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1651,8 +1651,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
-					./../addons/roxlu/lib/include,
-					./../addons/roxlu/addons/PositionBasedDynamics/include,
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
@@ -1662,10 +1660,12 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					../addons/roxlu/addons/PositionBasedDynamics/include,
+					../addons/roxlu/lib/include,
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../addons/roxlu/addons/PolyTri/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../addons/roxlu/addons/PolyTri/lib\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../addons/roxlu/lib/include";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = ../addons/roxlu/addons/PolyTri/include;
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = ../addons/roxlu/addons/PolyTri/lib;
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = ../addons/roxlu/lib/include;
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1779,8 +1779,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				HEADER_SEARCH_PATHS = (
-					./../addons/roxlu/lib/include,
-					./../addons/roxlu/addons/PositionBasedDynamics/include,
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/src",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
@@ -1790,10 +1788,12 @@
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					../addons/roxlu/addons/PositionBasedDynamics/include,
+					../addons/roxlu/lib/include,
 				);
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../addons/roxlu/addons/PolyTri/include\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../addons/roxlu/addons/PolyTri/lib\"";
-				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../addons/roxlu/lib/include";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = ../addons/roxlu/addons/PolyTri/include;
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = ../addons/roxlu/addons/PolyTri/lib;
+				HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = ../addons/roxlu/lib/include;
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

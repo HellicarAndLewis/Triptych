@@ -7,4 +7,4 @@ OF_PATH = ../../..
 
 OFXKINECT = ../addons/ofxKinect
 OTHER_LDFLAGS = $(OF_CORE_LIBS)  $(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a $(OFXKINECT)/libs/libusb/osx/libs/usb-1.0.a
-HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv $(OFXKINECT)/libs/libusb/osx/include $(OFXKINECT)/libs/libfreenect
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OF_PATH)/addons/ofxOpenCv/src ../addons/roxlu/addons/PositionBasedDynamics/include  $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv ../addons/roxlu/libs/include $(OFXKINECT)/libs/libusb/osx/include $(OFXKINECT)/libs/libfreenect 
