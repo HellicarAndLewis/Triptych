@@ -11,13 +11,22 @@
 #include <roxlu/math/Vec3.h>
 #include <application/KinectRecorder.h>
 #include <application/Settings.h>
+#include <roxlu/experimental/Timer.h>
 
 #include <vector>
 #include <deque>
 
 
+using namespace roxlu;
+
 class KinectInput : public BoundBlobListener {
 public:
+	enum KinectInputModes {
+		 K_INPUT_NONE
+		,K_INPUT_RECORDING
+		,K_INPUT_KINECT
+	};
+	
 	KinectInput();
 	void setup();
 	bool update();
@@ -34,8 +43,7 @@ public:
 	KinectThresholder kinect;
 	deque<KinectMesh> kmeshes;
 	bool is_updated;
-	bool use_recording;
-
+	int input_mode;
 	vector<roxlu::Vec3> interactive_points;
 private:
 	void setupInputFromKinect();

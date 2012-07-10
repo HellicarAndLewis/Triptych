@@ -43,4 +43,6 @@ private:
 	
 	ofVec3f headPos;
 	
+	
+	ofFbo fbo;
 };

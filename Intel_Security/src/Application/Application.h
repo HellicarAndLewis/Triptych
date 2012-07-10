@@ -17,12 +17,15 @@ public:
 	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
 	
+	KinectInput kinect;
 	Boids flock_ps;
 	Boids fx_ps; 
 	BoidFlocking flock;
-	KinectInput kinect;
-	Visualizer viz;
+	
 	Controller control;
+	Visualizer viz;
+
+
 	
 	
 };

@@ -1628,6 +1628,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
+					"-Werror=return-type",
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
@@ -1665,6 +1666,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
+					"-Werror=return-type",
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",

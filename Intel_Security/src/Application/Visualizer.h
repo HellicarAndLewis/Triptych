@@ -5,6 +5,7 @@
 #include <pbd/PBD.h>
 
 #include <application/KinectInput.h>
+#include <application/Controller.h>
 #include <application/Visualizer.h>
 #include <application/BoidTypes.h>
 
@@ -28,7 +29,7 @@ struct BoidPartitioner {
 
 class Visualizer {
 public:
-	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect);
+	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller);
 	void setup();
 	void update();
 	//void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
@@ -39,10 +40,12 @@ public:
 	
 	Boids& flock_ps;
 	Boids& fx_ps; // effects!
+	Controller& controller;
 	TrailsDrawer trails_drawer;
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
 	BoidDrawer boid_drawer;
+	
 	
 	Billboard bb;
 	Texture glow_tex;

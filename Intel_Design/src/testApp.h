@@ -1,41 +1,21 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBullet.h"
-#include "Ribbon.h"
+
 #include "Room.h"
 #include "Bloom.h"
-#include "KinectSkeletons.h"
+
+#include "KinectThresholder.h"
+#include "KinectMesh.h"
+#include "BoundBlobListener.h"
+
+#include "BoundBlob.h"
+
+#include "Person.h"
 
 
-class RibbonSkeleton {
-public:
-	Ribbon *ribbonLeft;
-	Ribbon *ribbonRight;
-	KinectSkeleton skeleton;
-	bool alive;
-	void setup(KinectSkeleton skel, ofCamera &cam, ofxBulletWorldRigid *world) {
-		alive = true;
-		ribbonLeft = new Ribbon(60, &cam, world);
-		ribbonRight = new Ribbon(60, &cam, world);
-		update(skel);
-		printf("\n\n\nCRATING RIBBONS!!!!!\n\n\n");
-		
-	}
-	void update(KinectSkeleton skel) {
 
-		this->skeleton = skel;
-		
-		// we want to rescale to screen coords - we also want to remove the z component
-		// (for now)
-		ofVec3f factor = ofVec3f((float)ofGetWidth()/640.f, (float)ofGetHeight()/480.f, 0);
-		ribbonLeft->setAnchorPoint(skeleton.leftHand*factor);
-		ribbonRight->setAnchorPoint(skeleton.rightHand*factor);
-	}
-	
-};
-
-class testApp : public ofBaseApp{
+class testApp : public ofBaseApp, BoundBlobListener {
 
 public:
 	~testApp();
@@ -56,24 +36,19 @@ public:
 		
 	
 	ofCamera cam;
-	void updateRibbons();
-	void drawRibbons();
-	void updateFromSkeletons();
 	ofLight light;
 	
-	bool stopMoving;
-//	ofFbo fbo;
-//	ofFbo roomFbo;
 	Room room;
-	//tricks::gl::effects::Bloom bloom;
-	KinectSkeletons kinect;
 	
-	// these are the skeletons currently on the scene
-	map<int,RibbonSkeleton> skeletons;
+
 	
-	// these are the ribbons that have been disassocated with any skeleton.
-	vector<Ribbon*> deadRibbons;
+	KinectThresholder kinect;
+
+	vector<KinectMesh> meshes;
 	
-	ofxBulletWorldRigid	world;
+	std::map<int, Person> people;
 	
+	void boundBlobEntered(const BoundBlob &blob);
+	void boundBlobMoved(const BoundBlob &blob);
+	void boundBlobExited(const BoundBlob &blob);
 };

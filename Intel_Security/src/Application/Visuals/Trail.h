@@ -302,6 +302,7 @@ template<class W, class T>
 inline void Trail<V, D, C>::createTriangleStrip(const float maxWidth, C& vd, W widthFunctor, T triFunctor) {
 	float w = 0.0f;
 	float p = 0.0f;
+	
 	for(int i = 0; i < points.size()-1; ++i) {
 		V& a = points[i];
 		V& b = points[i+1];

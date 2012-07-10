@@ -8,7 +8,7 @@
 
 #include "Trail.h"
 
-#define TRAIL_WIDTH 30
+#define TRAIL_WIDTH 50
 #define INTERPOLATION_SIZE 4.0
 
 Trail::Trail():
@@ -24,8 +24,14 @@ sineIncrement(0.1) {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	mesh.enableTextures();
 	
-	texImage.loadImage("grad3.png");
+	texImage.loadImage("grad3_3.png");
 	texImage2.loadImage("grad3_22.png");
+	
+	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB32F);
+
+	fbo.begin();
+	ofClear(0, 0, 0);
+	fbo.end();
 	
 }
 
@@ -41,12 +47,12 @@ void Trail::update() {
 	}
 	
 	//if the head hasn't moved since the last frame then reduce
-	if (trail.begin()->getPosition() == headPos) {
-		for (int i = 0; i < reductionSpeed && trail.size(); i++) {
-			trail.pop_back();
-		}
-		
-	}
+//	if (trail.begin()->getPosition() == headPos) {
+//		for (int i = 0; i < reductionSpeed && trail.size(); i++) {
+//			trail.pop_back();
+//		}
+//		
+//	}
 	
 	mesh.clear();
 	
@@ -54,7 +60,7 @@ void Trail::update() {
 	
 	for (deque<ofNode>::iterator it = trail.begin(); it != trail.end(); it++) {
 		
-		ofMatrix4x4 rot = ofMatrix4x4::newRotationMatrix(sineCounter, 1, 0, 0);
+		ofMatrix4x4 rot = ofMatrix4x4::newRotationMatrix(sineCounter, 0, 0, 0);
 		
 		ofNode node = *it;
 		ofVec3f p = node.getPosition();
@@ -92,11 +98,19 @@ float tt = 0;
 
 void Trail::draw() {
 	
-	if (drawInfo) {
-		ofSetHexColor(0xffffff);
-		ofDrawBitmapString("trail size: " + ofToString(trail.size()), 10, 10);
-	}
+
 	
+	
+	fbo.begin();	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(0, 0, 0, 0.002);
+	ofRect(0, 0, ofGetWidth(), ofGetHeight());
+	
+	
+	
+	glColor4f(1,1,1,0.01);
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+
 
 	if (drawWireframe) {
 		ofSetHexColor(0xffffff);
@@ -104,48 +118,63 @@ void Trail::draw() {
 	}
 	else {
 		texImage.bind();
-		mesh.draw();
+		
+		for (int i = 0; i < 50; i++) {
+			mesh.draw();
+		}
+		
 		
 		texImage.unbind();
 	}
 	
+	fbo.end();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(1,1,1,1);	
+	fbo.draw(0,0);
+	
 //	vector<ofVec3f> points;
 //	points.resize(trail.size());
 	
-	theta = tt;
-	tt+= 0.1;
-
-	ofVboMesh mesh2;
-	mesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+//	theta = tt;
+//	tt+= 0.1;
+//
+//	ofVboMesh mesh2;
+//	mesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+//	
+//	ofSetHexColor(0x00ffff);
+//	for (int i = 0; i < trail.size(); i++) {
+////		ofCircle(trail[i].getX(), trail[i].getY() + (sin(theta+=0.1) * 20), 5);
+//		
+//		ofVec3f p = trail[i].getPosition();
+//		
+//		ofVec3f top(0, TRAIL_WIDTH + (sin(theta) * 20), 0);
+//		top = top + p;
+//		
+//		mesh2.addVertex(top);
+//		mesh2.addTexCoord(ofVec2f(0, 0));
+//		
+//		//		ofVec3f bottom(p.x, p.y - TRAIL_WIDTH + sine, p.z);
+//		//		bottom = bottom * rot;
+//		
+//		ofVec3f bottom(0, -TRAIL_WIDTH+ (sin(theta) * 20), 0);
+//		bottom = bottom + p;
+//		
+//		mesh2.addVertex(bottom);
+//		mesh2.addTexCoord(ofVec2f(texImage.width, texImage.height));
+//		
+//		theta+=0.07;
+//		
+//	}
+//	
+//	texImage2.bind();
+//	mesh2.draw();
+//	texImage2.unbind();
 	
-	ofSetHexColor(0x00ffff);
-	for (int i = 0; i < trail.size(); i++) {
-//		ofCircle(trail[i].getX(), trail[i].getY() + (sin(theta+=0.1) * 20), 5);
-		
-		ofVec3f p = trail[i].getPosition();
-		
-		ofVec3f top(0, TRAIL_WIDTH + (sin(theta) * 20), 0);
-		top = top + p;
-		
-		mesh2.addVertex(top);
-		mesh2.addTexCoord(ofVec2f(0, 0));
-		
-		//		ofVec3f bottom(p.x, p.y - TRAIL_WIDTH + sine, p.z);
-		//		bottom = bottom * rot;
-		
-		ofVec3f bottom(0, -TRAIL_WIDTH+ (sin(theta) * 20), 0);
-		bottom = bottom + p;
-		
-		mesh2.addVertex(bottom);
-		mesh2.addTexCoord(ofVec2f(texImage.width, texImage.height));
-		
-		theta+=0.07;
-		
+	
+	if (drawInfo) {
+		ofSetHexColor(0xffffff);
+		ofDrawBitmapString("trail size: " + ofToString(trail.size()), 10, 10);
 	}
-	
-	texImage2.bind();
-	mesh2.draw();
-	texImage2.unbind();
 	
 }
 
@@ -161,6 +190,13 @@ void Trail::input(ofVec3f p) {
 	
 	//if we are not empty then linearly interpolate from last one
 	else {
+		
+//		float m = 0.1;
+//		ofVec3f pos = trail.begin()->getPosition()*(1-m) + p*m;
+//		node.setPosition(pos);
+//		trail.push_front(node);
+//		return;
+		
 		ofVec3f old = trail.begin()->getPosition();
 		ofVec3f diff = p - old;
 				

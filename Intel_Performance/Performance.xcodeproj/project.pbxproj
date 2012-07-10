@@ -1774,6 +1774,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = PerformanceDebug;
+				USER_HEADER_SEARCH_PATHS = "$(OF_CORE_HEADERS) $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv $(OFXKINECT)/libs/libusb/osx/include $(OFXKINECT)/libs/libfreenect $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1) $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2) $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1902,6 +1903,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Performance;
+				USER_HEADER_SEARCH_PATHS = "$(OF_CORE_HEADERS) $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv $(OFXKINECT)/libs/libusb/osx/include $(OFXKINECT)/libs/libfreenect $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_1) $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_2) $(HEADER_SEARCH_PATHS_QUOTED_FOR_TARGET_3)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
