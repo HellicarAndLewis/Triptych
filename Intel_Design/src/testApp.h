@@ -51,4 +51,6 @@ public:
 	void boundBlobEntered(const BoundBlob &blob);
 	void boundBlobMoved(const BoundBlob &blob);
 	void boundBlobExited(const BoundBlob &blob);
+	
+	ofFbo fbo;
 };

@@ -39,10 +39,14 @@
         <name>aoAmount</name>
         <value>0.5</value>
     </SliderFloat_aoAmount>
-    <Toggle_switch_trail>
-        <name>switch trail</name>
-        <value>0</value>
-    </Toggle_switch_trail>
+    <SliderInt_iterations>
+        <name>iterations</name>
+        <value>95</value>
+    </SliderInt_iterations>
+    <SliderFloat_m>
+        <name>m</name>
+        <value>0.061</value>
+    </SliderFloat_m>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
         <value>242.25</value>

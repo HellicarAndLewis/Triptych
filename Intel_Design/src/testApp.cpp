@@ -4,7 +4,8 @@
 //bool clearedFbo = false;
 
 bool useMareks;
-
+int iterations = 100;
+float m = 0.01;
 
 void testApp::setup() {
 
@@ -17,7 +18,10 @@ void testApp::setup() {
 	room.setupGui();
 	
 	
-	gui.addToggle("switch trail", useMareks);
+//	gui.addToggle("switch trail", useMareks);
+	
+	gui.addSlider("iterations", iterations, 0, 500);
+	gui.addSlider("m", m, 0, 0.2);
 	
 	kinect.setup();
 	kinect.setupGui();
@@ -38,9 +42,11 @@ void testApp::setup() {
 //	glEnable(GL_NORMALIZE);
 	
 	
-
+	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
 	
-
+	fbo.begin();
+	ofClear(0, 0, 0, 0);
+	fbo.end();
 }
 
 testApp::~testApp() {
@@ -89,7 +95,17 @@ void testApp::draw() {
 		meshes[i].draw();
 	}
 	
-	ofPopMatrix();
+	
+	
+	fbo.begin();
+	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(0, 0, 0, 0.2);
+	ofRect(0, 0, ofGetWidth(), ofGetHeight());
+
+	glColor4f(1,1,1,0.1);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
 	
 	
 	for (map<int, Person>::iterator it = people.begin(); it != people.end(); it++) {
@@ -97,11 +113,21 @@ void testApp::draw() {
 		it->second.draw();
 	}
 	
+	fbo.end();
+	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(1, 1, 1, 1);
+	fbo.draw(0, 0);
+	
+	ofPopMatrix();
+
+	
 	gui.draw();
 }
 
 
 void testApp::boundBlobEntered(const BoundBlob &blob) {
+
 	people[blob.id] = Person();
 	people[blob.id].setup(blob);
 	

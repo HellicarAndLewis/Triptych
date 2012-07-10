@@ -1,5 +1,5 @@
 //
-//  MarekTrail.h
+//  Brush.h
 //  Intel_Design
 //
 //  Created by Will Gallia on 10/07/2012.
@@ -8,15 +8,16 @@
 
 #include "ofMain.h"
 
-class MarekTrail {
+class Brush {
 	
 public:
-	MarekTrail();
-	~MarekTrail();
+	Brush();
+	~Brush();
 	
 	void update();
 	void draw();
 	
+	void setPoint(ofVec3f p) { point = p; }
 	void setInput(ofVec3f p) { input = p; }
 	void setInput(ofVec2f p) { input.set(p.x, p.y, 0); }
 	
@@ -26,7 +27,10 @@ private:
 	
 	ofVec3f point, input;
 	
-	int iterations;
-	float m;
+//	int iterations;
+//	float m;
 	
 };
+
+extern int iterations;
+extern float m;
