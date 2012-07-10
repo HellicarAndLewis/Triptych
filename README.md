@@ -47,7 +47,7 @@ Security visualization. You can use the following keys in the application:
   - **[x] Draw boid glows:** Draw glows when a boid attack.
   - **[x] Draw grid:** Used while testing, for alignment. Draw an axis + grid.
   - **[x] Draw flock:** Draw the boids.
-  - **[x] DebugDraw attackers: in debug draw mode (the ugly version), draw the attackers magenta)
+  - **[x] DebugDraw attackers:** in debug draw mode (the ugly version), draw the attackers magenta)
   - **Kinect scale:** Scale of triangulated kinect image.
   - **Percentage of visible boids**: From the 300 boids possible in total, only use this percentage
   - **Percentage of attack boids**: Percentage from the visible boids which are **responsive** to user input.
