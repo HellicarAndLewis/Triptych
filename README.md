@@ -48,6 +48,7 @@ Security visualization. You can use the following keys in the application:
   - **Kinect scale:** Scale of triangulated kinect image.
   
  *Example of values which work well*
+ 
  <img src="http://upload.roxlu.com/server/php/files/Screen%20shot%202012-07-10%20at%2011.20.21%20AM.png">
  
  
