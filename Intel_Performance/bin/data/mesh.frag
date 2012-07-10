@@ -20,11 +20,11 @@ void main()
 			c.g *= c.g*atten;
 			c.b *= c.b*atten;
 		} else if(layer==2) {
-			c.g = sqrt(c.g);
+			c.g = pow(c.g, colorPower);
 			c.r *= c.r*atten;
 			c.b *= c.b*atten;
 		} else if(layer==3) {
-			c.b = sqrt(c.b);
+			c.b = pow(c.b, colorPower);
 			c.r *= c.r*atten;
 			c.g *= c.g*atten;
 		}
