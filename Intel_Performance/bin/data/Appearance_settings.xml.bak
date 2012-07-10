@@ -5,7 +5,7 @@
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>14</value>
+        <value>13</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -17,11 +17,11 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_other_channel_atten>
         <name>other channel atten</name>
-        <value>0.66</value>
+        <value>0.805</value>
     </SliderFloat_other_channel_atten>
     <SliderFloat_channel_power>
         <name>channel power</name>
-        <value>0.715</value>
+        <value>0.53</value>
     </SliderFloat_channel_power>
     <SliderFloat_channel_alpha>
         <name>channel alpha</name>
@@ -29,10 +29,10 @@
     </SliderFloat_channel_alpha>
     <SliderFloat_bloom_amount>
         <name>bloom amount</name>
-        <value>0.64</value>
+        <value>0.56</value>
     </SliderFloat_bloom_amount>
     <SliderFloat_bloom_brightness>
         <name>bloom brightness</name>
-        <value>1.15</value>
+        <value>0.77</value>
     </SliderFloat_bloom_brightness>
 </controls>
