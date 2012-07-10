@@ -12,6 +12,7 @@ Security visualization. You can use the following keys in the application:
  - s: **Flocking:** save settings
  - l: **Flocking:** load settings
  - f: Toggle fullscreen
+ - spacebar: **Kinect** toggle gui 
  
  ## Flocking sliders
  

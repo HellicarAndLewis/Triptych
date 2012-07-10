@@ -43,9 +43,9 @@ void testApp::setup(){
 	flock_gui.addFloat("Boid trail width", settings.boid_trail_width).setMin(0.01f).setMax(2.1f);
 	flock_gui.addInt("Boid trail length", settings.boid_trail_length).setMin(0).setMax(30);
 	flock_gui.addBool("Boid create trails", settings.boid_create_trails);
-	flock_gui.addFloat("Boid attract to user energy", settings.attract_to_user_energy).setMin(0.00f).setMax(5.5f);
-	flock_gui.addFloat("Boid attract to user radius", settings.attract_to_user_radius).setMin(0.00f).setMax(5.0f);
-	flock_gui.addFloat("Boid attack energy", settings.boid_attack_energy).setMin(0.0f).setMax(0.1f);
+	flock_gui.addFloat("Boid attract to user energy", settings.attract_to_user_energy).setMin(0.00f).setMax(15.5f);
+	flock_gui.addFloat("Boid attract to user radius", settings.attract_to_user_radius).setMin(0.00f).setMax(15.0f);
+	flock_gui.addFloat("Boid attack energy", settings.boid_attack_energy).setMin(0.0f).setMax(2.1f);
 	flock_gui.addFloat("Boid attack duration min", settings.boid_attack_duration_min).setMin(0.0f).setMax(10000.0f);
 	flock_gui.addFloat("Boid attack duration max", settings.boid_attack_duration_max).setMin(0.0f).setMax(20000.0f);
 	flock_gui.addFloat("Boid attack delay min (ms)", settings.boid_attack_delay_min).setMin(0.0f).setMax(10000.0f);
@@ -65,6 +65,7 @@ void testApp::setup(){
 	flock_gui.addBool("Draw boid glows", settings.boid_draw_glows);
 	flock_gui.addBool("Draw grid", settings.draw_axis);
 	flock_gui.addBool("Draw flock", settings.draw_flock);
+	flock_gui.addBool("DebugDraw attackers", settings.debugdraw_attackers);
 	flock_gui.addFloat("Kinect scale", settings.kinect_scale).setMin(0.0f).setMax(15.0f);
 	
 	flock_gui.load(ofToDataPath("gui.bin",true));

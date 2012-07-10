@@ -63,11 +63,14 @@ typedef BoidParticle<Vec3> 	Boid3;
 // Used by flocking to update 
 struct BoidFlockForceAdder {
 	void operator()(const Vec3& dir, Boid3& boid) {
+			boid.addForce(dir);
+			return;
+			
 		if(boid.mode == B_MODE_DEFAULT) {
 			boid.addForce(dir);
 		}
 		else {	
-			boid.addForce(dir * 0.1);
+			//boid.addForce(dir * 0.1);
 		}
 	}
 };

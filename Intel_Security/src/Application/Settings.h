@@ -20,6 +20,7 @@ struct Settings {
 		,boid_attack_duration_min(0.0f)
 		,boid_attack_duration_max(15000.0f)
 		,boid_glow_size(1.0f)
+		,debugdraw_attackers(true)
 	{
 	}
 	
@@ -47,6 +48,7 @@ struct Settings {
 	float kinect_scale;
 	float attract_to_user_energy;
 	float attract_to_user_radius;
+	bool debugdraw_attackers;
 
 
 	bool must_record_kinect;

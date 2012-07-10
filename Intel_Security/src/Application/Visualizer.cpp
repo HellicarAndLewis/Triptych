@@ -195,15 +195,17 @@ void Visualizer::debugDraw() {
 	}
 
 	// draw attackers
-	glColor3f(1,0,1);
-	glPointSize(12.0f);
-	glBegin(GL_POINTS);
-	for(Boids::iterator it = controller.attackers.begin(); it != controller.attackers.end(); ++it) {
-		Boid& b = **it;
-		glVertex3fv(b.position.getPtr());
+	if(settings.debugdraw_attackers) {
+		glColor3f(1,0,1);
+		glPointSize(8.0f);
+		glBegin(GL_POINTS);
+		for(Boids::iterator it = controller.attackers.begin(); it != controller.attackers.end(); ++it) {
+			Boid& b = **it;
+			glVertex3fv(b.position.getPtr());
+		}
+		glEnd();
+		glPointSize(1.0f);
 	}
-	glEnd();
-	glPointSize(1.0f);
 
 	// draw trails
 	trails_drawer.debugDraw();
@@ -225,12 +227,13 @@ void Visualizer::debugDraw() {
 	}	
 	glEnd();
 	*/
+	
 	glPointSize(5.0f);
 	glColor3f(1,0,0);
 	glBegin(GL_POINTS);
 	for(int i = 0; i < kinect_input.interactive_points.size(); ++i) {
-		test_boid->position = kinect_input.interactive_points[i];
-		flock_ps.repel(test_boid, settings.attract_to_user_radius, settings.attract_to_user_energy);
+	//	test_boid->position = kinect_input.interactive_points[i];
+	//	flock_ps.repel(test_boid, settings.attract_to_user_radius, settings.attract_to_user_energy);
 		Vec3& p = kinect_input.interactive_points[i];
 		glVertex3f(p.x, p.y, p.z);
 	}
