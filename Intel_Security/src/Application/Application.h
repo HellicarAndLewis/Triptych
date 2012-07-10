@@ -24,9 +24,6 @@ public:
 	
 	Controller control;
 	Visualizer viz;
-
-
-	
-	
 };
+
 #endif

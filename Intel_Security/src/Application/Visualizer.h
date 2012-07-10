@@ -32,7 +32,6 @@ public:
 	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller);
 	void setup();
 	void update();
-	//void draw(const Mat4& pm, const Mat4& vm, const Mat3& nm);
 	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void drawBoids(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void drawGlows(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
@@ -45,16 +44,8 @@ public:
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
 	BoidDrawer boid_drawer;
-	
-	
 	Billboard bb;
 	Texture glow_tex;
-	Texture twinkle_tex;
-	Texture mega_glow_tex;
-	
-	// TESTING WITH TRAILS
-	Trail3PC	test_trail;
-	Boid* test_boid;
 	
 private:
 };

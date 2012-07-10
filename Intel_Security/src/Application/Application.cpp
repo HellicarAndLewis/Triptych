@@ -15,23 +15,30 @@ void Application::setup() {
 }
 
 void Application::update() {
-	kinect.update();
+	// update kinect and tell drawer if we detected someone...
+	bool user_detected = kinect.update();
+	viz.kinect_drawer.setUserDetected(user_detected);
 
-	//flock.setMaxSpeed(settings.flocking_max_speed);
 	flock.update();
 	flock_ps.update(0.3);
 	fx_ps.update(0.3);
 	
 	control.update();
-	//flock_ps.limitSpeed(0.4);
-	
+
 	flock_ps.removeDeadParticles();
 	fx_ps.removeDeadParticles();
-	
 	viz.update();
 }
 
-void Application::draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec) {
+
+void Application::draw(
+	 const float* pm // projection matrix
+	,const float* vm // view matrix
+	,const float* nm // normal matrix
+	,const float* rightVec // right vec for 
+	,const float* upVec
+)
+{
 	viz.draw(pm, vm, nm, rightVec, upVec);
 }
 

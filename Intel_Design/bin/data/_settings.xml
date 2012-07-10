@@ -39,40 +39,20 @@
         <name>aoAmount</name>
         <value>0.31</value>
     </SliderFloat_aoAmount>
-    <Toggle_switch_trail>
-        <name>switch trail</name>
-        <value>0</value>
-    </Toggle_switch_trail>
-    <SliderFloat_near_threshold>
-        <name>near threshold</name>
-        <value>242.25</value>
-    </SliderFloat_near_threshold>
-    <SliderFloat_far_threshold>
-        <name>far threshold</name>
-        <value>54.825</value>
-    </SliderFloat_far_threshold>
-    <SliderInt_hysteresis>
-        <name>hysteresis</name>
-        <value>3</value>
-    </SliderInt_hysteresis>
-    <Toggle_learnBackground>
-        <name>learnBackground</name>
-        <value>0</value>
-    </Toggle_learnBackground>
-    <SliderInt_erosions>
-        <name>erosions</name>
-        <value>0</value>
-    </SliderInt_erosions>
-    <SliderInt_dilations>
-        <name>dilations</name>
-        <value>0</value>
-    </SliderInt_dilations>
-    <SliderInt_blurs>
-        <name>blurs</name>
-        <value>0</value>
-    </SliderInt_blurs>
-    <SliderInt_blurSize>
-        <name>blurSize</name>
-        <value>1</value>
-    </SliderInt_blurSize>
+    <SliderInt_iterations>
+        <name>iterations</name>
+        <value>15</value>
+    </SliderInt_iterations>
+    <SliderFloat_m>
+        <name>m</name>
+        <value>0.00655</value>
+    </SliderFloat_m>
+    <SliderFloat_alpha1>
+        <name>alpha1</name>
+        <value>0.085</value>
+    </SliderFloat_alpha1>
+    <SliderFloat_alpha2>
+        <name>alpha2</name>
+        <value>0.005</value>
+    </SliderFloat_alpha2>
 </controls>

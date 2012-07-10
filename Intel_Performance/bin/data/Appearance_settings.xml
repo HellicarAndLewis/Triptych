@@ -1,7 +1,7 @@
 <controls>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>14</value>
+        <value>35</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>

@@ -1,0 +1,14 @@
+<controls>
+    <SliderFloat_other_channel_atten>
+        <name>other channel atten</name>
+        <value>0.46</value>
+    </SliderFloat_other_channel_atten>
+    <SliderFloat_channel_power>
+        <name>channel power</name>
+        <value>0.34</value>
+    </SliderFloat_channel_power>
+    <SliderFloat_channel_alpha>
+        <name>channel alpha</name>
+        <value>0.67</value>
+    </SliderFloat_channel_alpha>
+</controls>

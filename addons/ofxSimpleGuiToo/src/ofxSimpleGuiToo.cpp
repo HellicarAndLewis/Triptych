@@ -240,6 +240,7 @@ ofxSimpleGuiPage& ofxSimpleGuiToo::page(int i) {
 ofxSimpleGuiPage& ofxSimpleGuiToo::page(string name) {
 	if(!config) setup();
 	for(int i=1; i<pages.size(); i++) if(name.compare(pages[i]->name) == 0) return *pages[i];
+	return *pages[0]; // roxlu, should return something
 }
 
 
@@ -275,6 +276,7 @@ ofxSimpleGuiControl &ofxSimpleGuiToo::control(string name) {
 		}
 	}
 //	return NULL;
+	return *pages[0]; // @roxlu should return something
 }
 
 

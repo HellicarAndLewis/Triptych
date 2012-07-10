@@ -12,7 +12,7 @@
 
 #include "BoundBlob.h"
 #include "Trail.h"
-#include "MarekTrail.h"
+#include "Brush.h"
 
 #define NUM_HANDS 2
 
@@ -31,7 +31,7 @@ public:
 
 	
 	Trail trail[NUM_HANDS];
-	MarekTrail mtrail[NUM_HANDS];
+	Brush brushes[NUM_HANDS];
 };
 
 extern bool useMareks;

@@ -15,15 +15,11 @@ public:
 	void draw(const float* pm, const float* vm);
 	void debugDraw();
 	void update();
-	
 	size_t getBytesNeeded();
 			
 	Boids& flock_ps;
 	Trails3PT trails;
 	VerticesPT vertices;
-	//Trails2PC trails;
-	//VerticesPC vertices;
-	
 	Texture flow_tex;
 	Texture trail_tex;
 	VAO vao;
