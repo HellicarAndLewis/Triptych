@@ -2,6 +2,7 @@
 
 KinectDrawer::KinectDrawer() 
 	:allocated_bytes(0)
+	,user_detected(false)
 {
 
 }
@@ -65,7 +66,11 @@ void KinectDrawer::update(KinectMesh& kmesh) {
 
 
 void KinectDrawer::draw(const float* pm, const float* vm) {
-	if(num_vertices <= 0 || num_vertices > 1024*1024) {
+	if(!user_detected) {
+		return;
+	}
+	
+	if(num_vertices <= 50 || num_vertices > 1024*1024) { // 50 just arbitrary...
 		return;
 	}
 	

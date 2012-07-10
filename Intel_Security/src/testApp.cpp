@@ -2,7 +2,7 @@
 #include "ofxSimpleGuiToo.h"
 
 testApp::testApp()
-	:flock_gui("Settings", 300)
+	:flock_gui("Settings", 400)
 	,app(ofGetWidth(), ofGetHeight())
 {
 }
@@ -35,9 +35,8 @@ void testApp::setup(){
 	//flock_gui.addBool("Flock apply perlin noise", settings.flocking_apply_perlin);//.setColor(0.4, 0.03, 0.1);
 	//flock_gui.addFloat("Flock perlin scale", settings.flocking_perlin_scale).setMin(0.0f).setMax(10.0f); //.setColor(0.4, 0.03, 0.1);
 	//flock_gui.addFloat("Flock perlin influence", settings.flocking_perlin_influence).setMin(0.0f).setMax(100.0f); //.setColor(0.4, 0.03, 0.1);
-
-	flock_gui.addFloat("Boid trail duration (millis)", settings.boid_trail_duration_millis).setMin(0.0f).setMax(5000.0f);
-	flock_gui.addFloat("Boid glow duration (ms)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
+	//flock_gui.addFloat("Boid trail duration (millis)", settings.boid_trail_duration_millis).setMin(0.0f).setMax(5000.0f);
+	//flock_gui.addFloat("Boid glow duration (ms)", settings.boid_glow_duration_millis).setMin(0.0f).setMax(5000.0f);
 	flock_gui.addFloat("Boid glow size", settings.boid_glow_size).setMin(0.0f).setMax(2.0f);
 	flock_gui.addFloat("Boid scale",settings.boid_scale).setMin(0.0f).setMax(1.0f);
 	flock_gui.addFloat("Boid trail width", settings.boid_trail_width).setMin(0.01f).setMax(2.1f);
@@ -50,6 +49,8 @@ void testApp::setup(){
 	flock_gui.addFloat("Boid attack duration max", settings.boid_attack_duration_max).setMin(0.0f).setMax(20000.0f);
 	flock_gui.addFloat("Boid attack delay min (ms)", settings.boid_attack_delay_min).setMin(0.0f).setMax(10000.0f);
 	flock_gui.addFloat("Boid attack delay max (ms)", settings.boid_attack_delay_max).setMin(0.0f).setMax(20000.0f);
+	flock_gui.addFloat("Boids: mix of normal in boid shader", settings.boid_shader_normal_mix).setMin(0.0f).setMax(1.0f);
+	flock_gui.addFloat("Boids: specular component (lower is more)", settings.boid_shader_specular).setMin(0.0f).setMax(10.0f);
 
 	/*
 	flock_gui.addFloat("Explosion random x velocity", settings.explosion_random_x_vel).setMin(0.0f).setMax(15.0f);
@@ -61,13 +62,21 @@ void testApp::setup(){
 	flock_gui.addInt("Explosion trail length", settings.explosion_trail_length).setMin(0).setMax(20);
 	*/
 	flock_gui.addBool("Record kinect", settings.must_record_kinect);
-	flock_gui.addButton<testApp>("Save kinect recording", 0, this);
 	flock_gui.addBool("Draw boid glows", settings.boid_draw_glows);
 	flock_gui.addBool("Draw grid", settings.draw_axis);
 	flock_gui.addBool("Draw flock", settings.draw_flock);
+	flock_gui.addBool("Draw room", settings.draw_room);
 	flock_gui.addBool("DebugDraw attackers", settings.debugdraw_attackers);
 	flock_gui.addFloat("Kinect scale", settings.kinect_scale).setMin(0.0f).setMax(15.0f);
+	flock_gui.addButton<testApp>("Save kinect recording", 0, this);	
 	
+		
+	// Change number of boids.
+	flock_col[0] = 0.5f; flock_col[1] = 0.0f; flock_col[2] = 0.3f;
+	flock_gui.addFloat("Percentage of visible boids", settings.boids_percentage_visible).setMin(0.0f).setMax(1.0f).setColor(flock_col);
+	flock_gui.addFloat("Percentage of attack boids", settings.boids_percentage_attackers).setMin(0.0f).setMax(1.0f).setColor(flock_col);
+	flock_gui.addButton<testApp>("Update number of visible boids", 1, this).setColor(flock_col);
+
 	flock_gui.load(ofToDataPath("gui.bin",true));
 	
 	cam.setup(ofGetWidth(), ofGetHeight());
@@ -77,15 +86,26 @@ void testApp::setup(){
 }
 
 void testApp::operator()(const int n) {
-	if(n == 0) {
-		settings.must_record_kinect = false;
-		app.kinect.recorder.save(File::toDataPath("kinect.bin"));
+	switch(n) {
+		case 0: {
+			settings.must_record_kinect = false;
+			app.kinect.recorder.save(File::toDataPath("kinect.bin"));
+			break;
+		}
+		case 1: {
+			app.control.setVisibleBoidsPercentage(settings.boids_percentage_visible);
+			app.control.setAttackPercentage(settings.boids_percentage_attackers);
+			break;
+		}
+		default:break;
 	}
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	flock_gui.update();
+	if(show_gui) {
+		flock_gui.update();
+	}
 	app.update();
 	room.update();
 }
@@ -95,7 +115,9 @@ void testApp::draw(){
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
 
-	//room.draw();
+	if(settings.draw_room) {
+		room.draw();
+	}
 	
 	gui.draw();
 	if(!debug) {
@@ -144,6 +166,9 @@ void testApp::keyPressed(int key){
 	else if(key == 'f') {
 		ofToggleFullscreen();
 	}
+	else if(key == 'r') {
+		settings.rotate_scene = !settings.rotate_scene;
+	}
 }
 
 //--------------------------------------------------------------
@@ -153,25 +178,37 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-	flock_gui.onMouseMoved(x,y);
+	if(show_gui) {
+		flock_gui.onMouseMoved(x,y);
+	}
 
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-	flock_gui.onMouseMoved(x,y);
-	cam.onMouseDragged(x,y);
+	if(show_gui) {
+		flock_gui.onMouseMoved(x,y);
+	}
+	if(settings.rotate_scene) {
+		cam.onMouseDragged(x,y);
+	}
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-	flock_gui.onMouseDown(x,y);
-	cam.onMouseDown(x,y);
+	if(show_gui) {
+		flock_gui.onMouseDown(x,y);
+	}
+	if(settings.rotate_scene) {
+		cam.onMouseDown(x,y);
+	}
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-	flock_gui.onMouseUp(x,y);
+	if(show_gui) {
+		flock_gui.onMouseUp(x,y);
+	}
 }
 
 //--------------------------------------------------------------

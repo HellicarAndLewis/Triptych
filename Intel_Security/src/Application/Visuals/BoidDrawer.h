@@ -3,6 +3,7 @@
 
 //#include "Roxlu.h"
 #include "ofMain.h"
+#include <application/Settings.h>
 #include <roxlu/Roxlu.h>
 
 class BoidDrawer {
