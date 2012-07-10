@@ -29,8 +29,8 @@ void testApp::update(){
 
 void testApp::draw(){
 	
-	ofEnableAlphaBlending();
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+//	ofEnableAlphaBlending();
+//	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	trail.draw();
 	

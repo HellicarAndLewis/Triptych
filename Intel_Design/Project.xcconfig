@@ -5,22 +5,6 @@ OF_PATH = ../../..
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
-HEADER_BULLET = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/include/**"
-
-LIB_BULLET_COLLISION_DEBUG = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Debug/libBulletCollision.a"
-LIB_BULLET_DYNAMICS_DEBUG = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Debug/libBulletDynamics.a"
-LIB_BULLET_MATH_DEBUG = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Debug/libLinearMath.a"
-LIB_BULLET_MINI_CL_DEBUG = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Debug/libMiniCL.a"
-LIB_BULLET_SOFT_BODY_DEBUG = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Debug/libBulletSoftBody.a"
-
-LIB_BULLET_COLLISION_RELEASE = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Release/libBulletCollision.a"
-LIB_BULLET_DYNAMICS_RELEASE = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Release/libBulletDynamics.a"
-LIB_BULLET_MATH_RELEASE = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Release/libLinearMath.a"
-LIB_BULLET_MINI_CL_RELEASE = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Release/libMiniCL.a"
-LIB_BULLET_SOFT_BODY_RELEASE = "$(SRCROOT)/../addons/ofxBullet_/libs/bullet/lib/osx/Release/libBulletSoftBody.a"
-
-LIB_BULLET_ALL_DEBUG = $(LIB_BULLET_COLLISION_DEBUG) $(LIB_BULLET_DYNAMICS_DEBUG) $(LIB_BULLET_MATH_DEBUG) $(LIB_BULLET_MINI_CL_DEBUG) $(LIB_BULLET_SOFT_BODY_DEBUG)
-LIB_BULLET_ALL_RELEASE = $(LIB_BULLET_COLLISION_RELEASE) $(LIB_BULLET_DYNAMICS_RELEASE) $(LIB_BULLET_MATH_RELEASE) $(LIB_BULLET_MINI_CL_RELEASE) $(LIB_BULLET_SOFT_BODY_RELEASE)
-// the bullet libs are added depending on debug / release in project settings //
-OTHER_LDFLAGS = $(OF_CORE_LIBS) 
-HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(HEADER_BULLET)
+OFXKINECT = ../addons/ofxKinect
+OTHER_LDFLAGS = $(OF_CORE_LIBS)  $(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a $(OFXKINECT)/libs/libusb/osx/libs/usb-1.0.a
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv $(OFXKINECT)/libs/libusb/osx/include $(OFXKINECT)/libs/libfreenect 

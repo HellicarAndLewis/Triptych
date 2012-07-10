@@ -20,7 +20,7 @@ public:
 	void draw();
 	
 	void input(ofVec3f p);
-	
+	void clear();
 	
 	
 	//put these here so they can be manipulated by the GUI
@@ -44,5 +44,5 @@ private:
 	ofVec3f headPos;
 	
 	
-	ofFbo fbo;
+//	ofFbo fbo;
 };

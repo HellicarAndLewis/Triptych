@@ -7,9 +7,12 @@
 //
 
 #include "Trail.h"
+#include "ofxSimpleGuiToo.h"
 
 #define TRAIL_WIDTH 50
 #define INTERPOLATION_SIZE 4.0
+
+
 
 Trail::Trail():
 trailMaxLength(250),
@@ -25,13 +28,25 @@ sineIncrement(0.1) {
 	mesh.enableTextures();
 	
 	texImage.loadImage("grad3_3.png");
-	texImage2.loadImage("grad3_22.png");
+//	texImage2.loadImage("grad3_22.png");
 	
-	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB32F);
-
-	fbo.begin();
-	ofClear(0, 0, 0);
-	fbo.end();
+//	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB32F);
+//
+//	fbo.begin();
+//	ofClear(0, 0, 0);
+//	fbo.end();
+	
+//	gui.addTitle("Trail");	
+//	gui.addSlider("trail max length", trailMaxLength, 0, 500);
+//	gui.addSlider("reduction speed", reductionSpeed, 0, 100);
+//	gui.addSlider("interpolation factor", interpolationFactor, 0, 1);
+//	gui.addSlider("sine multiplier", sineMultiplier, 0, 100);
+//	gui.addSlider("sine increment", sineIncrement, 0, 2);
+//	
+//	gui.addToggle("draw info", drawInfo);
+//	gui.addToggle("draw wireframe", drawWireframe);
+	
+	
 	
 }
 
@@ -66,7 +81,7 @@ void Trail::update() {
 		ofVec3f p = node.getPosition();
 		
 		float sine = sin(sineCounter) * sineMultiplier;
-		sineCounter+= sineIncrement;
+		sineCounter+= 0;
 		
 //		ofVec3f top(p.x, p.y + TRAIL_WIDTH + sine, p.z);
 //		top = top * rot;
@@ -101,80 +116,47 @@ void Trail::draw() {
 
 	
 	
-	fbo.begin();	
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-	glColor4f(0, 0, 0, 0.002);
-	ofRect(0, 0, ofGetWidth(), ofGetHeight());
+//	fbo.begin();
 	
-	
-	
-	glColor4f(1,1,1,0.01);
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//	glColor4f(0, 0, 0, 0.2);
+//	ofRect(0, 0, ofGetWidth(), ofGetHeight());
+//	
+//	
+//	
+		
+	glColor4f(1,1,1,0.);
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
 
+	ofSetHexColor(0xffffff);
 
 	if (drawWireframe) {
-		ofSetHexColor(0xffffff);
 		mesh.drawWireframe();
 	}
 	else {
 		texImage.bind();
 		
-		for (int i = 0; i < 50; i++) {
+//		for (int i = 0; i < 50; i++) {
 			mesh.draw();
-		}
+//		}
 		
 		
 		texImage.unbind();
 	}
+		
+//	fbo.end();
+//	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//	glColor4f(1,1,1,1);	
+//	fbo.draw(0,0);
 	
-	fbo.end();
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-	glColor4f(1,1,1,1);	
-	fbo.draw(0,0);
-	
-//	vector<ofVec3f> points;
-//	points.resize(trail.size());
-	
-//	theta = tt;
-//	tt+= 0.1;
-//
-//	ofVboMesh mesh2;
-//	mesh2.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-//	
-//	ofSetHexColor(0x00ffff);
-//	for (int i = 0; i < trail.size(); i++) {
-////		ofCircle(trail[i].getX(), trail[i].getY() + (sin(theta+=0.1) * 20), 5);
-//		
-//		ofVec3f p = trail[i].getPosition();
-//		
-//		ofVec3f top(0, TRAIL_WIDTH + (sin(theta) * 20), 0);
-//		top = top + p;
-//		
-//		mesh2.addVertex(top);
-//		mesh2.addTexCoord(ofVec2f(0, 0));
-//		
-//		//		ofVec3f bottom(p.x, p.y - TRAIL_WIDTH + sine, p.z);
-//		//		bottom = bottom * rot;
-//		
-//		ofVec3f bottom(0, -TRAIL_WIDTH+ (sin(theta) * 20), 0);
-//		bottom = bottom + p;
-//		
-//		mesh2.addVertex(bottom);
-//		mesh2.addTexCoord(ofVec2f(texImage.width, texImage.height));
-//		
-//		theta+=0.07;
-//		
-//	}
-//	
-//	texImage2.bind();
-//	mesh2.draw();
-//	texImage2.unbind();
 	
 	
 	if (drawInfo) {
 		ofSetHexColor(0xffffff);
 		ofDrawBitmapString("trail size: " + ofToString(trail.size()), 10, 10);
 	}
+	
+
 	
 }
 
@@ -210,4 +192,8 @@ void Trail::input(ofVec3f p) {
 			
 		}
 	}
+}
+
+void Trail::clear() {
+	trail.clear();
 }
