@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */; };
 		5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */; };
-		545B639915AB04BE00917B72 /* ofxBlobSmoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545B639515AB04BE00917B72 /* ofxBlobSmoother.cpp */; };
-		545B639A15AB04BE00917B72 /* ofxBlobTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545B639715AB04BE00917B72 /* ofxBlobTracker.cpp */; };
-		545B639F15AB04D900917B72 /* ofxCvKalman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545B639D15AB04D900917B72 /* ofxCvKalman.cpp */; };
 		549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423515A4C18500A50CC3 /* KinectInput.cpp */; };
 		549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423E15A4C54600A50CC3 /* KinectMesh.cpp */; };
 		549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A424015A4C54600A50CC3 /* KinectThresholder.cpp */; };
@@ -31,6 +28,9 @@
 		54E0CCD715A2CB5D00045537 /* Visualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCA15A2CB5D00045537 /* Visualizer.cpp */; };
 		54E0CCD915A2CB5D00045537 /* TrailsDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CCCF15A2CB5D00045537 /* TrailsDrawer.cpp */; };
 		54E0CDC015A2DEF600045537 /* BoidDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CDBE15A2DEF600045537 /* BoidDrawer.cpp */; };
+		5D27C2BB15AB2EDA0057464D /* ofxBlobSmoother.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D27C2B715AB2EDA0057464D /* ofxBlobSmoother.cpp */; };
+		5D27C2BC15AB2EDA0057464D /* ofxBlobTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D27C2B915AB2EDA0057464D /* ofxBlobTracker.cpp */; };
+		5D27C2C015AB2EF80057464D /* ofxCvKalman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D27C2BE15AB2EF80057464D /* ofxCvKalman.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -173,13 +173,6 @@
 /* Begin PBXFileReference section */
 		5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.frag; path = bin/data/trails_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.vert; path = bin/data/trails_drawer.vert; sourceTree = SOURCE_ROOT; };
-		545B639515AB04BE00917B72 /* ofxBlobSmoother.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBlobSmoother.cpp; sourceTree = "<group>"; };
-		545B639615AB04BE00917B72 /* ofxBlobSmoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobSmoother.h; sourceTree = "<group>"; };
-		545B639715AB04BE00917B72 /* ofxBlobTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBlobTracker.cpp; sourceTree = "<group>"; };
-		545B639815AB04BE00917B72 /* ofxBlobTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobTracker.h; sourceTree = "<group>"; };
-		545B639D15AB04D900917B72 /* ofxCvKalman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvKalman.cpp; sourceTree = "<group>"; };
-		545B639E15AB04D900917B72 /* ofxCvKalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvKalman.h; sourceTree = "<group>"; };
-		545B63A015AB055E00917B72 /* BoundBlobListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundBlobListener.h; path = ../lib/BoundBlobListener.h; sourceTree = "<group>"; };
 		549A423515A4C18500A50CC3 /* KinectInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectInput.cpp; sourceTree = "<group>"; };
 		549A423615A4C18500A50CC3 /* KinectInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInput.h; sourceTree = "<group>"; };
 		549A423E15A4C54600A50CC3 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectMesh.cpp; path = ../lib/KinectMesh.cpp; sourceTree = "<group>"; };
@@ -228,6 +221,12 @@
 		54E0CCD215A2CB5D00045537 /* Trails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trails.h; sourceTree = "<group>"; };
 		54E0CDBE15A2DEF600045537 /* BoidDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoidDrawer.cpp; sourceTree = "<group>"; };
 		54E0CDBF15A2DEF600045537 /* BoidDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoidDrawer.h; sourceTree = "<group>"; };
+		5D27C2B715AB2EDA0057464D /* ofxBlobSmoother.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBlobSmoother.cpp; sourceTree = "<group>"; };
+		5D27C2B815AB2EDA0057464D /* ofxBlobSmoother.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobSmoother.h; sourceTree = "<group>"; };
+		5D27C2B915AB2EDA0057464D /* ofxBlobTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBlobTracker.cpp; sourceTree = "<group>"; };
+		5D27C2BA15AB2EDA0057464D /* ofxBlobTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlobTracker.h; sourceTree = "<group>"; };
+		5D27C2BE15AB2EF80057464D /* ofxCvKalman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvKalman.cpp; sourceTree = "<group>"; };
+		5D27C2BF15AB2EF80057464D /* ofxCvKalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvKalman.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -510,28 +509,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		545B639415AB04BE00917B72 /* ofxBlobTracker */ = {
-			isa = PBXGroup;
-			children = (
-				545B639515AB04BE00917B72 /* ofxBlobSmoother.cpp */,
-				545B639615AB04BE00917B72 /* ofxBlobSmoother.h */,
-				545B639715AB04BE00917B72 /* ofxBlobTracker.cpp */,
-				545B639815AB04BE00917B72 /* ofxBlobTracker.h */,
-			);
-			name = ofxBlobTracker;
-			path = ../addons/ofxBlobTracker;
-			sourceTree = "<group>";
-		};
-		545B639C15AB04D900917B72 /* ofxCvKalman */ = {
-			isa = PBXGroup;
-			children = (
-				545B639D15AB04D900917B72 /* ofxCvKalman.cpp */,
-				545B639E15AB04D900917B72 /* ofxCvKalman.h */,
-			);
-			name = ofxCvKalman;
-			path = ../addons/ofxCvKalman;
-			sourceTree = "<group>";
-		};
 		549A423815A4C30F00A50CC3 /* polytri */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,9 +618,33 @@
 			path = Visuals;
 			sourceTree = "<group>";
 		};
+		5D27C2B615AB2EDA0057464D /* ofxBlobTracker */ = {
+			isa = PBXGroup;
+			children = (
+				5D27C2B715AB2EDA0057464D /* ofxBlobSmoother.cpp */,
+				5D27C2B815AB2EDA0057464D /* ofxBlobSmoother.h */,
+				5D27C2B915AB2EDA0057464D /* ofxBlobTracker.cpp */,
+				5D27C2BA15AB2EDA0057464D /* ofxBlobTracker.h */,
+			);
+			name = ofxBlobTracker;
+			path = ../addons/ofxBlobTracker;
+			sourceTree = "<group>";
+		};
+		5D27C2BD15AB2EF80057464D /* ofxCvKalman */ = {
+			isa = PBXGroup;
+			children = (
+				5D27C2BE15AB2EF80057464D /* ofxCvKalman.cpp */,
+				5D27C2BF15AB2EF80057464D /* ofxCvKalman.h */,
+			);
+			name = ofxCvKalman;
+			path = ../addons/ofxCvKalman;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				5D27C2BD15AB2EF80057464D /* ofxCvKalman */,
+				5D27C2B615AB2EDA0057464D /* ofxBlobTracker */,
 				549A438F15A4F66B00A50CC3 /* pbd */,
 				549A423815A4C30F00A50CC3 /* polytri */,
 				E96F819B15A469B600548852 /* buttons */,
@@ -652,9 +653,7 @@
 				EAE2A72815A4472600327E97 /* ofxXmlSettings */,
 				EAE2A67F15A4471800327E97 /* ofxKinect */,
 				EAE2A6DE15A4471800327E97 /* ofxMSAInteractiveObject */,
-				545B639415AB04BE00917B72 /* ofxBlobTracker */,
 				EAE2A6E515A4471800327E97 /* ofxSimpleGuiToo */,
-				545B639C15AB04D900917B72 /* ofxCvKalman */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -868,7 +867,6 @@
 		EAE2A67E15A4461900327E97 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				545B63A015AB055E00917B72 /* BoundBlobListener.h */,
 				549A424415A4C55000A50CC3 /* KinectTriangle.h */,
 				549A423E15A4C54600A50CC3 /* KinectMesh.cpp */,
 				549A423F15A4C54600A50CC3 /* KinectMesh.h */,
@@ -1584,9 +1582,9 @@
 				E9677EA315A7330C00E081DE /* boid_drawer.vert in Sources */,
 				5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */,
 				5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */,
-				545B639915AB04BE00917B72 /* ofxBlobSmoother.cpp in Sources */,
-				545B639A15AB04BE00917B72 /* ofxBlobTracker.cpp in Sources */,
-				545B639F15AB04D900917B72 /* ofxCvKalman.cpp in Sources */,
+				5D27C2BB15AB2EDA0057464D /* ofxBlobSmoother.cpp in Sources */,
+				5D27C2BC15AB2EDA0057464D /* ofxBlobTracker.cpp in Sources */,
+				5D27C2C015AB2EF80057464D /* ofxCvKalman.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,6 +1628,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
+					"-Werror=return-type",
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
@@ -1667,6 +1666,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = (
+					"-Werror=return-type",
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",

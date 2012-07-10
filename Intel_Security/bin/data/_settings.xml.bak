@@ -1,11 +1,11 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>226.95</value>
+        <value>255</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>172.125</value>
+        <value>160.65</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
@@ -33,11 +33,11 @@
     </SliderInt_blurSize>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>50</value>
+        <value>27</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>50</value>
+        <value>26</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -45,7 +45,7 @@
     </Toggle_Per_Vertex_Colour>
     <SliderFloat_Edge_Colour_Sharpening>
         <name>Edge Colour Sharpening</name>
-        <value>0.035</value>
+        <value>0</value>
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>
@@ -85,6 +85,6 @@
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.835</value>
+        <value>0.125</value>
     </SliderFloat_aoAmount>
 </controls>

@@ -2,8 +2,8 @@
 
 Application::Application(const int w, const int h)
 	:flock(flock_ps.particles, 50, 5)
-	,viz(flock_ps, fx_ps, kinect)
-	,control(flock_ps, fx_ps, w, h)
+	,control(flock_ps, fx_ps, kinect, w, h)
+	,viz(flock_ps, fx_ps, kinect, control)
 {
 }
 
@@ -23,7 +23,7 @@ void Application::update() {
 	fx_ps.update(0.3);
 	
 	control.update();
-	flock_ps.limitSpeed(0.4);
+	//flock_ps.limitSpeed(0.4);
 	
 	flock_ps.removeDeadParticles();
 	fx_ps.removeDeadParticles();

@@ -105,6 +105,9 @@ void TrailsDrawer::debugDraw() {
 		for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
 			trail_verts.clear();
 			Boid& b = **it;
+			if(b.trail.size() == 0) {
+				continue;
+			}
 			b.trail.createTriangleStripPT(settings.boid_trail_width, trail_verts);
 			glBegin(GL_TRIANGLE_STRIP);
 				for(int i = 0; i < trail_verts.size(); ++i) {

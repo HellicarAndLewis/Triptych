@@ -65,6 +65,7 @@ void FlockController::update(unsigned char *img) {
 	
 	ps.removeDeadParticles();
 	for(int i = 0; i < numDeaders; i++){
+		if(ps.size()>300) break;
 		ofVec3f pos(2, 0);
 		pos.rotate(ofRandom(0, 360), ofVec3f(0, 0, 1));
 		ps.addParticle(pos);
@@ -85,6 +86,13 @@ void FlockController::debugDraw() {
 			glColor3f(1,1,1);
 		}*/
 		fluff.draw(ps[i]->position, 0.06, 0.06);
+	}
+	for(int i = 0; i < explosions.size(); i++) {
+		explosions[i].draw();
+		if(explosions[i].isDead()) {
+			explosions.erase(explosions.begin()+i);
+			i--;
+		}
 	}
 	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }

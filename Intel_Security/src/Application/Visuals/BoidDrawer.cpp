@@ -1,5 +1,7 @@
 #include "BoidDrawer.h"
 #include <string>
+#include <roxlu/io/OBJ.h>
+
 using namespace std;
 
 
@@ -10,7 +12,7 @@ BoidDrawer::BoidDrawer()
 
 void BoidDrawer::setup() {
 	// Load boid data from obj file.
-	OBJ obj;
+	roxlu::OBJ obj;
 	if(!obj.import(File::toDataPath("boid.obj"))) {
 		ofSystemAlertDialog("Cannot load boid obj file.");
 		::exit(0);

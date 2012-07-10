@@ -15,26 +15,31 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,use_recording(false)
+	,input_mode(K_INPUT_KINECT)
 {
 }
 
 void KinectInput::setup() {
-	if(use_recording) {
-		if(!recorder.load(roxlu::File::toDataPath("kinect.bin"))) {
-			printf("Cannot use recording.\n");
-			use_recording = false;
-			setupInputFromKinect();			
+	switch(input_mode) {
+		case K_INPUT_RECORDING: {
+			if(!recorder.load(roxlu::File::toDataPath("kinect.bin"))) {
+				printf("Cannot use recording.\n");
+				setupInputFromKinect();			
+			}
+			else {	
+				recorder.play();		
+			}
+			break;
 		}
-		else {	
-			recorder.play();		
+		case K_INPUT_KINECT: {
+			setupInputFromKinect();					
+			KinectMesh::setupGui();
+			break;
 		}
-	}	
-	else {
-		setupInputFromKinect();					
-	}
-	
-	KinectMesh::setupGui();
+		case K_INPUT_NONE: {
+			break;
+		}
+	};
 }
 
 void KinectInput::setupInputFromKinect() {
@@ -46,46 +51,65 @@ void KinectInput::setupInputFromKinect() {
 bool KinectInput::update() {
 	is_updated = false;
 
-	if(use_recording) {
+	
+	switch(input_mode) {	
 		// GET FROM RECORDER
-		if(!recorder.update()) {
-			return false;
-		}
-		if(kmeshes.size() > 0) {
-			kmeshes.clear();
-		}
-		
-		KinectRecorderFrame& frame = recorder.getCurrentFrame();
-		KinectMesh km;
-		km.vertices = frame.vertices;
-		km.outline = frame.outline;
-		kmeshes.push_back(km);
-		is_updated = true;
-		return true;
-	}
-	else {
-		// GET FROM KINECT	
-		if(!kinect.update()) {
-			return false;
-		}
-		interactive_points.clear();
-		kinect.trackBlobs();
-		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
-		kmeshes.clear();
-		for(int i = 0; i < contours.blobs.size(); ++i) {
-			KinectMesh km = KinectMesh();
-			km.setup(contours.blobs[i], kinect);
-			kmeshes.push_back(km);
-			
-			if(settings.must_record_kinect) {
-				recorder.addFrame(km.vertices, km.outline);
+		case K_INPUT_RECORDING: {
+			if(!recorder.update()) {
+				return false;
 			}
+			if(kmeshes.size() > 0) {
+				kmeshes.clear();
+			}
+			
+			KinectRecorderFrame& frame = recorder.getCurrentFrame();
+			KinectMesh km;
+			km.vertices = frame.vertices;
+			km.outline = frame.outline;
+			kmeshes.push_back(km);
+			is_updated = true;
+			return true;
+			break;
 		}
 		
-		is_updated = true;
-		return true;
+		// GET FROM KINECT	
+		case K_INPUT_KINECT: {
+			if(!kinect.update()) {
+				return false;
+			}
+			interactive_points.clear();
+			kinect.trackBlobs();
+			contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
+			kmeshes.clear();
+			for(int i = 0; i < contours.blobs.size(); ++i) {
+				KinectMesh km = KinectMesh();
+				km.setup(contours.blobs[i], kinect);
+				kmeshes.push_back(km);
+				
+				if(settings.must_record_kinect) {
+					recorder.addFrame(km.vertices, km.outline);
+				}
+			}
+			
+			is_updated = true;
+			return true;
+			break;
+		};
+	
+		// ONLY SIMULATE
+		case K_INPUT_NONE: {
+			float y = sin(Timer::millis() * 0.001 * 0.3) * 1.7;
+			float z = cos(Timer::millis() * 0.001 * 0.3) * 1.7;
+			Vec3 pos(0, y, z);
+			interactive_points.clear();
+			interactive_points.push_back(pos);
+			interactive_points.push_back(pos * -1);
+			break;
+			return true;
+		}
 		
-	}
+	};
+	
 	return false;
 }
 
@@ -94,7 +118,13 @@ void KinectInput::boundBlobEntered(const BoundBlob &blob) {
 }
 
 void KinectInput::boundBlobMoved(const BoundBlob &blob) {
-	interactive_points.push_back(roxlu::Vec3(-0.5 + blob.left.x/640, 0.5 + -blob.left.y/480, 0.0));
+	float x = -0.5 + blob.left.x/640;
+	float y = 0.5 + -blob.left.y/480;
+	
+	x *= settings.kinect_scale;
+	y *= settings.kinect_scale;
+	
+	interactive_points.push_back(roxlu::Vec3(x, y, 0.0));
 }
 
 void KinectInput::boundBlobExited(const BoundBlob &blob) {
