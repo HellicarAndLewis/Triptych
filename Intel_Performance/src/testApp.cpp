@@ -6,19 +6,30 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
+	bloom.setup(true);
 	room.setup(640.f/480.f);
+	otherChannelAttenuation = 0.5;
+	channelPower = 0.5;	
+	channelAlpha = 0.5;
 	
-	
+	gui.addPage("Program");
 	ofSetVerticalSync(true);
 	ofSetFrameRate(30);
 	kinect.setup();
 	kinect.setupGui();
 	room.setupGui();	
+	
+	
+	//flock.setup();
+	//flock.setupGui();
+	gui.addPage("Appearance");
 	KinectMesh::setupGui();
-	
-	flock.setup();
-	flock.setupGui();
-	
+	gui.addTitle("Mesh Shader");
+	gui.addSlider("other channel atten", otherChannelAttenuation, 0, 1);
+	gui.addSlider("channel power", channelPower, 0, 1);
+	gui.addSlider("channel alpha", channelAlpha, 0, 1);
+	gui.addSlider("bloom amount", bloom.amount, 0, 2);
+	gui.addSlider("bloom brightness", bloom.brightness, 0, 2);
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
@@ -26,14 +37,15 @@ void testApp::setup(){
 	//ofDisableSetupScreen();
 	ofBackgroundHex(0);
 
-	
+	//ofEnableNormalizedTexCoords();
 	meshShader.load("mesh.vert", "mesh.frag");
 }
 
 //--------------------------------------------------------------
 void testApp::update() {
-	flock.update(kinect.getOutline().getPixels());
+	//flock.update(kinect.getOutline().getPixels());
 	
+	float s = ofGetElapsedTimef();
 	if(kinect.update()) {
 		
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
@@ -57,6 +69,8 @@ void testApp::update() {
 		}
 	}
 
+	printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
+
 	
 	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
@@ -70,31 +84,22 @@ float lastTimeShaderLoaded = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
 
-	// UNCOMMENT THIS TO SEE FLOCKING!
-	/*
-	gui.draw();
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(45.0f, ofGetWidth()/ofGetHeight(), 0.1, 100.0f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(0,0,-15.0f);
-	flock.debugDraw();
-	 */
+
 	
-	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
-		lastTimeShaderLoaded = ofGetElapsedTimef();
-		meshShader.load("mesh.vert", "mesh.frag");
-	}
+	
+	//if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
+	//	lastTimeShaderLoaded = ofGetElapsedTimef();
+	//	meshShader.load("mesh.vert", "mesh.frag");
+	//}
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
 	
 
-	room.begin();
-//	room.draw();
-//	flock.debugDraw();
-	room.end();
+
+	room.draw();
+
+	bloom.begin();
 	glPushMatrix();
 	{
 		
@@ -114,11 +119,11 @@ void testApp::draw(){
 				drawLayer(meshes[75], -75, 3);
 			}
 			if(meshes.size()>50) {
-				drawLayer(meshes[50], -80, 2);
+				drawLayer(meshes[50], -50, 2);
 			}
 			
 			if(meshes.size()>25) {
-				drawLayer(meshes[25], -40, 1);
+				drawLayer(meshes[25], -25, 1);
 			}
 		/*	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 			if(meshes.size()>0) {
@@ -130,17 +135,35 @@ void testApp::draw(){
 		ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 		glDisable(GL_DEPTH_TEST);
 			
+		
+	}
+	glPopMatrix();
+	
+	bloom.end();
+	bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+	glColor4f(1,1,1,1);
+	
+	
+	glPushMatrix();
+	{
+		ofSetupScreen();
 		gui.draw();
 	}
 	glPopMatrix();
 	
 	
+	//	output.getTextureReference(0).unbind();
 }
+
+
 
 void testApp::drawLayer(vector<KinectMesh> &mesh, float z, int layer) {
 	
 	meshShader.begin();
 	meshShader.setUniform1i("layer", layer);
+	meshShader.setUniform1f("atten", otherChannelAttenuation);
+	meshShader.setUniform1f("colorPower", channelPower);
+	meshShader.setUniform1f("channelAlpha", channelAlpha);
 	for(int i = 0; i < mesh.size(); i++) {
 		glPushMatrix();
 		float ss = sin(layer*ofGetElapsedTimef()*0.3)*10*(layer>0?1:0);
@@ -165,6 +188,9 @@ void testApp::keyPressed(int key){
 			
 		case 'f':
 			ofToggleFullscreen();
+			break;
+		case 'b':
+			kinect.learnBackground = true;
 			break;
 	}
 }
@@ -203,6 +229,7 @@ void testApp::mouseReleased(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
 	room.setAspect((float)w/(float)h);
+	bloom.resize(w, h);
 }
 
 //--------------------------------------------------------------

@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\lib\KinectOutline.cpp" />
-    <ClCompile Include="..\lib\Room.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
     <ClCompile Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
@@ -64,22 +62,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
       <Filter>addons\ofxXmlSettings</Filter>
-    </ClCompile>
-    <ClCompile Include="src\KinectMesh.cpp" />
-    <ClCompile Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\common\shapes.cc">
-      <Filter>addons\poly2tri</Filter>
-    </ClCompile>
-    <ClCompile Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\advancing_front.cc">
-      <Filter>addons\poly2tri</Filter>
-    </ClCompile>
-    <ClCompile Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\cdt.cc">
-      <Filter>addons\poly2tri</Filter>
-    </ClCompile>
-    <ClCompile Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\sweep.cc">
-      <Filter>addons\poly2tri</Filter>
-    </ClCompile>
-    <ClCompile Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\sweep_context.cc">
-      <Filter>addons\poly2tri</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\marektricks\Bloom.cpp">
       <Filter>addons\tricks</Filter>
@@ -150,10 +132,44 @@
     <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.cpp">
       <Filter>addons\ofxKinectNui\kinect</Filter>
     </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobSmoother.cpp">
+      <Filter>ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectMesh.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectThresholder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\Room.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobTracker.cpp">
+      <Filter>ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxCvKalman\ofxCvKalman.cpp">
+      <Filter>addons\ofxCvKalman</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\BoundBlob.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\lib\KinectOutline.h" />
-    <ClInclude Include="..\lib\Room.h" />
     <ClInclude Include="src\testApp.h" />
     <ClInclude Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
       <Filter>addons\ofxMSAInteractiveObject</Filter>
@@ -220,28 +236,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
       <Filter>addons\ofxXmlSettings</Filter>
-    </ClInclude>
-    <ClInclude Include="src\KinectMesh.h" />
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\poly2tri.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\common\shapes.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\common\utils.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\advancing_front.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\cdt.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\sweep.h">
-      <Filter>addons\poly2tri</Filter>
-    </ClInclude>
-    <ClInclude Include="..\addons\roxlu\addons\Poly2Tri\poly2tri\sweep\sweep_context.h">
-      <Filter>addons\poly2tri</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\marektricks\Bloom.h">
       <Filter>addons\tricks</Filter>
@@ -345,6 +339,54 @@
     <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\WaveOutput.h">
       <Filter>addons\ofxKinectNui\kinect</Filter>
     </ClInclude>
+    <ClInclude Include="..\lib\KinectMesh.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectThresholder.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectTriangle.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Room.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobSmoother.h">
+      <Filter>ofxBlobTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobTracker.h">
+      <Filter>ofxBlobTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxCvKalman\ofxCvKalman.h">
+      <Filter>addons\ofxCvKalman</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\utils.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\poly2tri.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlob.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlobListener.h">
+      <Filter>lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="addons">
@@ -379,6 +421,15 @@
     </Filter>
     <Filter Include="addons\ofxKinectNui\win32">
       <UniqueIdentifier>{4849d87f-b744-4855-8bdd-06bd52aa3dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxBlobTracker">
+      <UniqueIdentifier>{62894604-1786-436b-bac6-f1c7d8a5c701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{79bd8a53-0676-404d-92e6-73887f7706a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCvKalman">
+      <UniqueIdentifier>{1fd4ce43-4a48-486e-9ff0-b6ab37a9cdae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

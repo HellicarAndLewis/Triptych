@@ -34,6 +34,9 @@ namespace tricks {
 				
 				// only use this if you set it up with drawFbo = true
 				ofFbo *getOutput();
+				
+				float amount;
+				float brightness;
 			private:
 				bool drawToFbo;
 				

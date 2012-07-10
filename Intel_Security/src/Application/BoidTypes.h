@@ -24,6 +24,7 @@ struct BoidParticle : public Particle<T> {
 	uint64_t attack_start;
 	uint64_t attack_end;
 	uint64_t attack_delay;
+	bool is_visible;
 	int mode;
 };
 
@@ -37,9 +38,9 @@ BoidParticle<T>::BoidParticle(const T& pos, float m)
 	,attack_start(0)
 	,attack_end(0)
 	,attack_delay(0)
+	,is_visible(true)
 {
 }
-
 
 template<class T>
 void BoidParticle<T>::update(const float dt) {
@@ -51,8 +52,6 @@ inline void BoidParticle<T>::removeTrail() {
 	trail.clear();
 }
 
-
-
 typedef Particles<Vec3, BoidParticle<Vec3>, Spring<Vec3> >	Boids3;
 typedef Particles<Vec2, BoidParticle<Vec2>, Spring<Vec2> >	Boids2;
 
@@ -63,27 +62,18 @@ typedef BoidParticle<Vec3> 	Boid3;
 // Used by flocking to update 
 struct BoidFlockForceAdder {
 	void operator()(const Vec3& dir, Boid3& boid) {
-			boid.addForce(dir);
+		
+		if(!boid.is_visible) {
 			return;
-			
-		if(boid.mode == B_MODE_DEFAULT) {
-			boid.addForce(dir);
 		}
-		else {	
-			//boid.addForce(dir * 0.1);
-		}
+		
+		boid.addForce(dir);
 	}
 };
 
-
-//typedef Flocking<Vec2, BoidParticle<Vec2>, BoidFlockForceAdder > BoidFlocking2;
 typedef Flocking<Vec3, BoidParticle<Vec3>, BoidFlockForceAdder > BoidFlocking3;
 
 // We used these in the app, so we can switch from 2D to 3D
-//typedef Boids2 Boids;
-//typedef Boid2 Boid;
-//typedef BoidFlocking2 BoidFlocking;
-
 typedef Boids3 Boids;
 typedef Boid3 Boid;
 typedef BoidFlocking3 BoidFlocking;

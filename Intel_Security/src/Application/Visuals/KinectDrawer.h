@@ -18,12 +18,19 @@ public:
 	void draw(const float* pm, const float* vm);
 	void debugDraw();
 	void debugDrawMesh(KinectMesh& m);
-
+	void setUserDetected(bool detected);
+	
+	bool user_detected;
 	int num_vertices;
 	roxlu::Shader shader;
 	roxlu::VAO vao;
 	GLuint vbo;
 	size_t allocated_bytes;
 };
+
+inline void KinectDrawer::setUserDetected(bool d) {
+	user_detected = d;
+}
+
 
 #endif

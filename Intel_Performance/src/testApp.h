@@ -5,7 +5,8 @@
 #include "ofxOpenCv.h"
 #include "KinectMesh.h"
 #include "Room.h"
-#include "FlockController.h"
+//#include "FlockController.h"
+#include "Bloom.h"
 
 class testApp : public ofBaseApp{
 
@@ -30,5 +31,12 @@ public:
 	KinectThresholder kinect;
 	ofShader meshShader;
 	deque<vector<KinectMesh> > meshes;
-	FlockController flock;	
+	//FlockController flock;	
+	
+	float otherChannelAttenuation;
+	float channelPower;
+	float channelAlpha;
+	
+
+	tricks::gl::effects::Bloom bloom;
 };

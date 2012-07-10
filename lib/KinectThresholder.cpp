@@ -42,7 +42,7 @@ void KinectThresholder::setup() {
 	listener = NULL;
 	blobTracker.addListener(&blobEvents);
 	
-	
+	rgb.allocate(VISION_WIDTH, VISION_HEIGHT);
 	depth.allocate(VISION_WIDTH, VISION_HEIGHT);
 	background.allocate(VISION_WIDTH, VISION_HEIGHT);
 	thresh.allocate(VISION_WIDTH, VISION_HEIGHT);
@@ -59,6 +59,7 @@ void KinectThresholder::setup() {
 
 void KinectThresholder::setupGui() {
 	
+	gui.addContent("rgb", rgb);
 	gui.addContent("bg", background);
 	gui.addContent("depth", depth);
 	gui.addContent("thresh", thresh);
@@ -89,6 +90,7 @@ bool KinectThresholder::update() {
 
 	//printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
+		rgb.setFromPixels(kinect.getPixels(), VISION_WIDTH, VISION_HEIGHT);
 		foundBlobs = false;
 #ifdef _WIN32
 		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);
@@ -157,7 +159,13 @@ vector<ofxCvBlob> &KinectThresholder::getContours() {
 	if(!foundBlobs) {
 		
 		int minBlobSize = 40;
-		int maxBlobSize = kinect.getHeight();
+		float w = 640;
+		float h = 480;
+#ifndef _WIN32
+		w = kinect.getWidth();
+		h = kinect.getHeight();
+#endif
+		int maxBlobSize = h;
 		
 		contourFinder.findContours(thresh, minBlobSize*minBlobSize, maxBlobSize*maxBlobSize, 20, false, true);
 		
@@ -171,15 +179,20 @@ void KinectThresholder::trackBlobs() {
 	
 	//	people.clear();
 	
-	
+	float w = 640;
+	float h = 480;
+#ifndef _WIN32
+		w = kinect.getWidth();
+		h = kinect.getHeight();
+#endif
 	// run the blob tracker
 	vector<ofVec3f> blobs;
-	ofVec2f dims(kinect.getWidth(), kinect.getHeight()); 
+	ofVec2f dims(w,h); 
 	vector<ofxCvBlob> &contoursBlobs = getContours();
 	// use the z coordinate.
 	for(int i = 0; i < contoursBlobs.size(); i++) {
-		ofVec3f b = ofVec3f(contoursBlobs[i].centroid.x/(float)kinect.getWidth(), 
-							contoursBlobs[i].centroid.y/(float)kinect.getHeight(), i);
+		ofVec3f b = ofVec3f(contoursBlobs[i].centroid.x/(float)w, 
+							contoursBlobs[i].centroid.y/(float)h, i);
 		blobs.push_back(b);
 	}
 	
