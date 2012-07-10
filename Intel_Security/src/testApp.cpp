@@ -17,8 +17,7 @@ void testApp::setup(){
 	debug = true;
 	
 	app.setup();
-
-
+	
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
 	room.setupGui();
 	gui.loadFromXML();
@@ -52,7 +51,6 @@ void testApp::setup(){
 	flock_gui.addFloat("Boid attack delay min (ms)", settings.boid_attack_delay_min).setMin(0.0f).setMax(10000.0f);
 	flock_gui.addFloat("Boid attack delay max (ms)", settings.boid_attack_delay_max).setMin(0.0f).setMax(20000.0f);
 
-
 	/*
 	flock_gui.addFloat("Explosion random x velocity", settings.explosion_random_x_vel).setMin(0.0f).setMax(15.0f);
 	flock_gui.addFloat("Explosion random y velocity", settings.explosion_random_y_vel).setMin(0.0f).setMax(15.0f);
@@ -71,12 +69,10 @@ void testApp::setup(){
 	
 	flock_gui.load(ofToDataPath("gui.bin",true));
 	
-
 	cam.setup(ofGetWidth(), ofGetHeight());
 	cam.translate(0,0,5);
 	//cam.orthoTopLeft(ofGetWidth(), ofGetHeight(), 0.0, 100.0f);
 	ax.setup(10);
-	
 }
 
 void testApp::operator()(const int n) {

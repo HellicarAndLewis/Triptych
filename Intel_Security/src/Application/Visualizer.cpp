@@ -154,7 +154,8 @@ void Visualizer::drawBoids(
 		boid_drawer.position = b.position;
 		
 		boid_drawer.size = b.size  * settings.boid_scale;
-		cs.makeCoordinateSystem(boid_drawer.direction, up);
+		//cs.makeCoordinateSystem(boid_drawer.direction, up); // keep up
+		cs.makeCoordinateSystem(boid_drawer.direction);
 		boid_drawer.draw(pm, vm, nm, cs);
 	}
 }
@@ -179,9 +180,10 @@ void Visualizer::debugDraw() {
 		Boid& b = **it;
 		boid_drawer.direction = b.velocity.getNormalized();
 		boid_drawer.position = b.position;
-		cs.makeCoordinateSystem(boid_drawer.direction, up);
+		//cs.makeCoordinateSystem(boid_drawer.direction, up); // keep up
+		cs.makeCoordinateSystem(boid_drawer.direction);
+
 		boid_drawer.debugDraw(cs);
-		//bb.draw(b.position, b.size * 5, 0.0, 1.0);
 	}
 	
 
