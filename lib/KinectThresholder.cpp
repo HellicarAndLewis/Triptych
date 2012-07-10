@@ -6,7 +6,9 @@
 
 #include "KinectThresholder.h"
 #include "ofxSimpleGuiToo.h"
+#ifdef _WIN32
 #include "ofxKinectNuiDraw.h"
+#endif
 
 void KinectThresholder::setup(bool useSkellingtons) {
 #ifdef _WIN32
@@ -58,7 +60,9 @@ void KinectThresholder::setup(bool useSkellingtons) {
 	blurs = 0;
 	blurSize = 1;
 	learnBackground = true;
+#ifdef _WIN32
 	doingSkeleton = useSkellingtons;
+#endif
 }
 
 void KinectThresholder::setupGui() {
@@ -78,37 +82,42 @@ void KinectThresholder::setupGui() {
 
 }
 
-
+#ifdef _WIN32
 void KinectThresholder::doSkeletons() {
 	
 	numSkeletons = kinect.getSkeletonPoints(skelly);
 	printf("Doing skels %d\n", numSkeletons);
 }
+#endif
 
+#ifdef _WIN32
 int KinectThresholder::getNumSkeletons() {
 
-#ifndef _WIN32
-	return 0;
-#else
+
+
 	
 	// stuff goes here
 	printf("Skellies: %d\n", numSkeletons);
 	return numSkeletons;
-#endif
-}
 
+}
+#endif
+
+
+#ifdef _WIN32
 void KinectThresholder::getSkeleton(int index, KinectSkeleton &s) {
-#ifndef _WIN32
+
 	
-#else
+
 	// stuff goes here
 
 	s.id = index;
 	s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y,0);
 	s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y,0);
 	
-#endif
+
 }
+#endif
 
 
 bool KinectThresholder::update() {
@@ -191,12 +200,14 @@ void KinectThresholder::drawDebug() {
 			
 		}
 	}
+	#ifdef _WIN32
 	if(doingSkeleton) {
 
 
 	//	kinect.drawSkeleton(0, 0, 1024, 768);	// draw skeleton images on video images
 
 	}
+	#endif
 }
 
 ofxCvGrayscaleImage &KinectThresholder::getOutline() {
