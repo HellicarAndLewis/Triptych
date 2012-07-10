@@ -5,11 +5,11 @@
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>160.65</value>
+        <value>204</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>3</value>
+        <value>1</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
@@ -53,19 +53,19 @@
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
-        <value>0.56</value>
+        <value>0</value>
     </SliderFloat_CamX>
     <SliderFloat_CamY>
         <name>CamY</name>
-        <value>0.25</value>
+        <value>0</value>
     </SliderFloat_CamY>
     <SliderFloat_CamZ>
         <name>CamZ</name>
-        <value>-6.3</value>
+        <value>-4.6</value>
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
-        <value>0.7</value>
+        <value>-0.25</value>
     </SliderFloat_LightX>
     <SliderFloat_LightY>
         <name>LightY</name>
@@ -73,18 +73,18 @@
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-4.1</value>
+        <value>-2.45</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.715</value>
+        <value>0.51</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.485</value>
+        <value>0.12</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.125</value>
+        <value>0.355</value>
     </SliderFloat_aoAmount>
 </controls>

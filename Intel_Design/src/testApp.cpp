@@ -4,7 +4,9 @@
 //bool clearedFbo = false;
 
 bool useMareks;
-
+int iterations = 100;
+float m = 0.01;
+float alpha1, alpha2;
 
 void testApp::setup() {
 
@@ -17,11 +19,16 @@ void testApp::setup() {
 	room.setupGui();
 	
 	
-	gui.addToggle("switch trail", useMareks);
+//	gui.addToggle("switch trail", useMareks);
 	
-	kinect.setup();
-	kinect.setupGui();
-	kinect.setListener(this);
+	gui.addSlider("iterations", iterations, 0, 500);
+	gui.addSlider("m", m, 0, 0.01);
+	gui.addSlider("alpha1", alpha1, 0, 0.2);
+	gui.addSlider("alpha2", alpha2, 0, 0.2);
+	
+//	kinect.setup();
+//	kinect.setupGui();
+//	kinect.setListener(this);
 	
 	gui.setAutoSave(true);
 	gui.loadFromXML();
@@ -38,9 +45,19 @@ void testApp::setup() {
 //	glEnable(GL_NORMALIZE);
 	
 	
-
+	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
 	
-
+	fbo.begin();
+	ofClear(0, 0, 0, 0);
+	fbo.end();
+	
+	
+	people[1] = Person();
+	BoundBlob blob;
+	blob.left = ofVec3f(0, 0, 0);
+	blob.right = ofVec3f(0, 0, 0);
+	people[1].setup(blob);
+	
 }
 
 testApp::~testApp() {
@@ -89,19 +106,39 @@ void testApp::draw() {
 		meshes[i].draw();
 	}
 	
-	ofPopMatrix();
 	
+	
+	fbo.begin();
+	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(0, 0, 0, alpha1);
+	ofRect(0, 0, ofGetWidth(), ofGetHeight());
+
+	glColor4f(1,1,1,alpha2);
+//	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	
 	for (map<int, Person>::iterator it = people.begin(); it != people.end(); it++) {
 		
 		it->second.draw();
 	}
 	
+	fbo.end();
+	
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	glColor4f(1, 1, 1, 1);
+	fbo.draw(0, 0);
+	
+	ofPopMatrix();
+
+	
 	gui.draw();
 }
 
 
 void testApp::boundBlobEntered(const BoundBlob &blob) {
+
 	people[blob.id] = Person();
 	people[blob.id].setup(blob);
 	
@@ -154,7 +191,10 @@ void testApp::keyReleased(int key) {
 
 void testApp::mouseMoved(int x, int y) {
 	
-	
+	BoundBlob blob;
+	blob.left = ofVec3f(x, y, 0);
+	blob.right = ofVec3f(0, 0, 0);
+	people[1].update(blob);
 
 	
 }

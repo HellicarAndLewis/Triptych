@@ -21,7 +21,8 @@ public:
 	void setup();
 	void update();
 	void checkBounds();
-
+	void setVisibleBoidsPercentage(float perc); 
+	void setAttackPercentage(float perc);
 	KinectInput& kinect_input;
 	Boids& flock_ps;
 	Boids& fx_ps;
@@ -29,7 +30,6 @@ public:
 	int h;
 	
 	vector<Boid*> attackers;
-//	Boid* attack_particle;
 	
 };
 
