@@ -17,7 +17,7 @@
     </Toggle_learnBackground>
     <SliderInt_erosions>
         <name>erosions</name>
-        <value>3</value>
+        <value>0</value>
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
@@ -25,11 +25,11 @@
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
-        <value>2</value>
+        <value>0</value>
     </SliderInt_blurs>
     <SliderInt_blurSize>
         <name>blurSize</name>
-        <value>2</value>
+        <value>1</value>
     </SliderInt_blurSize>
     <SliderFloat_fov>
         <name>fov</name>

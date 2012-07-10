@@ -5,7 +5,7 @@
 #include "ofxOpenCv.h"
 #include "KinectMesh.h"
 #include "Room.h"
-#include "FlockController.h"
+//#include "FlockController.h"
 #include "Bloom.h"
 
 class testApp : public ofBaseApp{
