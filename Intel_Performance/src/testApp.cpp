@@ -45,6 +45,7 @@ void testApp::setup(){
 void testApp::update() {
 	//flock.update(kinect.getOutline().getPixels());
 	
+	float s = ofGetElapsedTimef();
 	if(kinect.update()) {
 		
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
@@ -68,6 +69,8 @@ void testApp::update() {
 		}
 	}
 
+	printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
+
 	
 	
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
@@ -84,10 +87,10 @@ void testApp::draw(){
 
 	
 	
-	if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
-		lastTimeShaderLoaded = ofGetElapsedTimef();
-		meshShader.load("mesh.vert", "mesh.frag");
-	}
+	//if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
+	//	lastTimeShaderLoaded = ofGetElapsedTimef();
+	//	meshShader.load("mesh.vert", "mesh.frag");
+	//}
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
