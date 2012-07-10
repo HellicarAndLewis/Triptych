@@ -1,0 +1,26 @@
+<controls>
+    <SliderInt_Border_Res>
+        <name>Border Res</name>
+        <value>35</value>
+    </SliderInt_Border_Res>
+    <SliderInt_Fill_Res>
+        <name>Fill Res</name>
+        <value>14</value>
+    </SliderInt_Fill_Res>
+    <Toggle_Per_Vertex_Colour>
+        <name>Per Vertex Colour</name>
+        <value>1</value>
+    </Toggle_Per_Vertex_Colour>
+    <SliderFloat_Edge_Colour_Sharpening>
+        <name>Edge Colour Sharpening</name>
+        <value>0.865</value>
+    </SliderFloat_Edge_Colour_Sharpening>
+    <SliderFloat_bloom_amount>
+        <name>bloom amount</name>
+        <value>0.64</value>
+    </SliderFloat_bloom_amount>
+    <SliderFloat_bloom_brightness>
+        <name>bloom brightness</name>
+        <value>1.15</value>
+    </SliderFloat_bloom_brightness>
+</controls>

@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+    <ClCompile Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
+      <Filter>addons\ofxMSAInteractiveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiConfig.cpp">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiControl.cpp">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiPage.cpp">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiToo.cpp">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiValueControl.cpp">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiButton.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiColorPicker.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiComboBox.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiContent.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiFPSCounter.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiMovieSlider.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiQuadWarp.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSlider2d.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiTitle.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiToggle.cpp">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\Bloom.cpp">
+      <Filter>addons\tricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\contourutils.cpp">
+      <Filter>addons\tricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\Line.cpp">
+      <Filter>addons\tricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvColorImage.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvContourFinder.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvFloatImage.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvGrayscaleImage.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvHaarFinder.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNui.cpp">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiDraw.cpp">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.cpp">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.cpp">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.cpp">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\win32\Event.cpp">
+      <Filter>addons\ofxKinectNui\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\ImageStream.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\Kinect.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\KinectContext.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.cpp">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobSmoother.cpp">
+      <Filter>ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectMesh.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectThresholder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\Room.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobTracker.cpp">
+      <Filter>ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxCvKalman\ofxCvKalman.cpp">
+      <Filter>addons\ofxCvKalman</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc">
+      <Filter>addons\poly2tri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\BoundBlob.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h" />
+    <ClInclude Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
+      <Filter>addons\ofxMSAInteractiveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiValueControl.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiConfig.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiControl.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiIncludes.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiPage.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiToo.h">
+      <Filter>addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiButton.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiColorPicker.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiComboBox.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiContent.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiFPSCounter.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiMovieSlider.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiQuadWarp.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSlider2d.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderBase.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderFloat.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderInt.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiTitle.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiToggle.h">
+      <Filter>addons\ofxSimpleGuiToo\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>addons\ofxXmlSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\Bloom.h">
+      <Filter>addons\tricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\contourutils.h">
+      <Filter>addons\tricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\Line.h">
+      <Filter>addons\tricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvBlob.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvColorImage.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvConstants.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvContourFinder.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvFloatImage.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvGrayscaleImage.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvHaarFinder.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvMain.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxOpenCv.h">
+      <Filter>addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxBase3DVideo.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNui.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiDraw.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiDrawInterface.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.h">
+      <Filter>addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\win32\Event.h">
+      <Filter>addons\ofxKinectNui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\win32\SpinLock.h">
+      <Filter>addons\ofxKinectNui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageStream.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\Kinect.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\KinectContext.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\KinectListener.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\StaticMediaBuffer.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\WaveFileWriter.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\WaveOutput.h">
+      <Filter>addons\ofxKinectNui\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectMesh.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectThresholder.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectTriangle.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Room.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobSmoother.h">
+      <Filter>ofxBlobTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobTracker.h">
+      <Filter>ofxBlobTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxCvKalman\ofxCvKalman.h">
+      <Filter>addons\ofxCvKalman</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\utils.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\poly2tri.h">
+      <Filter>addons\poly2tri</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlob.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlobListener.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="addons">
+      <UniqueIdentifier>{1e79cb90-9c67-41ce-b4fd-28dc932cb6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMSAInteractiveObject">
+      <UniqueIdentifier>{49670848-8473-4263-891e-164cdbe37b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleGuiToo">
+      <UniqueIdentifier>{86f4dd83-a9b9-4999-849b-de58cdf75a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings">
+      <UniqueIdentifier>{dccba062-9b2f-4c7c-9cd8-129d904b9bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleGuiToo\Controls">
+      <UniqueIdentifier>{48f37ae4-5168-48f4-8163-42aaa4f066e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\poly2tri">
+      <UniqueIdentifier>{6c87879e-07fd-4be2-b522-a3c24c4d4b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\tricks">
+      <UniqueIdentifier>{b7cb1557-86e3-4b4f-9d95-754b17fc122e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOpenCv">
+      <UniqueIdentifier>{cf8380aa-9dcc-44e9-a5f0-706f177bd1a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui">
+      <UniqueIdentifier>{1b82d88c-12a1-4606-80ce-72b15057affb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\kinect">
+      <UniqueIdentifier>{93d4cb79-79cb-4ec3-90da-607be9cb901f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\win32">
+      <UniqueIdentifier>{4849d87f-b744-4855-8bdd-06bd52aa3dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxBlobTracker">
+      <UniqueIdentifier>{62894604-1786-436b-bac6-f1c7d8a5c701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{79bd8a53-0676-404d-92e6-73887f7706a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCvKalman">
+      <UniqueIdentifier>{1fd4ce43-4a48-486e-9ff0-b6ab37a9cdae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

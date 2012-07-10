@@ -6,29 +6,31 @@
 
 #include "KinectThresholder.h"
 #include "ofxSimpleGuiToo.h"
-void KinectThresholder::setup() {
+#include "ofxKinectNuiDraw.h"
+
+void KinectThresholder::setup(bool useSkellingtons) {
 #ifdef _WIN32
-	kinect.init(//bool grabVideo = 
-				true,
-				//bool grabDepth = 
-				true,
-				//bool grabAudio = 
-				false,
-				//bool grabLabel = 
-				false,
-				//bool grabSkeleton = 
-				false,
-				//bool grabCalibratedVideo = 
-				//true,
-				false,
-				//bool grabLabelCv = 
-				false,
-				//NUI_IMAGE_RESOLUTION videoResolution = 
-				NUI_IMAGE_RESOLUTION_640x480,
-				//NUI_IMAGE_RESOLUTION depthResolution = 
-				NUI_IMAGE_RESOLUTION_640x480);
+	ofxKinectNui::InitSetting initSetting;
+	initSetting.grabVideo = true;
+	initSetting.grabDepth = true;
+	initSetting.grabAudio = false;
+	initSetting.grabLabel = false;
+	initSetting.grabSkeleton = true;
+	initSetting.grabCalibratedVideo = false;
+	initSetting.grabLabelCv = false;
+	initSetting.depthResolution = NUI_IMAGE_RESOLUTION_640x480;
+	initSetting.videoResolution = NUI_IMAGE_RESOLUTION_640x480;
+	kinect.init(initSetting);
+	kinect.open(false);
+
 	VISION_WIDTH  = 640;
 	VISION_HEIGHT = 480;
+
+
+//	ofxKinectNuiDrawSkeleton *skeletonDraw_ = new ofxKinectNuiDrawSkeleton();
+//	kinect.setSkeletonDrawer(skeletonDraw_);
+
+
 #else
 	
 	kinect.init();
@@ -38,6 +40,7 @@ void KinectThresholder::setup() {
 #endif
 	kinect.open();
 		
+	
 	foundBlobs = false;
 	listener = NULL;
 	blobTracker.addListener(&blobEvents);
@@ -55,6 +58,7 @@ void KinectThresholder::setup() {
 	blurs = 0;
 	blurSize = 1;
 	learnBackground = true;
+	doingSkeleton = useSkellingtons;
 }
 
 void KinectThresholder::setupGui() {
@@ -74,14 +78,51 @@ void KinectThresholder::setupGui() {
 
 }
 
+
+void KinectThresholder::doSkeletons() {
+	
+	numSkeletons = kinect.getSkeletonPoints(skelly);
+	printf("Doing skels %d\n", numSkeletons);
+}
+
+int KinectThresholder::getNumSkeletons() {
+
+#ifndef _WIN32
+	return 0;
+#else
+	
+	// stuff goes here
+	printf("Skellies: %d\n", numSkeletons);
+	return numSkeletons;
+#endif
+}
+
+void KinectThresholder::getSkeleton(int index, KinectSkeleton &s) {
+#ifndef _WIN32
+	
+#else
+	// stuff goes here
+
+	s.id = index;
+	s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y,0);
+	s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y,0);
+	
+#endif
+}
+
+
 bool KinectThresholder::update() {
 	float t = ofGetElapsedTimef();
 	
 	
 	
 #ifdef _WIN32
+
+	int flags = ofxKinectNui::UPDATE_FLAG_SKELETON;
+	if(!doingSkeleton) flags = 0;
 	kinect.update(ofxKinectNui::UPDATE_FLAG_VIDEO	
-		| ofxKinectNui::UPDATE_FLAG_DEPTH	 
+		| ofxKinectNui::UPDATE_FLAG_DEPTH	
+		| flags
 		//| ofxKinectNui::UPDATE_FLAG_CALIBRATED_VIDEO
 		);
 #else
@@ -128,9 +169,11 @@ bool KinectThresholder::update() {
 		for(int i = 0; i < blurs; i++) {
 			thresh.blur(blurSize*2+1);
 		}
-
-
-		
+#ifdef _WIN32
+		if(doingSkeleton) {
+			doSkeletons();
+		}	
+#endif
 		return true;
 	}
 	return true;
@@ -147,6 +190,12 @@ void KinectThresholder::drawDebug() {
 			ofDrawBitmapString(ofToString((*it).first), (*it).second.centroid);
 			
 		}
+	}
+	if(doingSkeleton) {
+
+
+	//	kinect.drawSkeleton(0, 0, 1024, 768);	// draw skeleton images on video images
+
 	}
 }
 
