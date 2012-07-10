@@ -42,7 +42,7 @@ void KinectThresholder::setup() {
 	listener = NULL;
 	blobTracker.addListener(&blobEvents);
 	
-	
+	rgb.allocate(VISION_WIDTH, VISION_HEIGHT);
 	depth.allocate(VISION_WIDTH, VISION_HEIGHT);
 	background.allocate(VISION_WIDTH, VISION_HEIGHT);
 	thresh.allocate(VISION_WIDTH, VISION_HEIGHT);
@@ -59,6 +59,7 @@ void KinectThresholder::setup() {
 
 void KinectThresholder::setupGui() {
 	
+	gui.addContent("rgb", rgb);
 	gui.addContent("bg", background);
 	gui.addContent("depth", depth);
 	gui.addContent("thresh", thresh);
@@ -89,6 +90,7 @@ bool KinectThresholder::update() {
 
 	//printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
+		rgb.setFromPixels(kinect.getPixels(), VISION_WIDTH, VISION_HEIGHT);
 		foundBlobs = false;
 #ifdef _WIN32
 		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);

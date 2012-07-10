@@ -114,6 +114,9 @@
 		EA4DD84E1598CA8900009049 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4DD83D1598CA8900009049 /* ofxSimpleGuiValueControl.cpp */; };
 		EA7FABB615A1A7520022034E /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7FABB415A1A7520022034E /* KinectThresholder.cpp */; };
 		EA9068CE15AB351B000CADEC /* FlockController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9068CC15AB351B000CADEC /* FlockController.cpp */; };
+		EA9068DB15AC4707000CADEC /* output.frag in Sources */ = {isa = PBXBuildFile; fileRef = EA9068D915AC4706000CADEC /* output.frag */; };
+		EA9068DC15AC4707000CADEC /* output.vert in Sources */ = {isa = PBXBuildFile; fileRef = EA9068DA15AC4707000CADEC /* output.vert */; };
+		EA9068DF15AC4A2B000CADEC /* Bloom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA9068DD15AC4A2B000CADEC /* Bloom.cpp */; };
 		EAE2A8C815A4761D00327E97 /* mesh.frag in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C615A4761D00327E97 /* mesh.frag */; };
 		EAE2A8C915A4761D00327E97 /* mesh.vert in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8C715A4761D00327E97 /* mesh.vert */; };
 		EAE2A8DC15A4872500327E97 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */; };
@@ -468,6 +471,10 @@
 		EA7FABB515A1A7520022034E /* KinectThresholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectThresholder.h; path = ../../lib/KinectThresholder.h; sourceTree = "<group>"; };
 		EA9068CC15AB351B000CADEC /* FlockController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlockController.cpp; sourceTree = "<group>"; };
 		EA9068CD15AB351B000CADEC /* FlockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlockController.h; sourceTree = "<group>"; };
+		EA9068D915AC4706000CADEC /* output.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = output.frag; path = bin/data/output.frag; sourceTree = SOURCE_ROOT; };
+		EA9068DA15AC4707000CADEC /* output.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = output.vert; path = bin/data/output.vert; sourceTree = SOURCE_ROOT; };
+		EA9068DD15AC4A2B000CADEC /* Bloom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bloom.cpp; path = ../../lib/marektricks/Bloom.cpp; sourceTree = "<group>"; };
+		EA9068DE15AC4A2B000CADEC /* Bloom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bloom.h; path = ../../lib/marektricks/Bloom.h; sourceTree = "<group>"; };
 		EAE2A8C615A4761D00327E97 /* mesh.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.frag; path = bin/data/mesh.frag; sourceTree = SOURCE_ROOT; };
 		EAE2A8C715A4761D00327E97 /* mesh.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = mesh.vert; path = bin/data/mesh.vert; sourceTree = SOURCE_ROOT; };
 		EAE2A8D915A4871800327E97 /* KinectTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KinectTriangle.h; path = ../../lib/KinectTriangle.h; sourceTree = "<group>"; };
@@ -756,6 +763,8 @@
 				EAE2A8DD15A4872B00327E97 /* lib */,
 				EAE2A8C615A4761D00327E97 /* mesh.frag */,
 				EAE2A8C715A4761D00327E97 /* mesh.vert */,
+				EA9068D915AC4706000CADEC /* output.frag */,
+				EA9068DA15AC4707000CADEC /* output.vert */,
 				EAE2A8DE15A48FC700327E97 /* pointlight.frag */,
 				EAE2A8DF15A48FC700327E97 /* pointlight.vert */,
 				EA1D692E159E11D400CCE21C /* Room.h */,
@@ -1377,6 +1386,8 @@
 		EAE2A8DD15A4872B00327E97 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				EA9068DD15AC4A2B000CADEC /* Bloom.cpp */,
+				EA9068DE15AC4A2B000CADEC /* Bloom.h */,
 				EAE2A8DA15A4872500327E97 /* KinectMesh.cpp */,
 				EAE2A8DB15A4872500327E97 /* KinectMesh.h */,
 				EAE2A8D915A4871800327E97 /* KinectTriangle.h */,
@@ -1565,6 +1576,9 @@
 				5DA0AC2D15A5A51500E0819F /* usb_libusb10.c in Sources */,
 				5DA0AC2F15A5A51500E0819F /* ofxKinect.cpp in Sources */,
 				EA9068CE15AB351B000CADEC /* FlockController.cpp in Sources */,
+				EA9068DB15AC4707000CADEC /* output.frag in Sources */,
+				EA9068DC15AC4707000CADEC /* output.vert in Sources */,
+				EA9068DF15AC4A2B000CADEC /* Bloom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

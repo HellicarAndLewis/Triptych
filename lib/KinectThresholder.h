@@ -121,7 +121,7 @@ public:
 	ofxCvGrayscaleImage thresh;
 	ofxCvGrayscaleImage background;
 	ofxCvContourFinder  contourFinder;
-	
+	ofxCvColorImage		rgb;
 	bool learnBackground;
 	float nearThreshold;
 	float farThreshold;

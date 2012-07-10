@@ -11,6 +11,8 @@ void tricks::gl::effects::Bloom::setup(bool drawToFbo) {
 	blurY = ofVec2f( 0.0, 0.001953125 );
 	resize(ofGetWidth(), ofGetHeight());
 	loadShader();
+	amount = 0.5;
+	brightness = 0.8;
 }
 
 void tricks::gl::effects::Bloom::resize(int w, int h) {
@@ -62,10 +64,10 @@ void tricks::gl::effects::Bloom::end() {
 	ofSetHexColor(0xFFFFFF);	
 	//out1.draw(0, 0);
 	//out1.draw(0, 0);
-	glColor4f(1, 1, 1, 0.5);
+	glColor4f(1, 1, 1, amount);
 	out2.draw(0, 0);
 	//// draw over
-	ofSetHexColor(0xFFFFFF);
+	glColor4f(1,1,1, brightness);
 	
 	output.draw(0, 0);
 	if(drawToFbo) {
