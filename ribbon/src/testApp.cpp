@@ -27,7 +27,7 @@ void testApp::setup(){
 	
 	gui.addPage("Program");
 	ofSetVerticalSync(true);
-	ofSetFrameRate(30);
+	ofSetFrameRate(60);
 	kinect.setup(true);
 	kinect.setupGui();
 	room.setupGui();	
@@ -192,32 +192,32 @@ void testApp::draw(){
 
 
 
-			//brushFbo.begin();
+			/*brushFbo.begin();
 	
 			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 			glColor4f(0, 0, 0, backgroundAlpha);
 			ofRect(0, 0, ofGetWidth(), ofGetHeight());
 
 			glColor4f(1,1,1,imageAlpha);
-			//	ofEnableBlendMode(OF_BLENDMODE_ADD);
+				ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 			if (usingAdd) {
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			}
 			else {
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			}
+			}*/
 
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
 	
-			//brushFbo.end();
+			/*brushFbo.end();
 
-			//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-			//glColor4f(1, 1, 1, 1);
-			//brushFbo.draw(0, 0);
+			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			glColor4f(1, 1, 1, 1);
+			brushFbo.draw(0, 0);*/
 
 
 		}

@@ -53,7 +53,7 @@ private:
 	
 	ofVec3f headPos;
 	
-	
+	int colIndex;
 //	ofFbo fbo;
 };
 

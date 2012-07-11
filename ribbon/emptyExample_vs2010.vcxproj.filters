@@ -170,6 +170,12 @@
     </ClCompile>
     <ClCompile Include="src\Brush.cpp" />
     <ClCompile Include="src\Trail.cpp" />
+    <ClCompile Include="..\lib\KinectNuiThreaded.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h" />
@@ -391,6 +397,12 @@
     </ClInclude>
     <ClInclude Include="src\Brush.h" />
     <ClInclude Include="src\Trail.h" />
+    <ClInclude Include="..\lib\KinectNuiThreaded.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\TimeProfiler.h">
+      <Filter>lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="addons">
