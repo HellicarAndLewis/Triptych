@@ -10,7 +10,10 @@
 
 void Room::setup(float aspect) {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-	tex.loadImage("room.png");
+	if(!tex.loadImage("room.png")) {
+		printf("Cannot load room.png in Room::setup()\n");
+		::exit(0);
+	}
 	this->aspect = aspect;	
 	aoAmt = 0.5;
 	createMesh(aspect);
@@ -25,7 +28,10 @@ void Room::setup(float aspect) {
 	camera.setNearClip(0.001);
 	
 	
-	shader.load("pointlight.vert", "pointlight.frag");
+	if(!shader.load("pointlight.vert", "pointlight.frag")) {
+		printf("Cannot load pointlight.vert/frag shaders.\n");
+		::exit(0);
+	}
 
 }
 
@@ -76,7 +82,9 @@ void Room::begin() {
 		shader.setUniformTexture("tex", tex.getTextureReference(), 0);
 		
 		mesh.draw();	
+		
 		shader.end();
+		
 }
 
 void Room::end() {

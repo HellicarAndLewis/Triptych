@@ -2,34 +2,54 @@
 #include "ofxSimpleGuiToo.h"
 
 testApp::testApp()
-	:flock_gui("Settings", 400)
-	,app(ofGetWidth(), ofGetHeight())
-{
+#ifdef USE_APP 
+	#ifdef USE_FLOCK_GUI
+		:app(ofGetWidth(), ofGetHeight()),flock_gui("Settings", 400)
+	#else
+		:app(ofGetWidth(), ofGetHeight())	
+	#endif
+#else 
+	#ifdef USE_FLOCK_GUI
+		:flock_gui("Settings", 400)
+	#endif
+#endif	
+{	
+	printf("testApp()\n");
 }
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	printf("testApp::setup()\n");
 	ofBackground(3);
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	ofEnableNormalizedTexCoords();
 	show_gui = false;
 	debug = false;
-	
+
+
+	printf("testApp::setup() - 1 \n");
+#ifdef USE_APP
 	app.setup();
+#endif
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
 	room.setupGui();
 	gui.loadFromXML();
 	gui.setAutoSave(true);
+
+#ifdef USE_FLOCK_GUI
 	
+	printf("testApp::setup() - 2 \n");
 	float attack_col[3] = {0.5, 0.0, 0.3};
 	float flock_col[3] = {0.38,0.38,0.06};
+#ifdef USE_APP
 	flock_gui.addFloat("Flock radius SQ", app.flock.zone_radius_sq).setMin(0.0f).setMax(5.4).setColor(flock_col);
 	flock_gui.addFloat("Flock high threshold (align)", app.flock.high).setMin(0.0f).setMax(1.0f).setColor(flock_col);
 	flock_gui.addFloat("Flock low threshold (separate)", app.flock.low).setMin(0.0f).setMax(1.0f).setColor(flock_col);
 	flock_gui.addFloat("Flock align energy", app.flock.align_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
 	flock_gui.addFloat("Flock separate energy", app.flock.separate_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
 	flock_gui.addFloat("Flock attract energy", app.flock.attract_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
+#endif
 	flock_gui.addFloat("Flock center energy", settings.flocking_center_energy).setMin(0.0f).setMax(5.0f).setColor(flock_col);
 	flock_gui.addFloat("Flock sphere size", settings.flocking_sphere_size).setMin(3.0f).setMax(10.0f).setColor(flock_col);
 	flock_gui.addFloat("Boid glow size", settings.boid_glow_size).setMin(0.0f).setMax(2.0f);
@@ -57,14 +77,22 @@ void testApp::setup(){
 	flock_gui.addFloat("Percentage of visible boids", settings.boids_percentage_visible).setMin(0.0f).setMax(1.0f).setColor(attack_col);
 	flock_gui.addFloat("Percentage of attack boids", settings.boids_percentage_attackers).setMin(0.0f).setMax(1.0f).setColor(attack_col);
 	flock_gui.addButton<testApp>("Update number of visible boids", 1, this).setColor(attack_col);
-	flock_gui.load(ofToDataPath("gui.bin",true));
+	
+	printf("testApp::setup() - 3 \n");
 
+	flock_gui.load(ofToDataPath("gui.bin",true));
+	
+#endif
 	cam.setup(ofGetWidth(), ofGetHeight());
 	cam.translate(0,0,5);
 	ax.setup(10);
+	
+
+	printf("Setup ready - ...\n");
 }
 
 void testApp::operator()(const int n) {
+#ifdef USE_APP
 	switch(n) {
 		case 0: {
 			settings.must_record_kinect = false;
@@ -78,28 +106,66 @@ void testApp::operator()(const int n) {
 		}
 		default:break;
 	}
+#endif	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+#ifdef USE_FLOCK_GUI	
 	if(show_gui) {
 		flock_gui.update();
 	}
+#endif
+
+#ifdef USE_APP
 	app.update();
+#endif
+
 	room.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	glColor3f(1,1,1);
-	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
-	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
+		
 
-	if(settings.draw_room) {
-		room.draw();
+
+	//glColor3f(1,1,1);
+#ifndef _WIN32
+	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
+	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20); // crashes in msvc++
+#else
+	/*
+	static int c = 0;
+	++c;
+	if(c % 120 == 1) {
+	//	printf("FPS:%d\n", ofGetFrameRate());
 	}
+	*/
+#endif
+
+
+
+#ifdef USE_FLOCK_GUI
+	if(settings.draw_room) {
+#endif
+		glUseProgram(0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glDisable(GL_TEXTURE_2D);
+		glBindVertexArray(0);
+	//	room.draw();
+#ifdef USE_FLOCK_GUI		
+	}
+#endif
 	
-	gui.draw();
+
+
+//	return;s
+	
+
+//	return;
+	
 	if(!debug) {
 		Vec3 right, up;
 		cam.getBillboardVectors(right, up);
@@ -107,30 +173,62 @@ void testApp::draw(){
         nm.inverse();
         nm.transpose();
 		cam.place();
-		if(settings.draw_axis) {
-			ax.draw();
-		}
+	
+
+		#ifndef _WIN32
+			if(settings.draw_axis) {
+				ax.draw();
+			}
+		#endif
+
+#ifdef USE_APP
 		app.draw(cam.pm().getPtr(), cam.vm().getPtr(), nm.getPtr(), right.getPtr(), up.getPtr());
+#endif
 	}
 	else {
+
 		cam.place();
-		if(settings.draw_axis) {
-			ax.draw();
-		}
+
+		#ifndef _WIN32
+			if(settings.draw_axis) {
+				ax.draw();
+			}
+		#endif
+#ifdef USE_APP
 		app.debugDraw();		
+#endif
 	}
-	
+#ifdef USE_FLOCK_GUI
 	if(show_gui) {
 		flock_gui.draw();
 	}
+#endif
 
+	glPushMatrix();
+		ofSetupScreen();
+		glDisable(GL_BLEND);
+		glDisable(GL_DEPTH_TEST);
+		glDisable(GL_CULL_FACE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//	gui.setDraw(show_gui);
+	//	gui.draw();
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPopMatrix();
+
+	
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+	 if(key==' ') {
+		printf("Draw gui\n"); 
+		gui.toggleDraw();
+	}
+	
 	if(key == 'd') {
 		debug = !debug;
 	}
+#ifdef USE_FLOCK_GUI
 	else if(key == 's') {
 		flock_gui.save(ofToDataPath("gui.bin", true));
 	}
@@ -141,14 +239,17 @@ void testApp::keyPressed(int key){
 		show_gui = !show_gui;
 	}
 	else if(key==' ') {
+		printf("Draw gui\n"); 
 		gui.toggleDraw();
 	}
+#endif
 	else if(key == 'f') {
 		ofToggleFullscreen();
 	}
 	else if(key == 'r') {
 		settings.rotate_scene = !settings.rotate_scene;
 	}
+	
 }
 
 //--------------------------------------------------------------
@@ -158,37 +259,48 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
+#ifdef USE_FLOCK_GUI
 	if(show_gui) {
 		flock_gui.onMouseMoved(x,y);
 	}
-
+#endif
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
+#ifdef USE_FLOCK_GUI
 	if(show_gui) {
 		flock_gui.onMouseMoved(x,y);
 	}
+#endif
+	
 	if(settings.rotate_scene) {
 		cam.onMouseDragged(x,y);
 	}
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
+#ifdef USE_FLOCK_GUI
 	if(show_gui) {
 		flock_gui.onMouseDown(x,y);
 	}
+#endif
+	
 	if(settings.rotate_scene) {
 		cam.onMouseDown(x,y);
 	}
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
+#ifdef USE_FLOCK_GUI
 	if(show_gui) {
 		flock_gui.onMouseUp(x,y);
 	}
+#endif
 }
 
 //--------------------------------------------------------------
