@@ -86,7 +86,7 @@ void KinectThresholder::setupGui() {
 void KinectThresholder::doSkeletons() {
 	
 	numSkeletons = kinect.getSkeletonPoints(skelly);
-	printf("Doing skels %d\n", numSkeletons);
+	//printf("Doing skels %d\n", numSkeletons);
 }
 #endif
 
@@ -97,7 +97,7 @@ int KinectThresholder::getNumSkeletons() {
 
 	
 	// stuff goes here
-	printf("Skellies: %d\n", numSkeletons);
+	//printf("Skellies: %d\n", numSkeletons);
 	return numSkeletons;
 
 }

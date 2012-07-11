@@ -168,6 +168,8 @@
     <ClCompile Include="..\lib\BoundBlob.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="src\Brush.cpp" />
+    <ClCompile Include="src\Trail.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h" />
@@ -387,6 +389,8 @@
     <ClInclude Include="..\lib\BoundBlobListener.h">
       <Filter>lib</Filter>
     </ClInclude>
+    <ClInclude Include="src\Brush.h" />
+    <ClInclude Include="src\Trail.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="addons">
