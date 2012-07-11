@@ -12,6 +12,7 @@
 #include <application/BoidTypes.h>
 #include <application/KinectInput.h>
 #include <vector>
+#include <iterator>
 
 using std::vector;
 
