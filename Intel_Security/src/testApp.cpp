@@ -126,7 +126,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-		
+
 
 
 	//glColor3f(1,1,1);
@@ -154,7 +154,7 @@ void testApp::draw(){
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glDisable(GL_TEXTURE_2D);
-		glBindVertexArray(0);
+		//glBindVertexArray(0);
 		room.draw();
 #ifdef USE_FLOCK_GUI		
 //	}
@@ -211,8 +211,8 @@ void testApp::draw(){
 		glDisable(GL_DEPTH_TEST);
 		glDisable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//	gui.setDraw(show_gui);
-	//	gui.draw();
+		gui.setDraw(show_gui);
+		gui.draw();
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glPopMatrix();
 

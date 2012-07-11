@@ -43,7 +43,5 @@ class testApp : public ofBaseApp{
 #ifdef USE_FLOCK_GUI		
 		buttons::Buttons flock_gui;
 #endif
-
-		Particles2 ps;
 		Room room;
 };

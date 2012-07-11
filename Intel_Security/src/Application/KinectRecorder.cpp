@@ -6,6 +6,8 @@ KinectRecorder::KinectRecorder()
 	,is_loaded(false)
 	,next_frame_millis(0)
 	,index(0)
+	,fps(0)
+	,num_frames(0)
 
 {
 	setFPS(10);
