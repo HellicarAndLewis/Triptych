@@ -32,7 +32,6 @@ void Room::setup(float aspect) {
 		printf("Cannot load pointlight.vert/frag shaders.\n");
 		::exit(0);
 	}
-
 }
 
 void Room::setupGui() {
