@@ -148,6 +148,7 @@ void testApp::draw(){
 #ifdef USE_FLOCK_GUI
 	//if(settings.draw_room) {
 #endif
+		
 		glUseProgram(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -155,14 +156,14 @@ void testApp::draw(){
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glDisable(GL_TEXTURE_2D);
 		//glBindVertexArray(0);
-		room.draw();
+		//room.draw();
 #ifdef USE_FLOCK_GUI		
 //	}
 #endif
 	
+	//return;
 
-
-//	return;s
+//	return;
 	
 
 //	return;
@@ -212,7 +213,7 @@ void testApp::draw(){
 		glDisable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		gui.setDraw(show_gui);
-		gui.draw();
+	//	gui.draw();
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glPopMatrix();
 
