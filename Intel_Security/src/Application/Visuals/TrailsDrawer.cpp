@@ -21,6 +21,7 @@ void TrailsDrawer::setup() {
 			
 	shader.disable();
 	
+	vao.create();
 	vao.bind();
 	glGenBuffers(1, &vbo);
 	vao.unbind();
@@ -149,7 +150,9 @@ void TrailsDrawer::update() {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		vao.unbind();
 	}
-	
+	if(vertices.numBytes() <= 0) {
+		return;
+	}
 	// update buffer.
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.numBytes(), vertices.getPtr());

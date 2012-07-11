@@ -68,7 +68,7 @@ void Controller::update() {
 	}
 	
 	size_t dx_point = 0;
-	size_t attackers_per_point = ceil(attackers.size()/num_points);
+	size_t attackers_per_point = (size_t)ceil(float(attackers.size())/num_points);
 	
 	for(Boids::iterator it = attackers.begin(); it != attackers.end(); ++it) {
 		Boid& b = **it;
