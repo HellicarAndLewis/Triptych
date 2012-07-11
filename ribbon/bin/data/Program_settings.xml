@@ -9,7 +9,7 @@
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>4</value>
+        <value>7</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
