@@ -41,7 +41,7 @@
     </SliderFloat_image_alpha>
     <SliderFloat_max_image_size>
         <name>max image size</name>
-        <value>78.4</value>
+        <value>64</value>
     </SliderFloat_max_image_size>
     <SliderFloat_min_image_size>
         <name>min image size</name>
@@ -49,7 +49,7 @@
     </SliderFloat_min_image_size>
     <Toggle_use_additive>
         <name>use additive</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_use_additive>
     <Toggle_enlarge_image>
         <name>enlarge image</name>
@@ -57,23 +57,23 @@
     </Toggle_enlarge_image>
     <SliderFloat_trail_width>
         <name>trail width</name>
-        <value>2.75</value>
+        <value>6.5</value>
     </SliderFloat_trail_width>
     <Toggle_variabe_width>
         <name>variabe width</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_variabe_width>
     <SliderFloat_variable_factor>
         <name>variable factor</name>
-        <value>1.01</value>
+        <value>0.33</value>
     </SliderFloat_variable_factor>
     <Toggle_use_gravity>
         <name>use gravity</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_use_gravity>
     <SliderFloat_gravity_factor>
         <name>gravity factor</name>
-        <value>0</value>
+        <value>0.04</value>
     </SliderFloat_gravity_factor>
     <Toggle_use_fade>
         <name>use fade</name>

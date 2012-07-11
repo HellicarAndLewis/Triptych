@@ -12,7 +12,7 @@
 #define TRAIL_WIDTH 1
 #define INTERPOLATION_SIZE 4.0
 
-static vector<ofFloatColor> colours;
+static vector< vector<ofFloatColor> > colours;
 bool done = false;
  
 Trail::Trail(ofVec3f p):
@@ -48,13 +48,30 @@ sineIncrement(0.1) {
 //	gui.addToggle("draw wireframe", drawWireframe);
 	
 	if(!done) {
-		colours.push_back(ofFloatColor(1.0, 0.3, 0.16, 1));
-		colours.push_back(ofFloatColor(0.78, 0.0, 0.09, 1));
-		colours.push_back(ofFloatColor(1.0, 0.86, 0.75, 1));
-		colours.push_back(ofFloatColor(1.0, 0.0, 0.11, 1));
+		colours.resize(3);
+
+		//reds
+		colours[0].push_back(ofFloatColor(1.0, 0.3, 0.16, 1));
+		colours[0].push_back(ofFloatColor(0.78, 0.0, 0.09, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.86, 0.75, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.0, 0.11, 1));
+
+		//greens
+		colours[1].push_back(ofFloatColor(0.0, 0.3, 0.05, 1));
+		colours[1].push_back(ofFloatColor(0.75, 0.9, 0.54, 1));
+		colours[1].push_back(ofFloatColor(0.46, 0.82, 0.19, 1));
+		colours[1].push_back(ofFloatColor(0.0, 0.7, 0.29, 1));
+
+		//yellows
+		colours[2].push_back(ofFloatColor(1.0, 0.53, 0.0, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.77, 0.0, 1));
+		colours[2].push_back(ofFloatColor(0.99, 0.98, 0.84, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.89, 0.0, 1));
 		done = true;
 	}
 	
+	colIndex = ((int) rand() % colours.size());
+
 	input(p);
 }
 
@@ -79,32 +96,40 @@ void Trail::update(ofVec3f p) {
 		}
 		
 	}
+
+	if(useGravity) {
+
+		for(int i = 0; i < trail.size(); i++) {
+			trail[i].pos.y+= gravityFactor * i;
+		}
+
+	}
 	
 	mesh.clear();
 	
 	sineCounter = 0;
 	int i = 0;
 	for (deque<Node>::iterator it = trail.begin(); it != trail.end(); ++it) {
-
-
-		
-		ofMatrix4x4 rot = ofMatrix4x4::newRotationMatrix(sineCounter, 0, 0, 0);
 		
 		Node node = *it;
 		ofVec3f p = node.getPosition();
-		float d = trailWidth;
+		float dd = trailWidth;
 		
-		if(variableWidth && it+ 1 != trail.end()) {
-			d = (((*(it+1)).getPosition()) - p).length(); 
-			d*= variableFactor;
+		if(variableWidth && ((it+1) != trail.end())) {
+			//dd = (((*(it+1)).getPosition()) - p).length(); 
+			ofVec3f oldp = (*(it+1)).getPosition();
+			ofVec3f diff = oldp - p;
+			dd = diff.length();
+			cout << dd << endl;
+			dd*= variableFactor;
 		}
 		ofFloatColor col = node.getColor();
 		if(useFade) col.a = (trail.size() - i)/(float)trail.size();
 
-		mesh.addVertex(ofVec3f(p.x, p.y + d, p.z));
+		mesh.addVertex(ofVec3f(p.x, p.y + dd, p.z));
 		mesh.addColor(col);
 
-		mesh.addVertex(ofVec3f(p.x, p.y - d, p.z));
+		mesh.addVertex(ofVec3f(p.x, p.y - dd, p.z));
 		mesh.addColor(col);
 
 		i++;
@@ -136,13 +161,7 @@ void Trail::update(ofVec3f p) {
 		
 	}
 	
-	if(useGravity) {
 
-		for(int i = 0; i < trail.size(); i++) {
-			trail[i].pos.y+= gravityFactor * i;
-		}
-
-	}
 
 	headPos = trail.begin()->getPosition();
 }
@@ -204,11 +223,14 @@ void Trail::draw() {
 void Trail::input(ofVec3f p) {
 	
 	Node node;
-	
-	
+	node.setColor(colours[colIndex][((int)rand()) % colours[colIndex].size()]);
+	node.setPosition(p);
+	trail.push_front(node);
+	return;
+
+
 	if (true || trail.empty()) {
 		node.setPosition(p);
-		node.setColor(colours[((int)rand()) % colours.size()]);
 		trail.push_front(node);
 		
 	}
@@ -233,7 +255,7 @@ void Trail::input(ofVec3f p) {
 			ofVec3f inter = old + (diff * (i/interpolationLimit));
 						
 			node.setPosition(inter);
-			node.setColor(colours[((int)rand()) % colours.size()]);
+			node.setColor(colours[colIndex][((int)rand()) % colours[colIndex].size()]);
 			trail.push_front(node);
 			
 		}
