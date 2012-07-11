@@ -20,7 +20,7 @@
 
 #include "ofxOpenCv.h"
 #ifdef _WIN32
-#	include "ofxKinectNui.h"
+#	include "KinectNuiThreaded.h"
 #else
 #	include "ofxKinect.h"
 #endif
@@ -137,7 +137,7 @@ public:
 	
 	
 #ifdef _WIN32
-	ofxKinectNui kinect;
+	KinectNuiThreaded kinect;
 #else
 	ofxKinect kinect;
 #endif

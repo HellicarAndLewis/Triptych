@@ -61,10 +61,11 @@ namespace tricks {
 			void stop();
 		protected:
 			string name;
+			float time;
 		};
 		
 		
-		class ScopedTimer: public: NamedTimer {
+		class ScopedTimer: public NamedTimer {
 		public:
 			ScopedTimer(string name): NamedTimer(name) {
 				start();
@@ -76,6 +77,8 @@ namespace tricks {
 		
 		
 		class ReusableTimer: public NamedTimer {
+		public:
+			
 			ReusableTimer(): NamedTimer("") {
 				running = false;
 			}
@@ -85,9 +88,11 @@ namespace tricks {
 				}
 				
 				this->name = name;
-				start();
-				running = false;
+				NamedTimer::start();
+				running = true;
 			}
+		private:
+			bool running;
 		};
 		
 		
