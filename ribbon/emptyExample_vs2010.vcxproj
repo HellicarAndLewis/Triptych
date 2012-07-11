@@ -171,8 +171,10 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\lib\marektricks\contourutils.cpp" />
     <ClCompile Include="..\lib\marektricks\Line.cpp" />
     <ClCompile Include="..\lib\Room.cpp" />
+    <ClCompile Include="src\Brush.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
+    <ClCompile Include="src\Trail.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvBlob.h" />
@@ -247,7 +249,9 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\lib\marektricks\contourutils.h" />
     <ClInclude Include="..\lib\marektricks\Line.h" />
     <ClInclude Include="..\lib\Room.h" />
+    <ClInclude Include="src\Brush.h" />
     <ClInclude Include="src\testApp.h" />
+    <ClInclude Include="src\Trail.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs2010\openframeworksLib.vcxproj">

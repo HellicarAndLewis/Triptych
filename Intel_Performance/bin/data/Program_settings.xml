@@ -17,19 +17,19 @@
     </Toggle_learnBackground>
     <SliderInt_erosions>
         <name>erosions</name>
-        <value>0</value>
+        <value>1</value>
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>0</value>
+        <value>1</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
-        <value>0</value>
+        <value>1</value>
     </SliderInt_blurs>
     <SliderInt_blurSize>
         <name>blurSize</name>
-        <value>1</value>
+        <value>2</value>
     </SliderInt_blurSize>
     <SliderFloat_fov>
         <name>fov</name>
@@ -61,14 +61,14 @@
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.135</value>
+        <value>0.005</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.15</value>
+        <value>0.005</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.17</value>
+        <value>1</value>
     </SliderFloat_aoAmount>
 </controls>

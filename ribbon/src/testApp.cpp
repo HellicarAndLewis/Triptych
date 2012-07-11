@@ -3,6 +3,21 @@
 #include "ofxSimpleGuiToo.h"
 
 #include "ofxKinectNuiDraw.h"
+
+
+int iterations;
+float m;
+bool usingAdd = true;
+float maxImageSize, minImageSize;
+bool enlargeImage = true;
+
+float trailWidth = 1;
+bool variableWidth = false;
+float variableFactor = 1;
+bool useGravity = false;
+float gravityFactor = 0.1;
+bool useFade = false;
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	
@@ -22,12 +37,38 @@ void testApp::setup(){
 	KinectMesh::setupGui();
 	gui.addSlider("bloom amount", bloom.amount, 0, 2);
 	gui.addSlider("bloom brightness", bloom.brightness, 0, 2);
+
+	gui.addSlider("iterations", iterations, 0, 500);
+	gui.addSlider("m", m, 0, 0.01);
+	gui.addSlider("background alpha", backgroundAlpha, 0, 0.2);
+	gui.addSlider("image alpha", imageAlpha, 0, 0.2);
+	gui.addSlider("max image size", maxImageSize, 40, 1000);
+	gui.addSlider("min image size", minImageSize, 0, 100);
+	gui.addToggle("use additive", usingAdd);
+	gui.addToggle("enlarge image", enlargeImage);
+
+	gui.addSlider("trail width", trailWidth, 0, 50);
+	gui.addToggle("variabe width", variableWidth);
+	gui.addSlider("variable factor", variableFactor, 0, 2);
+	gui.addToggle("use gravity", useGravity);
+	gui.addSlider("gravity factor", gravityFactor, 0, 2);
+	gui.addToggle("use fade", useFade);
+
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
 
 	ofBackgroundHex(0);
 
+	brushFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA32F);
+	brushFbo.begin();
+	ofClear(0, 0, 0, 1);
+	brushFbo.end();
+
+	iterations = 15;
+	m = 0.00655;
+	backgroundAlpha = 0.085;
+	imageAlpha = 0.005;
 }
 
 
@@ -64,19 +105,29 @@ void testApp::updateFromSkeletons() {
 	
 	// remove any skeletons that weren't marked as still alive
 	// in the previous bit of code.
-	for(it = skeletons.begin(); it != skeletons.end(); it++) {
+	
+	it = skeletons.begin();
+	while(it != skeletons.end()) {
+	//for(it = skeletons.begin(); it != skeletons.end(); ++it) {
+		
+		
 		if(!(*it).second.alive) {
 			
 
 			//deadRibbons.push_back((*it).second.ribbonLeft);
 			//deadRibbons.push_back((*it).second.ribbonRight);
 
-			delete (*it).second.ribbonLeft;
-			delete (*it).second.ribbonRight;
+			delete (*it).second.leftBrush;
+			delete (*it).second.rightBrush;
 			
-			skeletons.erase((*it).first);
+			skeletons.erase(it++);
+			
+		}
+		else {
+			++it;
 		}
 	}
+	
 }
 
 //--------------------------------------------------------------
@@ -103,7 +154,7 @@ void testApp::update() {
 
 	
 	
-	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
+	//ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 	
 	
 	room.update();
@@ -138,12 +189,37 @@ void testApp::draw(){
 				meshes[i].draw();
 			}
 
+
+
+
+			//brushFbo.begin();
+	
+			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			glColor4f(0, 0, 0, backgroundAlpha);
+			ofRect(0, 0, ofGetWidth(), ofGetHeight());
+
+			glColor4f(1,1,1,imageAlpha);
+			//	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
+			if (usingAdd) {
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+			}
+			else {
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			}
+
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
 	
-			
+			//brushFbo.end();
+
+			//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			//glColor4f(1, 1, 1, 1);
+			//brushFbo.draw(0, 0);
+
+
 		}
 		glPopMatrix();
 		
