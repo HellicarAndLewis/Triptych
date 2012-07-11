@@ -14,6 +14,7 @@
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <RootNamespace>emptyExample</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>Intel_Security</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -26,13 +27,14 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs2010\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs2010\openFrameworksDebug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -50,70 +52,51 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\addons\roxlu\lib\include;..\addons\roxlu\addons\PolyTri\lib;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\libs\cairo\include\cairo;..\lib;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\lib\marektricks;..\addons\roxlu\addons\Poly2Tri\poly2tri;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src;C:\Program Files\Microsoft SDKs\Kinect\v1.0\inc;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\addons\PolyTri\lib\sweep;..\addons\roxlu\addons\PolyTri\lib\common</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\MicrosoftSDKs\Kinect\v1.0\inc;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>openframeworksLibDebug.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;Vfw32.lib;comctl32.lib;glut32.lib;rtAudioD.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmdd.lib;PocoNetmdd.lib;PocoUtilmdd.lib;PocoXMLmdd.lib;Ws2_32.lib;tess2.lib;freenect.lib;opencv_calib3d231d.lib;opencv_flann231d.lib;zlibd.lib;opencv_contrib231d.lib;opencv_features2d231d.lib;opencv_core231d.lib;opencv_gpu231d.lib;opencv_haartraining_engined.lib;opencv_highgui231d.lib;opencv_ml231d.lib;opencv_imgproc231d.lib;opencv_objdetect231d.lib;opencv_legacy231d.lib;opencv_video231d.lib;Kinect10.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Kinect\v1.0\lib\x86;..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\addons\ofxKinect\libs\libfreenect\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;..\..\..\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(TargetDir)$(TargetName)_debugInfo.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
+      <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>Kinect10.lib;zlibd.lib;opencv_calib3d231d.lib;opencv_flann231d.lib;opencv_contrib231d.lib;opencv_features2d231d.lib;opencv_core231d.lib;opencv_gpu231d.lib;opencv_haartraining_engined.lib;opencv_highgui231d.lib;opencv_ml231d.lib;opencv_imgproc231d.lib;opencv_objdetect231d.lib;opencv_legacy231d.lib;opencv_video231d.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MicrosoftSDKs\Kinect\v1.0\lib\x86;C:\Users\roxlu\Documents\intel\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Message>adding DLLs and creating data folder</Message>
-      <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs2010\*.dll" "$(ProjectDir)bin"
-if not exist "$(ProjectDir)bin\data" mkdir  "$(ProjectDir)bin\data"
-</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\addons\roxlu\lib\include;..\addons\roxlu\addons\PolyTri\lib;..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\libs\cairo\include\cairo;..\lib;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv2;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\lib\marektricks;..\addons\roxlu\addons\Poly2Tri\poly2tri;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src;C:\Program Files\Microsoft SDKs\Kinect\v1.0\inc;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\addons\PolyTri\lib\sweep;..\addons\roxlu\addons\PolyTri\lib\common</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat />
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>openframeworksLib.lib;cairo-static.lib;pixman-1.lib;msimg32.lib;OpenGL32.lib;GLu32.lib;kernel32.lib;setupapi.lib;glut32.lib;rtAudio.lib;videoInput.lib;libfreetype.lib;FreeImage.lib;qtmlClient.lib;dsound.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;glew32s.lib;fmodex_vc.lib;glu32.lib;PocoFoundationmd.lib;PocoNetmd.lib;PocoUtilmd.lib;PocoXMLmd.lib;tess2.lib;freenect.lib;opencv_calib3d231.lib;opencv_flann231.lib;zlib.lib;opencv_contrib231.lib;opencv_features2d231.lib;opencv_core231.lib;opencv_gpu231.lib;opencv_haartraining_engine.lib;opencv_highgui231.lib;opencv_ml231.lib;opencv_imgproc231.lib;opencv_objdetect231.lib;opencv_legacy231.lib;opencv_video231.lib;Kinect10.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Kinect\v1.0\lib\x86;..\..\..\libs\glut\lib\vs2010;..\..\..\libs\rtAudio\lib\vs2010;..\..\..\libs\FreeImage\lib\vs2010;..\..\..\libs\freetype\lib\vs2010;..\..\..\libs\quicktime\lib\vs2010;..\..\..\libs\fmodex\lib\vs2010;..\..\..\libs\videoInput\lib\vs2010;..\..\..\libs\cairo\lib\vs2010;..\..\..\libs\glew\lib\vs2010;..\..\..\libs\glu\lib\vs2010;..\..\..\libs\Poco\lib\vs2010;..\..\..\libs\openFrameworksCompiled\lib\vs2010;..\addons\ofxKinect\libs\libfreenect\lib\vs2010;..\..\..\libs\tess2\lib\vs2010;..\..\..\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <IgnoreSpecificDefaultLibraries>atlthunk.lib; LIBC.lib; LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
+      <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Message>adding DLLs and creating data folder</Message>
-      <Command>xcopy /e /i /y "$(ProjectDir)\..\..\..\export\vs2010\*.dll" "$(ProjectDir)\bin"
-if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
-
-</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvColorImage.cpp" />
@@ -159,20 +142,80 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiPage.cpp" />
     <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiToo.cpp" />
     <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiValueControl.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Button.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Buttons.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.cc" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.cc" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.cc" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc" />
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\src\polytri\PolyTri.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\ArcBall.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\Camera.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\EasyCam.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Axis.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Box.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\IcoSphere.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Plane.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\UVSphere.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\VertexData.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Noise.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\StringUtil.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Utils.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\BitmapFont.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Image.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\SimpleAnim.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\StereoCam.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Text.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\TGA.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\TGARecorder.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tween.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tweens.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\external\stb_image.c" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Dictionary.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\DictionaryMap.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\File.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\INI.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\IOBuffer.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\OBJ.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Ply.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\ROX.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat3.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat4.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Quat.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec2.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec3.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec4.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Billboard.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\FBO.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\MatrixStack.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\PBO.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Shader.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Texture.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VAO.cpp" />
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VBO.cpp" />
     <ClCompile Include="..\lib\BoundBlob.cpp" />
     <ClCompile Include="..\lib\KinectMesh.cpp" />
-    <ClCompile Include="..\lib\KinectNuiThreaded.cpp" />
     <ClCompile Include="..\lib\KinectThresholder.cpp" />
     <ClCompile Include="..\lib\marektricks\Bloom.cpp" />
     <ClCompile Include="..\lib\marektricks\contourutils.cpp" />
     <ClCompile Include="..\lib\marektricks\Line.cpp" />
-    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp" />
     <ClCompile Include="..\lib\Room.cpp" />
+    <ClCompile Include="src\Application\Application.cpp" />
+    <ClCompile Include="src\Application\Blur.cpp" />
+    <ClCompile Include="src\Application\Controller.cpp" />
+    <ClCompile Include="src\Application\KinectInput.cpp" />
+    <ClCompile Include="src\Application\KinectRecorder.cpp" />
+    <ClCompile Include="src\Application\Settings.cpp" />
+    <ClCompile Include="src\Application\Visualizer.cpp" />
+    <ClCompile Include="src\Application\Visuals\BoidDrawer.cpp" />
+    <ClCompile Include="src\Application\Visuals\KinectDrawer.cpp" />
+    <ClCompile Include="src\Application\Visuals\TrailsDrawer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -190,9 +233,6 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxOpenCv.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
-    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobSmoother.h" />
-    <ClInclude Include="..\addons\ofxBlobTracker\ofxBlobTracker.h" />
-    <ClInclude Include="..\addons\ofxCvKalman\ofxCvKalman.h" />
     <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h" />
     <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.h" />
     <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageStream.h" />
@@ -240,26 +280,41 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.h" />
     <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.h" />
     <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Cloth.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Flocking.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Particle.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Particles.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\PBD.h" />
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Spring.h" />
     <ClInclude Include="..\lib\BoundBlob.h" />
     <ClInclude Include="..\lib\BoundBlobListener.h" />
     <ClInclude Include="..\lib\KinectMesh.h" />
-    <ClInclude Include="..\lib\KinectNuiThreaded.h" />
     <ClInclude Include="..\lib\KinectThresholder.h" />
     <ClInclude Include="..\lib\KinectTriangle.h" />
     <ClInclude Include="..\lib\marektricks\Bloom.h" />
     <ClInclude Include="..\lib\marektricks\contourutils.h" />
     <ClInclude Include="..\lib\marektricks\Line.h" />
-    <ClInclude Include="..\lib\marektricks\TimeProfiler.h" />
     <ClInclude Include="..\lib\Room.h" />
+    <ClInclude Include="src\Application\Application.h" />
+    <ClInclude Include="src\Application\Blur.h" />
+    <ClInclude Include="src\Application\BoidTypes.h" />
+    <ClInclude Include="src\Application\Controller.h" />
+    <ClInclude Include="src\Application\KinectInput.h" />
+    <ClInclude Include="src\Application\KinectRecorder.h" />
+    <ClInclude Include="src\Application\Settings.h" />
+    <ClInclude Include="src\Application\Visualizer.h" />
+    <ClInclude Include="src\Application\Visuals\BoidDrawer.h" />
+    <ClInclude Include="src\Application\Visuals\KinectDrawer.h" />
+    <ClInclude Include="src\Application\Visuals\Trail.h" />
+    <ClInclude Include="src\Application\Visuals\Trails.h" />
+    <ClInclude Include="src\Application\Visuals\TrailsDrawer.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs2010\openframeworksLib.vcxproj">
       <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

@@ -91,6 +91,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+	glColor3f(1,1,1);
 	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
 	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20);
 

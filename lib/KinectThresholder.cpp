@@ -9,10 +9,12 @@
 #ifdef _WIN32
 #include "ofxKinectNuiDraw.h"
 #endif
+#include "TimeProfiler.h"
+using namespace tricks::util;
 
 void KinectThresholder::setup(bool useSkellingtons) {
 #ifdef _WIN32
-	ofxKinectNui::InitSetting initSetting;
+	/*ofxKinectNui::InitSetting initSetting;
 	initSetting.grabVideo = true;
 	initSetting.grabDepth = true;
 	initSetting.grabAudio = false;
@@ -23,7 +25,9 @@ void KinectThresholder::setup(bool useSkellingtons) {
 	initSetting.depthResolution = NUI_IMAGE_RESOLUTION_640x480;
 	initSetting.videoResolution = NUI_IMAGE_RESOLUTION_640x480;
 	kinect.init(initSetting);
-	kinect.open(false);
+	kinect.open(false);*/
+
+	kinect.setup(useSkellingtons);
 
 	VISION_WIDTH  = 640;
 	VISION_HEIGHT = 480;
@@ -39,8 +43,9 @@ void KinectThresholder::setup(bool useSkellingtons) {
 	kinect.setRegistration(true);
 	VISION_WIDTH  = 640;
 	VISION_HEIGHT = 480;
-#endif
 	kinect.open();
+#endif
+	
 		
 	
 	foundBlobs = false;
@@ -121,32 +126,32 @@ void KinectThresholder::getSkeleton(int index, KinectSkeleton &s) {
 
 
 bool KinectThresholder::update() {
-	float t = ofGetElapsedTimef();
+	ScopedTimer updateTime("KinectThresh::update()");
 	
 	
 	
 #ifdef _WIN32
-
-	int flags = ofxKinectNui::UPDATE_FLAG_SKELETON;
-	if(!doingSkeleton) flags = 0;
-	kinect.update(ofxKinectNui::UPDATE_FLAG_VIDEO	
-		| ofxKinectNui::UPDATE_FLAG_DEPTH	
-		| flags
-		//| ofxKinectNui::UPDATE_FLAG_CALIBRATED_VIDEO
-		);
+	{
+		ScopedTimer kinectUpdate("kinectNui::update()");
+		kinect.update();
+	}
 #else
 	kinect.update();
 #endif
 
 	//printf("Time Taken %.2f ms\n", (ofGetElapsedTimef() - t)*1000);
 	if(kinect.isFrameNew()) {
+
+		ReusableTimer timer;
+
+		timer.start("acquire");
 		rgb.setFromPixels(kinect.getPixels(), VISION_WIDTH, VISION_HEIGHT);
 		foundBlobs = false;
-#ifdef _WIN32
-		depth.setFromPixels(kinect.getDepthPixels().getPixels(), VISION_WIDTH, VISION_HEIGHT);
-#else
+
 		depth.setFromPixels(kinect.getDepthPixels(), VISION_WIDTH, VISION_HEIGHT);
-#endif
+
+
+
 		if(learnBackground) {
 			learnBackground = false;
 			background = depth;
@@ -168,7 +173,7 @@ bool KinectThresholder::update() {
 		thresh.setFromPixels(d, VISION_WIDTH, VISION_HEIGHT);
 		//thresh.convertToRange(nearThreshold, farThreshold);
 		
-		
+		timer.start("process");
 		for(int i = 0; i < erosions; i++) {
 			thresh.erode_3x3();
 		}
@@ -178,15 +183,21 @@ bool KinectThresholder::update() {
 		for(int i = 0; i < blurs; i++) {
 			thresh.blur(blurSize*2+1);
 		}
+		
 #ifdef _WIN32
+		timer.start("Skellies");
 		if(doingSkeleton) {
 			doSkeletons();
-		}	
+		} else {
+			printf("Dropped frame\n");
+		}
 #endif
+		timer.stop();
 		return true;
 	}
 	return true;
 }
+
 
 void KinectThresholder::drawDebug() {
 	thresh.draw(0, 0);
@@ -342,11 +353,7 @@ void KinectThresholder::setListener(BoundBlobListener *listener) {
 
 
 unsigned char *KinectThresholder::getPixels() {
-#ifdef _WIN32
-	return kinect.getVideoPixels().getPixels();
-#else
 	return kinect.getPixels();
-#endif
 }
 
 unsigned char KinectThresholder::getDepth(const ofxCvBlob &blob) {
@@ -362,3 +369,4 @@ unsigned char KinectThresholder::getDepth(const ofxCvBlob &blob) {
 	
 	return p;
 }
+
