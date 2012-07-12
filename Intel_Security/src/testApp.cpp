@@ -43,12 +43,14 @@ void testApp::setup(){
 		float attack_col[3] = {0.5, 0.0, 0.3};
 		float flock_col[3] = {0.38,0.38,0.06};
 		#ifdef USE_APP	
+		/*
 			flock_gui.addFloat("Flock radius SQ", app.flock.zone_radius_sq).setMin(0.0f).setMax(5.4).setColor(flock_col);
 			flock_gui.addFloat("Flock high threshold (align)", app.flock.high).setMin(0.0f).setMax(1.0f).setColor(flock_col);
 			flock_gui.addFloat("Flock low threshold (separate)", app.flock.low).setMin(0.0f).setMax(1.0f).setColor(flock_col);
 			flock_gui.addFloat("Flock align energy", app.flock.align_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
 			flock_gui.addFloat("Flock separate energy", app.flock.separate_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
 			flock_gui.addFloat("Flock attract energy", app.flock.attract_energy).setMin(0.0f).setMax(0.01f).setColor(flock_col);
+			*/
 		#endif
 		flock_gui.addFloat("Flock center energy", settings.flocking_center_energy).setMin(0.0f).setMax(5.0f).setColor(flock_col);
 		flock_gui.addFloat("Flock sphere size", settings.flocking_sphere_size).setMin(3.0f).setMax(10.0f).setColor(flock_col);
@@ -94,6 +96,7 @@ void testApp::setup(){
 
 void testApp::operator()(const int n) {
 #ifdef USE_APP
+	/*
 	switch(n) {
 		case 0: {
 			settings.must_record_kinect = false;
@@ -107,6 +110,7 @@ void testApp::operator()(const int n) {
 		}
 		default:break;
 	}
+	*/
 #endif	
 }
 
@@ -210,7 +214,7 @@ void testApp::draw(){
 		glDisable(GL_DEPTH_TEST);
 		glDisable(GL_CULL_FACE);
 		gui.setDraw(show_gui);
-	//	gui.draw();
+		gui.draw();
 	glPopMatrix();
 
 	
@@ -226,6 +230,9 @@ void testApp::keyPressed(int key){
 	if(key == 'd') {
 		debug = !debug;
 	}
+	else if(key == 'g') {
+		show_gui = !show_gui;
+	}
 #ifdef USE_FLOCK_GUI
 	else if(key == 's') {
 		flock_gui.save(ofToDataPath("gui.bin", true));
@@ -233,9 +240,7 @@ void testApp::keyPressed(int key){
 	else if(key == 'l') {
 		flock_gui.load(ofToDataPath("gui.bin",true));
 	}
-	else if(key == 'g') {
-		show_gui = !show_gui;
-	}
+	
 	else if(key==' ') {
 		printf("Draw gui\n"); 
 		gui.toggleDraw();

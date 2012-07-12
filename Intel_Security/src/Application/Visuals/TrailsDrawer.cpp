@@ -7,19 +7,24 @@ TrailsDrawer::TrailsDrawer(Boids& flockPS)
 }
 
 void TrailsDrawer::setup() {
-	shader.load("trails_drawer");
-	
+	if(!shader.load("trails_drawer")) {
+		printf("Cannot setup trails drawer shader.\n");
+		::exit(0);
+	}
+	printf("TrailsDrawer::setup() - set attrib\n");
 	shader	.a("a_pos", 0)
 			.a("a_tex", 1)
 			.link();
-			
+	
+	//shader.link();
 	shader	.u("u_projection_matrix")
 			.u("u_modelview_matrix")
 			.u("u_texture")
 			.u("u_flow")
 			.u("u_time");
-			
+	printf("TrailsDrawer::setup - linked\n");	
 	shader.disable();
+	
 	
 	vao.create();
 	vao.bind();
@@ -47,6 +52,7 @@ void TrailsDrawer::setup() {
 }
 
 void TrailsDrawer::draw(const float* pm, const float* vm) {
+	//return; // roxu
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE, GL_ONE);
 	glColor3f(1,1,1);
@@ -89,6 +95,7 @@ void TrailsDrawer::draw(const float* pm, const float* vm) {
 }
 
 void TrailsDrawer::debugDraw() {
+	//return; // roxlu
 	if(settings.boid_create_trails) {
 		VerticesPT trail_verts;
 		for(Boids::iterator it = flock_ps.begin(); it != flock_ps.end(); ++it) {
@@ -111,6 +118,7 @@ void TrailsDrawer::debugDraw() {
 }
 
 void TrailsDrawer::update() {
+//	return; // roxlu
 	// @todo check buffer alloc 
 	trails.clear();
 	vertices.clear();
