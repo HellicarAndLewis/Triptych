@@ -27,11 +27,6 @@ void Visualizer::setup() {
 	kinect_drawer.setup();	
 	
 	boid_drawer.setup();
-	
-//	test_boid = flock_ps.createParticle(Vec3(0,0,0));
-//	test_boid->disable();
-
-
 }
 
 void Visualizer::update() {
