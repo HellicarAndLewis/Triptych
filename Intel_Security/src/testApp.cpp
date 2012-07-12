@@ -26,9 +26,8 @@ void testApp::setup(){
 	ofEnableNormalizedTexCoords();
 	show_gui = false;
 	debug = false;
-
-
 	printf("testApp::setup() - 1 \n");
+
 #ifdef USE_APP
 	app.setup();
 #endif
@@ -213,7 +212,7 @@ void testApp::draw(){
 		glDisable(GL_CULL_FACE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		gui.setDraw(show_gui);
-	//	gui.draw();
+		gui.draw();
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glPopMatrix();
 
