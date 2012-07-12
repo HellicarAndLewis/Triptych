@@ -15,7 +15,7 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,input_mode(K_INPUT_NONE)
+	,input_mode(K_INPUT_KINECT)
 {
 }
 
@@ -51,7 +51,6 @@ void KinectInput::setupInputFromKinect() {
 bool KinectInput::update() {
 	is_updated = false;
 
-	
 	switch(input_mode) {	
 		// GET FROM RECORDER
 		case K_INPUT_RECORDING: {
