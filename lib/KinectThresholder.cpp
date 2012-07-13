@@ -71,7 +71,6 @@ void KinectThresholder::setup(bool useSkellingtons) {
 }
 
 void KinectThresholder::setupGui() {
-	
 	gui.addContent("rgb", rgb);
 	gui.addContent("bg", background);
 	gui.addContent("depth", depth);
@@ -153,8 +152,6 @@ bool KinectThresholder::update() {
 		foundBlobs = false;
 
 		depth.setFromPixels(kinect.getDepthPixels(), VISION_WIDTH, VISION_HEIGHT);
-
-
 
 		if(learnBackground) {
 			learnBackground = false;

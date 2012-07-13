@@ -13,6 +13,10 @@ testApp::testApp()
 		:flock_gui("Settings", 400)
 	#endif
 #endif	
+#ifdef USE_LIGHT_RAYS
+	,rays_gui("Rays", 300)
+#endif
+
 {	
 }
 
@@ -79,6 +83,17 @@ void testApp::setup(){
 		flock_gui.addButton<testApp>("Update number of visible boids", 1, this).setColor(attack_col);
 		
 		flock_gui.load(ofToDataPath("gui.bin",true));
+
+		#ifdef USE_LIGHT_RAYS		
+			rays_gui.addFloat("Exposure", app.viz.light_rays.exposure).setMin(0.0f).setMax(0.05f);
+			rays_gui.addFloat("Decay", app.viz.light_rays.decay).setMin(0.7f).setMax(1.2f);
+			rays_gui.addFloat("Density", app.viz.light_rays.density).setMin(0.0f).setMax(1.0f);
+			rays_gui.addFloat("Weight", app.viz.light_rays.weight).setMin(0.0f).setMax(10.0f);
+			rays_gui.addFloat("Light.X", app.viz.light_rays.light_x).setMin(-1.0f).setMax(1.0f);
+			rays_gui.addFloat("Light.Y", app.viz.light_rays.light_y).setMin(-1.0f).setMax(1.0f);
+			rays_gui.load(ofToDataPath("rays.bin",true));
+		#endif
+
 		
 	#endif
 	
@@ -109,11 +124,16 @@ void testApp::operator()(const int n) {
 
 //--------------------------------------------------------------
 void testApp::update(){
-	#ifdef USE_FLOCK_GUI	
-		if(show_gui) {
+
+	if(show_gui) {
+			#ifdef USE_FLOCK_GUI	
 			flock_gui.update();
+			#endif
+			#ifdef USE_LIGHT_RAYS
+			rays_gui.update();
+			#endif
 		}
-	#endif
+
 
 	#ifdef USE_APP
 		
@@ -169,11 +189,16 @@ void testApp::draw(){
 		
 	}
 	
-	#ifdef USE_FLOCK_GUI
+	
 		if(show_gui) {
+			#ifdef USE_FLOCK_GUI
 			flock_gui.draw();
+			#endif
+			#ifdef USE_LIGHT_RAYS
+			rays_gui.draw();
+			#endif
 		}
-	#endif
+	
 
 		
 
@@ -198,19 +223,32 @@ void testApp::keyPressed(int key){
 		show_gui = !show_gui;
 	}
 	
-#ifdef USE_FLOCK_GUI
+
 	else if(key == 's') {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.save(ofToDataPath("gui.bin", true));
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.save(ofToDataPath("rays.bin",true));
+		#endif
 	}
 	else if(key == 'l') {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.load(ofToDataPath("gui.bin",true));
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.load(ofToDataPath("rays.bin",true));
+		#endif
 	}
-#endif
+
 	else if(key == 'f') {
 		ofToggleFullscreen();
 	}
 	else if(key == 'r') {
 		settings.rotate_scene = !settings.rotate_scene;
+	}
+	else if(key == 't') {
+		printf("Width: %d Height: %d\n", ofGetWidth(), ofGetHeight());
 	}
 	
 }
@@ -222,34 +260,47 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-#ifdef USE_FLOCK_GUI
 	if(show_gui) {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.onMouseMoved(x,y);
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.onMouseMoved(x,y);
+		#endif
 	}
-#endif
+
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-#ifdef USE_FLOCK_GUI
+
 	if(show_gui) {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.onMouseMoved(x,y);
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.onMouseMoved(x,y);
+		#endif
 	}
-#endif
+
 	
 	if(settings.rotate_scene) {
 		cam.onMouseDragged(x,y);
 	}
-	
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-#ifdef USE_FLOCK_GUI
+
 	if(show_gui) {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.onMouseDown(x,y);
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.onMouseDown(x,y);
+		#endif
 	}
-#endif
+
 	
 	if(settings.rotate_scene) {
 		cam.onMouseDown(x,y);
@@ -259,16 +310,22 @@ void testApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-#ifdef USE_FLOCK_GUI
+
 	if(show_gui) {
+		#ifdef USE_FLOCK_GUI
 		flock_gui.onMouseUp(x,y);
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.onMouseUp(x,y);
+		#endif
 	}
-#endif
+
 }
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
 	room.setAspect((float)w/(float)h);
+	app.resize(w, h);
 }
 
 //--------------------------------------------------------------

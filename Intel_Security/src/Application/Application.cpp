@@ -3,7 +3,7 @@
 Application::Application(const int w, const int h)
 	:flock(flock_ps.particles, 50, 5)
 	,control(flock_ps, fx_ps, kinect, w, h)
-	,viz(flock_ps, fx_ps, kinect, control)
+	,viz(flock_ps, fx_ps, kinect, control, w, h)
 {
 }
 
@@ -59,6 +59,10 @@ void Application::draw(
 
 void Application::debugDraw() {
 	viz.debugDraw();
+}
+
+void Application::resize(int w, int h) {
+	viz.resize(w, h);
 }
 
 
