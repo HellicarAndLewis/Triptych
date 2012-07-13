@@ -189,7 +189,7 @@ bool KinectThresholder::update() {
 		if(doingSkeleton) {
 			doSkeletons();
 		} else {
-			printf("Dropped frame\n");
+			//printf("Dropped frame\n");
 		}
 #endif
 		timer.stop();

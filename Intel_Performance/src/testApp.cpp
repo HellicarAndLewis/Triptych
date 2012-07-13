@@ -99,7 +99,7 @@ void testApp::draw(){
 
 
 	room.draw();
-
+/*
 	bloom.begin();
 	glPushMatrix();
 	{
@@ -126,10 +126,10 @@ void testApp::draw(){
 			if(meshes.size()>25) {
 				drawLayer(meshes[25], -25, 1);
 			}
-		/*	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-			if(meshes.size()>0) {
-				drawLayer(meshes[0], 0, 0);
-			}*/
+			//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			//if(meshes.size()>0) {
+			//	drawLayer(meshes[0], 0, 0);
+			//}
 			
 		}
 		glPopMatrix();
@@ -144,7 +144,7 @@ void testApp::draw(){
 	bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	glColor4f(1,1,1,1);
 	
-	
+	*/
 	glPushMatrix();
 	{
 		ofSetupScreen();
