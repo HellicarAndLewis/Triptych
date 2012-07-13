@@ -45,6 +45,7 @@
 		EE32837C15AB149C003E647C /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE32837615AB149C003E647C /* tinyxmlparser.cpp */; };
 		EE32837D15AB149C003E647C /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE32837815AB149C003E647C /* ofxXmlSettings.cpp */; };
 		EE32838515AB14AD003E647C /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE32838315AB14AD003E647C /* ofxMSAInteractiveObject.cpp */; };
+		EEC8ACA015B018AB007A57DC /* Ribbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEC8AC9F15B018AB007A57DC /* Ribbon.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		EE32838115AB14AD003E647C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		EE32838315AB14AD003E647C /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSAInteractiveObject.cpp; sourceTree = "<group>"; };
 		EE32838415AB14AD003E647C /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSAInteractiveObject.h; sourceTree = "<group>"; };
+		EEC8AC9D15B0177D007A57DC /* Ribbon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ribbon.h; sourceTree = "<group>"; };
+		EEC8AC9F15B018AB007A57DC /* Ribbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ribbon.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +254,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				EE32832B15AAF0BA003E647C /* Trail.cpp */,
 				EE32832E15AAF0C9003E647C /* Trail.h */,
+				EEC8AC9D15B0177D007A57DC /* Ribbon.h */,
+				EEC8AC9F15B018AB007A57DC /* Ribbon.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -483,6 +488,7 @@
 				EE32837C15AB149C003E647C /* tinyxmlparser.cpp in Sources */,
 				EE32837D15AB149C003E647C /* ofxXmlSettings.cpp in Sources */,
 				EE32838515AB14AD003E647C /* ofxMSAInteractiveObject.cpp in Sources */,
+				EEC8ACA015B018AB007A57DC /* Ribbon.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

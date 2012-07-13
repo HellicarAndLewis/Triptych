@@ -11,6 +11,7 @@ void Application::setup() {
 	
 	kinect.setup();
 	control.setup();
+	
 	viz.setup();
 	
 }
@@ -18,7 +19,7 @@ void Application::setup() {
 
 void Application::update() {
 	
-
+	
 	// update kinect and tell drawer if we detected someone...
 	bool user_detected = kinect.update();
 
@@ -41,7 +42,7 @@ void Application::update() {
 
 	viz.update();
 
-	
+		
 }
 
 

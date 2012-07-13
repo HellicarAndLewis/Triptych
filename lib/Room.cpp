@@ -154,7 +154,7 @@ void Room::createMesh(float aspect) {
 	
 }
 void Room::addQuad(ofVec3f *quad) {
-	
+	// triangle a
 	ofVec2f dims = ofVec2f(tex.getWidth(), tex.getHeight());
 	mesh.addTexCoord(ofVec2f(0, 0)*dims);
 	mesh.addVertex(quad[0]);
@@ -162,17 +162,15 @@ void Room::addQuad(ofVec3f *quad) {
 	mesh.addTexCoord(ofVec2f(1, 0)*dims);
 	mesh.addVertex(quad[1]);
 	
-	
-	
 	mesh.addTexCoord(ofVec2f(1, 1)*dims);
 	mesh.addVertex(quad[2]);
 	
+	// triangle b
 	mesh.addTexCoord(ofVec2f(1, 1)*dims);
 	mesh.addVertex(quad[2]);
 	
 	mesh.addTexCoord(ofVec2f(0, 1)*dims);
 	mesh.addVertex(quad[3]);
-	
 	
 	mesh.addTexCoord(ofVec2f(0, 0)*dims);
 	mesh.addVertex(quad[0]);

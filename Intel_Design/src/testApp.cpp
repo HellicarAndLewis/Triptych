@@ -21,8 +21,8 @@ void testApp::setup() {
 	
 //	gui.addToggle("switch trail", useMareks);
 	
-	gui.addSlider("iterations", iterations, 0, 500);
-	gui.addSlider("m", m, 0, 0.01);
+	gui.addSlider("iterations", iterations, 0, 50);
+	gui.addSlider("m", m, 0, 0.1);
 	gui.addSlider("alpha1", alpha1, 0, 0.2);
 	gui.addSlider("alpha2", alpha2, 0, 0.2);
 	
@@ -117,7 +117,7 @@ void testApp::draw() {
 	glColor4f(1,1,1,alpha2);
 //	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	for (map<int, Person>::iterator it = people.begin(); it != people.end(); it++) {
 		

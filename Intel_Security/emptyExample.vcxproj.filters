@@ -364,6 +364,9 @@
     <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
       <Filter>src\lib\marekstricks</Filter>
     </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
