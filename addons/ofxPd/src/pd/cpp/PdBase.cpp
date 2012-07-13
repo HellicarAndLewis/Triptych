@@ -43,8 +43,8 @@ bool PdBase::init(const int numInChannels, const int numOutChannels, const int s
 }
 
 void PdBase::clear() {	
-    PdContext::instance().clear();
-	unsubscribeAll();
+    //PdContext::instance().clear();
+	//unsubscribeAll();
 }
 
 //--------------------------------------------------------------------
