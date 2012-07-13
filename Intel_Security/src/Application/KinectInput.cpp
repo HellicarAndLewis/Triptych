@@ -45,7 +45,7 @@ void KinectInput::setup() {
 void KinectInput::setupInputFromKinect() {
 	kinect.setup();
 	kinect.setupGui();
-	kinect.setListener(this);
+	kinect.addListener(this);
 }
 
 bool KinectInput::update() {
