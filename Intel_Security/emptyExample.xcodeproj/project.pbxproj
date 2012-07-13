@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5429609D15B00C8100CB1B46 /* Toggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5429609C15B00C8000CB1B46 /* Toggle.cpp */; };
 		5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */; };
 		5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */; };
 		545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */; };
@@ -98,7 +99,6 @@
 		E96F81A615A469B600548852 /* Radio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96F819F15A469B600548852 /* Radio.cpp */; };
 		E96F81A715A469B600548852 /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96F81A015A469B600548852 /* Slider.cpp */; };
 		E96F81A815A469B600548852 /* Storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96F81A115A469B600548852 /* Storage.cpp */; };
-		E96F81A915A469B600548852 /* Toggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96F81A215A469B600548852 /* Toggle.cpp */; };
 		EAE2A67715A445FC00327E97 /* Room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67515A445FC00327E97 /* Room.cpp */; };
 		EAE2A67C15A4461000327E97 /* BoundBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A67815A4461000327E97 /* BoundBlob.cpp */; };
 		EAE2A71015A4471900327E97 /* cameras.c in Sources */ = {isa = PBXBuildFile; fileRef = EAE2A68D15A4471800327E97 /* cameras.c */; };
@@ -172,6 +172,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5429609C15B00C8000CB1B46 /* Toggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toggle.cpp; sourceTree = "<group>"; };
 		5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.frag; path = bin/data/trails_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.vert; path = bin/data/trails_drawer.vert; sourceTree = SOURCE_ROOT; };
 		545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeProfiler.cpp; sourceTree = "<group>"; };
@@ -300,7 +301,6 @@
 		E96F819F15A469B600548852 /* Radio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Radio.cpp; sourceTree = "<group>"; };
 		E96F81A015A469B600548852 /* Slider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slider.cpp; sourceTree = "<group>"; };
 		E96F81A115A469B600548852 /* Storage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Storage.cpp; sourceTree = "<group>"; };
-		E96F81A215A469B600548852 /* Toggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toggle.cpp; sourceTree = "<group>"; };
 		EAE2A67515A445FC00327E97 /* Room.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Room.cpp; path = ../lib/Room.cpp; sourceTree = "<group>"; };
 		EAE2A67615A445FC00327E97 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../lib/Room.h; sourceTree = "<group>"; };
 		EAE2A67815A4461000327E97 /* BoundBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundBlob.cpp; path = ../lib/BoundBlob.cpp; sourceTree = "<group>"; };
@@ -842,13 +842,13 @@
 		E96F819B15A469B600548852 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				5429609C15B00C8000CB1B46 /* Toggle.cpp */,
 				E96F819C15A469B600548852 /* Button.cpp */,
 				E96F819D15A469B600548852 /* Buttons.cpp */,
 				E96F819E15A469B600548852 /* Element.cpp */,
 				E96F819F15A469B600548852 /* Radio.cpp */,
 				E96F81A015A469B600548852 /* Slider.cpp */,
 				E96F81A115A469B600548852 /* Storage.cpp */,
-				E96F81A215A469B600548852 /* Toggle.cpp */,
 			);
 			name = buttons;
 			path = ../addons/roxlu/addons/Buttons/src/buttons;
@@ -1569,7 +1569,6 @@
 				E96F81A615A469B600548852 /* Radio.cpp in Sources */,
 				E96F81A715A469B600548852 /* Slider.cpp in Sources */,
 				E96F81A815A469B600548852 /* Storage.cpp in Sources */,
-				E96F81A915A469B600548852 /* Toggle.cpp in Sources */,
 				549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */,
 				549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */,
 				549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */,
@@ -1591,6 +1590,7 @@
 				5D27C2BC15AB2EDA0057464D /* ofxBlobTracker.cpp in Sources */,
 				5D27C2C015AB2EF80057464D /* ofxCvKalman.cpp in Sources */,
 				545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */,
+				5429609D15B00C8100CB1B46 /* Toggle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
