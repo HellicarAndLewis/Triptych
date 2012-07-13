@@ -15,7 +15,7 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,input_mode(K_INPUT_NONE)
+	,input_mode(K_INPUT_KINECT)
 {
 }
 
