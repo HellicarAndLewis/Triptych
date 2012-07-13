@@ -12,6 +12,7 @@
 #include <application/visuals/TrailsDrawer.h>
 #include <application/visuals/KinectDrawer.h>
 #include <application/visuals/BoidDrawer.h>
+#include <application/visuals/LightRays.h>
 #include <application/Blur.h> // test
 
 class DebugTrail {
@@ -29,14 +30,17 @@ struct BoidPartitioner {
 
 class Visualizer {
 public:
-	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller);
+	Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller, int w, int h);
 	void setup();
 	void update();
 	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void drawBoids(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void drawGlows(Boids::iterator begin, Boids::iterator end,const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
+	void resize(int w, int h);
 	
+	int w;
+	int h;
 	Boids& flock_ps;
 	Boids& fx_ps; // effects!
 	Controller& controller;
@@ -44,6 +48,9 @@ public:
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
 	BoidDrawer boid_drawer;
+#ifdef USE_LIGHT_RAYS
+	LightRays light_rays; // test
+#endif
 	Billboard bb;
 	Texture glow_tex;
 	

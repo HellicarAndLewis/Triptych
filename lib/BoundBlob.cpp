@@ -16,7 +16,7 @@ void BoundBlob::init(const ofxCvBlob &blob, int id) {
 	vector<ofVec2f> ps;
 	ps.resize(blob.pts.size());
 	
-	for(int i = 0; i < blob.pts.size(); i++) {
+	for(int i = 0; i < blob.pts.size(); i+=5) {
 		ps[i].x = blob.pts[i].x;
 		ps[i].y = blob.pts[i].y;
 	}
@@ -35,7 +35,7 @@ void BoundBlob::update(const ofxCvBlob &blob) {
 	vector<ofVec2f> ps;
 	ps.resize(blob.pts.size());
 	
-	for(int i = 0; i < blob.pts.size(); i++) {
+	for(int i = 0; i < blob.pts.size(); i+=5) {
 		ps[i].x = blob.pts[i].x;
 		ps[i].y = blob.pts[i].y;
 	}

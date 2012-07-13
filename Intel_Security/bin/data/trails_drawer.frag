@@ -10,4 +10,5 @@ void main() {
 	
 	vec4 texc = texture2D(u_texture, v_tex);
 	gl_FragColor = texc;
+	//gl_FragColor.rgba = vec4(1.0, 1.0, 1.0, 1.0);
 }
