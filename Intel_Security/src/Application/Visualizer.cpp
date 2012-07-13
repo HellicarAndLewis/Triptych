@@ -1,8 +1,10 @@
 #include "ofMain.h"
 #include "Visualizer.h"
 
-Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller)
-	:flock_ps(flockPS)
+Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller, int w, int h)
+	:w(w)
+	,h(h)
+	,flock_ps(flockPS)
 	,fx_ps(fxPS)
 	,controller(controller)
 	,trails_drawer(flockPS)
@@ -27,6 +29,9 @@ void Visualizer::setup() {
 	kinect_drawer.setup();	
 	
 	boid_drawer.setup();
+#ifdef USE_LIGHT_RAYS	
+	light_rays.setup(w,h);
+#endif
 }
 
 void Visualizer::update() {
@@ -64,14 +69,31 @@ void Visualizer::draw(
 		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 
+#ifdef USE_LIGHT_RAYS	
+	light_rays.bind();
+		trails_drawer.draw(pm, vm);
+	light_rays.unbind();
+#else
 	trails_drawer.draw(pm, vm);
+#endif
 	glDepthMask(GL_TRUE);
-
+//	glDisable(GL_BLEND);
 	
 	if(settings.draw_flock) {
 		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 	
+	
+//	glDepthMask(GL_TRUE);
+#ifdef USE_LIGHT_RAYS
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
+//	glDisable(GL_CULL_FACE);
+//	glDisable(GL_DEPTH_TEST);
+	light_rays.draw();
+#endif
+	
+
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
@@ -207,5 +229,12 @@ void Visualizer::debugDraw() {
 		glVertex3f(p.x, p.y, p.z);
 	}
 	glEnd();
-	
+}
+
+void Visualizer::resize(int w, int h) {
+	this->w = w;
+	this->h = h;
+	#ifdef USE_LIGHT_RAYS
+	light_rays.resize(w,h);
+	#endif
 }

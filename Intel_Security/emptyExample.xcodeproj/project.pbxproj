@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5429609D15B00C8100CB1B46 /* Toggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5429609C15B00C8000CB1B46 /* Toggle.cpp */; };
+		542960B815B0215800CB1B46 /* LightRays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 542960B615B0215700CB1B46 /* LightRays.cpp */; };
 		5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */; };
 		5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */; };
 		545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */; };
@@ -173,6 +174,8 @@
 
 /* Begin PBXFileReference section */
 		5429609C15B00C8000CB1B46 /* Toggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toggle.cpp; sourceTree = "<group>"; };
+		542960B615B0215700CB1B46 /* LightRays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightRays.cpp; sourceTree = "<group>"; };
+		542960B715B0215700CB1B46 /* LightRays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightRays.h; sourceTree = "<group>"; };
 		5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.frag; path = bin/data/trails_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.vert; path = bin/data/trails_drawer.vert; sourceTree = SOURCE_ROOT; };
 		545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeProfiler.cpp; sourceTree = "<group>"; };
@@ -609,6 +612,8 @@
 		54E0CCCC15A2CB5D00045537 /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
+				542960B615B0215700CB1B46 /* LightRays.cpp */,
+				542960B715B0215700CB1B46 /* LightRays.h */,
 				54E0CCCF15A2CB5D00045537 /* TrailsDrawer.cpp */,
 				54E0CCD015A2CB5D00045537 /* TrailsDrawer.h */,
 				54E0CCD115A2CB5D00045537 /* Trail.h */,
@@ -1591,6 +1596,7 @@
 				5D27C2C015AB2EF80057464D /* ofxCvKalman.cpp in Sources */,
 				545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */,
 				5429609D15B00C8100CB1B46 /* Toggle.cpp in Sources */,
+				542960B815B0215800CB1B46 /* LightRays.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

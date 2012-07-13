@@ -43,5 +43,10 @@ class testApp : public ofBaseApp{
 #ifdef USE_FLOCK_GUI		
 		buttons::Buttons flock_gui;
 #endif
+
+#ifdef USE_LIGHT_RAYS
+		buttons::Buttons rays_gui;
+#endif
+
 		Room room;
 };
