@@ -17,22 +17,22 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_other_channel_atten>
         <name>other channel atten</name>
-        <value>0.66</value>
+        <value>0.475</value>
     </SliderFloat_other_channel_atten>
     <SliderFloat_channel_power>
         <name>channel power</name>
-        <value>0.715</value>
+        <value>0.66</value>
     </SliderFloat_channel_power>
     <SliderFloat_channel_alpha>
         <name>channel alpha</name>
-        <value>0.61</value>
+        <value>0.675</value>
     </SliderFloat_channel_alpha>
     <SliderFloat_bloom_amount>
         <name>bloom amount</name>
-        <value>0.64</value>
+        <value>0.55</value>
     </SliderFloat_bloom_amount>
     <SliderFloat_bloom_brightness>
         <name>bloom brightness</name>
-        <value>1.15</value>
+        <value>0.81</value>
     </SliderFloat_bloom_brightness>
 </controls>

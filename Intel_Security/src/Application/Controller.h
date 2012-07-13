@@ -12,6 +12,7 @@
 #include <application/BoidTypes.h>
 #include <application/KinectInput.h>
 #include <vector>
+#include <iterator>
 
 using std::vector;
 
@@ -23,12 +24,12 @@ public:
 	void checkBounds();
 	void setVisibleBoidsPercentage(float perc); 
 	void setAttackPercentage(float perc);
+	
 	KinectInput& kinect_input;
 	Boids& flock_ps;
 	Boids& fx_ps;
 	int w;
 	int h;
-	
 	vector<Boid*> attackers;
 	
 };

@@ -1,7 +1,8 @@
 #include "testApp.h"
 
 #include "ofxSimpleGuiToo.h"
-
+#include "TimeProfiler.h"
+using namespace tricks::util;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -14,7 +15,7 @@ void testApp::setup(){
 	
 	gui.addPage("Program");
 	ofSetVerticalSync(true);
-	ofSetFrameRate(30);
+	ofSetFrameRate(60);
 	kinect.setup();
 	kinect.setupGui();
 	room.setupGui();	
@@ -44,8 +45,8 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update() {
 	//flock.update(kinect.getOutline().getPixels());
-	
-	float s = ofGetElapsedTimef();
+	ScopedTimer timer("testApp::update()");
+	//float s = ofGetElapsedTimef();
 	if(kinect.update()) {
 		
 		contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
@@ -69,7 +70,7 @@ void testApp::update() {
 		}
 	}
 
-	printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
+	//printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
 
 	
 	
@@ -85,7 +86,7 @@ float lastTimeShaderLoaded = 0;
 void testApp::draw(){
 
 
-	
+	ScopedTimer drawTimer("testApp::draw()");
 	
 	//if(ofGetElapsedTimef() - lastTimeShaderLoaded>0.5) {
 	//	lastTimeShaderLoaded = ofGetElapsedTimef();
@@ -148,6 +149,7 @@ void testApp::draw(){
 	{
 		ofSetupScreen();
 		gui.draw();
+		TimeProfiler::draw();
 	}
 	glPopMatrix();
 	

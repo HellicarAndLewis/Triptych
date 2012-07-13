@@ -11,30 +11,34 @@ Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Control
 }
 
 void Visualizer::setup() {
+	
+	
 	glEnable(GL_TEXTURE_2D);
 	ofImage img;
 	if(!img.loadImage("particle_glow.png")) {	
 		printf("Cannot load particle glow image.\n");
 		::exit(0);
 	}
+	
 	glow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGBA);
 
 	trails_drawer.setup();	
 	
-	kinect_drawer.setup();
+	kinect_drawer.setup();	
 	
 	boid_drawer.setup();
-	
-//	test_boid = flock_ps.createParticle(Vec3(0,0,0));
-//	test_boid->disable();
 }
 
 void Visualizer::update() {
+
 	trails_drawer.update();
 	if(kinect_input.update()) {
 		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
-		kinect_drawer.update(meshes[0]);
+		if(meshes.size() > 0) {
+			kinect_drawer.update(meshes[0]);
+		}
 	}
+
 }
 
 // pm = projection matrix, vm = view matrix, nm = normal matrix
@@ -46,6 +50,7 @@ void Visualizer::draw(
 	,const float* upVec
 ) 
 {
+	
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
@@ -70,6 +75,7 @@ void Visualizer::draw(
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
+	
 }
 
 void Visualizer::drawGlows(
@@ -82,6 +88,7 @@ void Visualizer::drawGlows(
 		,const float* upVec
 )
 {
+
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
@@ -112,6 +119,7 @@ void Visualizer::drawBoids(
 		,const float* upVec
 	)
 {
+
 	glDisable(GL_BLEND);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
@@ -130,6 +138,7 @@ void Visualizer::drawBoids(
 		cs.makeCoordinateSystem(boid_drawer.direction);
 		boid_drawer.draw(pm, vm, nm, cs);
 	}
+	
 }
 
 
@@ -138,6 +147,7 @@ void Visualizer::debugDraw() {
 		return;
 	}
 	
+
 	// FX 
 	glColor3f(0,1,1);
 	::draw(fx_ps);	
@@ -197,4 +207,5 @@ void Visualizer::debugDraw() {
 		glVertex3f(p.x, p.y, p.z);
 	}
 	glEnd();
+	
 }

@@ -20,7 +20,7 @@
 
 #include "ofxOpenCv.h"
 #ifdef _WIN32
-#	include "ofxKinectNui.h"
+#	include "KinectNuiThreaded.h"
 #else
 #	include "ofxKinect.h"
 #endif
@@ -29,10 +29,22 @@
 #include "BoundBlobListener.h"
 #include "ofxBlobTracker.h"
 
+
+
+class KinectSkeleton {
+public:
+	int id;
+	ofVec3f leftHand;
+	ofVec3f rightHand;
+	KinectSkeleton() {
+	}
+};
+
+
 class KinectThresholder {
 public:
 	
-	void setup();
+	void setup(bool doSkellies = false);
 	
 	void setupGui();
 
@@ -46,7 +58,15 @@ public:
 	bool update();
 	
 	vector<ofxCvBlob> &getContours();
-	
+
+#ifdef _WIN32
+
+	void doSkeletons();
+	int numSkeletons;
+	const ofPoint *skelly[512];
+	bool doingSkeleton;
+#endif
+
 	
 /*
  
@@ -109,11 +129,15 @@ public:
 	unsigned char getDepth(const ofxCvBlob &blob);
 	unsigned char *getPixels();
 	
+
+	int getNumSkeletons();
+
+	void getSkeleton(int index, KinectSkeleton &s);
 	
 	
 	
 #ifdef _WIN32
-	ofxKinectNui kinect;
+	KinectNuiThreaded kinect;
 #else
 	ofxKinect kinect;
 #endif

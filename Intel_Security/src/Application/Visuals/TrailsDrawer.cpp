@@ -7,20 +7,24 @@ TrailsDrawer::TrailsDrawer(Boids& flockPS)
 }
 
 void TrailsDrawer::setup() {
-	shader.load("trails_drawer");
-	
+	if(!shader.load("trails_drawer")) {
+		printf("Cannot setup trails drawer shader.\n");
+		::exit(0);
+	}
+
 	shader	.a("a_pos", 0)
 			.a("a_tex", 1)
 			.link();
-			
+	
 	shader	.u("u_projection_matrix")
 			.u("u_modelview_matrix")
 			.u("u_texture")
 			.u("u_flow")
 			.u("u_time");
-			
+
 	shader.disable();
 	
+	vao.create();
 	vao.bind();
 	glGenBuffers(1, &vbo);
 	vao.unbind();
@@ -40,9 +44,6 @@ void TrailsDrawer::setup() {
 	
 	flow_tex.setWrap(GL_REPEAT);
 	flow_tex.setPixels(img.getPixels(), img.getWidth(), img.getHeight(), GL_RGB);
-	
-	
-	
 }
 
 void TrailsDrawer::draw(const float* pm, const float* vm) {
@@ -149,7 +150,9 @@ void TrailsDrawer::update() {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		vao.unbind();
 	}
-	
+	if(vertices.numBytes() <= 0) {
+		return;
+	}
 	// update buffer.
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.numBytes(), vertices.getPtr());

@@ -166,10 +166,12 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc" />
     <ClCompile Include="..\lib\BoundBlob.cpp" />
     <ClCompile Include="..\lib\KinectMesh.cpp" />
+    <ClCompile Include="..\lib\KinectNuiThreaded.cpp" />
     <ClCompile Include="..\lib\KinectThresholder.cpp" />
     <ClCompile Include="..\lib\marektricks\Bloom.cpp" />
     <ClCompile Include="..\lib\marektricks\contourutils.cpp" />
     <ClCompile Include="..\lib\marektricks\Line.cpp" />
+    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp" />
     <ClCompile Include="..\lib\Room.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
@@ -241,11 +243,13 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="..\lib\BoundBlob.h" />
     <ClInclude Include="..\lib\BoundBlobListener.h" />
     <ClInclude Include="..\lib\KinectMesh.h" />
+    <ClInclude Include="..\lib\KinectNuiThreaded.h" />
     <ClInclude Include="..\lib\KinectThresholder.h" />
     <ClInclude Include="..\lib\KinectTriangle.h" />
     <ClInclude Include="..\lib\marektricks\Bloom.h" />
     <ClInclude Include="..\lib\marektricks\contourutils.h" />
     <ClInclude Include="..\lib\marektricks\Line.h" />
+    <ClInclude Include="..\lib\marektricks\TimeProfiler.h" />
     <ClInclude Include="..\lib\Room.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>

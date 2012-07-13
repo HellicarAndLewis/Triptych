@@ -8,6 +8,9 @@
 #include <pbd/PBD.h>
 #include "Room.h"
 
+#define USE_FLOCK_GUI
+#define USE_APP
+
 class testApp : public ofBaseApp{
 	public:
 		testApp();
@@ -29,12 +32,16 @@ class testApp : public ofBaseApp{
 		
 		bool show_gui;
 		bool debug;
-
+		
 		EasyCam cam;
 		Axis ax;
+
+#ifdef USE_APP
 		Application app;
+#endif
+
+#ifdef USE_FLOCK_GUI		
 		buttons::Buttons flock_gui;
-		
-		Particles2 ps;
+#endif
 		Room room;
 };

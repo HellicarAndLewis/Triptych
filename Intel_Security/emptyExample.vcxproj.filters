@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\ArcBall.cpp">
+      <Filter>src\addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\Camera.cpp">
+      <Filter>src\addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\EasyCam.cpp">
+      <Filter>src\addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\VertexData.cpp">
+      <Filter>src\addons\roxlu\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Axis.cpp">
+      <Filter>src\addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Box.cpp">
+      <Filter>src\addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\IcoSphere.cpp">
+      <Filter>src\addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\Plane.cpp">
+      <Filter>src\addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\3d\shapes\UVSphere.cpp">
+      <Filter>src\addons\roxlu\3d\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Noise.cpp">
+      <Filter>src\addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\StringUtil.cpp">
+      <Filter>src\addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\core\Utils.cpp">
+      <Filter>src\addons\roxlu\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\BitmapFont.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Image.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\SimpleAnim.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\StereoCam.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Text.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\TGA.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\TGARecorder.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tween.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\experimental\Tweens.cpp">
+      <Filter>src\addons\roxlu\experimental</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Dictionary.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\DictionaryMap.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\File.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\INI.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\IOBuffer.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\OBJ.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\Ply.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\io\ROX.cpp">
+      <Filter>src\addons\roxlu\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\external\stb_image.c">
+      <Filter>src\addons\roxlu\external</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat3.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Mat4.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Quat.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec2.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec3.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\math\Vec4.cpp">
+      <Filter>src\addons\roxlu\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Billboard.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\FBO.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\MatrixStack.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\PBO.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Shader.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Texture.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VAO.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VBO.cpp">
+      <Filter>src\addons\roxlu\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\src\polytri\PolyTri.cpp">
+      <Filter>src\addons\polytri</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Button.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Buttons.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxCvKalman\ofxCvKalman.cpp">
+      <Filter>src\addons\ofxCvKalman</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobSmoother.cpp">
+      <Filter>src\addons\ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxBlobTracker\ofxBlobTracker.cpp">
+      <Filter>src\addons\ofxBlobTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvColorImage.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvContourFinder.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvFloatImage.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvGrayscaleImage.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvHaarFinder.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>src\addons\ofxXmlSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.cpp">
+      <Filter>src\addons\ofxMSAInteractiveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiConfig.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiControl.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiPage.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiToo.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiValueControl.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiButton.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiColorPicker.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiComboBox.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiContent.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiFPSCounter.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiMovieSlider.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiQuadWarp.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSlider2d.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiTitle.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiToggle.cpp">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Application.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Blur.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Controller.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\KinectInput.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\KinectRecorder.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Settings.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visualizer.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\BoidDrawer.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\KinectDrawer.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application\Visuals\TrailsDrawer.cpp">
+      <Filter>src\Application\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\BoundBlob.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectMesh.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectThresholder.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\Room.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\Bloom.cpp">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\contourutils.cpp">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\Line.cpp">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNui.cpp">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiDraw.cpp">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.cpp">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.cpp">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.cpp">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\ImageStream.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\Kinect.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\KinectContext.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.cpp">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\ofxKinectNui\src\win32\Event.cpp">
+      <Filter>src\addons\ofxKinectNui\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>src\addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>src\addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>src\addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc">
+      <Filter>src\addons\polytri\lib\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.cc">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.cc">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.cc">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\KinectNuiThreaded.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons">
+      <UniqueIdentifier>{3ea8eeba-2b1b-4595-94da-f327e52e0976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu">
+      <UniqueIdentifier>{db838833-bcae-4913-8ca6-2b4a2581c72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\3d">
+      <UniqueIdentifier>{fe657989-3f81-4a88-a170-0663d8b416f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\core">
+      <UniqueIdentifier>{550681ba-69d8-4c54-b614-6d889df973a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\experimental">
+      <UniqueIdentifier>{dd3b10a8-1383-4100-81df-a147626fd54c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\io">
+      <UniqueIdentifier>{5a552a2c-2e73-4f90-8124-5b7ab67e23f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\opengl">
+      <UniqueIdentifier>{b7cb1445-192d-46ae-8114-5afc5fc9983b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\external">
+      <UniqueIdentifier>{ee22969e-e14e-44b3-9069-a12813575085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\math">
+      <UniqueIdentifier>{5aa0a7bf-bc0a-4d0b-a0f4-8a806e97f605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\roxlu\3d\shapes">
+      <UniqueIdentifier>{b4d061bd-6ec0-43c2-a87c-ad17ee0db39c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\pbd">
+      <UniqueIdentifier>{0b84ad98-dac3-4184-ab6e-de709818be64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\polytri">
+      <UniqueIdentifier>{f842479f-d2fb-473f-8320-4f9174e80a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\buttons">
+      <UniqueIdentifier>{1073cea9-1e42-4f67-b30f-d576c928b093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxCvKalman">
+      <UniqueIdentifier>{30a42578-c554-4802-8de8-0917a7fc1211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxBlobTracker">
+      <UniqueIdentifier>{80a0f899-fd22-4c70-bc7a-58e4022df527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxOpenCv">
+      <UniqueIdentifier>{ffe10559-6c16-4480-94d7-fc823704ed82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxXmlSettings">
+      <UniqueIdentifier>{beac76db-10f8-41ae-be30-c5e2b285d351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxMSAInteractiveObject">
+      <UniqueIdentifier>{d57eba93-846e-4e72-a9f5-3881ca47fbe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxSimpleGuiToo">
+      <UniqueIdentifier>{01be3592-a496-4c43-891e-8173f8241f9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Application">
+      <UniqueIdentifier>{a456c590-445d-4eb1-8388-59f444eb7d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Application\Visuals">
+      <UniqueIdentifier>{20646679-2626-4fbc-96ac-d11e9c420f42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lib">
+      <UniqueIdentifier>{4515f0b0-aabd-4556-b2b7-61cc6242c651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lib\marekstricks">
+      <UniqueIdentifier>{8e611c73-d7ba-42eb-97ca-0e3118837bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxKinectNui">
+      <UniqueIdentifier>{0c95bbd5-a29a-4255-bec7-81f43b1b6bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxKinectNui\nui">
+      <UniqueIdentifier>{c07a2ab5-1299-40bc-a985-521038b49078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxKinectNui\win32">
+      <UniqueIdentifier>{c0cc3049-8255-4ae5-b5d8-4a817d42a960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\ofxXmlSettings\libs">
+      <UniqueIdentifier>{97d4e164-2ad2-4c95-8bcd-0f3567ad9ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\polytri\lib">
+      <UniqueIdentifier>{ee8c3896-9b4d-479d-a872-8178105a5b18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\polytri\lib\common">
+      <UniqueIdentifier>{cf7e6f7c-392a-4dd1-b6e0-d54d1c2e25de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\addons\polytri\lib\sweep">
+      <UniqueIdentifier>{30918f5e-a6c0-4723-bdbe-ac697ac7bd27}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Cloth.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Flocking.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Particle.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Particles.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\PBD.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Spring.h">
+      <Filter>src\addons\pbd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvBlob.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvColorImage.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvConstants.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvContourFinder.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvFloatImage.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvGrayscaleImage.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvHaarFinder.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvMain.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxOpenCv.h">
+      <Filter>src\addons\ofxOpenCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>src\addons\ofxXmlSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxMSAInteractiveObject\src\ofxMSAInteractiveObject.h">
+      <Filter>src\addons\ofxMSAInteractiveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiConfig.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiControl.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiIncludes.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiPage.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiToo.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\ofxSimpleGuiValueControl.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiButton.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiColorPicker.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiComboBox.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiContent.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiFPSCounter.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiMovieSlider.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiQuadWarp.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSlider2d.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderBase.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderFloat.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiSliderInt.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiTitle.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxSimpleGuiToo\src\Controls\ofxSimpleGuiToggle.h">
+      <Filter>src\addons\ofxSimpleGuiToo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Application.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Blur.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\BoidTypes.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Controller.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\KinectInput.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\KinectRecorder.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Settings.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visualizer.h">
+      <Filter>src\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\BoidDrawer.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\KinectDrawer.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Trail.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\Trails.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\TrailsDrawer.h">
+      <Filter>src\Application\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlob.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\BoundBlobListener.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectMesh.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectThresholder.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectTriangle.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Room.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\Bloom.h">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\contourutils.h">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\Line.h">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxBase3DVideo.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNui.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiDraw.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiDrawInterface.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.h">
+      <Filter>src\addons\ofxKinectNui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\ImageStream.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\Kinect.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\KinectContext.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\KinectListener.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\StaticMediaBuffer.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\WaveFileWriter.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\WaveOutput.h">
+      <Filter>src\addons\ofxKinectNui\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\win32\Event.h">
+      <Filter>src\addons\ofxKinectNui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\ofxKinectNui\src\win32\SpinLock.h">
+      <Filter>src\addons\ofxKinectNui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>src\addons\ofxXmlSettings\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\poly2tri.h">
+      <Filter>src\addons\polytri\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.h">
+      <Filter>src\addons\polytri\lib\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\common\utils.h">
+      <Filter>src\addons\polytri\lib\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\advancing_front.h">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\cdt.h">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep.h">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.h">
+      <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectNuiThreaded.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\TimeProfiler.h">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

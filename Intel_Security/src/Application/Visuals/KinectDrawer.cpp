@@ -3,6 +3,7 @@
 KinectDrawer::KinectDrawer() 
 	:allocated_bytes(0)
 	,user_detected(false)
+	,vbo(0)
 {
 
 }
