@@ -48,11 +48,15 @@ void KinectNuiThreaded::update() {
 		// copy skeleton, depth and rgb to threadsafe buffer
 		memcpy(depth, kinect.getDepthPixels().getPixels(), 640*480);
 		memcpy(rgb, kinect.getVideoPixels().getPixels(), 640*480*3);
+<<<<<<< HEAD
 		if(doingSkeletons) {
 
 			numSkeletons = kinect.getSkeletonPoints(skeletonPoints);
 			
 		}
+=======
+		
+>>>>>>> cb5d56879cb0fbbd2dca7928ff5e1a3a5827d0a9
 		unlock();
 
 
@@ -65,10 +69,13 @@ bool KinectNuiThreaded::isFrameNew() {
 }
 
 int KinectNuiThreaded::getSkeletonPoints(const ofPoint *points[]) {
+	lock();
 	for(int i = 0; i < numSkeletons; i++) {
 		points[i] = skeletonPoints[i];
 	}
-	return numSkeletons;
+	int ns = numSkeletons;
+	unlock();
+	return ns;
 }
 
 unsigned char *KinectNuiThreaded::getPixels() {
@@ -91,6 +98,9 @@ void KinectNuiThreaded::threadedFunction() {
 		//| ofxKinectNui::UPDATE_FLAG_CALIBRATED_VIDEO
 		);
 
-	
-
+	lock();
+	if(doingSkeletons) {
+		numSkeletons = kinect.getSkeletonPoints(skeletonPoints);
+	}
+	unlock();
 }

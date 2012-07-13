@@ -30,7 +30,7 @@ void AudioSystem::setup(string appName, KinectThresholder &kinect) {
 	
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	int ticksPerBuffer = 8;
-	pd = new ofxPd();
+	/*pd = new ofxPd();
 	if(!pd->init(2, 0, 44100, ticksPerBuffer)) {
 		printf("Could not start ofxPd!\n");
 	} else {
@@ -47,12 +47,12 @@ void AudioSystem::setup(string appName, KinectThresholder &kinect) {
 	ofSoundStreamSetup(2, 0, this, 44100, ofxPd::blockSize()*ticksPerBuffer, 3);
 	printf("AudioSystem::setup()\n");
 	ofSetLogLevel(OF_LOG_WARNING);
-	
+	*/
 }
 
 void AudioSystem::audioOut(float *buff, int buffSize, int channels) {
 	//printf("Bum\n");
-	pd->audioOut(buff, buffSize, channels);
+	//pd->audioOut(buff, buffSize, channels);
 	
 }
 
@@ -66,7 +66,7 @@ void AudioSystem::enable(int channel) {
 		ofLog(OF_LOG_ERROR, "AudioSystem::enable() - you can only use channels 0-4 - asking or channel %d\n", channel);
 		return;
 	}
-	pd->sendFloat("on"+ofToString(channel), 1.0);
+	//pd->sendFloat("on"+ofToString(channel), 1.0);
 }
 
 void AudioSystem::disable(int channel) {
@@ -74,7 +74,7 @@ void AudioSystem::disable(int channel) {
 		ofLog(OF_LOG_ERROR, "AudioSystem::disable() - you can only use channels 0-4 = asking for channel %d\n", channel);
 		return;
 	}
-	pd->sendFloat("on"+ofToString(channel), 0.0);	
+	//pd->sendFloat("on"+ofToString(channel), 0.0);	
 }
 
 
@@ -88,6 +88,6 @@ void AudioSystem::setPan(int channel, float pan) {
 	}
 	
 	pan = ofClamp(pan, 0, 1);
-	pd->sendFloat("pan"+ofToString(channel), pan);
+	//pd->sendFloat("pan"+ofToString(channel), pan);
 }
 
