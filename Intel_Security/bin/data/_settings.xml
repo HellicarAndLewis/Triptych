@@ -1,15 +1,15 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>246.075</value>
+        <value>99.45</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>200.175</value>
+        <value>0</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>9</value>
+        <value>0</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
@@ -33,11 +33,11 @@
     </SliderInt_blurSize>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>28</value>
+        <value>5</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>28</value>
+        <value>5</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
@@ -49,7 +49,7 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>43.75</value>
+        <value>40.45</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
