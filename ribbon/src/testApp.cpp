@@ -202,6 +202,7 @@ void testApp::update() {
 //--------------------------------------------------------------
 void testApp::draw(){
 
+
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();

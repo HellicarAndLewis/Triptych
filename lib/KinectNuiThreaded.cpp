@@ -43,20 +43,12 @@ void KinectNuiThreaded::update() {
 
 		ScopedTimer timer("Kinect Locked Copy");
 		gotNewFrame = true;
-		
+
 		lock();
 		// copy skeleton, depth and rgb to threadsafe buffer
 		memcpy(depth, kinect.getDepthPixels().getPixels(), 640*480);
 		memcpy(rgb, kinect.getVideoPixels().getPixels(), 640*480*3);
-<<<<<<< HEAD
-		if(doingSkeletons) {
 
-			numSkeletons = kinect.getSkeletonPoints(skeletonPoints);
-			
-		}
-=======
-		
->>>>>>> cb5d56879cb0fbbd2dca7928ff5e1a3a5827d0a9
 		unlock();
 
 

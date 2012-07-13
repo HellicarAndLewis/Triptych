@@ -32,8 +32,8 @@
 class RibbonSkeleton {
 public:
 	Trail *leftBrush, *rightBrush, *head;
-	Ribbon *ribbons[NUI_SKELETON_POSITION_COUNT];
-
+	//Ribbon *ribbons[NUI_SKELETON_POSITION_COUNT];
+	vector<Ribbon*> ribbons;
 	KinectSkeleton skeleton;
 	bool alive;
 	void setup(KinectSkeleton skel) {
@@ -48,7 +48,7 @@ public:
 		
 
 		for (int i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
-			ribbons[i] = new Ribbon(skel.points[i] * factor);
+			ribbons.push_back(new Ribbon(skel.points[i] * factor));
 		}
 
 		update(skel);
