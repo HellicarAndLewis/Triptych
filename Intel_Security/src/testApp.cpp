@@ -116,7 +116,9 @@ void testApp::update(){
 	#endif
 
 	#ifdef USE_APP
+		
 		app.update();
+		
 	#endif
 
 	room.update();
@@ -172,6 +174,8 @@ void testApp::draw(){
 			flock_gui.draw();
 		}
 	#endif
+
+		
 
 	glPushMatrix();
 		ofSetupScreen();

@@ -6,7 +6,9 @@ using namespace tricks::util;
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	showTimeProfiler = false;
 	
+	audioSystem.setup("performance", kinect);
 	bloom.setup(true);
 	room.setup(640.f/480.f);
 	otherChannelAttenuation = 0.5;
@@ -68,6 +70,7 @@ void testApp::update() {
 
 			}
 		}
+		kinect.trackBlobs();
 	}
 
 	//printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
@@ -149,7 +152,9 @@ void testApp::draw(){
 	{
 		ofSetupScreen();
 		gui.draw();
-		TimeProfiler::draw();
+		if(showTimeProfiler) {
+			TimeProfiler::draw();
+		}
 	}
 	glPopMatrix();
 	
@@ -193,6 +198,9 @@ void testApp::keyPressed(int key){
 			break;
 		case 'b':
 			kinect.learnBackground = true;
+			break;
+		case 't':
+			showTimeProfiler ^= true;
 			break;
 	}
 }
