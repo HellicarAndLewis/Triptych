@@ -18,6 +18,11 @@ bool useGravity = false;
 float gravityFactor = 0.1;
 bool useFade = false;
 
+float frontTaper, backTaper;
+bool drawPink;
+int ribbonLength;
+bool fadeInZ;
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	
@@ -26,8 +31,8 @@ void testApp::setup(){
 	
 	
 	gui.addPage("Program");
-	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+	//ofSetVerticalSync(true);
+	ofSetFrameRate(30);
 	kinect.setup(true);
 	kinect.setupGui();
 	room.setupGui();	
@@ -53,6 +58,13 @@ void testApp::setup(){
 	gui.addToggle("use gravity", useGravity);
 	gui.addSlider("gravity factor", gravityFactor, 0, 0.1);
 	gui.addToggle("use fade", useFade);
+
+	gui.addTitle("new");
+	gui.addSlider("front taper", frontTaper, 0, 100);
+	gui.addSlider("back taper", backTaper, 0, 100);
+	gui.addToggle("draw pink", drawPink);
+	gui.addSlider("ribbon length", ribbonLength, 0, 500);
+	gui.addToggle("fade in z", fadeInZ);
 
 	gui.loadFromXML();
 	gui.setAutoSave(true);
@@ -180,7 +192,7 @@ void testApp::update() {
 
 	
 	
-	//ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
+	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 	
 	
 	room.update();

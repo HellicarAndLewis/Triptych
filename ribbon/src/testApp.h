@@ -9,6 +9,8 @@
 #include "Brush.h"
 #include "Trail.h"
 
+#include "Ribbon.h"
+
 #include "NuiSensor.h"
 
 //class Ribbon {
@@ -30,7 +32,7 @@
 class RibbonSkeleton {
 public:
 	Trail *leftBrush, *rightBrush, *head;
-	Trail *ribbons[NUI_SKELETON_POSITION_COUNT];
+	Ribbon *ribbons[NUI_SKELETON_POSITION_COUNT];
 
 	KinectSkeleton skeleton;
 	bool alive;
@@ -43,8 +45,10 @@ public:
 		//rightBrush = new Trail(skel.rightHand * factor);
 		//head = new Trail(skel.head * factor);
 
+		
+
 		for (int i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
-			ribbons[i] = new Trail(skel.points[i] * factor);
+			ribbons[i] = new Ribbon(skel.points[i] * factor);
 		}
 
 		update(skel);
@@ -60,7 +64,7 @@ public:
 		//leftBrush->update(skeleton.leftHand * factor);
 		//rightBrush->update(skeleton.rightHand * factor);
 		//head->update(skeleton.head * factor);
-		for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+		for (int  i = 0; i < ribbons.size(); i++) {
 			ribbons[i]->update(skeleton.points[i] * factor);
 		}
 	}
@@ -69,7 +73,7 @@ public:
 		//leftBrush->setColour(col);
 		//rightBrush->setColour(col);
 		//head->setColour(col);
-		for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+		for (int  i = 0; i < ribbons.size(); i++) {
 			ribbons[i]->setColour(col);
 		}
 	}
@@ -78,7 +82,7 @@ public:
 		//leftBrush->draw();
 		//rightBrush->draw();
 		//head->draw();
-		for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+		for (int  i = 0; i < ribbons.size(); i++) {
 			ribbons[i]->draw();
 		}
 	}

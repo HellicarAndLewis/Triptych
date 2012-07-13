@@ -49,7 +49,9 @@ void KinectNuiThreaded::update() {
 		memcpy(depth, kinect.getDepthPixels().getPixels(), 640*480);
 		memcpy(rgb, kinect.getVideoPixels().getPixels(), 640*480*3);
 		if(doingSkeletons) {
+
 			numSkeletons = kinect.getSkeletonPoints(skeletonPoints);
+			
 		}
 		unlock();
 
