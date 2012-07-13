@@ -9,7 +9,6 @@
 #include "Ribbon.h"
 
 Ribbon::Ribbon(ofVec3f p):
-maxThickness(40),
 minThickness(5) {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	mesh.enableColors();
@@ -17,6 +16,7 @@ minThickness(5) {
 	mesh.enableNormals();
 #endif
 
+	maxThickness = ofRandom(20, 100);
 	head.setPosition(p);
 }
 
@@ -62,7 +62,7 @@ void Ribbon::draw() {
 	
 	
 	ofSetHexColor(0xffffff);
-	ofDrawBitmapString(ofToString(segments.size()), 10, 10);
+	//ofDrawBitmapString(ofToString(segments.size()), 10, 10);
 	
 	vector<ofVec3f> middleLine;
 	vector<ofFloatColor> colours;
@@ -117,7 +117,7 @@ void Ribbon::draw() {
 #endif
 
 		
-		middleLine.push_back((bottomPoint + topPoint) * 0.5);
+		middleLine.push_back(topPoint);
 		colours.push_back(ofFloatColor(1.0, 1.0, 1.0, ((float) i ) /segments.size()));
 		
 	}

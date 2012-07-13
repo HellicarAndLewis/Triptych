@@ -17,7 +17,7 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_bloom_amount>
         <name>bloom amount</name>
-        <value>0.64</value>
+        <value>0.483398</value>
     </SliderFloat_bloom_amount>
     <SliderFloat_bloom_brightness>
         <name>bloom brightness</name>
@@ -97,6 +97,6 @@
     </SliderInt_ribbon_length>
     <Toggle_fade_in_z>
         <name>fade in z</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_fade_in_z>
 </controls>

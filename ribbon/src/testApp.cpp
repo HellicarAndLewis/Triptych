@@ -1,7 +1,5 @@
 #include "testApp.h"
-
 #include "ofxSimpleGuiToo.h"
-
 #include "ofxKinectNuiDraw.h"
 
 
@@ -26,7 +24,7 @@ bool fadeInZ;
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	bloom.setup(true);
+	bloom.setup(false);
 	room.setup(640.f/480.f);
 	
 	
@@ -224,9 +222,9 @@ void testApp::draw(){
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			ofSetHexColor(0xFFFFFF);
 
-			for(int i = 0; i < meshes.size(); i++) {
-				meshes[i].draw();
-			}
+			//for(int i = 0; i < meshes.size(); i++) {
+			//	meshes[i].draw();
+			//}
 
 
 
@@ -247,10 +245,14 @@ void testApp::draw(){
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			}*/
 
+			bloom.begin();
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
+
+			bloom.amount = ofMap(mouseX, 0, ofGetWidth(), 0, 1, true);
+			bloom.end();
 	
 			/*brushFbo.end();
 
