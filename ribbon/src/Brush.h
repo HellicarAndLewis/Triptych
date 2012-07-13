@@ -39,4 +39,4 @@ extern int iterations;
 extern float m;
 extern float maxImageSize;
 extern float minImageSize;
-extern bool enlargeImage;
+//extern bool enlargeImage;

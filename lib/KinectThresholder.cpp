@@ -49,7 +49,7 @@ void KinectThresholder::setup(bool useSkellingtons) {
 		
 	
 	foundBlobs = false;
-	listener = NULL;
+
 	blobTracker.addListener(&blobEvents);
 	
 	rgb.allocate(VISION_WIDTH, VISION_HEIGHT);
@@ -117,9 +117,13 @@ void KinectThresholder::getSkeleton(int index, KinectSkeleton &s) {
 	// stuff goes here
 
 	s.id = index;
-	s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y,0);
-	s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y,0);
-	
+	for(int i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+		s.points[i] = ofVec3f(skelly[index][i]);
+	}
+
+	//s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].z);
+	//s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].z);
+	//s.head = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HEAD].x, skelly[index][NUI_SKELETON_POSITION_HEAD].y, skelly[index][NUI_SKELETON_POSITION_HEAD].z);
 
 }
 #endif
@@ -189,7 +193,7 @@ bool KinectThresholder::update() {
 		if(doingSkeleton) {
 			doSkeletons();
 		} else {
-			printf("Dropped frame\n");
+			//printf("Dropped frame\n");
 		}
 #endif
 		timer.stop();
@@ -278,8 +282,9 @@ void KinectThresholder::trackBlobs() {
 			people[e.blobId].init(contoursBlobs[(int)e.pos.z], e.blobId);
 			people[e.blobId].setDepth(getDepth(contoursBlobs[(int)e.pos.z]));
 			
-			if(listener!=NULL) {
-				listener->boundBlobEntered(people[e.blobId]);
+
+			for(int i = 0; i < listeners.size(); i++) {
+				listeners[i]->boundBlobEntered(people[e.blobId]);
 			}
 			/*if(recording) {
 			 ofVec3f bounds(640,480, 255);
@@ -303,8 +308,8 @@ void KinectThresholder::trackBlobs() {
 		} else if(e.eventType==ofxBlobTracker_moved) {
 			people[e.blobId].update(contoursBlobs[(int)e.pos.z]);
 			
-			if(listener!=NULL) {
-				listener->boundBlobMoved(people[e.blobId]);
+			for(int i = 0; i < listeners.size(); i++) {
+				listeners[i]->boundBlobMoved(people[e.blobId]);
 			}
 			/*if(recording) {
 			 ofVec3f bounds(640,480, 255);
@@ -327,8 +332,8 @@ void KinectThresholder::trackBlobs() {
 			 */
 			
 		} else if(e.eventType==ofxBlobTracker_exited) {
-			if(listener!=NULL) {
-				listener->boundBlobExited(people[e.blobId]);
+			for(int i = 0; i < listeners.size(); i++) {
+				listeners[i]->boundBlobExited(people[e.blobId]);
 			}
 			people.erase(e.blobId);
 		}
@@ -347,8 +352,8 @@ void KinectThresholder::trackBlobs() {
 }
 
 
-void KinectThresholder::setListener(BoundBlobListener *listener) {
-	this->listener = listener;
+void KinectThresholder::addListener(BoundBlobListener *listener) {
+	listeners.push_back(listener);
 }
 
 

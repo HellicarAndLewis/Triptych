@@ -136,7 +136,9 @@ void testApp::update(){
 
 
 	#ifdef USE_APP
+		
 		app.update();
+		
 	#endif
 
 	room.update();
@@ -197,6 +199,8 @@ void testApp::draw(){
 			#endif
 		}
 	
+
+		
 
 	glPushMatrix();
 		ofSetupScreen();

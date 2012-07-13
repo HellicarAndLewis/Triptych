@@ -8,6 +8,9 @@
 extern "C" {
 #endif
 
+#define USEAPI_DUMMY 
+#define PD
+
 #define PD_MAJOR_VERSION 0
 #define PD_MINOR_VERSION 43
 #define PD_BUGFIX_VERSION 2
@@ -29,11 +32,12 @@ extern "C" {
 
     /* the external storage class is "extern" in UNIX; in MSW it's ugly. */
 #ifdef _WIN32
-#ifdef PD_INTERNAL
-#define EXTERN __declspec(dllexport) extern
-#else
-#define EXTERN __declspec(dllimport) extern
-#endif /* PD_INTERNAL */
+//#ifdef PD_INTERNAL
+//#define EXTERN __declspec(dllexport) extern
+//#else
+//#define EXTERN __declspec(dllimport) extern
+//#endif /* PD_INTERNAL */
+#define EXTERN
 #else
 #define EXTERN extern
 #endif /* _WIN32 */

@@ -35,5 +35,5 @@ void main()
 	}
 	
 	
-	gl_FragColor = (1.0-amt)*texture2DRect(tex, gl_TexCoord[0].xy)*diffuse + (amt)*color;
+	gl_FragColor = vec4(1.0,0.0, 0.0, 1.0);//(1.0-amt)*texture2DRect(tex, gl_TexCoord[0].xy)*diffuse + (amt)*color;
 }

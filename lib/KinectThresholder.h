@@ -34,8 +34,10 @@
 class KinectSkeleton {
 public:
 	int id;
-	ofVec3f leftHand;
-	ofVec3f rightHand;
+	//ofVec3f leftHand;
+	//ofVec3f rightHand;
+	//ofVec3f head;
+	ofVec3f points[NUI_SKELETON_POSITION_COUNT];
 	KinectSkeleton() {
 	}
 };
@@ -115,9 +117,9 @@ public:
 	void trackBlobs();
 	
 	/**
-	 * Set your listener here.
+	 * Set your listeners here.
 	 */
-	void setListener(BoundBlobListener *listener);
+	void addListener(BoundBlobListener *listener);
 	
 	void drawDebug();
 
@@ -167,6 +169,6 @@ public:
 	
 	ofxBlobTracker blobTracker;
 	ofxBlobEventLister blobEvents;
-	BoundBlobListener *listener;
+	vector<BoundBlobListener*> listeners;
 	map<int,BoundBlob> people;
 };
