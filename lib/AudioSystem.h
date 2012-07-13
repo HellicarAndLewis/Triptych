@@ -6,7 +6,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxPd.h"
+//#include "ofxPd.h"
 #include "KinectThresholder.h"
 
 class AudioSystem: public ofBaseApp, public BoundBlobListener {
@@ -45,5 +45,5 @@ public:
 	
 	void audioOut(float *buff, int buffSize, int channels);
 private:
-	ofxPd *pd;
+	//ofxPd *pd;
 };
