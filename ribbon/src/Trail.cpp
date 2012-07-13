@@ -9,25 +9,26 @@
 #include "Trail.h"
 #include "ofxSimpleGuiToo.h"
 
-#define TRAIL_WIDTH 50
+#define TRAIL_WIDTH 1
 #define INTERPOLATION_SIZE 4.0
 
-
-
-Trail::Trail():
+static vector< vector<ofFloatColor> > colours;
+bool done = false;
+ 
+Trail::Trail(ofVec3f p):
 trailMaxLength(250),
 reductionSpeed(8),
 interpolationFactor(1),
 drawInfo(false),
-drawWireframe(false),
+drawWireframe(true),
 sineCounter(0),
 sineMultiplier(20),
 sineIncrement(0.1) {
 	
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-	mesh.enableTextures();
-	
-	texImage.loadImage("grad3_3.png");
+	//mesh.enableTextures();
+	mesh.enableColors();
+//	texImage.loadImage("grad3_3.png");
 //	texImage2.loadImage("grad3_22.png");
 	
 //	fbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB32F);
@@ -46,65 +47,122 @@ sineIncrement(0.1) {
 //	gui.addToggle("draw info", drawInfo);
 //	gui.addToggle("draw wireframe", drawWireframe);
 	
+	if(!done) {
+		colours.resize(3);
+
+		//reds
+		colours[0].push_back(ofFloatColor(1.0, 0.3, 0.16, 1));
+		colours[0].push_back(ofFloatColor(0.78, 0.0, 0.09, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.86, 0.75, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.0, 0.11, 1));
+
+		//greens
+		colours[1].push_back(ofFloatColor(0.0, 0.3, 0.05, 1));
+		colours[1].push_back(ofFloatColor(0.75, 0.9, 0.54, 1));
+		colours[1].push_back(ofFloatColor(0.46, 0.82, 0.19, 1));
+		colours[1].push_back(ofFloatColor(0.0, 0.7, 0.29, 1));
+
+		//yellows
+		colours[2].push_back(ofFloatColor(1.0, 0.53, 0.0, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.77, 0.0, 1));
+		colours[2].push_back(ofFloatColor(0.99, 0.98, 0.84, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.89, 0.0, 1));
+		done = true;
+	}
 	
-	
+	colIndex = ((int) rand() % colours.size());
+
+	input(p);
 }
 
 
 Trail::~Trail() {}
 
 
-void Trail::update() {
+void Trail::update(ofVec3f p) {
+
+	input(p);
 
 	//keep the trail at max length...
-	while (trail.size() > trailMaxLength) {
+	while (trail.size() > maxImageSize) {
 		trail.pop_back();
 	}
 	
+
 	//if the head hasn't moved since the last frame then reduce
-//	if (trail.begin()->getPosition() == headPos) {
-//		for (int i = 0; i < reductionSpeed && trail.size(); i++) {
-//			trail.pop_back();
-//		}
-//		
-//	}
+	if (trail.begin()->getPosition() == headPos) {
+		for (int i = 0; i < reductionSpeed && trail.size(); i++) {
+			//trail.pop_back();
+		}
+		
+	}
+
+	if(useGravity) {
+
+		for(int i = 0; i < trail.size(); i++) {
+			trail[i].pos.y+= gravityFactor * i;
+		}
+
+	}
 	
 	mesh.clear();
 	
 	sineCounter = 0;
-	
-	for (deque<ofNode>::iterator it = trail.begin(); it != trail.end(); it++) {
+	int i = 0;
+	for (deque<Node>::iterator it = trail.begin(); it != trail.end(); ++it) {
 		
-		ofMatrix4x4 rot = ofMatrix4x4::newRotationMatrix(sineCounter, 0, 0, 0);
-		
-		ofNode node = *it;
+		Node node = *it;
 		ofVec3f p = node.getPosition();
+		float dd = trailWidth;
 		
-		float sine = sin(sineCounter) * sineMultiplier;
-		sineCounter+= 0;
+		if(variableWidth && ((it+1) != trail.end())) {
+			//dd = (((*(it+1)).getPosition()) - p).length(); 
+			ofVec3f oldp = (*(it+1)).getPosition();
+			ofVec3f diff = oldp - p;
+			dd = diff.length();
+			cout << dd << endl;
+			dd*= variableFactor;
+		}
+		ofFloatColor col = node.getColor();
+		if(useFade) col.a = (trail.size() - i)/(float)trail.size();
+
+		mesh.addVertex(ofVec3f(p.x, p.y + dd, p.z));
+		mesh.addColor(col);
+
+		mesh.addVertex(ofVec3f(p.x, p.y - dd, p.z));
+		mesh.addColor(col);
+
+		i++;
+		continue;
+
 		
-//		ofVec3f top(p.x, p.y + TRAIL_WIDTH + sine, p.z);
+//		float sine = sin(sineCounter) * sineMultiplier;
+//		sineCounter+= 0;
+//		
+////		ofVec3f top(p.x, p.y + TRAIL_WIDTH + sine, p.z);
+////		top = top * rot;
+//
+//		ofVec3f top(0, TRAIL_WIDTH + sine, 0);
 //		top = top * rot;
-
-		ofVec3f top(0, TRAIL_WIDTH + sine, 0);
-		top = top * rot;
-		top = top + p;
-		
-		mesh.addVertex(top);
-		mesh.addTexCoord(ofVec2f(0, 0));
-		
-//		ofVec3f bottom(p.x, p.y - TRAIL_WIDTH + sine, p.z);
+//		top = top + p;
+//		
+//		mesh.addVertex(top);
+//		mesh.addTexCoord(ofVec2f(0, 0));
+//		
+////		ofVec3f bottom(p.x, p.y - TRAIL_WIDTH + sine, p.z);
+////		bottom = bottom * rot;
+//
+//		ofVec3f bottom(0, -TRAIL_WIDTH + sine, 0);
 //		bottom = bottom * rot;
-
-		ofVec3f bottom(0, -TRAIL_WIDTH + sine, 0);
-		bottom = bottom * rot;
-		bottom = bottom + p;
-		
-		mesh.addVertex(bottom);
-		mesh.addTexCoord(ofVec2f(texImage.width, texImage.height));
+//		bottom = bottom + p;
+//		
+//		mesh.addVertex(bottom);
+//		mesh.addTexCoord(ofVec2f(texImage.width, texImage.height));
 		
 	}
 	
+
+
 	headPos = trail.begin()->getPosition();
 }
 
@@ -113,9 +171,9 @@ float tt = 0;
 
 void Trail::draw() {
 	
-
-	
-	
+//	cout << trail.size() << endl;
+	//ofSetWindowTitle(ofToString(trail.size()));
+	ofSetLineWidth(2);
 //	fbo.begin();
 	
 //	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -125,23 +183,25 @@ void Trail::draw() {
 //	
 //	
 		
-	glColor4f(1,1,1,0.);
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+//	glColor4f(1,1,1,0.);
+//	ofEnableBlendMode(OF_BLENDMODE_ADD);
 
-	ofSetHexColor(0xffffff);
+	mesh.draw();
+	return;
+
 
 	if (drawWireframe) {
 		mesh.drawWireframe();
 	}
 	else {
-		texImage.bind();
+//		texImage.bind();
 		
 //		for (int i = 0; i < 50; i++) {
 			mesh.draw();
 //		}
 		
 		
-		texImage.unbind();
+//		texImage.unbind();
 	}
 		
 //	fbo.end();
@@ -162,17 +222,24 @@ void Trail::draw() {
 
 void Trail::input(ofVec3f p) {
 	
-	ofNode node;
-	
-	
-	if (trail.empty()) {
+	Node node;
+	node.setColor(colours[colIndex][((int)rand()) % colours[colIndex].size()]);
+	node.setPosition(p);
+	trail.push_front(node);
+	return;
+
+
+	if (true || trail.empty()) {
 		node.setPosition(p);
 		trail.push_front(node);
+		
 	}
 	
 	//if we are not empty then linearly interpolate from last one
 	else {
 		
+		
+
 //		float m = 0.1;
 //		ofVec3f pos = trail.begin()->getPosition()*(1-m) + p*m;
 //		node.setPosition(pos);
@@ -188,6 +255,7 @@ void Trail::input(ofVec3f p) {
 			ofVec3f inter = old + (diff * (i/interpolationLimit));
 						
 			node.setPosition(inter);
+			node.setColor(colours[colIndex][((int)rand()) % colours[colIndex].size()]);
 			trail.push_front(node);
 			
 		}

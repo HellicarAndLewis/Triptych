@@ -6,7 +6,8 @@
 #include "KinectMesh.h"
 #include "Room.h"
 #include "Bloom.h"
-
+#include "Brush.h"
+#include "Trail.h"
 
 
 class Ribbon {
@@ -27,14 +28,15 @@ public:
 
 class RibbonSkeleton {
 public:
-	Ribbon *ribbonLeft;
-	Ribbon *ribbonRight;
+	Trail *leftBrush;
+	Trail *rightBrush;
 	KinectSkeleton skeleton;
 	bool alive;
 	void setup(KinectSkeleton skel) {
 		alive = true;
-		ribbonLeft = new Ribbon();
-		ribbonRight = new Ribbon();
+		ofVec3f factor = ofVec3f((float)ofGetWidth()/640.f, (float)ofGetHeight()/480.f, 0);
+		leftBrush = new Trail(skel.leftHand * factor);
+		rightBrush = new Trail(skel.rightHand * factor);
 		update(skel);
 	}
 
@@ -45,13 +47,13 @@ public:
 		// we want to rescale to screen coords - we also want to remove the z component
 		// (for now)
 		ofVec3f factor = ofVec3f((float)ofGetWidth()/640.f, (float)ofGetHeight()/480.f, 0);
-		ribbonLeft->update(skeleton.leftHand*factor);
-		ribbonRight->update(skeleton.rightHand*factor);
+		leftBrush->update(skeleton.leftHand * factor);
+		rightBrush->update(skeleton.rightHand * factor);
 	}
 
 	void draw() {
-		ribbonLeft->draw();
-		ribbonRight->draw();
+		leftBrush->draw();
+		rightBrush->draw();
 	}
 	
 };
@@ -88,4 +90,8 @@ public:
 	vector<Ribbon*> deadRibbons;
 
 	tricks::gl::effects::Bloom bloom;
+
+	ofFbo brushFbo;
+	float backgroundAlpha, imageAlpha;
+	
 };

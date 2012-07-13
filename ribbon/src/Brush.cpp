@@ -15,22 +15,35 @@ Brush::Brush() {
 
 }
 
+Brush::Brush(ofVec3f start) {
+	thing.loadImage("thing.png");
+	thing.setAnchorPercent(0.5, 0.5);
+
+	point = start;
+}
+
 Brush::~Brush() { 
 	
 }
 
-void Brush::update() {
-	
+void Brush::update(ofVec3f p) {
+	setInput(p);
 }
 
 void Brush::draw() {
 		
 	for(int i = 0; i < iterations; i++) {
 		
+		ofVec3f lastPoint = point;
 		point = point*(1-m) + input*m;
 		
+		float vel = (point - lastPoint).lengthSquared();
 		ofSetHexColor(0xffffff);
-		thing.draw(point, 60, 60);
+		
+		
+		if (enlargeImage) vel = ofMap(vel, 0, 3, minImageSize, maxImageSize, true);
+		else vel = 55;
+		thing.draw(point, vel, vel);
 		
 	}
 }

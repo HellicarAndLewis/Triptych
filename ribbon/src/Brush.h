@@ -12,12 +12,15 @@ class Brush {
 	
 public:
 	Brush();
+	Brush(ofVec3f start);
 	~Brush();
 	
-	void update();
+	//this is a wrapper for setInput
+	void update(ofVec3f p);
 	void draw();
 	
 	void setPoint(ofVec3f p) { point = p; }
+
 	void setInput(ofVec3f p) { input = p; }
 	void setInput(ofVec2f p) { input.set(p.x, p.y, 0); }
 	
@@ -34,3 +37,6 @@ private:
 
 extern int iterations;
 extern float m;
+extern float maxImageSize;
+extern float minImageSize;
+extern bool enlargeImage;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5455BE6F15A9C46B006BFB11 /* trails_drawer.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */; };
 		5455BE7015A9C46B006BFB11 /* trails_drawer.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */; };
+		545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */; };
 		549A423715A4C18500A50CC3 /* KinectInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423515A4C18500A50CC3 /* KinectInput.cpp */; };
 		549A424215A4C54600A50CC3 /* KinectMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A423E15A4C54600A50CC3 /* KinectMesh.cpp */; };
 		549A424315A4C54600A50CC3 /* KinectThresholder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549A424015A4C54600A50CC3 /* KinectThresholder.cpp */; };
@@ -173,6 +174,8 @@
 /* Begin PBXFileReference section */
 		5455BE6D15A9C46B006BFB11 /* trails_drawer.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.frag; path = bin/data/trails_drawer.frag; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5455BE6E15A9C46B006BFB11 /* trails_drawer.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = trails_drawer.vert; path = bin/data/trails_drawer.vert; sourceTree = SOURCE_ROOT; };
+		545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeProfiler.cpp; sourceTree = "<group>"; };
+		545D6A0B15AE0848002A11BB /* TimeProfiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProfiler.h; sourceTree = "<group>"; };
 		549A423515A4C18500A50CC3 /* KinectInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KinectInput.cpp; sourceTree = "<group>"; };
 		549A423615A4C18500A50CC3 /* KinectInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInput.h; sourceTree = "<group>"; };
 		549A423E15A4C54600A50CC3 /* KinectMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KinectMesh.cpp; path = ../lib/KinectMesh.cpp; sourceTree = "<group>"; };
@@ -1376,6 +1379,8 @@
 		EAE2A89E15A4493300327E97 /* marektricks */ = {
 			isa = PBXGroup;
 			children = (
+				545D6A0A15AE0848002A11BB /* TimeProfiler.cpp */,
+				545D6A0B15AE0848002A11BB /* TimeProfiler.h */,
 				EAE2A89F15A4493300327E97 /* Bloom.cpp */,
 				EAE2A8A015A4493300327E97 /* Bloom.h */,
 				EAE2A8A115A4493300327E97 /* contourutils.cpp */,
@@ -1585,6 +1590,7 @@
 				5D27C2BB15AB2EDA0057464D /* ofxBlobSmoother.cpp in Sources */,
 				5D27C2BC15AB2EDA0057464D /* ofxBlobTracker.cpp in Sources */,
 				5D27C2C015AB2EF80057464D /* ofxCvKalman.cpp in Sources */,
+				545D6A0C15AE0848002A11BB /* TimeProfiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1689,7 +1695,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					./../addons/roxlu/addons/PolyTri/lib/,
 					./../addons/roxlu/addons/PolyTri/include/,
@@ -1812,7 +1818,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					./../addons/roxlu/addons/PolyTri/lib/,
 					./../addons/roxlu/addons/PolyTri/include/,

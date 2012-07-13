@@ -72,7 +72,7 @@ static void freenect_init_depth_to_rgb(int32_t* depth_to_rgb, freenect_zero_plan
 		depth_to_rgb[i] = (( pixels_between_rgb_and_ir_cmos * (current_depth_in_pixels - reference_distance_in_pixels) / current_depth_in_pixels) + S2D_CONST_OFFSET) * REG_X_VAL_SCALE;
 	}
 }
-
+#pragma message "HIER IN REGISTERTA"
 // unrolled inner loop of the 11-bit unpacker
 inline void unpack_8_pixels(uint8_t *raw, uint16_t *frame)
 {

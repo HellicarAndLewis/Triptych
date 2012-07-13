@@ -81,7 +81,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat />
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\MicrosoftSDKs\Kinect\v1.0\inc;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -93,8 +93,8 @@
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>msimg32.lib;opencv_calib3d231.lib;opencv_flann231.lib;zlib.lib;opencv_contrib231.lib;opencv_features2d231.lib;opencv_core231.lib;opencv_gpu231.lib;opencv_haartraining_engine.lib;opencv_highgui231.lib;opencv_ml231.lib;opencv_imgproc231.lib;opencv_objdetect231.lib;opencv_legacy231.lib;opencv_video231.lib;Kinect10.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MicrosoftSDKs\Kinect\v1.0\lib\x86;C:\Users\roxlu\Documents\intel\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -147,6 +147,7 @@
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc" />
@@ -201,10 +202,12 @@
     <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VBO.cpp" />
     <ClCompile Include="..\lib\BoundBlob.cpp" />
     <ClCompile Include="..\lib\KinectMesh.cpp" />
+    <ClCompile Include="..\lib\KinectNuiThreaded.cpp" />
     <ClCompile Include="..\lib\KinectThresholder.cpp" />
     <ClCompile Include="..\lib\marektricks\Bloom.cpp" />
     <ClCompile Include="..\lib\marektricks\contourutils.cpp" />
     <ClCompile Include="..\lib\marektricks\Line.cpp" />
+    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp" />
     <ClCompile Include="..\lib\Room.cpp" />
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\Application\Blur.cpp" />
@@ -289,11 +292,13 @@
     <ClInclude Include="..\lib\BoundBlob.h" />
     <ClInclude Include="..\lib\BoundBlobListener.h" />
     <ClInclude Include="..\lib\KinectMesh.h" />
+    <ClInclude Include="..\lib\KinectNuiThreaded.h" />
     <ClInclude Include="..\lib\KinectThresholder.h" />
     <ClInclude Include="..\lib\KinectTriangle.h" />
     <ClInclude Include="..\lib\marektricks\Bloom.h" />
     <ClInclude Include="..\lib\marektricks\contourutils.h" />
     <ClInclude Include="..\lib\marektricks\Line.h" />
+    <ClInclude Include="..\lib\marektricks\TimeProfiler.h" />
     <ClInclude Include="..\lib\Room.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Application\Blur.h" />

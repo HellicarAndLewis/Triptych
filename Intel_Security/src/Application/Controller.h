@@ -24,12 +24,12 @@ public:
 	void checkBounds();
 	void setVisibleBoidsPercentage(float perc); 
 	void setAttackPercentage(float perc);
+	
 	KinectInput& kinect_input;
 	Boids& flock_ps;
 	Boids& fx_ps;
 	int w;
 	int h;
-	
 	vector<Boid*> attackers;
 	
 };

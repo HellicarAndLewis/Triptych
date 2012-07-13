@@ -358,6 +358,15 @@
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.cc">
       <Filter>src\addons\polytri\lib\sweep</Filter>
     </ClCompile>
+    <ClCompile Include="..\lib\KinectNuiThreaded.cpp">
+      <Filter>src\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
+      <Filter>src\lib\marekstricks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp">
+      <Filter>src\addons\buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -721,6 +730,12 @@
     </ClInclude>
     <ClInclude Include="..\addons\roxlu\addons\PolyTri\lib\sweep\sweep_context.h">
       <Filter>src\addons\polytri\lib\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\KinectNuiThreaded.h">
+      <Filter>src\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\marektricks\TimeProfiler.h">
+      <Filter>src\lib\marekstricks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
