@@ -1,0 +1,102 @@
+<controls>
+    <SliderInt_Border_Res>
+        <name>Border Res</name>
+        <value>35</value>
+    </SliderInt_Border_Res>
+    <SliderInt_Fill_Res>
+        <name>Fill Res</name>
+        <value>21</value>
+    </SliderInt_Fill_Res>
+    <Toggle_Per_Vertex_Colour>
+        <name>Per Vertex Colour</name>
+        <value>1</value>
+    </Toggle_Per_Vertex_Colour>
+    <SliderFloat_Edge_Colour_Sharpening>
+        <name>Edge Colour Sharpening</name>
+        <value>0.865</value>
+    </SliderFloat_Edge_Colour_Sharpening>
+    <SliderFloat_bloom_amount>
+        <name>bloom amount</name>
+        <value>0.483398</value>
+    </SliderFloat_bloom_amount>
+    <SliderFloat_bloom_brightness>
+        <name>bloom brightness</name>
+        <value>1.15</value>
+    </SliderFloat_bloom_brightness>
+    <SliderInt_iterations>
+        <name>iterations</name>
+        <value>15</value>
+    </SliderInt_iterations>
+    <SliderFloat_m>
+        <name>m</name>
+        <value>0.00655</value>
+    </SliderFloat_m>
+    <SliderFloat_background_alpha>
+        <name>background alpha</name>
+        <value>0.085</value>
+    </SliderFloat_background_alpha>
+    <SliderFloat_image_alpha>
+        <name>image alpha</name>
+        <value>0.005</value>
+    </SliderFloat_image_alpha>
+    <SliderFloat_max_ribbon_length>
+        <name>max ribbon length</name>
+        <value>558.4</value>
+    </SliderFloat_max_ribbon_length>
+    <SliderFloat_min_image_size>
+        <name>min image size</name>
+        <value>8.5</value>
+    </SliderFloat_min_image_size>
+    <Toggle_use_additive>
+        <name>use additive</name>
+        <value>0</value>
+    </Toggle_use_additive>
+    <Toggle_drawWireframe>
+        <name>drawWireframe</name>
+        <value>0</value>
+    </Toggle_drawWireframe>
+    <SliderFloat_trail_width>
+        <name>trail width</name>
+        <value>14.5</value>
+    </SliderFloat_trail_width>
+    <Toggle_variabe_width>
+        <name>variabe width</name>
+        <value>1</value>
+    </Toggle_variabe_width>
+    <SliderFloat_variable_factor>
+        <name>variable factor</name>
+        <value>0.56</value>
+    </SliderFloat_variable_factor>
+    <Toggle_use_gravity>
+        <name>use gravity</name>
+        <value>1</value>
+    </Toggle_use_gravity>
+    <SliderFloat_gravity_factor>
+        <name>gravity factor</name>
+        <value>0.0055</value>
+    </SliderFloat_gravity_factor>
+    <Toggle_use_fade>
+        <name>use fade</name>
+        <value>1</value>
+    </Toggle_use_fade>
+    <SliderFloat_front_taper>
+        <name>front taper</name>
+        <value>62</value>
+    </SliderFloat_front_taper>
+    <SliderFloat_back_taper>
+        <name>back taper</name>
+        <value>22</value>
+    </SliderFloat_back_taper>
+    <Toggle_draw_pink>
+        <name>draw pink</name>
+        <value>0</value>
+    </Toggle_draw_pink>
+    <SliderInt_ribbon_length>
+        <name>ribbon length</name>
+        <value>127</value>
+    </SliderInt_ribbon_length>
+    <Toggle_fade_in_z>
+        <name>fade in z</name>
+        <value>1</value>
+    </Toggle_fade_in_z>
+</controls>

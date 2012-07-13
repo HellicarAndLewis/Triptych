@@ -10,13 +10,23 @@
 
 #include "ofMain.h"
 
+class Node {
+public:
+	ofVec3f pos;
+	ofVec3f getPosition() { return pos; }
+	void setPosition(ofVec3f p) { pos = p; }
+
+	ofFloatColor col;
+	ofFloatColor getColor() { return col; }
+	void setColor(ofFloatColor c) { col = c; }
+};
 
 class Trail {
 public:
-	Trail();
+	Trail(ofVec3f p);
 	~Trail();
 	
-	void update();
+	void update(ofVec3f p);
 	void draw();
 	
 	void input(ofVec3f p);
@@ -29,12 +39,14 @@ public:
 	int reductionSpeed;
 	float interpolationFactor;
 	
-	bool drawInfo, drawWireframe;
+	bool drawInfo;//, drawWireframe;
 	
 	float sineCounter, sineMultiplier, sineIncrement;
 	
+	void setColour(ofFloatColor c) { colour = c; }
+
 private:
-	deque<ofNode> trail;
+	deque<Node> trail;
 	
 	
 	ofVboMesh mesh;
@@ -43,6 +55,16 @@ private:
 	
 	ofVec3f headPos;
 	
-	
+	int col1Index, col2Index;
+	ofFloatColor colour;
 //	ofFbo fbo;
 };
+
+extern float maxImageSize;
+extern float trailWidth;
+extern bool variableWidth;
+extern float variableFactor;
+extern bool useGravity;
+extern float gravityFactor;
+extern bool useFade;
+extern bool drawWireframe;
