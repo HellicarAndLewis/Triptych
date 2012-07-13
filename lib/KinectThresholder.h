@@ -115,9 +115,9 @@ public:
 	void trackBlobs();
 	
 	/**
-	 * Set your listener here.
+	 * Set your listeners here.
 	 */
-	void setListener(BoundBlobListener *listener);
+	void addListener(BoundBlobListener *listener);
 	
 	void drawDebug();
 
@@ -167,6 +167,6 @@ public:
 	
 	ofxBlobTracker blobTracker;
 	ofxBlobEventLister blobEvents;
-	BoundBlobListener *listener;
+	vector<BoundBlobListener*> listeners;
 	map<int,BoundBlob> people;
 };
