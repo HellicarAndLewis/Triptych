@@ -147,6 +147,7 @@
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp" />
+    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc" />

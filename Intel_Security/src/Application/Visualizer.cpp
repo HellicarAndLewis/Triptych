@@ -34,7 +34,9 @@ void Visualizer::update() {
 	trails_drawer.update();
 	if(kinect_input.update()) {
 		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
-		kinect_drawer.update(meshes[0]);
+		if(meshes.size() > 0) {
+			kinect_drawer.update(meshes[0]);
+		}
 	}
 
 }
