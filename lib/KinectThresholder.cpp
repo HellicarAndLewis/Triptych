@@ -117,9 +117,13 @@ void KinectThresholder::getSkeleton(int index, KinectSkeleton &s) {
 	// stuff goes here
 
 	s.id = index;
-	s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y,0);
-	s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y,0);
-	
+	for(int i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+		s.points[i] = ofVec3f(skelly[index][i]);
+	}
+
+	//s.leftHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].x, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].y, skelly[index][NUI_SKELETON_POSITION_HAND_LEFT].z);
+	//s.rightHand = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].x, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].y, skelly[index][NUI_SKELETON_POSITION_HAND_RIGHT].z);
+	//s.head = ofVec3f(skelly[index][NUI_SKELETON_POSITION_HEAD].x, skelly[index][NUI_SKELETON_POSITION_HEAD].y, skelly[index][NUI_SKELETON_POSITION_HEAD].z);
 
 }
 #endif

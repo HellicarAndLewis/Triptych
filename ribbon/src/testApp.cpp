@@ -9,7 +9,7 @@ int iterations;
 float m;
 bool usingAdd = true;
 float maxImageSize, minImageSize;
-bool enlargeImage = true;
+bool drawWireframe = false;
 
 float trailWidth = 1;
 bool variableWidth = false;
@@ -42,16 +42,16 @@ void testApp::setup(){
 	gui.addSlider("m", m, 0, 0.01);
 	gui.addSlider("background alpha", backgroundAlpha, 0, 0.2);
 	gui.addSlider("image alpha", imageAlpha, 0, 0.2);
-	gui.addSlider("max image size", maxImageSize, 40, 1000);
+	gui.addSlider("max ribbon length", maxImageSize, 40, 1000);
 	gui.addSlider("min image size", minImageSize, 0, 100);
 	gui.addToggle("use additive", usingAdd);
-	gui.addToggle("enlarge image", enlargeImage);
+	gui.addToggle("drawWireframe", drawWireframe);
 
 	gui.addSlider("trail width", trailWidth, 0, 50);
 	gui.addToggle("variabe width", variableWidth);
 	gui.addSlider("variable factor", variableFactor, 0, 2);
 	gui.addToggle("use gravity", useGravity);
-	gui.addSlider("gravity factor", gravityFactor, 0, 2);
+	gui.addSlider("gravity factor", gravityFactor, 0, 0.1);
 	gui.addToggle("use fade", useFade);
 
 	gui.loadFromXML();
@@ -69,6 +69,26 @@ void testApp::setup(){
 	m = 0.00655;
 	backgroundAlpha = 0.085;
 	imageAlpha = 0.005;
+
+	colours.resize(3);
+
+		//reds
+		colours[0].push_back(ofFloatColor(1.0, 0.3, 0.16, 1));
+		colours[0].push_back(ofFloatColor(0.78, 0.0, 0.09, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.86, 0.75, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.0, 0.11, 1));
+
+		//greens
+		colours[1].push_back(ofFloatColor(0.0, 0.3, 0.05, 1));
+		colours[1].push_back(ofFloatColor(0.75, 0.9, 0.54, 1));
+		colours[1].push_back(ofFloatColor(0.46, 0.82, 0.19, 1));
+		colours[1].push_back(ofFloatColor(0.0, 0.7, 0.29, 1));
+
+		//yellows
+		colours[2].push_back(ofFloatColor(1.0, 0.53, 0.0, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.77, 0.0, 1));
+		colours[2].push_back(ofFloatColor(0.99, 0.98, 0.84, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.89, 0.0, 1));
 }
 
 
@@ -94,6 +114,7 @@ void testApp::updateFromSkeletons() {
 			// we have a new skeleton
 			skeletons[s.id] = RibbonSkeleton();
 			skeletons[s.id].setup(s);
+			skeletons[s.id].setColor(colours[((int) rand()) % colours.size()][((int) rand())%colours[0].size()]);
 			skeletons[s.id].alive = true;
 		} else {
 			// we have a skeleton to update.
@@ -117,8 +138,13 @@ void testApp::updateFromSkeletons() {
 			//deadRibbons.push_back((*it).second.ribbonLeft);
 			//deadRibbons.push_back((*it).second.ribbonRight);
 
-			delete (*it).second.leftBrush;
-			delete (*it).second.rightBrush;
+			//delete (*it).second.leftBrush;
+			//delete (*it).second.rightBrush;
+			//delete (*it).second.head;
+
+			for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+				delete (*it).second.ribbons[i];
+			}
 			
 			skeletons.erase(it++);
 			
