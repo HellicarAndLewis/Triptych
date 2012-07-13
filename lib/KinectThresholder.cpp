@@ -71,7 +71,6 @@ void KinectThresholder::setup(bool useSkellingtons) {
 }
 
 void KinectThresholder::setupGui() {
-	
 	gui.addContent("rgb", rgb);
 	gui.addContent("bg", background);
 	gui.addContent("depth", depth);
@@ -150,8 +149,6 @@ bool KinectThresholder::update() {
 
 		depth.setFromPixels(kinect.getDepthPixels(), VISION_WIDTH, VISION_HEIGHT);
 
-
-
 		if(learnBackground) {
 			learnBackground = false;
 			background = depth;
@@ -189,7 +186,7 @@ bool KinectThresholder::update() {
 		if(doingSkeleton) {
 			doSkeletons();
 		} else {
-			printf("Dropped frame\n");
+			//printf("Dropped frame\n");
 		}
 #endif
 		timer.stop();
