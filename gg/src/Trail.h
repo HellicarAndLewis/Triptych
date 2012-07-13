@@ -10,6 +10,23 @@
 
 #include "ofMain.h"
 
+class cNode : public ofNode {
+public:
+	void setColour(ofFloatColor c) { colour = c; }
+	ofFloatColor getColour() { return colour; }
+	
+	void setWidth(float w) { width = w; }
+	float getWidth() { return width; }
+	
+	void setVelocity(float v) { vel = v; }
+	
+	
+//private: fuck proper encapsulation...
+	ofFloatColor colour;
+	float width;
+	float vel;
+};
+
 
 class Trail {
 public:
@@ -21,20 +38,31 @@ public:
 	
 	void input(ofVec3f p);
 	
+	float z;
 	
 	
 	//put these here so they can be manipulated by the GUI
 	int trailMaxLength;
 	
-	int reductionSpeed;
+	float reductionSpeed;
 	float interpolationFactor;
 	
 	bool drawInfo, drawWireframe;
 	
 	float sineCounter, sineMultiplier, sineIncrement;
 	
+	float m;
+	float widthMultiplier;
+	bool inverseWidth;
+	int interpolationAmount;
+	
+	bool useVel;
+	
+	float width;
+	ofFloatColor colour;
+	
 private:
-	deque<ofNode> trail;
+	deque<cNode> trail;
 	
 	
 	ofVboMesh mesh;

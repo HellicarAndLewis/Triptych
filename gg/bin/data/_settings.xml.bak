@@ -1,24 +1,36 @@
 <controls>
     <SliderInt_trail_max_length>
         <name>trail max length</name>
-        <value>295</value>
+        <value>110</value>
     </SliderInt_trail_max_length>
-    <SliderInt_reduction_speed>
-        <name>reduction speed</name>
-        <value>10</value>
-    </SliderInt_reduction_speed>
+    <SliderFloat_reduction_factor>
+        <name>reduction factor</name>
+        <value>0.962</value>
+    </SliderFloat_reduction_factor>
     <SliderFloat_interpolation_factor>
         <name>interpolation factor</name>
-        <value>0.365</value>
+        <value>0.0435</value>
     </SliderFloat_interpolation_factor>
-    <SliderFloat_sine_multiplier>
-        <name>sine multiplier</name>
+    <SliderInt_interpolation_amount>
+        <name>interpolation amount</name>
+        <value>1</value>
+    </SliderInt_interpolation_amount>
+    <SliderFloat_trail_width>
+        <name>trail width</name>
+        <value>27.5</value>
+    </SliderFloat_trail_width>
+    <SliderFloat_width_multiplier>
+        <name>width multiplier</name>
         <value>0</value>
-    </SliderFloat_sine_multiplier>
-    <SliderFloat_sine_increment>
-        <name>sine increment</name>
-        <value>0.62</value>
-    </SliderFloat_sine_increment>
+    </SliderFloat_width_multiplier>
+    <Toggle_inverse_width>
+        <name>inverse width</name>
+        <value>1</value>
+    </Toggle_inverse_width>
+    <Toggle_use_velocity>
+        <name>use velocity</name>
+        <value>0</value>
+    </Toggle_use_velocity>
     <Toggle_draw_info>
         <name>draw info</name>
         <value>1</value>
@@ -27,4 +39,24 @@
         <name>draw wireframe</name>
         <value>0</value>
     </Toggle_draw_wireframe>
+    <SliderFloat_front_taper>
+        <name>front taper</name>
+        <value>75</value>
+    </SliderFloat_front_taper>
+    <SliderFloat_back_taper>
+        <name>back taper</name>
+        <value>48.5</value>
+    </SliderFloat_back_taper>
+    <Toggle_draw_pink>
+        <name>draw pink</name>
+        <value>1</value>
+    </Toggle_draw_pink>
+    <SliderInt_ribbon_length>
+        <name>ribbon length</name>
+        <value>195</value>
+    </SliderInt_ribbon_length>
+    <Toggle_fade_in_z>
+        <name>fade in z</name>
+        <value>0</value>
+    </Toggle_fade_in_z>
 </controls>

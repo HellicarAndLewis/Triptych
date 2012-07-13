@@ -41,18 +41,18 @@
     </SliderFloat_aoAmount>
     <SliderInt_iterations>
         <name>iterations</name>
-        <value>15</value>
+        <value>7</value>
     </SliderInt_iterations>
     <SliderFloat_m>
         <name>m</name>
-        <value>0.00655</value>
+        <value>0.003</value>
     </SliderFloat_m>
     <SliderFloat_alpha1>
         <name>alpha1</name>
-        <value>0.085</value>
+        <value>0.008</value>
     </SliderFloat_alpha1>
     <SliderFloat_alpha2>
         <name>alpha2</name>
-        <value>0.005</value>
+        <value>0.014</value>
     </SliderFloat_alpha2>
 </controls>
