@@ -99,7 +99,7 @@ void testApp::draw(){
 
 
 	room.draw();
-/*
+
 	bloom.begin();
 	glPushMatrix();
 	{
@@ -144,7 +144,7 @@ void testApp::draw(){
 	bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	glColor4f(1,1,1,1);
 	
-	*/
+	
 	glPushMatrix();
 	{
 		ofSetupScreen();
