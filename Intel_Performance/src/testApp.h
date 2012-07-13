@@ -8,6 +8,8 @@
 //#include "FlockController.h"
 #include "Bloom.h"
 
+#include "AudioSystem.h"
+
 class testApp : public ofBaseApp{
 
 public:
@@ -39,4 +41,7 @@ public:
 	
 
 	tricks::gl::effects::Bloom bloom;
+	
+	AudioSystem audioSystem;
+	bool showTimeProfiler;
 };
