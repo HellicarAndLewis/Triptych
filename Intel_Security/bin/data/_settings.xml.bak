@@ -1,15 +1,15 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>201.45</value>
+        <value>209.1</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>94.35</value>
+        <value>167.025</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>6</value>
+        <value>5</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
@@ -17,11 +17,11 @@
     </Toggle_learnBackground>
     <SliderInt_erosions>
         <name>erosions</name>
-        <value>2</value>
+        <value>0</value>
     </SliderInt_erosions>
     <SliderInt_dilations>
         <name>dilations</name>
-        <value>2</value>
+        <value>0</value>
     </SliderInt_dilations>
     <SliderInt_blurs>
         <name>blurs</name>
@@ -33,7 +33,7 @@
     </SliderInt_blurSize>
     <SliderInt_Border_Res>
         <name>Border Res</name>
-        <value>29</value>
+        <value>30</value>
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>

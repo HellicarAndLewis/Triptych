@@ -15,7 +15,7 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,input_mode(K_INPUT_NONE)
+	,input_mode(K_INPUT_KINECT)
 {
 }
 
@@ -45,7 +45,7 @@ void KinectInput::setup() {
 void KinectInput::setupInputFromKinect() {
 	kinect.setup();
 	kinect.setupGui();
-	kinect.setListener(this);
+	kinect.addListener(this);
 }
 
 bool KinectInput::update() {
