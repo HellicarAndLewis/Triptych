@@ -34,8 +34,10 @@
 class KinectSkeleton {
 public:
 	int id;
-	ofVec3f leftHand;
-	ofVec3f rightHand;
+	//ofVec3f leftHand;
+	//ofVec3f rightHand;
+	//ofVec3f head;
+	ofVec3f points[NUI_SKELETON_POSITION_COUNT];
 	KinectSkeleton() {
 	}
 };
