@@ -29,7 +29,10 @@
 #include "BoundBlobListener.h"
 #include "ofxBlobTracker.h"
 
-
+// @roxlu quick fix so I can use it on mac
+#ifndef NUI_SKELETON_POSITION_COUNT
+	#define NUI_SKELETON_POSITION_COUNT 10
+#endif
 
 class KinectSkeleton {
 public:
@@ -37,7 +40,9 @@ public:
 	//ofVec3f leftHand;
 	//ofVec3f rightHand;
 	//ofVec3f head;
+	
 	ofVec3f points[NUI_SKELETON_POSITION_COUNT];
+	
 	KinectSkeleton() {
 	}
 };

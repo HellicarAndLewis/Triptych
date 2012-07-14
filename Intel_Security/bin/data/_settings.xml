@@ -1,7 +1,55 @@
 <controls>
+    <SliderFloat_near_threshold>
+        <name>near threshold</name>
+        <value>242.25</value>
+    </SliderFloat_near_threshold>
+    <SliderFloat_far_threshold>
+        <name>far threshold</name>
+        <value>150.45</value>
+    </SliderFloat_far_threshold>
+    <SliderInt_hysteresis>
+        <name>hysteresis</name>
+        <value>19</value>
+    </SliderInt_hysteresis>
+    <Toggle_learnBackground>
+        <name>learnBackground</name>
+        <value>0</value>
+    </Toggle_learnBackground>
+    <SliderInt_erosions>
+        <name>erosions</name>
+        <value>0</value>
+    </SliderInt_erosions>
+    <SliderInt_dilations>
+        <name>dilations</name>
+        <value>0</value>
+    </SliderInt_dilations>
+    <SliderInt_blurs>
+        <name>blurs</name>
+        <value>0</value>
+    </SliderInt_blurs>
+    <SliderInt_blurSize>
+        <name>blurSize</name>
+        <value>1</value>
+    </SliderInt_blurSize>
+    <SliderInt_Border_Res>
+        <name>Border Res</name>
+        <value>36</value>
+    </SliderInt_Border_Res>
+    <SliderInt_Fill_Res>
+        <name>Fill Res</name>
+        <value>37</value>
+    </SliderInt_Fill_Res>
+    <Toggle_Per_Vertex_Colour>
+        <name>Per Vertex Colour</name>
+        <value>0</value>
+    </Toggle_Per_Vertex_Colour>
+    <SliderFloat_Edge_Colour_Sharpening>
+        <name>Edge Colour Sharpening</name>
+        <value>0</value>
+    </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>40.45</value>
+        <value>34.4</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
@@ -13,7 +61,7 @@
     </SliderFloat_CamY>
     <SliderFloat_CamZ>
         <name>CamZ</name>
-        <value>-3.3</value>
+        <value>-3.8</value>
     </SliderFloat_CamZ>
     <SliderFloat_LightX>
         <name>LightX</name>
@@ -25,7 +73,7 @@
     </SliderFloat_LightY>
     <SliderFloat_LightZ>
         <name>LightZ</name>
-        <value>-3.38</value>
+        <value>-3.56</value>
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>

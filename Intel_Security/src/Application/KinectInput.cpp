@@ -15,7 +15,7 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,input_mode(K_INPUT_NONE)
+	,input_mode(K_INPUT_KINECT)
 {
 }
 
@@ -45,7 +45,7 @@ void KinectInput::setup() {
 void KinectInput::setupInputFromKinect() {
 	kinect.setup();
 	kinect.setupGui();
-	kinect.setListener(this);
+	kinect.addListener(this);
 }
 
 bool KinectInput::update() {
@@ -117,8 +117,10 @@ void KinectInput::boundBlobEntered(const BoundBlob &blob) {
 }
 
 void KinectInput::boundBlobMoved(const BoundBlob &blob) {
-	float x = -0.5 + blob.left.x/640;
-	float y = 0.5 + -blob.left.y/480;
+//	printf("left: %f, %f\n", blob.left.x, blob.left.y);
+//	printf("right: %f, %f\n", blob.right.x, blob.right.y);
+	float x = -0.5 + blob.right.x/640;
+	float y = 0.5 + -blob.right.y/480;
 	
 	x *= settings.kinect_scale;
 	y *= settings.kinect_scale;

@@ -25,7 +25,7 @@ void KinectRecorder::addFrame(const KinectVertices& vertices, const vector<ofVec
 	f->vertices = vertices;
 	f->outline = outline;
 	frames.push_back(f);
-	printf("New kinect frame: %zu\n", frames.size());
+	printf("Recording new kinect frame: %zu\n", frames.size());
 }
 
 bool KinectRecorder::save(const std::string& filepath) {

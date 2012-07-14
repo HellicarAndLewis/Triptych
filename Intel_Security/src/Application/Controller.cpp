@@ -88,11 +88,48 @@ void Controller::update() {
 				Vec3 dir = point - b.position;
 				float ls = dir.lengthSquared();
 				
+		
+				int amode = -1;				
+				if(ls > settings.attract_to_user_radius) {
+					amode = 0;
+				}	
+				else if(ls < settings.repel_from_user_radius) {
+					amode = 1;
+				}
 
+				if(amode == 0) { 
+					// attract to point (user)
+					float len = dir.length();
+//					float F = 1.0f - (1.0/ls);
+					float F = 1.0f - (1.0/len);
+//					dir.normalize();
+					dir/=len;
+					dir *= F * settings.attract_to_user_energy;
+					b.addForce(dir);
+				}
+				else if(amode == 1) {
+					
+						float len = dir.length();
+//						float F = 1.0f/ls;	
+						float F = 1.0f/len;
+						dir /= len;
+//						dir.normalize();
+						dir *= F * settings.repel_from_user_energy;
+						dir *= -1;
+						b.addForce(dir);
+						
+					//}
+					//else {
+					//	b.attack_end = now-1;
+					//}
+				}
+
+				
+				/*
 				// added a swithch between modes... attract/repulse
 				int amode = 1;
 				if(amode == 0) { // testing with modes.
-					// attact to point.
+					// attract to point.
 					if(ls > 0.3f) {
 						float F = 1.0f - (1.0/ls);
 						dir.normalize();
@@ -115,6 +152,7 @@ void Controller::update() {
 						b.attack_end = now-1;
 					}
 				}
+				*/
 			}
 		}
 		else if(b.mode == B_MODE_ATTACK && b.attack_end < now) {

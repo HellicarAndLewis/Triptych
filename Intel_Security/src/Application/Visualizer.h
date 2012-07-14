@@ -4,6 +4,7 @@
 #include <roxlu/Roxlu.h>
 #include <pbd/PBD.h>
 
+#include <application/Settings.h> 
 #include <application/KinectInput.h>
 #include <application/Controller.h>
 #include <application/Visualizer.h>

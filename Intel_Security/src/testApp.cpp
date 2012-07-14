@@ -16,6 +16,7 @@ testApp::testApp()
 #ifdef USE_LIGHT_RAYS
 	,rays_gui("Rays", 300)
 #endif
+	,ia_gui("Interaction",400)
 
 {	
 }
@@ -61,15 +62,10 @@ void testApp::setup(){
 		flock_gui.addFloat("Boid trail width", settings.boid_trail_width).setMin(0.01f).setMax(2.1f);
 		flock_gui.addInt("Boid trail length", settings.boid_trail_length).setMin(0).setMax(30);
 		flock_gui.addBool("Boid create trails", settings.boid_create_trails);
-		flock_gui.addFloat("Boid attract to user energy", settings.attract_to_user_energy).setMin(0.00f).setMax(15.5f);
-		flock_gui.addFloat("Boid attract to user radius", settings.attract_to_user_radius).setMin(0.00f).setMax(15.0f);
-		flock_gui.addFloat("Boid attack energy", settings.boid_attack_energy).setMin(0.0f).setMax(2.1f);
-		flock_gui.addFloat("Boid attack duration min", settings.boid_attack_duration_min).setMin(0.0f).setMax(10000.0f);
-		flock_gui.addFloat("Boid attack duration max", settings.boid_attack_duration_max).setMin(0.0f).setMax(20000.0f);
-		flock_gui.addFloat("Boid attack delay min (ms)", settings.boid_attack_delay_min).setMin(0.0f).setMax(10000.0f);
-		flock_gui.addFloat("Boid attack delay max (ms)", settings.boid_attack_delay_max).setMin(0.0f).setMax(20000.0f);
 		flock_gui.addFloat("Boids: mix of normal in boid shader", settings.boid_shader_normal_mix).setMin(0.0f).setMax(1.0f);
 		flock_gui.addFloat("Boids: specular component (lower is more)", settings.boid_shader_specular).setMin(0.0f).setMax(10.0f);
+		flock_gui.addFloat("Boids: fog min", settings.boid_shader_fog_min).setMin(-30.0f).setMax(30.0f);
+		flock_gui.addFloat("Boids: fog max", settings.boid_shader_fog_max).setMin(-30.0f).setMax(30.0f);
 		flock_gui.addBool("Record kinect", settings.must_record_kinect);
 		flock_gui.addBool("Draw boid glows", settings.boid_draw_glows);
 		flock_gui.addBool("Draw grid", settings.draw_axis);
@@ -81,7 +77,6 @@ void testApp::setup(){
 		flock_gui.addFloat("Percentage of visible boids", settings.boids_percentage_visible).setMin(0.0f).setMax(1.0f).setColor(attack_col);
 		flock_gui.addFloat("Percentage of attack boids", settings.boids_percentage_attackers).setMin(0.0f).setMax(1.0f).setColor(attack_col);
 		flock_gui.addButton<testApp>("Update number of visible boids", 1, this).setColor(attack_col);
-		
 		flock_gui.load(ofToDataPath("gui.bin",true));
 
 		#ifdef USE_LIGHT_RAYS		
@@ -94,6 +89,15 @@ void testApp::setup(){
 			rays_gui.load(ofToDataPath("rays.bin",true));
 		#endif
 
+		ia_gui.addFloat("Boid repel from user ENERGY", settings.repel_from_user_energy).setMin(0.00f).setMax(1.0f);
+		ia_gui.addFloat("Boid repel from user RADIUS", settings.repel_from_user_radius).setMin(0.00f).setMax(15.0f);
+		ia_gui.addFloat("Boid attract to user ENERGY", settings.attract_to_user_energy).setMin(0.00f).setMax(1.0f);
+		ia_gui.addFloat("Boid attract to user RADIUS", settings.attract_to_user_radius).setMin(0.00f).setMax(15.0f);
+		ia_gui.addFloat("Boid attack duration min", settings.boid_attack_duration_min).setMin(0.0f).setMax(10000.0f);
+		ia_gui.addFloat("Boid attack duration max", settings.boid_attack_duration_max).setMin(0.0f).setMax(20000.0f);
+		ia_gui.addFloat("Boid attack delay min (ms)", settings.boid_attack_delay_min).setMin(0.0f).setMax(10000.0f);
+		ia_gui.addFloat("Boid attack delay max (ms)", settings.boid_attack_delay_max).setMin(0.0f).setMax(20000.0f);
+		ia_gui.load(ofToDataPath("ia.bin",true));
 		
 	#endif
 	
@@ -126,13 +130,14 @@ void testApp::operator()(const int n) {
 void testApp::update(){
 
 	if(show_gui) {
-			#ifdef USE_FLOCK_GUI	
-			flock_gui.update();
-			#endif
-			#ifdef USE_LIGHT_RAYS
-			rays_gui.update();
-			#endif
-		}
+		#ifdef USE_FLOCK_GUI	
+		flock_gui.update();
+		#endif
+		#ifdef USE_LIGHT_RAYS
+		rays_gui.update();
+		#endif
+		ia_gui.update();
+	}
 
 
 	#ifdef USE_APP
@@ -197,6 +202,7 @@ void testApp::draw(){
 			#ifdef USE_LIGHT_RAYS
 			rays_gui.draw();
 			#endif
+			ia_gui.draw();
 		}
 	
 
@@ -231,6 +237,7 @@ void testApp::keyPressed(int key){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.save(ofToDataPath("rays.bin",true));
 		#endif
+		ia_gui.save(ofToDataPath("ia.bin",true));
 	}
 	else if(key == 'l') {
 		#ifdef USE_FLOCK_GUI
@@ -239,6 +246,7 @@ void testApp::keyPressed(int key){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.load(ofToDataPath("rays.bin",true));
 		#endif
+		ia_gui.load(ofToDataPath("ia.bin",true));
 	}
 
 	else if(key == 'f') {
@@ -267,6 +275,7 @@ void testApp::mouseMoved(int x, int y){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.onMouseMoved(x,y);
 		#endif
+		ia_gui.onMouseMoved(x,y);
 	}
 
 }
@@ -281,6 +290,7 @@ void testApp::mouseDragged(int x, int y, int button){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.onMouseMoved(x,y);
 		#endif
+		ia_gui.onMouseMoved(x,y);
 	}
 
 	
@@ -299,6 +309,7 @@ void testApp::mousePressed(int x, int y, int button){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.onMouseDown(x,y);
 		#endif
+		ia_gui.onMouseDown(x,y);
 	}
 
 	
@@ -318,6 +329,7 @@ void testApp::mouseReleased(int x, int y, int button){
 		#ifdef USE_LIGHT_RAYS
 		rays_gui.onMouseUp(x,y);
 		#endif
+		ia_gui.onMouseUp(x,y);
 	}
 
 }

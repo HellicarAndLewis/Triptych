@@ -24,7 +24,7 @@ const std::string LR_FS = " \
 	uniform float u_weight; \
 	uniform float u_light_x; \
 	uniform float u_light_y; \
-	const int NUM_SAMPLES = 50; \
+	const int NUM_SAMPLES = 30; \
 	varying vec2 v_tex; \
 	void main() { \
 		if (u_mode == 0) { \
@@ -49,8 +49,6 @@ const std::string LR_FS = " \
 		\
 	} ";
 	
-//		gl_FragColor = vec4(1.0, 0.1, 0.1, 1.0); 
-
 struct LightRayVertex {
 	float pos[3];
 	float tex[2];

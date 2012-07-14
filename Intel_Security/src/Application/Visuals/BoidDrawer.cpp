@@ -58,7 +58,9 @@ void BoidDrawer::setup() {
 			.u("u_normal_matrix")
 			.u("u_texture")
 			.u("u_normal_mix")
-			.u("u_specular_component");
+			.u("u_specular_component")
+			.u("u_fog_max")
+			.u("u_fog_min");
 	vao.create();
 	vao.bind();
 	
@@ -110,7 +112,8 @@ void BoidDrawer::draw(const float* pm, const float* vm, const float* nm, const M
 		shader.uniformMat3fv("u_normal_matrix", nm);
 		shader.uniform1f("u_normal_mix", settings.boid_shader_normal_mix);
 		shader.uniform1f("u_specular_component", settings.boid_shader_specular);		
-
+		shader.uniform1f("u_fog_max", settings.boid_shader_fog_max);
+		shader.uniform1f("u_fog_min", settings.boid_shader_fog_min);
 		glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 
 		shader.disable();

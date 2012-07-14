@@ -62,7 +62,17 @@ void Visualizer::draw(
 	glEnable(GL_DEPTH_TEST);
 
 	glDepthMask(GL_TRUE);
+	
+	light_rays.bind();
+		kinect_drawer.draw(pm, vm);
+	light_rays.unbind();	
 	kinect_drawer.draw(pm, vm);
+	
+	#ifdef USE_LIGHT_RAYS
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
+	light_rays.draw();
+	#endif	
 	
 	glDepthMask(GL_FALSE);
 	if(settings.boid_draw_glows) {
@@ -70,9 +80,10 @@ void Visualizer::draw(
 	}
 
 #ifdef USE_LIGHT_RAYS	
-	light_rays.bind();
-		trails_drawer.draw(pm, vm);
-	light_rays.unbind();
+//	light_rays.bind();
+//		trails_drawer.draw(pm, vm);
+//	light_rays.unbind();
+	trails_drawer.draw(pm, vm);
 #else
 	trails_drawer.draw(pm, vm);
 #endif
@@ -85,13 +96,7 @@ void Visualizer::draw(
 	
 	
 //	glDepthMask(GL_TRUE);
-#ifdef USE_LIGHT_RAYS
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_ONE, GL_ONE);
-//	glDisable(GL_CULL_FACE);
-//	glDisable(GL_DEPTH_TEST);
-	light_rays.draw();
-#endif
+
 	
 
 	glDisable(GL_TEXTURE_2D);
@@ -221,8 +226,8 @@ void Visualizer::debugDraw() {
 	trails_drawer.debugDraw();
 	
 	// draw interactive points
-	glPointSize(5.0f);
-	glColor3f(1,0,0);
+	glPointSize(15.0f);
+	glColor3f(0,1,0.2);
 	glBegin(GL_POINTS);
 	for(int i = 0; i < kinect_input.interactive_points.size(); ++i) {
 		Vec3& p = kinect_input.interactive_points[i];
