@@ -3,6 +3,17 @@
 
 #define USE_LIGHT_RAYS
 
+/**
+Set the input mode for the input; during development we 
+used a "Fake" kinect one. Choose from:
+
+	- K_INPUT_NONE
+	- K_INPUT_RECORDING
+	- K_INPUT_KINECT
+*/
+#define KINECT_INPUT_MODE	K_INPUT_NONE
+
+
 struct Settings {
 	Settings()
 	//	:flocking_apply_perlin(true)
