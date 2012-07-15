@@ -4,6 +4,11 @@ TrailsDrawer::TrailsDrawer(Boids& flockPS)
 	:flock_ps(flockPS)
 	,allocated_bytes(0)
 {
+	trail_color[0] = 1.0f;
+	trail_color[1] = 0.0f;
+	trail_color[2] = 0.0f;
+	trail_color[3] = 1.0f;
+	
 }
 
 void TrailsDrawer::setup() {
@@ -20,7 +25,8 @@ void TrailsDrawer::setup() {
 			.u("u_modelview_matrix")
 			.u("u_texture")
 			.u("u_flow")
-			.u("u_time");
+			.u("u_time")
+			.u("u_trail_color");
 
 	shader.disable();
 	
@@ -56,7 +62,8 @@ void TrailsDrawer::draw(const float* pm, const float* vm) {
 	shader.enable();
 	shader.uniformMat4fv("u_projection_matrix", pm);
 	shader.uniformMat4fv("u_modelview_matrix", vm);
-	
+	shader.uniform4fv("u_trail_color", trail_color);
+
 	float time = Timer::millis() * 0.001;
 	shader.uniform1f("u_time", time);
 

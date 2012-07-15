@@ -17,6 +17,7 @@ public:
 	void update();
 	size_t getBytesNeeded();
 			
+	float trail_color[4];		
 	Boids& flock_ps;
 	Trails3PT trails;
 	VerticesPT vertices;
