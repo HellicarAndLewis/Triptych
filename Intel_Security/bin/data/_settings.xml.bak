@@ -1,11 +1,11 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>209.1</value>
+        <value>237.15</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>167.025</value>
+        <value>182.325</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
