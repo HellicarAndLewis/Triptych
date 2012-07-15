@@ -169,6 +169,7 @@ void LightRays::unbind() {
 void LightRays::draw() {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 	glDrawBuffer(GL_COLOR_ATTACHMENT1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(0,0,this->dw,this->dh);
 	
 	// bind
@@ -180,14 +181,14 @@ void LightRays::draw() {
 		#error Don't now how to draw on your machine (1)
 	#endif
 	
-	//glDisable(GL_DEPTH_TEST);
-	//glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
 		
 	// set shader vars.
 	glUseProgram(prog);
 	glEnable(GL_TEXTURE_2D);
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, fx_tex);
+	glBindTexture(GL_TEXTURE_2D, tex);
 	glUniform1i(glGetUniformLocation(prog, "u_texture"), 1);
 	glUniform1f(glGetUniformLocation(prog, "u_exposure"), exposure);
 	glUniform1f(glGetUniformLocation(prog, "u_decay"), decay);

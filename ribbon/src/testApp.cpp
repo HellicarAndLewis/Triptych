@@ -1,7 +1,5 @@
 #include "testApp.h"
-
 #include "ofxSimpleGuiToo.h"
-
 #include "ofxKinectNuiDraw.h"
 
 
@@ -18,16 +16,21 @@ bool useGravity = false;
 float gravityFactor = 0.1;
 bool useFade = false;
 
+float frontTaper, backTaper;
+bool drawPink;
+int ribbonLength;
+bool fadeInZ;
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	bloom.setup(true);
+	bloom.setup(false);
 	room.setup(640.f/480.f);
 	
 	
 	gui.addPage("Program");
-	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+	//ofSetVerticalSync(true);
+	ofSetFrameRate(30);
 	kinect.setup(true);
 	kinect.setupGui();
 	room.setupGui();	
@@ -53,6 +56,13 @@ void testApp::setup(){
 	gui.addToggle("use gravity", useGravity);
 	gui.addSlider("gravity factor", gravityFactor, 0, 0.1);
 	gui.addToggle("use fade", useFade);
+
+	gui.addTitle("new");
+	gui.addSlider("front taper", frontTaper, 0, 100);
+	gui.addSlider("back taper", backTaper, 0, 100);
+	gui.addToggle("draw pink", drawPink);
+	gui.addSlider("ribbon length", ribbonLength, 0, 500);
+	gui.addToggle("fade in z", fadeInZ);
 
 	gui.loadFromXML();
 	gui.setAutoSave(true);
@@ -180,7 +190,7 @@ void testApp::update() {
 
 	
 	
-	//ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
+	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 	
 	
 	room.update();
@@ -189,6 +199,7 @@ void testApp::update() {
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
 
 	ofBackground(0);
 	
@@ -211,9 +222,9 @@ void testApp::draw(){
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			ofSetHexColor(0xFFFFFF);
 
-			for(int i = 0; i < meshes.size(); i++) {
-				meshes[i].draw();
-			}
+			//for(int i = 0; i < meshes.size(); i++) {
+			//	meshes[i].draw();
+			//}
 
 
 
@@ -234,10 +245,14 @@ void testApp::draw(){
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			}*/
 
+			bloom.begin();
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
+
+			bloom.amount = ofMap(mouseX, 0, ofGetWidth(), 0, 1, true);
+			bloom.end();
 	
 			/*brushFbo.end();
 

@@ -47,6 +47,7 @@ class testApp : public ofBaseApp{
 #ifdef USE_LIGHT_RAYS
 		buttons::Buttons rays_gui;
 #endif
+		buttons::Buttons ia_gui; // InterAction gui
 
 		Room room;
 };

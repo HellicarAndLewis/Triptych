@@ -50,6 +50,7 @@ protected:
 private:
 	int numSkeletons;
 	const ofPoint *skeletonPoints[MAX_NUM_SKELS];
+	const ofPoint *newSkeletonPoints[MAX_NUM_SKELS];
 	unsigned char *depth;
 	unsigned char *rgb;
 	
