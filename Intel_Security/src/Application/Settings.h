@@ -13,7 +13,7 @@ used a "Fake" kinect one. Choose from:
 	- K_INPUT_RECORDING
 	- K_INPUT_KINECT
 */
-#define KINECT_INPUT_MODE	K_INPUT_NONE
+#define KINECT_INPUT_MODE	K_INPUT_KINECT
 
 
 struct Settings {
