@@ -60,8 +60,9 @@ Security visualization. You can use the following keys in the application:
   - **Boid attack delay max (ms)**: See min. *Default value: 1533.xxx*
   
   
-  ## Code settings
-  See Application/Settings.h for some other settings (i.e. what kind of kinect input!)
+  ## Code and compiler settings
+  - See Application/Settings.h for some other settings (i.e. what kind of kinect input!)
+  - In MSVC++ you need to make sure that the kinect sdk libraries can be found. Change the linker settings and header search paths so the point to the kinect SDK. Somewhere in **C:\Program Files\Microsoft SDKs\Kinect\v1.5\**
   
   
   
