@@ -66,6 +66,7 @@ void testApp::setup(){
 		flock_gui.addFloat("Boids: specular component (lower is more)", settings.boid_shader_specular).setMin(0.0f).setMax(10.0f);
 		flock_gui.addFloat("Boids: fog min", settings.boid_shader_fog_min).setMin(-30.0f).setMax(30.0f);
 		flock_gui.addFloat("Boids: fog max", settings.boid_shader_fog_max).setMin(-30.0f).setMax(30.0f);
+		flock_gui.addColor("Boids trail color", app.viz.trails_drawer.trail_color);
 		flock_gui.addBool("Record kinect", settings.must_record_kinect);
 		flock_gui.addBool("Draw boid glows", settings.boid_draw_glows);
 		flock_gui.addBool("Draw grid", settings.draw_axis);
