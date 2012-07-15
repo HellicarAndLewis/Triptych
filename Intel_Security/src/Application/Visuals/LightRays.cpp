@@ -143,7 +143,13 @@ void LightRays::setup(int w, int h) {
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(LightRayVertex), (GLvoid*)offsetof(LightRayVertex, tex));
 	
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+#ifdef _WIN32
+	glBindVertexArray(0);
+#elif define(__APPLE__)
 	glBindVertexArrayAPPLE(0);
+#else
+#error Cannot compile LightRays on this OS
+#endif
 }
 
 void LightRays::resize(int w, int h) {

@@ -87,6 +87,7 @@ void testApp::setup(){
 			rays_gui.addFloat("Light.X", app.viz.light_rays.light_x).setMin(-1.0f).setMax(1.0f);
 			rays_gui.addFloat("Light.Y", app.viz.light_rays.light_y).setMin(-1.0f).setMax(1.0f);
 			rays_gui.load(ofToDataPath("rays.bin",true));
+	//		rays_gui.setPosition(300,300);
 		#endif
 
 		ia_gui.addFloat("Boid repel from user ENERGY", settings.repel_from_user_energy).setMin(0.00f).setMax(1.0f);

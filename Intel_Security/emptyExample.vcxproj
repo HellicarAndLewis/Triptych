@@ -58,7 +58,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\MicrosoftSDKs\Kinect\v1.0\inc;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\Microsoft SDKs\Kinect\v1.5\inc;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -69,7 +69,7 @@
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalDependencies>Kinect10.lib;zlibd.lib;opencv_calib3d231d.lib;opencv_flann231d.lib;opencv_contrib231d.lib;opencv_features2d231d.lib;opencv_core231d.lib;opencv_gpu231d.lib;opencv_haartraining_engined.lib;opencv_highgui231d.lib;opencv_ml231d.lib;opencv_imgproc231d.lib;opencv_objdetect231d.lib;opencv_legacy231d.lib;opencv_video231d.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\MicrosoftSDKs\Kinect\v1.0\lib\x86;C:\Users\roxlu\Documents\intel\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Kinect\v1.5\lib\x86;C:\Users\roxlu\Documents\intel\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -147,7 +147,6 @@
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Element.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Radio.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Slider.cpp" />
-    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Storage.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Toggle.cpp" />
     <ClCompile Include="..\addons\roxlu\addons\PolyTri\lib\common\shapes.cc" />
@@ -218,6 +217,7 @@
     <ClCompile Include="src\Application\Visualizer.cpp" />
     <ClCompile Include="src\Application\Visuals\BoidDrawer.cpp" />
     <ClCompile Include="src\Application\Visuals\KinectDrawer.cpp" />
+    <ClCompile Include="src\Application\Visuals\LightRays.cpp" />
     <ClCompile Include="src\Application\Visuals\TrailsDrawer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
@@ -310,6 +310,7 @@
     <ClInclude Include="src\Application\Visualizer.h" />
     <ClInclude Include="src\Application\Visuals\BoidDrawer.h" />
     <ClInclude Include="src\Application\Visuals\KinectDrawer.h" />
+    <ClInclude Include="src\Application\Visuals\LightRays.h" />
     <ClInclude Include="src\Application\Visuals\Trail.h" />
     <ClInclude Include="src\Application\Visuals\Trails.h" />
     <ClInclude Include="src\Application\Visuals\TrailsDrawer.h" />

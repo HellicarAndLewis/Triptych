@@ -364,8 +364,8 @@
     <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
       <Filter>src\lib\marekstricks</Filter>
     </ClCompile>
-    <ClCompile Include="..\addons\roxlu\addons\Buttons\src\buttons\Spline.cpp">
-      <Filter>src\addons\buttons</Filter>
+    <ClCompile Include="src\Application\Visuals\LightRays.cpp">
+      <Filter>src\Application\Visuals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -736,6 +736,9 @@
     </ClInclude>
     <ClInclude Include="..\lib\marektricks\TimeProfiler.h">
       <Filter>src\lib\marekstricks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application\Visuals\LightRays.h">
+      <Filter>src\Application\Visuals</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

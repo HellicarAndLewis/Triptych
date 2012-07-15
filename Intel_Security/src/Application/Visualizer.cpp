@@ -62,10 +62,13 @@ void Visualizer::draw(
 	glEnable(GL_DEPTH_TEST);
 
 	glDepthMask(GL_TRUE);
-	
+
+#ifdef USE_LIGHT_RAYS
 	light_rays.bind();
 		kinect_drawer.draw(pm, vm);
 	light_rays.unbind();	
+#endif
+
 	kinect_drawer.draw(pm, vm);
 	
 	#ifdef USE_LIGHT_RAYS
