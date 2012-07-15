@@ -176,6 +176,7 @@
     <ClCompile Include="..\lib\marektricks\TimeProfiler.cpp">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="src\Ribbon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h" />
@@ -403,6 +404,7 @@
     <ClInclude Include="..\lib\marektricks\TimeProfiler.h">
       <Filter>lib</Filter>
     </ClInclude>
+    <ClInclude Include="src\Ribbon.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="addons">

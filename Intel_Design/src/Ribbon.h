@@ -1,52 +1,56 @@
-/*
- *  Ribbon.h
- *  ribbon
- *
- *  Created by Joel Lewis on 28/06/2012.
- *  Copyright 2012 Hellicar & Lewis. All rights reserved.
- *
- */
+//
+//  Ribbon.h
+//  gg
+//
+//  Created by Will Gallia on 13/07/2012.
+//  Copyright (c) 2012 . All rights reserved.
+//
+
 
 #pragma once
 #include "ofMain.h"
-#include "ofxBullet.h"
+
+
+extern float frontTaper;
+extern float backTaper;
+extern bool drawPink;
+extern int ribbonLength;
+extern bool fadeInZ;
+
+class RibbonSegment : public ofNode {
+public:
+//	void set(RibbonSegment *seg) {
+//		set
+//	}
+	
+	void update(RibbonSegment nextSegment) {
+		setPosition(getPosition() + (nextSegment.getPosition() - getPosition()) * 0.05);
+	}
+};
+
 
 class Ribbon {
-
 public:
-	Ribbon();
-	Ribbon(int nNodes, ofCamera *cam, ofxBulletWorldRigid *world);
+	Ribbon(ofVec3f p);
 	~Ribbon();
 	
-	void update();
+	void update(ofVec3f p);
 	void draw();
+	RibbonSegment head;
+
 	
-	ofxBulletWorldRigid *world;
-	void setAnchorPoint(ofVec3f p);
+	deque<RibbonSegment*> segments;
 	
-	ofVec3f getAnchorPoint();
+	float maxThickness;
+	float minThickness;
 	
-	vector<ofxBulletBox*> nodes;
-	vector<ofxBulletJoint*> joints;
-	
-	ofMesh mesh;
-	vector<ofVec3f> points;
-	vector<ofVec4f> refPoints;
-	
-	ofImage img;
-	ofTexture tex;
-	
-	float width;
-	
+	ofFloatColor colour;
+	void setColour(ofFloatColor c) { colour = c; }
+
+	ofVboMesh mesh;
+
 protected:
-	int nNodes;
+	float lastUpdate;
 	
-	btGeneric6DofConstraint  *anchorPoint;
-	
-	
-private:
-	void setupAnchorPoint();
-	
-	
-	ofMaterial material;
 };
+
