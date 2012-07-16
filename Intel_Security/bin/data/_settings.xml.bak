@@ -9,7 +9,7 @@
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>15</value>
+        <value>4</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
@@ -81,10 +81,10 @@
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.485</value>
+        <value>0.04</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.125</value>
+        <value>0.12</value>
     </SliderFloat_aoAmount>
 </controls>

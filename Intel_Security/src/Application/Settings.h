@@ -1,7 +1,7 @@
 #ifndef ROXLU_APPSETTINGSH
 #define ROXLU_APPSETTINGSH
 
-#ifndef _WIN32
+#ifdef _WIN32
 #define USE_LIGHT_RAYS
 #endif
 
