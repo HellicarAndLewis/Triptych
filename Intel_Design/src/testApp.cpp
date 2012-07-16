@@ -8,6 +8,10 @@ float frontTaper, backTaper;
 bool drawPink;
 int ribbonLength;
 bool fadeInZ;
+bool useBloom;
+
+float fadeSpeed;
+float colourSpeed = 0.01;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -28,7 +32,7 @@ void testApp::setup(){
 	KinectMesh::setupGui();
 	gui.addSlider("bloom amount", bloom.amount, 0, 2);
 	gui.addSlider("bloom brightness", bloom.brightness, 0, 2);
-
+	gui.addToggle("use bloom", useBloom);
 
 	gui.addTitle("new");
 	gui.addSlider("front taper", frontTaper, 0, 100);
@@ -36,6 +40,10 @@ void testApp::setup(){
 	gui.addToggle("draw pink", drawPink);
 	gui.addSlider("ribbon length", ribbonLength, 0, 500);
 	gui.addToggle("fade in z", fadeInZ);
+
+	fadeSpeed = 0.05;
+	gui.addSlider("fade speed", fadeSpeed, 0, 0.5);
+	gui.addSlider("colour speed", colourSpeed, 0, 5);
 
 	gui.loadFromXML();
 	gui.setAutoSave(true);
@@ -48,8 +56,9 @@ void testApp::setup(){
 	ofClear(0, 0, 0, 1);
 	brushFbo.end();
 
-
-	//these are the four colours in the colour pallette
+	currentRibbonColour.setHsb(0, 255, 255, 255);
+	colourRotator = 0;
+		//these are the four colours in the colour pallette
 	colours.resize(3);
 
 		//reds
@@ -94,7 +103,8 @@ void testApp::updateFromSkeletons() {
 			// we have a new skeleton
 			skeletons[s.id] = RibbonSkeleton();
 			skeletons[s.id].setup(s);
-			skeletons[s.id].setColor(colours[((int) rand()) % colours.size()][((int) rand())%colours[0].size()]);
+			//skeletons[s.id].setColor(colours[((int) rand()) % colours.size()][((int) rand())%colours[0].size()]);
+			skeletons[s.id].setColor(currentRibbonColour);
 			skeletons[s.id].alive = true;
 		} else {
 			// we have a skeleton to update.
@@ -114,19 +124,39 @@ void testApp::updateFromSkeletons() {
 		
 		if(!(*it).second.alive) {
 			
-			//instead of just removeing, shall we fade the existing ones????
-			for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
-				delete (*it).second.ribbons[i];
+			//instead of just removing, shall we fade the existing ones????
+			for (int  i = 0; i < (*it).second.ribbons.size(); i++) {
+				//delete (*it).second.ribbons[i];
+				deadRibbons.push_back((*it).second.ribbons[i]);
 			}
 			
 			skeletons.erase(it++);
 			
 		}
+
 		else {
 			++it;
 		}
 	}
-	
+
+	//vector<Ribbon*>::iterator vit = deadRibbons.begin();
+	////while(vit != deadRibbons.end()) {
+	for(int i = 0; i < deadRibbons.size(); i++) {
+
+		Ribbon *ribbon = deadRibbons[i];
+		if (ribbon->baseAlpha < 1) {
+			ribbon->baseAlpha += fadeSpeed;
+		}
+		else {
+			delete ribbon;
+			deadRibbons.erase(deadRibbons.begin()+i);
+			i--;
+		}
+	}
+
+
+	currentRibbonColour.setHue(colourRotator+=colourSpeed);
+	if (colourRotator > 255) colourRotator = 0;
 }
 
 //--------------------------------------------------------------
@@ -169,8 +199,6 @@ void testApp::draw(){
 	ofBackground(0);
 	
 	ofEnableAlphaBlending();
-	
-
 
 	room.draw();
 
@@ -192,8 +220,6 @@ void testApp::draw(){
 			//}
 
 
-
-
 			/*brushFbo.begin();
 	
 			ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -210,13 +236,17 @@ void testApp::draw(){
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			}*/
 
-			bloom.begin();
+			if(useBloom) bloom.begin();
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
 
-			bloom.end();
+			for(int i = 0; i < deadRibbons.size(); i++) {
+				deadRibbons[i]->draw();
+			}
+
+			if(useBloom) bloom.end();
 	
 			/*brushFbo.end();
 

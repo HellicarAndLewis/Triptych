@@ -97,4 +97,7 @@ public:
 	float backgroundAlpha, imageAlpha;
 	
 	vector< vector<ofFloatColor> > colours;
+
+	ofColor currentRibbonColour;
+	float colourRotator;
 };

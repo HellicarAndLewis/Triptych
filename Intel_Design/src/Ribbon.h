@@ -49,6 +49,8 @@ public:
 
 	ofVboMesh mesh;
 
+	float baseAlpha;
+
 protected:
 	float lastUpdate;
 	

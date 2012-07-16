@@ -17,68 +17,16 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_bloom_amount>
         <name>bloom amount</name>
-        <value>0.483398</value>
+        <value>0.737305</value>
     </SliderFloat_bloom_amount>
     <SliderFloat_bloom_brightness>
         <name>bloom brightness</name>
         <value>1.15</value>
     </SliderFloat_bloom_brightness>
-    <SliderInt_iterations>
-        <name>iterations</name>
-        <value>15</value>
-    </SliderInt_iterations>
-    <SliderFloat_m>
-        <name>m</name>
-        <value>0.00655</value>
-    </SliderFloat_m>
-    <SliderFloat_background_alpha>
-        <name>background alpha</name>
-        <value>0.085</value>
-    </SliderFloat_background_alpha>
-    <SliderFloat_image_alpha>
-        <name>image alpha</name>
-        <value>0.005</value>
-    </SliderFloat_image_alpha>
-    <SliderFloat_max_ribbon_length>
-        <name>max ribbon length</name>
-        <value>558.4</value>
-    </SliderFloat_max_ribbon_length>
-    <SliderFloat_min_image_size>
-        <name>min image size</name>
-        <value>8.5</value>
-    </SliderFloat_min_image_size>
-    <Toggle_use_additive>
-        <name>use additive</name>
-        <value>0</value>
-    </Toggle_use_additive>
-    <Toggle_drawWireframe>
-        <name>drawWireframe</name>
-        <value>0</value>
-    </Toggle_drawWireframe>
-    <SliderFloat_trail_width>
-        <name>trail width</name>
-        <value>14.5</value>
-    </SliderFloat_trail_width>
-    <Toggle_variabe_width>
-        <name>variabe width</name>
+    <Toggle_use_bloom>
+        <name>use bloom</name>
         <value>1</value>
-    </Toggle_variabe_width>
-    <SliderFloat_variable_factor>
-        <name>variable factor</name>
-        <value>0.56</value>
-    </SliderFloat_variable_factor>
-    <Toggle_use_gravity>
-        <name>use gravity</name>
-        <value>1</value>
-    </Toggle_use_gravity>
-    <SliderFloat_gravity_factor>
-        <name>gravity factor</name>
-        <value>0.0055</value>
-    </SliderFloat_gravity_factor>
-    <Toggle_use_fade>
-        <name>use fade</name>
-        <value>1</value>
-    </Toggle_use_fade>
+    </Toggle_use_bloom>
     <SliderFloat_front_taper>
         <name>front taper</name>
         <value>62</value>
@@ -99,4 +47,12 @@
         <name>fade in z</name>
         <value>1</value>
     </Toggle_fade_in_z>
+    <SliderFloat_fade_speed>
+        <name>fade speed</name>
+        <value>0.04</value>
+    </SliderFloat_fade_speed>
+    <SliderFloat_colour_speed>
+        <name>colour speed</name>
+        <value>0.116</value>
+    </SliderFloat_colour_speed>
 </controls>
