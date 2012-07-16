@@ -8,7 +8,7 @@
 #include "Bloom.h"
 #include "Ribbon.h"
 #include "NuiSensor.h"
-
+#include "AudioSystem.h"
 
 class RibbonSkeleton {
 public:
@@ -67,7 +67,7 @@ public:
 	void setup();
 	void update();
 	void draw();
-
+	AudioSystem audioSystem;
 	void keyPressed  (int key);
 	void keyReleased(int key);
 	void mouseMoved(int x, int y );
