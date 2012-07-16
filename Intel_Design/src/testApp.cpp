@@ -278,7 +278,7 @@ void testApp::draw(){
 	}
 	glPopMatrix();
 	
-	
+	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 10);
 	//	output.getTextureReference(0).unbind();
 }
 

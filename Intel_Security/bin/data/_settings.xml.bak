@@ -5,7 +5,7 @@
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>177.225</value>
+        <value>65.025</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>

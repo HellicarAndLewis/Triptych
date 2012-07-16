@@ -49,7 +49,7 @@
     </Toggle_fade_in_z>
     <SliderFloat_fade_speed>
         <name>fade speed</name>
-        <value>0.04</value>
+        <value>0.0125</value>
     </SliderFloat_fade_speed>
     <SliderFloat_colour_speed>
         <name>colour speed</name>
