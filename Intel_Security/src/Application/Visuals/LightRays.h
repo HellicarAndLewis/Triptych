@@ -28,21 +28,23 @@ const std::string LR_FS = " \
 	varying vec2 v_tex;\n \
 	void main() {\n \
 		if (u_mode == 0) {\n \
+			/*gl_FragColor = texture2D(u_texture, v_tex); */ \
+			gl_FragColor.rgb = vec3(0.0, 0.0, 0.0); \
 			vec2 pos_on_screen = vec2(u_light_x, u_light_y);\n \
 			vec2 delta_texc = vec2(v_tex.st - pos_on_screen.xy);\n \
 			vec2 texc = v_tex; \n\
 			delta_texc *= 1.0 / float(NUM_SAMPLES) * u_density;\n \
 			float illum_decay = 1.0;\n \
 			for(int i = 0; i < NUM_SAMPLES; i++) {\n \
-				texc -= delta_texc; \n\
+				texc -= delta_texc;  \n\
 				vec4 sample = texture2D(u_texture, texc);\n \
 				sample *= illum_decay * u_weight; \n\
 				gl_FragColor += sample; \n\
-				gl_FragColor = clamp(gl_FragColor, 0.0, 1.0); \n \
+				/*gl_FragData[0] += sample; */ \
 				illum_decay *= u_decay; \n\
 			}\n \
-			gl_FragColor *= u_exposure; \n\
-			/*gl_FragColor = texture2D(u_texture, vec2(v_tex.x * 1.25, v_tex.y * 1.25));*/ \
+			gl_FragColor *= u_exposure; \n  \
+			/*gl_FragData[0] *= u_exposure; */\n\
 		} \n\
 		else if(u_mode == 1) { \n\
 			gl_FragColor = texture2D(u_texture, v_tex);\n \

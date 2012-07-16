@@ -30,9 +30,9 @@
 #include "ofxBlobTracker.h"
 
 // @roxlu quick fix so I can use it on mac
-#ifndef NUI_SKELETON_POSITION_COUNT
-	#define NUI_SKELETON_POSITION_COUNT 10
-#endif
+//#ifndef NUI_SKELETON_POSITION_COUNT
+//	#define NUI_SKELETON_POSITION_COUNT 10
+//#endif
 
 class KinectSkeleton {
 public:

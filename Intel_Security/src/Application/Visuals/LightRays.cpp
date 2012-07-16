@@ -157,6 +157,8 @@ void LightRays::resize(int w, int h) {
 void LightRays::bind() {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 	glDrawBuffer(GL_COLOR_ATTACHMENT0);
+//	GLenum bfs[] = {GL_COLOR_ATTACHMENT0};
+	//glDrawBuffers(1, bfs);
 	glViewport(0,0,this->dw,this->dh);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -170,7 +172,11 @@ void LightRays::unbind() {
 
 void LightRays::draw() {
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+//	int bfs = {GL_COLOR_ATTACHMENT1};
 	glDrawBuffer(GL_COLOR_ATTACHMENT1);
+//	GLenum bfs[] = {GL_COLOR_ATTACHMENT1};
+//	glDrawBuffers(1, bfs);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(0,0,this->dw,this->dh);
 	
