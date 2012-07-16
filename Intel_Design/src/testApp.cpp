@@ -18,7 +18,7 @@ void testApp::setup(){
 	
 	bloom.setup(false);
 	room.setup(640.f/480.f);
-	
+	audioSystem.setup("design", kinect);
 	
 	gui.addPage("Program");
 	//ofSetVerticalSync(true);
@@ -179,6 +179,7 @@ void testApp::update() {
 		//	meshes.pop_back();
 		//}
 		updateFromSkeletons();
+		kinect.trackBlobs();
 	}
 
 	//printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);

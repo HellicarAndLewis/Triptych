@@ -82,6 +82,11 @@ void testApp::update() {
 	
 	room.update();
 	//ofDisableSetupScreen();
+	if(gui.isOn()) {
+		ofShowCursor();
+	} else {
+		ofHideCursor();
+	}
 }
 
 float lastTimeShaderLoaded = 0;
