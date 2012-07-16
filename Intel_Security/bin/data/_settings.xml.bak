@@ -1,15 +1,15 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>215.475</value>
+        <value>249.9</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>90.525</value>
+        <value>113.475</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>10</value>
+        <value>3</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
