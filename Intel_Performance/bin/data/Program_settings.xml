@@ -61,14 +61,14 @@
     </SliderFloat_LightZ>
     <SliderFloat_Ambient>
         <name>Ambient</name>
-        <value>0.815</value>
+        <value>0.015</value>
     </SliderFloat_Ambient>
     <SliderFloat_Diffuse>
         <name>Diffuse</name>
-        <value>0.395</value>
+        <value>0.035</value>
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.775</value>
+        <value>0.23</value>
     </SliderFloat_aoAmount>
 </controls>
