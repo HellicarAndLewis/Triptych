@@ -9,7 +9,8 @@
 #include "Ribbon.h"
 
 Ribbon::Ribbon(ofVec3f p):
-minThickness(5) {
+minThickness(5),
+baseAlpha(0) {
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	mesh.enableColors();
 #ifdef NORMALS	
@@ -105,6 +106,7 @@ void Ribbon::draw() {
 		
 		colour.a = ((float) i ) /segments.size();
 		
+		colour.a-= baseAlpha;
 
 		mesh.addVertex(bottomPoint);
 		mesh.addColor(colour);

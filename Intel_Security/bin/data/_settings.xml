@@ -5,11 +5,11 @@
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>113.475</value>
+        <value>177.225</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>3</value>
+        <value>15</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
