@@ -113,10 +113,6 @@ void LightRays::setup(int w, int h) {
 	// ++++++++++++++++++++++++++++++++++++++
 	LightRayVertex verts[4];
 	float s = 1.0f;
-//	verts[0].set(-s, s, 0, 0, 0);
-//	verts[1].set( s, s, 0, 1, 0);
-//	verts[2].set( s,-s, 0, 1, 1);
-//	verts[3].set(-s,-s, 0, 0, 1);
 	verts[0].set(-s, s, 0, 0, 1);
 	verts[1].set( s, s, 0, 1, 1);
 	verts[2].set( s,-s, 0, 1, 0);
