@@ -16,6 +16,7 @@
 KinectInput::KinectInput()
 	:is_updated(false)
 	,input_mode(KINECT_INPUT_MODE)
+	,num_blobs(0)
 {
 }
 
@@ -114,6 +115,7 @@ bool KinectInput::update() {
 
 
 void KinectInput::boundBlobEntered(const BoundBlob &blob) {
+	num_blobs++;
 }
 
 void KinectInput::boundBlobMoved(const BoundBlob &blob) {
@@ -129,7 +131,7 @@ void KinectInput::boundBlobMoved(const BoundBlob &blob) {
 }
 
 void KinectInput::boundBlobExited(const BoundBlob &blob) {
-	
+	num_blobs--;
 }
 
 

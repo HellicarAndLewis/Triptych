@@ -63,7 +63,20 @@ void Controller::update() {
 	// check if we need to activate some attackers.
 	uint64_t now = Timer::millis();
 	size_t num_points = kinect_input.interactive_points.size();
-	if(num_points == 0) {
+
+	if(num_points == 0 || kinect_input.num_blobs <= 0) {
+		// reset boids which are still in attack mode, but no blobs are in the scene.
+		for(Boids::iterator it = attackers.begin(); it != attackers.end(); ++it) {
+			Boid& b = **it;
+			if(!b.is_visible) {
+				continue;
+			}
+			if(b.mode == B_MODE_ATTACK && b.attack_end < now) {
+				b.mode = B_MODE_DEFAULT;
+				b.attack_end = 0;
+				b.attack_delay = now + random(settings.boid_attack_delay_min, settings.boid_attack_delay_max);
+			}
+		}
 		return;
 	}
 	

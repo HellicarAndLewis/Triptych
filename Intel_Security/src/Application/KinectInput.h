@@ -45,6 +45,7 @@ public:
 	bool is_updated;
 	int input_mode;
 	vector<roxlu::Vec3> interactive_points;
+	int num_blobs; // number of active blobs in the scene
 private:
 	void setupInputFromKinect();
 };
