@@ -8,6 +8,7 @@
 #include "ofMain.h"
 //#include "ofxPd.h"
 #include "KinectThresholder.h"
+#include "ofxOsc.h"
 
 class AudioSystem: public ofBaseApp, public BoundBlobListener {
 public:
@@ -45,5 +46,6 @@ public:
 	
 	void audioOut(float *buff, int buffSize, int channels);
 private:
+	ofxOscSender osc;
 	//ofxPd *pd;
 };
