@@ -27,27 +27,16 @@ void AudioSystem::boundBlobExited(const BoundBlob &blob) {
 
 void AudioSystem::setup(string appName, KinectThresholder &kinect) {
 	kinect.addListener(this);
-	
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	int ticksPerBuffer = 8;
-	/*pd = new ofxPd();
-	if(!pd->init(2, 0, 44100, ticksPerBuffer)) {
-		printf("Could not start ofxPd!\n");
-	} else {
-		printf("Running ofxPd\n");
-	}
-	
-	pd->openPatch("../../../pd/"+appName+".pd");
-	pd->start();
-	// make sure to start the background loop
-	pd->sendFloat("panBg", 0.5);
-	pd->sendFloat("onBg", 1.0);
-	
+	osc.setup("localhost", 12345);
 
-	ofSoundStreamSetup(2, 0, this, 44100, ofxPd::blockSize()*ticksPerBuffer, 3);
-	printf("AudioSystem::setup()\n");
+	
+	ofxOscMessage m;
+	m.setAddress("/bg/on");
+	osc.sendMessage(m);
+
 	ofSetLogLevel(OF_LOG_WARNING);
-	*/
+	
 }
 
 void AudioSystem::audioOut(float *buff, int buffSize, int channels) {
@@ -66,6 +55,10 @@ void AudioSystem::enable(int channel) {
 		ofLog(OF_LOG_ERROR, "AudioSystem::enable() - you can only use channels 0-4 - asking or channel %d\n", channel);
 		return;
 	}
+	ofxOscMessage m;
+	m.setAddress("/"+ofToString(channel+1)+"/on");
+	osc.sendMessage(m);
+
 	//pd->sendFloat("on"+ofToString(channel), 1.0);
 }
 
@@ -74,6 +67,11 @@ void AudioSystem::disable(int channel) {
 		ofLog(OF_LOG_ERROR, "AudioSystem::disable() - you can only use channels 0-4 = asking for channel %d\n", channel);
 		return;
 	}
+
+	ofxOscMessage m;
+	m.setAddress("/"+ofToString(channel+1)+"/off");
+	osc.sendMessage(m);
+
 	//pd->sendFloat("on"+ofToString(channel), 0.0);	
 }
 
@@ -88,6 +86,12 @@ void AudioSystem::setPan(int channel, float pan) {
 	}
 	
 	pan = ofClamp(pan, 0, 1);
+	ofxOscMessage m;
+	m.setAddress("/"+ofToString(channel+1)+"/pan");
+	m.addFloatArg(pan);
+	osc.sendMessage(m);
+
+
 	//pd->sendFloat("pan"+ofToString(channel), pan);
 }
 
