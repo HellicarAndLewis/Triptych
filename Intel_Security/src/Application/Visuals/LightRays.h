@@ -24,7 +24,7 @@ const std::string LR_FS = " \
 	uniform float u_weight; \
 	uniform float u_light_x; \
 	uniform float u_light_y; \
-	const int NUM_SAMPLES = 30; \
+	const int NUM_SAMPLES = 50; \
 	varying vec2 v_tex; \
 	void main() { \
 		if (u_mode == 0) { \

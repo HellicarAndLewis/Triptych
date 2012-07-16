@@ -187,8 +187,8 @@ void LightRays::draw() {
 		#error Don't now how to draw on your machine (1)
 	#endif
 	
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
+	//glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_CULL_FACE);
 		
 	// set shader vars.
 	glUseProgram(prog);
@@ -214,10 +214,15 @@ void LightRays::draw() {
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, fx_tex);
 	
+	//glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	glDepthMask(GL_FALSE);
+
 	glViewport(0,0,this->w,this->h);
 	glUniform1i(glGetUniformLocation(prog, "u_mode"), 1);
 	glDrawArrays(GL_QUADS, 0, 4);
 
+	glDepthMask(GL_TRUE);
 
 	// unbind
 	#ifdef _WIN32
@@ -235,7 +240,9 @@ void LightRays::draw() {
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, 0);
-
+	
+	//glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_CULL_FACE);
 
 }
 
