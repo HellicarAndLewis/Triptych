@@ -37,13 +37,13 @@ void Visualizer::setup() {
 void Visualizer::update() {
 
 	trails_drawer.update();
+	
 	if(kinect_input.update()) {
 		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
 		if(meshes.size() > 0) {
 			kinect_drawer.update(meshes[0]);
 		}
 	}
-
 }
 
 // pm = projection matrix, vm = view matrix, nm = normal matrix

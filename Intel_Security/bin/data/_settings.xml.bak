@@ -1,15 +1,15 @@
 <controls>
     <SliderFloat_near_threshold>
         <name>near threshold</name>
-        <value>249.9</value>
+        <value>237.15</value>
     </SliderFloat_near_threshold>
     <SliderFloat_far_threshold>
         <name>far threshold</name>
-        <value>65.025</value>
+        <value>181.05</value>
     </SliderFloat_far_threshold>
     <SliderInt_hysteresis>
         <name>hysteresis</name>
-        <value>4</value>
+        <value>0</value>
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
@@ -37,7 +37,7 @@
     </SliderInt_Border_Res>
     <SliderInt_Fill_Res>
         <name>Fill Res</name>
-        <value>30</value>
+        <value>23</value>
     </SliderInt_Fill_Res>
     <Toggle_Per_Vertex_Colour>
         <name>Per Vertex Colour</name>
