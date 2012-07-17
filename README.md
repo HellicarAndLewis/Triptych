@@ -8,12 +8,16 @@ Intel_Security
 ==============
 Security visualization. You can use the following keys in the application:
 
- - g: **Flocking:** toggle gui
- - s: **Flocking:** save settings
- - l: **Flocking:** load settings
+ - g: Toggle flock gui
+  - spacebar: Toggle kinect gui
+ - s: Grab screen
+ - l: Load settings
+ - w: Write (save) settings
  - f: Toggle fullscreen
  - d: Toggle debug draw
- - spacebar: **Kinect** toggle gui 
+ - r: Rotate scene
+ - m: Show/hide cursor
+ - i: Show info (fps)
  
  ## Flocking sliders
  
@@ -49,6 +53,9 @@ Security visualization. You can use the following keys in the application:
   - **Update number of visible boids** After changing the percentages (two lines above), press this button.
   
  ## Interaction sliders
+  - **[x] Random force** Apply random force
+  - **Random scale** How fast changes the random force 
+  - **Random influence** How much random force
   - **Boid attract to user ENERGY** how much boids are attracted to users
   - **Boid attract to user RADIUS** **UPDATE:** when boids are further  
   - **Boid repel from user ENERGY** how much boids are repeled from users
@@ -64,8 +71,7 @@ Security visualization. You can use the following keys in the application:
   - See Application/Settings.h for some other settings (i.e. what kind of kinect input!)
   - In MSVC++ you need to make sure that the kinect sdk libraries can be found. Change the linker settings and header search paths so the point to the kinect SDK. Somewhere in **C:\Program Files\Microsoft SDKs\Kinect\v1.5\**
   
-  
-  
+   
   
   
   
