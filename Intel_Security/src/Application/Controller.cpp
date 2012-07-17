@@ -41,6 +41,8 @@ void Controller::setup() {
 void Controller::update() {
 	checkBounds();
 	
+	applyPerlinNoiseForces();
+	
 	// create trails.
 	if(settings.boid_create_trails) {
 		for(Boids::iterator it = flock_ps.particles.begin(); it != flock_ps.particles.end(); ++it) {
@@ -65,20 +67,10 @@ void Controller::update() {
 	size_t num_points = kinect_input.interactive_points.size();
 
 	if(num_points == 0 || kinect_input.num_blobs <= 0) {
-		// reset boids which are still in attack mode, but no blobs are in the scene.
-		for(Boids::iterator it = attackers.begin(); it != attackers.end(); ++it) {
-			Boid& b = **it;
-			if(!b.is_visible) {
-				continue;
-			}
-			if(b.mode == B_MODE_ATTACK && b.attack_end < now) {
-				b.mode = B_MODE_DEFAULT;
-				b.attack_end = 0;
-				b.attack_delay = now + random(settings.boid_attack_delay_min, settings.boid_attack_delay_max);
-			}
-		}
+		resetBoidModes();
 		return;
 	}
+	
 	
 	size_t dx_point = 0;
 	size_t attackers_per_point = (size_t)ceil(float(attackers.size())/num_points);
@@ -189,4 +181,42 @@ void Controller::setAttackPercentage(float perc) {
 			attackers.push_back(flock_ps[i]);
 		}
 	}
+}
+
+// Privates
+/*----------------------------------------------------------------------------*/
+void Controller::resetBoidModes() {
+	// reset boids which are still in attack mode, but no blobs are in the scene.
+	uint64_t now = Timer::millis();
+	for(Boids::iterator it = attackers.begin(); it != attackers.end(); ++it) {
+		Boid& b = **it;
+		if(!b.is_visible) {
+			continue;
+		}
+		if(b.mode == B_MODE_ATTACK && b.attack_end < now) {
+			b.mode = B_MODE_DEFAULT;
+			b.attack_end = 0;
+			b.attack_delay = now + random(settings.boid_attack_delay_min, settings.boid_attack_delay_max);
+		}
+	}
+}
+
+void Controller::applyPerlinNoiseForces() {
+	float px0, px1;
+	float n = (Timer::millis());
+	//float fy = sin(n * settings.flocking_random_scale) * settings.flocking_random_influence;
+	float fx = cos(n * settings.flocking_random_scale) * settings.flocking_random_influence;
+	for(Boids::iterator it = attackers.begin(); it != attackers.end(); ++it) {
+		Boid& b = **it;
+		if(!b.is_visible) {
+			continue;
+		}
+		b.addForce(Vec3(fx,0,0));
+	}
+	/*
+			//px0 = noise3(b.position.x * s, b.position.y * s, b.position.z *s) * settings.flocking_perlin_influence;
+		//px1 = noise3(b.position.x * s * s, b.position.y * s, b.position.z *s) * settings.flocking_perlin_influence;
+		//f = px1 - px0;
+
+	*/
 }

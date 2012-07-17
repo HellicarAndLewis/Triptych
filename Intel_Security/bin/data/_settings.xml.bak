@@ -49,7 +49,7 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_fov>
         <name>fov</name>
-        <value>45.4</value>
+        <value>42.1</value>
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>

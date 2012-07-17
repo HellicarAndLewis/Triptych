@@ -48,6 +48,6 @@ class testApp : public ofBaseApp{
 		buttons::Buttons rays_gui;
 #endif
 		buttons::Buttons ia_gui; // InterAction gui
-
+		buttons::Buttons bloom_gui; // Bloom settings.
 		Room room;
 };

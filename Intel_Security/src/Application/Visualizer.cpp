@@ -29,9 +29,12 @@ void Visualizer::setup() {
 	kinect_drawer.setup();	
 	
 	boid_drawer.setup();
+	
 #ifdef USE_LIGHT_RAYS	
 	light_rays.setup(w,h);
 #endif
+
+	bloom.setup();
 }
 
 void Visualizer::update() {
@@ -63,13 +66,18 @@ void Visualizer::draw(
 
 	glDepthMask(GL_TRUE);
 
-#ifdef USE_LIGHT_RAYS
-	light_rays.bind();
-		kinect_drawer.draw(pm, vm);
-	light_rays.unbind();	
-#endif
+	#ifdef USE_LIGHT_RAYS
+		light_rays.bind();
+			kinect_drawer.draw(pm, vm);
+		light_rays.unbind();	
+	#else
+		bloom.begin();
+			kinect_drawer.draw(pm, vm);
+		bloom.end();
+		ofSetupScreen();
+		bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
+	#endif
 
-	kinect_drawer.draw(pm, vm);
 	
 	#ifdef USE_LIGHT_RAYS
 	glEnable(GL_BLEND);
@@ -82,26 +90,16 @@ void Visualizer::draw(
 		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 
-#ifdef USE_LIGHT_RAYS	
-//	light_rays.bind();
-//		trails_drawer.draw(pm, vm);
-//	light_rays.unbind();
 	trails_drawer.draw(pm, vm);
-#else
-	trails_drawer.draw(pm, vm);
-#endif
 	glDepthMask(GL_TRUE);
-//	glDisable(GL_BLEND);
 	
 	if(settings.draw_flock) {
+		
 		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 	
-	
-//	glDepthMask(GL_TRUE);
 
 	
-
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
@@ -245,4 +243,5 @@ void Visualizer::resize(int w, int h) {
 	#ifdef USE_LIGHT_RAYS
 	light_rays.resize(w,h);
 	#endif
+	bloom.resize(w,h);
 }

@@ -18,10 +18,10 @@ used a "Fake" kinect one. Choose from:
 
 struct Settings {
 	Settings()
-	//	:flocking_apply_perlin(true)
-	//	,flocking_perlin_influence(36.0f)
-	//	,flocking_perlin_scale(0.66f)
-		:flocking_center_energy(0.2f)
+		:flocking_random_apply(true)
+		,flocking_random_influence(0.0005)
+		,flocking_random_scale(0.066f)
+		,flocking_center_energy(0.2f)
 		,flocking_sphere_size(5.2225f)
 
 	//	,boid_trail_duration_millis(583.33f)
@@ -59,9 +59,9 @@ struct Settings {
 	{
 	}
 		
-//	bool flocking_apply_perlin;
-//	float flocking_perlin_influence;
-//	float flocking_perlin_scale;
+	bool flocking_random_apply;
+	float flocking_random_influence;
+	float flocking_random_scale;
 	float flocking_center_energy;
 	float flocking_sphere_size; // the size of the sphere in which flocking may happen
 	
