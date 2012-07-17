@@ -27,6 +27,7 @@
 *.manifest.res
 *.lastbuildstate
 *.dat
+*.opensdf
 
 *.mode1v3
 *.pbxuser
