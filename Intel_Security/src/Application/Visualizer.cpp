@@ -34,7 +34,7 @@ void Visualizer::setup() {
 	light_rays.setup(w,h);
 #endif
 
-	bloom.setup();
+	bloom.setup(true);
 }
 
 void Visualizer::update() {
@@ -70,18 +70,24 @@ void Visualizer::draw(
 			kinect_drawer.draw(pm, vm);
 		light_rays.unbind();	
 	#else
-		glDepthMask(GL_FALSE);
-		bloom.begin();
+		//
+		//glDepthMask(GL_FALSE);
+		bloom.begin();		
+			glDepthMask(GL_FALSE);
+			glDisable(GL_DEPTH_TEST);
 			kinect_drawer.draw(pm, vm);
+			glDepthMask(GL_TRUE);
+			glEnable(GL_DEPTH_TEST);
 		bloom.end();
-		ofSetupScreen();
+
 		
-		
-		bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
-		glDepthMask(GL_TRUE);
 	#endif
 
-	
+	ofSetupScreen();
+		bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
+	glDepthMask(GL_TRUE);
+
+	//return ;
 	#ifdef USE_LIGHT_RAYS
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE, GL_ONE);

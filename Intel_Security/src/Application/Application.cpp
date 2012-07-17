@@ -18,10 +18,10 @@ void Application::update() {
 
 	
 	// update kinect and tell drawer if we detected someone...
-	/*
+	
 	bool user_detected = kinect.update() && kinect.num_blobs > 0;
 	viz.kinect_drawer.setUserDetected(user_detected);
-	*/
+	
 	flock.update();
 	flock_ps.update(0.3);
 

@@ -38,7 +38,7 @@ void tricks::gl::effects::Bloom::end() {
 	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth(), blurX.y*ofGetHeight());
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
-	output.draw(0, 0);
+	output.draw(0, 0); // rox
 	shader.end();
 	out1.end();
 	
@@ -51,7 +51,8 @@ void tricks::gl::effects::Bloom::end() {
 	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth(), blurY.y*ofGetHeight());
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
-	out1.draw(0, 0);
+	
+	out1.draw(0, 0); 
 	shader.end();
 	out2.end();
 	
