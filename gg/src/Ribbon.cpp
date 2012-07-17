@@ -16,6 +16,8 @@ Ribbon::Ribbon()
 #ifdef NORMALS	
 	mesh.enableNormals();
 #endif
+	
+	initial = false;
 }
 
 Ribbon::~Ribbon()
@@ -26,8 +28,43 @@ Ribbon::~Ribbon()
 	}
 }
 
-void Ribbon::update()
-{
+vector<ofVec3f> vels;
+int counter = 0;
+
+void Ribbon::getVels() {
+	
+	vels.clear();
+	ofVec3f vel;
+	for (int i = 1; i < segments.size(); i++) {
+		vel = segments[i]->getPosition() - segments[i-1]->getPosition();
+		vels.push_back(vel);
+	}
+	
+}
+
+void Ribbon::flong() {
+	
+	if (!initial) {
+		getVels();
+		initial = true;
+		counter = 0;
+	}
+		
+	for (int i = 0; i < segments.size(); i++) {
+
+//		int j = ((i + (counter)) % vels.size());
+		int j = ((i + (counter)) % vels.size());
+		segments[i]->setPosition(segments[i]->getPosition() + vels[j]);
+	}
+	counter++;
+	
+	
+}
+
+void Ribbon::update(ofVec3f p) {
+	
+	head.setPosition(p);
+	
 	for(int i = 0; i < 1; i++){
 		
 		
@@ -118,7 +155,10 @@ void Ribbon::draw() {
 		
 		middleLine.push_back((bottomPoint + topPoint) * 0.5);
 		colours.push_back(ofFloatColor(1.0, 0, 0.8, ((float) i ) /segments.size()));
+	
 		
+//		ofSetHexColor(0x0);
+//		ofDrawBitmapString(ofToString(i), bottomPoint.x, bottomPoint.y);
 	}
 
 	mesh.draw();

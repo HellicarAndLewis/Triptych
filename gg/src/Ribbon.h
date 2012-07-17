@@ -34,10 +34,13 @@ public:
 	Ribbon();
 	~Ribbon();
 	
-	void update();
+	void update(ofVec3f p);
 	void draw();
 	RibbonSegment head;
-
+	
+	void flong();
+	void getVels();
+	bool initial;
 	
 	deque<RibbonSegment*> segments;
 	
