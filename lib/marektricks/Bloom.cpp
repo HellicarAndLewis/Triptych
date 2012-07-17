@@ -7,11 +7,15 @@
 
 #include "Bloom.h"
 void tricks::gl::effects::Bloom::setup(bool drawToFbo) {
+	blurx_scale = 1.0f;
+	blury_scale = 1.0f;
 	this->drawToFbo = drawToFbo;
 	blurX = ofVec2f( 0.001953125, 0.0 );
 	blurY = ofVec2f( 0.0, 0.001953125 );
 	resize(ofGetWidth(), ofGetHeight());
 	loadShader();
+	amount = 0.5;
+	brightness = 0.8;
 }
 
 void tricks::gl::effects::Bloom::resize(int w, int h) {
@@ -30,13 +34,11 @@ void tricks::gl::effects::Bloom::end() {
 	
 	
 	out1.begin();
-	ofClear(0, 0, 0, 255);
+	ofClear(0, 0, 0, 0);
 	// convolution 1
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
-	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth(), blurX.y*ofGetHeight());
-//	shader.setUniform2f("uImageIncrement", 5.f/blurX.x, 5.f/blurX.y);
-
+	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth()*blurx_scale, blurX.y*ofGetHeight()*blurx_scale);
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
 	output.draw(0, 0);
@@ -45,12 +47,11 @@ void tricks::gl::effects::Bloom::end() {
 	
 	
 	out2.begin();
-	ofClear(0, 0, 0, 255);
+	ofClear(0, 0, 0, 0);
 	// convolution 2
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
-	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth(), blurY.y*ofGetHeight());
-	
+	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth()*blury_scale, blurY.y*ofGetHeight()*blury_scale);
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
 	out1.draw(0, 0);
@@ -66,10 +67,10 @@ void tricks::gl::effects::Bloom::end() {
 	ofSetHexColor(0xFFFFFF);	
 	//out1.draw(0, 0);
 	//out1.draw(0, 0);
-	glColor4f(1, 1, 1, 1.0);
+	glColor4f(1, 1, 1, amount);
 	out2.draw(0, 0);
 	//// draw over
-	ofSetHexColor(0xFFFFFF);
+	glColor4f(1,1,1, brightness);
 	
 	output.draw(0, 0);
 	if(drawToFbo) {
@@ -183,8 +184,8 @@ void tricks::gl::effects::Bloom::loadShader() {
 		
 "		sum += texture2DRect( tDiffuse, imageCoord ) * 0.001110*t;\n"
 		
-"		gl_FragColor = texture2DRect( tDiffuse, imageCoord ) + sum * 0.1;\n"
-		
+"		gl_FragColor = sum;\n"
+//"		if(sum.r>0.0) gl_FragColor.a = 1.0; \n"
 	"}\n";
 	
 	//printf("%s\n", frag.c_str());
@@ -193,4 +194,4 @@ void tricks::gl::effects::Bloom::loadShader() {
 	shader.setupShaderFromSource(GL_FRAGMENT_SHADER, frag);
 	shader.linkProgram();
 
-}	
+}

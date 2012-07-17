@@ -112,6 +112,8 @@ void testApp::setup(){
 
 		bloom_gui.addFloat("Bloom amount", app.viz.bloom.amount).setMin(0.0f).setMax(2.0f);
 		bloom_gui.addFloat("Bloom brightness", app.viz.bloom.brightness).setMin(0.0f).setMax(2.0f);
+		bloom_gui.addFloat("Bloom blur.x", app.viz.bloom.blurx_scale).setMin(0.0f).setMax(1.0f);
+		bloom_gui.addFloat("Bloom blur.y", app.viz.bloom.blury_scale).setMin(0.0f).setMax(1.0f);
 		bloom_gui.setColor(0.68, 0.5, 0.5);
 		bloom_gui.load(ofToDataPath("bloom.bin",true));
 	#endif

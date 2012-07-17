@@ -72,9 +72,9 @@ void Visualizer::draw(
 	#else
 		//
 		//glDepthMask(GL_FALSE);
-		glUseProgram(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		//glUseProgram(0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindBuffer(GL_ARRAY_BUFFER, 0);
 		
 		bloom.begin();		
 			glDepthMask(GL_FALSE);
@@ -82,13 +82,12 @@ void Visualizer::draw(
 			kinect_drawer.draw(pm, vm);
 			glDepthMask(GL_TRUE);
 			glEnable(GL_DEPTH_TEST);
-		bloom.end();
+		
 
 		
 	#endif
 	
-	ofSetupScreen();
-		bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
+		
 	glDepthMask(GL_TRUE);
 
 	//return ;
@@ -113,7 +112,9 @@ void Visualizer::draw(
 		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 	
-
+	bloom.end();
+	ofSetupScreen();
+	bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
