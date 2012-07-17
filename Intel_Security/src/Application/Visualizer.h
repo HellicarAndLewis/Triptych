@@ -1,8 +1,12 @@
 #ifndef ROXLU_VISUALIZERH
 #define ROXLU_VISUALIZERH
 
+#include "ofMain.h"
+
 #include <roxlu/Roxlu.h>
 #include <pbd/PBD.h>
+
+#include <Bloom.h>
 
 #include <application/Settings.h> 
 #include <application/KinectInput.h>
@@ -49,6 +53,8 @@ public:
 	KinectInput& kinect_input;
 	KinectDrawer kinect_drawer;
 	BoidDrawer boid_drawer;
+	
+	tricks::gl::effects::Bloom bloom;
 #ifdef USE_LIGHT_RAYS
 	LightRays light_rays; // test
 #endif

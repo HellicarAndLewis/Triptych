@@ -146,7 +146,8 @@ void TrailsDrawer::update() {
 		while(allocated_bytes < needed_bytes) {
 			allocated_bytes = std::max<size_t>(allocated_bytes * 2, 4096);
 		}
-		
+		printf("TrailsDrawer::update() - allocate: %un",(unsigned int)allocated_bytes);
+		 
 		vao.bind();
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, allocated_bytes, NULL, GL_DYNAMIC_DRAW);

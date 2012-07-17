@@ -1,6 +1,27 @@
 #ifndef ROXLU_LIGHTRAYSH
 #define ROXLU_LIGHTRAYSH
 
+/**
+ 
+Drop in light rays
+------------------
+Basic usage:
+- create a member "LightRays lr", then
+
+// setup()
+lr.setup(width, height);
+
+// call every draw()
+lr.bind();
+  // draw your scene with 'white' lights and black occulding objects
+lr.unbind()
+lr.draw() 
+
+// resize
+lr.resize(w, h);
+
+*/
+
 #include <roxlu/opengl/OpenGL.h>
 #include <string>
 const std::string LR_VS = " \
@@ -28,7 +49,6 @@ const std::string LR_FS = " \
 	varying vec2 v_tex;\n \
 	void main() {\n \
 		if (u_mode == 0) {\n \
-			/*gl_FragColor = texture2D(u_texture, v_tex); */ \
 			gl_FragColor.rgb = vec3(0.0, 0.0, 0.0); \
 			vec2 pos_on_screen = vec2(u_light_x, u_light_y);\n \
 			vec2 delta_texc = vec2(v_tex.st - pos_on_screen.xy);\n \
@@ -40,11 +60,9 @@ const std::string LR_FS = " \
 				vec4 sample = texture2D(u_texture, texc);\n \
 				sample *= illum_decay * u_weight; \n\
 				gl_FragColor += sample; \n\
-				/*gl_FragData[0] += sample; */ \
 				illum_decay *= u_decay; \n\
 			}\n \
 			gl_FragColor *= u_exposure; \n  \
-			/*gl_FragData[0] *= u_exposure; */\n\
 		} \n\
 		else if(u_mode == 1) { \n\
 			gl_FragColor = texture2D(u_texture, v_tex);\n \

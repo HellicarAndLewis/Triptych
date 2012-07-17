@@ -113,10 +113,6 @@ void LightRays::setup(int w, int h) {
 	// ++++++++++++++++++++++++++++++++++++++
 	LightRayVertex verts[4];
 	float s = 1.0f;
-//	verts[0].set(-s, s, 0, 0, 0);
-//	verts[1].set( s, s, 0, 1, 0);
-//	verts[2].set( s,-s, 0, 1, 1);
-//	verts[3].set(-s,-s, 0, 0, 1);
 	verts[0].set(-s, s, 0, 0, 1);
 	verts[1].set( s, s, 0, 1, 1);
 	verts[2].set( s,-s, 0, 1, 0);
@@ -145,7 +141,7 @@ void LightRays::setup(int w, int h) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 #ifdef _WIN32
 	glBindVertexArray(0);
-#elif define(__APPLE__)
+#elif defined(__APPLE__)
 	glBindVertexArrayAPPLE(0);
 #else
 #error Cannot compile LightRays on this OS
@@ -155,7 +151,6 @@ void LightRays::setup(int w, int h) {
 void LightRays::resize(int w, int h) {
 	this->w = w;
 	this->h = h;
-	printf("New w/h: %d, %d\n", w,h);
 }
 
 void LightRays::bind() {
