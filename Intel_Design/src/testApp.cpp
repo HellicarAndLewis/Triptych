@@ -13,6 +13,8 @@ bool useBloom;
 float fadeSpeed;
 float colourSpeed = 0.01;
 
+int ribbonLife = 60;
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	
@@ -45,6 +47,8 @@ void testApp::setup(){
 	gui.addSlider("fade speed", fadeSpeed, 0, 0.5);
 	gui.addSlider("colour speed", colourSpeed, 0, 5);
 
+	gui.addSlider("ribbon life", ribbonLife, 0, 200);
+	
 	gui.loadFromXML();
 	gui.setAutoSave(true);
 	
@@ -139,13 +143,21 @@ void testApp::updateFromSkeletons() {
 		}
 	}
 
-	//vector<Ribbon*>::iterator vit = deadRibbons.begin();
-	////while(vit != deadRibbons.end()) {
+
 	for(int i = 0; i < deadRibbons.size(); i++) {
 
 		Ribbon *ribbon = deadRibbons[i];
-		if (ribbon->baseAlpha < 1) {
-			ribbon->baseAlpha += fadeSpeed;
+//		if (ribbon->baseAlpha < 1) {
+//			ribbon->baseAlpha += fadeSpeed;
+//		}
+//		else {
+//			delete ribbon;
+//			deadRibbons.erase(deadRibbons.begin()+i);
+//			i--;
+//		}
+		
+		if (ribbon->counter < ribbonLife) {
+			ribbon->flong();
 		}
 		else {
 			delete ribbon;

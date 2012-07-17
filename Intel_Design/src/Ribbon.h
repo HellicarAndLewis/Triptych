@@ -50,6 +50,11 @@ public:
 	ofVboMesh mesh;
 
 	float baseAlpha;
+	
+	void flong();
+	void getVels();
+	int counter;
+	vector<ofVec3f> vels;
 
 protected:
 	float lastUpdate;

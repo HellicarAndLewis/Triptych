@@ -99,7 +99,7 @@ void testApp::keyPressed(int key){
 		
 		case 'a':
 			go = !go;
-			if (go) ribbon->initial = false;
+			if (go) ribbon->counter = 0;
 			break;
 			
 		default:

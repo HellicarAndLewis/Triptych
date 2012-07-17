@@ -40,7 +40,8 @@ public:
 	
 	void flong();
 	void getVels();
-	bool initial;
+	int counter;
+	vector<ofVec3f> vels;
 	
 	deque<RibbonSegment*> segments;
 	

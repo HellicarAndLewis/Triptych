@@ -17,7 +17,7 @@ Ribbon::Ribbon()
 	mesh.enableNormals();
 #endif
 	
-	initial = false;
+	counter  = 0;
 }
 
 Ribbon::~Ribbon()
@@ -28,8 +28,8 @@ Ribbon::~Ribbon()
 	}
 }
 
-vector<ofVec3f> vels;
-int counter = 0;
+
+//int counter = 0;
 
 void Ribbon::getVels() {
 	
@@ -44,15 +44,12 @@ void Ribbon::getVels() {
 
 void Ribbon::flong() {
 	
-	if (!initial) {
+	if (!counter) {
 		getVels();
-		initial = true;
-		counter = 0;
 	}
 		
 	for (int i = 0; i < segments.size(); i++) {
 
-//		int j = ((i + (counter)) % vels.size());
 		int j = ((i + (counter)) % vels.size());
 		segments[i]->setPosition(segments[i]->getPosition() + vels[j]);
 	}
