@@ -82,7 +82,7 @@ void Visualizer::draw(
 
 		
 	#endif
-
+	
 	ofSetupScreen();
 		bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
 	glDepthMask(GL_TRUE);
@@ -96,6 +96,8 @@ void Visualizer::draw(
 	
 	glDepthMask(GL_FALSE);
 	if(settings.boid_draw_glows) {
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_ONE, GL_ONE);
 		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 

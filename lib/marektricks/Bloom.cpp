@@ -65,11 +65,11 @@ void tricks::gl::effects::Bloom::end() {
 	ofSetHexColor(0xFFFFFF);	
 	//out1.draw(0, 0);
 	//out1.draw(0, 0);
+	
 	glColor4f(1, 1, 1, amount);
 	out2.draw(0, 0);
 	//// draw over
 	glColor4f(1,1,1, brightness);
-	
 	output.draw(0, 0);
 	if(drawToFbo) {
 		out1.end();
