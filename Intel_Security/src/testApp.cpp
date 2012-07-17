@@ -36,6 +36,7 @@ void testApp::setup(){
 	app.setup();
 #endif
 
+	audio.setup("security",app.kinect.kinect);
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
 	room.setupGui();
 	gui.loadFromXML();
