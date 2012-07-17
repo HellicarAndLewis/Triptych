@@ -32,6 +32,7 @@ class testApp : public ofBaseApp{
 		
 		bool show_gui;
 		bool debug;
+		bool must_take_screenshot;
 		
 		EasyCam cam;
 		Axis ax;

@@ -30,6 +30,7 @@ void testApp::setup(){
 	ofEnableNormalizedTexCoords();
 	show_gui = false;
 	debug = false;
+	must_take_screenshot = false;
 
 #ifdef USE_APP
 	app.setup();
@@ -173,7 +174,6 @@ void testApp::draw(){
 		room.draw();
 	}
 	
-	
 	if(!debug) {
 		Vec3 right, up;
 		cam.getBillboardVectors(right, up);
@@ -182,7 +182,6 @@ void testApp::draw(){
         nm.transpose();
 		cam.place();
 	
-
 		#ifndef _WIN32
 			if(settings.draw_axis) {
 				ax.draw();
@@ -229,7 +228,10 @@ void testApp::draw(){
 		gui.draw();
 	glPopMatrix();
 
-	
+	if(must_take_screenshot) {
+		must_take_screenshot = false;
+		ofSaveScreen("screengrabs/"+ofGetTimestampString()+".tif");
+	}
 }
 
 //--------------------------------------------------------------
@@ -245,8 +247,7 @@ void testApp::keyPressed(int key){
 		show_gui = !show_gui;
 	}
 	
-
-	else if(key == 's') {
+	else if(key == 'w') {
 		#ifdef USE_FLOCK_GUI
 		flock_gui.save(ofToDataPath("gui.bin", true));
 		#endif
@@ -255,6 +256,9 @@ void testApp::keyPressed(int key){
 		#endif
 		ia_gui.save(ofToDataPath("ia.bin",true));
 		bloom_gui.save(ofToDataPath("bloom.bin",true));
+	}
+	else if(key == 's') {
+		must_take_screenshot = true;
 	}
 	else if(key == 'l') {
 		#ifdef USE_FLOCK_GUI
