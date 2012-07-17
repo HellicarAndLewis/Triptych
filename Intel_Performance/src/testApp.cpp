@@ -155,8 +155,6 @@ void testApp::draw(){
 	
 	if(mustTakeScreenshot) {
 		mustTakeScreenshot = false;
-		
-
 		ofSaveScreen(ofGetTimestampString()+".tif");
 	}
 	glPushMatrix();
