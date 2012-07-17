@@ -53,7 +53,7 @@
     </SliderFloat_fov>
     <SliderFloat_CamX>
         <name>CamX</name>
-        <value>-0.02</value>
+        <value>-0.1</value>
     </SliderFloat_CamX>
     <SliderFloat_CamY>
         <name>CamY</name>
@@ -85,6 +85,6 @@
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.12</value>
+        <value>0.585</value>
     </SliderFloat_aoAmount>
 </controls>
