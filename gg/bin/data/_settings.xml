@@ -37,7 +37,7 @@
     </Toggle_draw_info>
     <Toggle_draw_wireframe>
         <name>draw wireframe</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_draw_wireframe>
     <SliderFloat_front_taper>
         <name>front taper</name>

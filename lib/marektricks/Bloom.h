@@ -1,3 +1,4 @@
+
 /**     ___           ___           ___                         ___           ___     
  *     /__/\         /  /\         /  /\         _____         /  /\         /__/|    
  *    |  |::\       /  /::\       /  /::|       /  /::\       /  /::\       |  |:|    
@@ -37,6 +38,8 @@ namespace tricks {
 				
 				float amount;
 				float brightness;
+				float blurx_scale;
+				float blury_scale;
 			private:
 				bool drawToFbo;
 				

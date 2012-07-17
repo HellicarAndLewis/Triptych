@@ -34,19 +34,19 @@ void Visualizer::setup() {
 	light_rays.setup(w,h);
 #endif
 
-	bloom.setup();
+	bloom.setup(true);
 }
 
 void Visualizer::update() {
 
 	trails_drawer.update();
+	
 	if(kinect_input.update()) {
 		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
 		if(meshes.size() > 0) {
 			kinect_drawer.update(meshes[0]);
 		}
 	}
-
 }
 
 // pm = projection matrix, vm = view matrix, nm = normal matrix
@@ -70,18 +70,27 @@ void Visualizer::draw(
 			kinect_drawer.draw(pm, vm);
 		light_rays.unbind();	
 	#else
-		glDepthMask(GL_FALSE);
-		bloom.begin();
+		//
+		//glDepthMask(GL_FALSE);
+		//glUseProgram(0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
+		bloom.begin();		
+			glDepthMask(GL_FALSE);
+			glDisable(GL_DEPTH_TEST);
 			kinect_drawer.draw(pm, vm);
-		bloom.end();
-		ofSetupScreen();
+			glDepthMask(GL_TRUE);
+			glEnable(GL_DEPTH_TEST);
 		
-		
-		bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
-		glDepthMask(GL_TRUE);
-	#endif
 
+		
+	#endif
 	
+		
+	glDepthMask(GL_TRUE);
+
+	//return ;
 	#ifdef USE_LIGHT_RAYS
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE, GL_ONE);
@@ -90,6 +99,8 @@ void Visualizer::draw(
 	
 	glDepthMask(GL_FALSE);
 	if(settings.boid_draw_glows) {
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_ONE, GL_ONE);
 		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 
@@ -101,7 +112,9 @@ void Visualizer::draw(
 		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 	
-
+	bloom.end();
+	ofSetupScreen();
+	bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);

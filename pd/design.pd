@@ -18,7 +18,7 @@
 #X msg 205 355 1;
 #X msg 247 355 0;
 #X obj 189 336 hsl 100 15 0 1 0 0 empty pan-all empty -2 -8 0 10 -262144
--1 -1 4950 1;
+-1 -1 3150 1;
 #X obj 172 439 *~;
 #X obj 295 441 *~;
 #X obj 207 425 gainpan~;
@@ -39,7 +39,7 @@
 #X msg 724 356 1;
 #X msg 766 356 0;
 #X obj 708 337 hsl 100 15 0 1 0 0 empty pan-all empty -2 -8 0 10 -262144
--1 -1 4950 1;
+-1 -1 4600 1;
 #X obj 691 440 *~;
 #X obj 814 442 *~;
 #X obj 726 426 gainpan~;

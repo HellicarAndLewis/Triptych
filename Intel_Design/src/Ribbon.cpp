@@ -19,6 +19,8 @@ baseAlpha(0) {
 
 	maxThickness = ofRandom(20, 100);
 	head.setPosition(p);
+	
+	counter = 0;
 }
 
 Ribbon::~Ribbon() {
@@ -26,6 +28,34 @@ Ribbon::~Ribbon() {
 	for(int i = 0; i < segments.size(); i++){
 		delete segments[i];
 	}
+}
+
+void Ribbon::getVels() {
+	
+	vels.clear();
+	ofVec3f vel;
+	for (int i = 1; i < segments.size(); i++) {
+		vel = segments[i]->getPosition() - segments[i-1]->getPosition();
+		vels.push_back(vel);
+	}
+	
+}
+
+void Ribbon::flong() {
+	
+	if (!counter) {
+		getVels();
+		counter = 0;
+	}
+	
+	for (int i = 0; i < segments.size(); i++) {
+		
+		int j = ((i + (counter)) % vels.size());
+		segments[i]->setPosition(segments[i]->getPosition() + vels[j]);
+	}
+	counter++;
+	
+	
 }
 
 void Ribbon::update(ofVec3f p) {

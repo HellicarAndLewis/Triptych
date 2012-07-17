@@ -81,7 +81,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat />
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\Microsoft SDKs\Kinect\v1.5\inc;..\addons\ofxKinectNui\src\win32;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxXmlSettings\libs;C:\Program Files\Microsoft SDKs\Kinect\v1.5\inc;..\addons\ofxKinectNui\src\win32;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOSc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\src;..\addons\ofxKinectNui\src\kinect\nui;..\addons\ofxKinectNui\src\kinect;..\addons\ofxKinectNui\src;..\addons\ofxKinect\src;..\addons\ofxKinect\libs\libusb\win;..\addons\ofxKinect\libs\libfreenect;..\lib\marektricks;..\lib;.\src;..\addons\ofxSimpleGuiToo\src\Controls;..\addons\ofxSimpleGuiToo\src;..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include\opencv;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\addons\ofxBlobTracker;..\addons\ofxCvKalman;..\addons\roxlu\addons\Buttons\include;..\addons\roxlu\addons\PolyTri\include;..\addons\roxlu\addons\PolyTri\lib;..\addons\roxlu\addons\PositionBasedDynamics\include;..\addons\roxlu\lib\include;%(AdditionalIncludeDirectories);src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -94,7 +94,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
       <AdditionalDependencies>msimg32.lib;opencv_calib3d231.lib;opencv_flann231.lib;zlib.lib;opencv_contrib231.lib;opencv_features2d231.lib;opencv_core231.lib;opencv_gpu231.lib;opencv_haartraining_engine.lib;opencv_highgui231.lib;opencv_ml231.lib;opencv_imgproc231.lib;opencv_objdetect231.lib;opencv_legacy231.lib;opencv_video231.lib;Kinect10.lib;msdmo.lib;dmoguids.lib;amstrmid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Kinect\v1.5\lib\x86;..\..\..\addons\ofxOpenCv\libs\opencv\lib\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Kinect\v1.5\lib\x86;..\..\..\addons\ofxOpenCv\libs\opencv\lib\vs2010;../../../addons/ofxOsc/libs/oscpack/lib/win32/oscpack.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -106,6 +106,17 @@
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvHaarFinder.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvImage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtilsWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocketWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
@@ -199,6 +210,7 @@
     <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\Texture.cpp" />
     <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VAO.cpp" />
     <ClCompile Include="..\addons\roxlu\lib\src\roxlu\opengl\VBO.cpp" />
+    <ClCompile Include="..\lib\AudioSystem.cpp" />
     <ClCompile Include="..\lib\BoundBlob.cpp" />
     <ClCompile Include="..\lib\KinectMesh.cpp" />
     <ClCompile Include="..\lib\KinectNuiThreaded.cpp" />
@@ -234,6 +246,25 @@
     <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvMain.h" />
     <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxCvShortImage.h" />
     <ClInclude Include="..\..\..\addons\ofxOpenCv\src\ofxOpenCv.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h" />
@@ -289,6 +320,7 @@
     <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Particles.h" />
     <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\PBD.h" />
     <ClInclude Include="..\addons\roxlu\addons\PositionBasedDynamics\include\pbd\Spring.h" />
+    <ClInclude Include="..\lib\AudioSystem.h" />
     <ClInclude Include="..\lib\BoundBlob.h" />
     <ClInclude Include="..\lib\BoundBlobListener.h" />
     <ClInclude Include="..\lib\KinectMesh.h" />

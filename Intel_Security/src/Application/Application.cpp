@@ -15,14 +15,19 @@ void Application::setup() {
 
 
 void Application::update() {
+
+	
 	// update kinect and tell drawer if we detected someone...
+	
 	bool user_detected = kinect.update() && kinect.num_blobs > 0;
 	viz.kinect_drawer.setUserDetected(user_detected);
-
+	
 	flock.update();
 	flock_ps.update(0.3);
+
 	fx_ps.update(0.3);
 	control.update();
+
 	flock_ps.removeDeadParticles();
 	fx_ps.removeDeadParticles();
 	viz.update();

@@ -4,6 +4,7 @@
 #include "TimeProfiler.h"
 using namespace tricks::util;
 
+bool mustTakeScreenshot = false;
 //--------------------------------------------------------------
 void testApp::setup(){
 	showTimeProfiler = false;
@@ -152,7 +153,10 @@ void testApp::draw(){
 	bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	glColor4f(1,1,1,1);
 	
-	
+	if(mustTakeScreenshot) {
+		mustTakeScreenshot = false;
+		ofSaveScreen(ofGetTimestampString()+".tif");
+	}
 	glPushMatrix();
 	{
 		ofSetupScreen();
@@ -206,6 +210,10 @@ void testApp::keyPressed(int key){
 			break;
 		case 't':
 			showTimeProfiler ^= true;
+			break;
+		case 's':
+		case 'g':
+			mustTakeScreenshot = true;
 			break;
 	}
 }

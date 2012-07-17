@@ -9,6 +9,8 @@ bool drawPink;
 int ribbonLength;
 bool fadeInZ;
 
+bool go = false;
+
 void testApp::setup(){
 
 	ofSetFrameRate(60);
@@ -63,10 +65,13 @@ void testApp::update(){
 //	trail.input(ofVec3f(mouseX, mouseY, 0));	
 //	trail.update();
 	
-	ofVec3f p(mouseX, mouseY, 0);
-	ribbon->head.setPosition(p);
-	
-	ribbon->update();
+	if (!go) {
+		ofVec3f p(mouseX, mouseY, 0);	
+		ribbon->update(p);
+	}
+	else {
+		ribbon->flong();
+	}
 }
 
 
@@ -90,6 +95,11 @@ void testApp::keyPressed(int key){
 	switch (key) {
 		case ' ':
 			gui.toggleDraw();
+			break;
+		
+		case 'a':
+			go = !go;
+			if (go) ribbon->counter = 0;
 			break;
 			
 		default:

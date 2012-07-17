@@ -77,6 +77,9 @@ bool KinectInput::update() {
 			if(!kinect.update()) {
 				return false;
 			}
+
+			
+
 			interactive_points.clear();
 			kinect.trackBlobs();
 			contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
@@ -87,7 +90,7 @@ bool KinectInput::update() {
 				kmeshes.push_back(km);
 				
 				if(settings.must_record_kinect) {
-					recorder.addFrame(km.vertices, km.outline);
+					//recorder.addFrame(km.vertices, km.outline);
 				}
 			}
 			

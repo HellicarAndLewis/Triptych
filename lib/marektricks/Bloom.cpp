@@ -1,3 +1,4 @@
+
 /**
  *  Bloom.cpp
  *
@@ -6,6 +7,8 @@
 
 #include "Bloom.h"
 void tricks::gl::effects::Bloom::setup(bool drawToFbo) {
+	blurx_scale = 1.0f;
+	blury_scale = 1.0f;
 	this->drawToFbo = drawToFbo;
 	blurX = ofVec2f( 0.001953125, 0.0 );
 	blurY = ofVec2f( 0.0, 0.001953125 );
@@ -35,7 +38,7 @@ void tricks::gl::effects::Bloom::end() {
 	// convolution 1
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
-	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth(), blurX.y*ofGetHeight());
+	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth()*blurx_scale, blurX.y*ofGetHeight()*blurx_scale);
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
 	output.draw(0, 0);
@@ -48,7 +51,7 @@ void tricks::gl::effects::Bloom::end() {
 	// convolution 2
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
-	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth(), blurY.y*ofGetHeight());
+	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth()*blury_scale, blurY.y*ofGetHeight()*blury_scale);
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
 	out1.draw(0, 0);

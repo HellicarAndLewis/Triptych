@@ -30,11 +30,13 @@ void testApp::setup(){
 	ofEnableNormalizedTexCoords();
 	show_gui = false;
 	debug = false;
+	must_take_screenshot = false;
 
 #ifdef USE_APP
 	app.setup();
 #endif
 
+	audio.setup("security",app.kinect.kinect);
 	room.setup((float)ofGetWidth()/(float)ofGetHeight());
 	room.setupGui();
 	gui.loadFromXML();
@@ -111,6 +113,8 @@ void testApp::setup(){
 
 		bloom_gui.addFloat("Bloom amount", app.viz.bloom.amount).setMin(0.0f).setMax(2.0f);
 		bloom_gui.addFloat("Bloom brightness", app.viz.bloom.brightness).setMin(0.0f).setMax(2.0f);
+		bloom_gui.addFloat("Bloom blur.x", app.viz.bloom.blurx_scale).setMin(0.0f).setMax(1.0f);
+		bloom_gui.addFloat("Bloom blur.y", app.viz.bloom.blury_scale).setMin(0.0f).setMax(1.0f);
 		bloom_gui.setColor(0.68, 0.5, 0.5);
 		bloom_gui.load(ofToDataPath("bloom.bin",true));
 	#endif
@@ -173,7 +177,6 @@ void testApp::draw(){
 		room.draw();
 	}
 	
-	
 	if(!debug) {
 		Vec3 right, up;
 		cam.getBillboardVectors(right, up);
@@ -182,7 +185,6 @@ void testApp::draw(){
         nm.transpose();
 		cam.place();
 	
-
 		#ifndef _WIN32
 			if(settings.draw_axis) {
 				ax.draw();
@@ -229,7 +231,10 @@ void testApp::draw(){
 		gui.draw();
 	glPopMatrix();
 
-	
+	if(must_take_screenshot) {
+		must_take_screenshot = false;
+		ofSaveScreen("screengrabs/"+ofGetTimestampString()+".tif");
+	}
 }
 
 //--------------------------------------------------------------
@@ -245,8 +250,7 @@ void testApp::keyPressed(int key){
 		show_gui = !show_gui;
 	}
 	
-
-	else if(key == 's') {
+	else if(key == 'w') {
 		#ifdef USE_FLOCK_GUI
 		flock_gui.save(ofToDataPath("gui.bin", true));
 		#endif
@@ -255,6 +259,9 @@ void testApp::keyPressed(int key){
 		#endif
 		ia_gui.save(ofToDataPath("ia.bin",true));
 		bloom_gui.save(ofToDataPath("bloom.bin",true));
+	}
+	else if(key == 's') {
+		must_take_screenshot = true;
 	}
 	else if(key == 'l') {
 		#ifdef USE_FLOCK_GUI

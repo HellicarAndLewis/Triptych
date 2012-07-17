@@ -2,11 +2,13 @@
 
 #include "ofMain.h"
 
+#include "AudioSystem.h"
 #include <application/Application.h>
 #include <application/Settings.h>
 #include <buttons/Buttons.h>
 #include <pbd/PBD.h>
 #include "Room.h"
+
 
 #define USE_FLOCK_GUI
 #define USE_APP
@@ -32,9 +34,11 @@ class testApp : public ofBaseApp{
 		
 		bool show_gui;
 		bool debug;
+		bool must_take_screenshot;
 		
 		EasyCam cam;
 		Axis ax;
+		AudioSystem audio;
 
 #ifdef USE_APP
 		Application app;
