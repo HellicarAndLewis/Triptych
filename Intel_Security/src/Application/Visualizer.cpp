@@ -63,7 +63,6 @@ void Visualizer::draw(
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glEnable(GL_DEPTH_TEST);
-
 	glDepthMask(GL_TRUE);
 
 	#ifdef USE_LIGHT_RAYS
@@ -71,11 +70,15 @@ void Visualizer::draw(
 			kinect_drawer.draw(pm, vm);
 		light_rays.unbind();	
 	#else
+		glDepthMask(GL_FALSE);
 		bloom.begin();
 			kinect_drawer.draw(pm, vm);
 		bloom.end();
 		ofSetupScreen();
+		
+		
 		bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
+		glDepthMask(GL_TRUE);
 	#endif
 
 	
