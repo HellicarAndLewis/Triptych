@@ -31,6 +31,10 @@ public:
 	int w;
 	int h;
 	vector<Boid*> attackers;
+
+private:	
+	void applyPerlinNoiseForces();
+	void resetBoidModes();
 	
 };
 

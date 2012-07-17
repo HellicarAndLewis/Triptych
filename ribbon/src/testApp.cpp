@@ -1,7 +1,5 @@
 #include "testApp.h"
-
 #include "ofxSimpleGuiToo.h"
-
 #include "ofxKinectNuiDraw.h"
 
 
@@ -9,7 +7,7 @@ int iterations;
 float m;
 bool usingAdd = true;
 float maxImageSize, minImageSize;
-bool enlargeImage = true;
+bool drawWireframe = false;
 
 float trailWidth = 1;
 bool variableWidth = false;
@@ -18,16 +16,21 @@ bool useGravity = false;
 float gravityFactor = 0.1;
 bool useFade = false;
 
+float frontTaper, backTaper;
+bool drawPink;
+int ribbonLength;
+bool fadeInZ;
+
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	bloom.setup(true);
+	bloom.setup(false);
 	room.setup(640.f/480.f);
 	
 	
 	gui.addPage("Program");
-	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+	//ofSetVerticalSync(true);
+	ofSetFrameRate(30);
 	kinect.setup(true);
 	kinect.setupGui();
 	room.setupGui();	
@@ -42,17 +45,24 @@ void testApp::setup(){
 	gui.addSlider("m", m, 0, 0.01);
 	gui.addSlider("background alpha", backgroundAlpha, 0, 0.2);
 	gui.addSlider("image alpha", imageAlpha, 0, 0.2);
-	gui.addSlider("max image size", maxImageSize, 40, 1000);
+	gui.addSlider("max ribbon length", maxImageSize, 40, 1000);
 	gui.addSlider("min image size", minImageSize, 0, 100);
 	gui.addToggle("use additive", usingAdd);
-	gui.addToggle("enlarge image", enlargeImage);
+	gui.addToggle("drawWireframe", drawWireframe);
 
 	gui.addSlider("trail width", trailWidth, 0, 50);
 	gui.addToggle("variabe width", variableWidth);
 	gui.addSlider("variable factor", variableFactor, 0, 2);
 	gui.addToggle("use gravity", useGravity);
-	gui.addSlider("gravity factor", gravityFactor, 0, 2);
+	gui.addSlider("gravity factor", gravityFactor, 0, 0.1);
 	gui.addToggle("use fade", useFade);
+
+	gui.addTitle("new");
+	gui.addSlider("front taper", frontTaper, 0, 100);
+	gui.addSlider("back taper", backTaper, 0, 100);
+	gui.addToggle("draw pink", drawPink);
+	gui.addSlider("ribbon length", ribbonLength, 0, 500);
+	gui.addToggle("fade in z", fadeInZ);
 
 	gui.loadFromXML();
 	gui.setAutoSave(true);
@@ -69,6 +79,26 @@ void testApp::setup(){
 	m = 0.00655;
 	backgroundAlpha = 0.085;
 	imageAlpha = 0.005;
+
+	colours.resize(3);
+
+		//reds
+		colours[0].push_back(ofFloatColor(1.0, 0.3, 0.16, 1));
+		colours[0].push_back(ofFloatColor(0.78, 0.0, 0.09, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.86, 0.75, 1));
+		colours[0].push_back(ofFloatColor(1.0, 0.0, 0.11, 1));
+
+		//greens
+		colours[1].push_back(ofFloatColor(0.0, 0.3, 0.05, 1));
+		colours[1].push_back(ofFloatColor(0.75, 0.9, 0.54, 1));
+		colours[1].push_back(ofFloatColor(0.46, 0.82, 0.19, 1));
+		colours[1].push_back(ofFloatColor(0.0, 0.7, 0.29, 1));
+
+		//yellows
+		colours[2].push_back(ofFloatColor(1.0, 0.53, 0.0, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.77, 0.0, 1));
+		colours[2].push_back(ofFloatColor(0.99, 0.98, 0.84, 1));
+		colours[2].push_back(ofFloatColor(1.0, 0.89, 0.0, 1));
 }
 
 
@@ -94,6 +124,7 @@ void testApp::updateFromSkeletons() {
 			// we have a new skeleton
 			skeletons[s.id] = RibbonSkeleton();
 			skeletons[s.id].setup(s);
+			skeletons[s.id].setColor(colours[((int) rand()) % colours.size()][((int) rand())%colours[0].size()]);
 			skeletons[s.id].alive = true;
 		} else {
 			// we have a skeleton to update.
@@ -117,8 +148,13 @@ void testApp::updateFromSkeletons() {
 			//deadRibbons.push_back((*it).second.ribbonLeft);
 			//deadRibbons.push_back((*it).second.ribbonRight);
 
-			delete (*it).second.leftBrush;
-			delete (*it).second.rightBrush;
+			//delete (*it).second.leftBrush;
+			//delete (*it).second.rightBrush;
+			//delete (*it).second.head;
+
+			for (int  i = 0; i < NUI_SKELETON_POSITION_COUNT; i++) {
+				delete (*it).second.ribbons[i];
+			}
 			
 			skeletons.erase(it++);
 			
@@ -154,7 +190,7 @@ void testApp::update() {
 
 	
 	
-	//ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
+	ofSetWindowTitle(ofToString(ofGetFrameRate(), 1));
 	
 	
 	room.update();
@@ -163,6 +199,7 @@ void testApp::update() {
 
 //--------------------------------------------------------------
 void testApp::draw(){
+
 
 	ofBackground(0);
 	
@@ -185,9 +222,9 @@ void testApp::draw(){
 			glScalef((float)ofGetWidth()/(float)kinect.getWidth(), (float)ofGetHeight()/(float)kinect.getHeight(), 1);
 			ofSetHexColor(0xFFFFFF);
 
-			for(int i = 0; i < meshes.size(); i++) {
-				meshes[i].draw();
-			}
+			//for(int i = 0; i < meshes.size(); i++) {
+			//	meshes[i].draw();
+			//}
 
 
 
@@ -208,10 +245,14 @@ void testApp::draw(){
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			}*/
 
+			bloom.begin();
 			map<int,RibbonSkeleton>::iterator it;
 			for(it = skeletons.begin(); it != skeletons.end(); it++) {
 				(*it).second.draw();
 			}
+
+			bloom.amount = ofMap(mouseX, 0, ofGetWidth(), 0, 1, true);
+			bloom.end();
 	
 			/*brushFbo.end();
 

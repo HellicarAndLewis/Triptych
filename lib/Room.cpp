@@ -75,7 +75,7 @@ void Room::begin() {
 		
 		
 		ofSetHexColor(0xFFFFFF);
-		
+		light.setPosition(lightPos.x, lightPos.y, lightPos.z);
 		shader.begin();
 		shader.setUniform1f("amt", aoAmt);
 		shader.setUniformTexture("tex", tex.getTextureReference(), 0);

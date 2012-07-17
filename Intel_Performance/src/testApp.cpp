@@ -4,9 +4,12 @@
 #include "TimeProfiler.h"
 using namespace tricks::util;
 
+bool mustTakeScreenshot = false;
 //--------------------------------------------------------------
 void testApp::setup(){
+	showTimeProfiler = false;
 	
+	audioSystem.setup("performance", kinect);
 	bloom.setup(true);
 	room.setup(640.f/480.f);
 	otherChannelAttenuation = 0.5;
@@ -68,6 +71,7 @@ void testApp::update() {
 
 			}
 		}
+		kinect.trackBlobs();
 	}
 
 	//printf("Update time: %f\n", (ofGetElapsedTimef()-s)*1000);
@@ -79,6 +83,11 @@ void testApp::update() {
 	
 	room.update();
 	//ofDisableSetupScreen();
+	if(gui.isOn()) {
+		ofShowCursor();
+	} else {
+		ofHideCursor();
+	}
 }
 
 float lastTimeShaderLoaded = 0;
@@ -126,10 +135,10 @@ void testApp::draw(){
 			if(meshes.size()>25) {
 				drawLayer(meshes[25], -25, 1);
 			}
-		/*	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-			if(meshes.size()>0) {
-				drawLayer(meshes[0], 0, 0);
-			}*/
+			//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+			//if(meshes.size()>0) {
+			//	drawLayer(meshes[0], 0, 0);
+			//}
 			
 		}
 		glPopMatrix();
@@ -144,12 +153,17 @@ void testApp::draw(){
 	bloom.getOutput()->draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	glColor4f(1,1,1,1);
 	
-	
+	if(mustTakeScreenshot) {
+		mustTakeScreenshot = false;
+		ofSaveScreen(ofGetTimestampString()+".tif");
+	}
 	glPushMatrix();
 	{
 		ofSetupScreen();
 		gui.draw();
-		TimeProfiler::draw();
+		if(showTimeProfiler) {
+			TimeProfiler::draw();
+		}
 	}
 	glPopMatrix();
 	
@@ -193,6 +207,13 @@ void testApp::keyPressed(int key){
 			break;
 		case 'b':
 			kinect.learnBackground = true;
+			break;
+		case 't':
+			showTimeProfiler ^= true;
+			break;
+		case 's':
+		case 'g':
+			mustTakeScreenshot = true;
 			break;
 	}
 }

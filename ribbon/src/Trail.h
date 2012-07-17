@@ -39,10 +39,12 @@ public:
 	int reductionSpeed;
 	float interpolationFactor;
 	
-	bool drawInfo, drawWireframe;
+	bool drawInfo;//, drawWireframe;
 	
 	float sineCounter, sineMultiplier, sineIncrement;
 	
+	void setColour(ofFloatColor c) { colour = c; }
+
 private:
 	deque<Node> trail;
 	
@@ -53,7 +55,8 @@ private:
 	
 	ofVec3f headPos;
 	
-	int colIndex;
+	int col1Index, col2Index;
+	ofFloatColor colour;
 //	ofFbo fbo;
 };
 
@@ -64,3 +67,4 @@ extern float variableFactor;
 extern bool useGravity;
 extern float gravityFactor;
 extern bool useFade;
+extern bool drawWireframe;

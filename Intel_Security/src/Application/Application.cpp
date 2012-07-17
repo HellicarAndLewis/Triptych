@@ -1,48 +1,36 @@
 #include <application/Application.h>
 
 Application::Application(const int w, const int h)
-	:flock(flock_ps.particles, 50, 5)
+	:flock(flock_ps.particles, 3.0240, 5)
 	,control(flock_ps, fx_ps, kinect, w, h)
-	,viz(flock_ps, fx_ps, kinect, control)
+	,viz(flock_ps, fx_ps, kinect, control, w, h)
 {
 }
 
 void Application::setup() {
-	
 	kinect.setup();
 	control.setup();
-	
 	viz.setup();
-	
 }
 
 
 void Application::update() {
-	
+
 	
 	// update kinect and tell drawer if we detected someone...
-	bool user_detected = kinect.update();
-
 	
+	bool user_detected = kinect.update() && kinect.num_blobs > 0;
 	viz.kinect_drawer.setUserDetected(user_detected);
-
-	flock.update();
 	
-
+	flock.update();
 	flock_ps.update(0.3);
 
 	fx_ps.update(0.3);
-	
-	
 	control.update();
 
 	flock_ps.removeDeadParticles();
-
 	fx_ps.removeDeadParticles();
-
 	viz.update();
-
-		
 }
 
 
@@ -59,6 +47,10 @@ void Application::draw(
 
 void Application::debugDraw() {
 	viz.debugDraw();
+}
+
+void Application::resize(int w, int h) {
+	viz.resize(w, h);
 }
 
 

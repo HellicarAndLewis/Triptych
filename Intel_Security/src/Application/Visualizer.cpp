@@ -1,8 +1,10 @@
 #include "ofMain.h"
 #include "Visualizer.h"
 
-Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller)
-	:flock_ps(flockPS)
+Visualizer::Visualizer(Boids& flockPS, Boids& fxPS, KinectInput& kinect, Controller& controller, int w, int h)
+	:w(w)
+	,h(h)
+	,flock_ps(flockPS)
 	,fx_ps(fxPS)
 	,controller(controller)
 	,trails_drawer(flockPS)
@@ -27,18 +29,24 @@ void Visualizer::setup() {
 	kinect_drawer.setup();	
 	
 	boid_drawer.setup();
+	
+#ifdef USE_LIGHT_RAYS	
+	light_rays.setup(w,h);
+#endif
+
+	bloom.setup(true);
 }
 
 void Visualizer::update() {
 
 	trails_drawer.update();
+	
 	if(kinect_input.update()) {
 		deque<KinectMesh>& meshes = kinect_input.getKinectMeshes();
 		if(meshes.size() > 0) {
 			kinect_drawer.update(meshes[0]);
 		}
 	}
-
 }
 
 // pm = projection matrix, vm = view matrix, nm = normal matrix
@@ -55,22 +63,57 @@ void Visualizer::draw(
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glEnable(GL_DEPTH_TEST);
-
 	glDepthMask(GL_TRUE);
-	kinect_drawer.draw(pm, vm);
+
+	#ifdef USE_LIGHT_RAYS
+		light_rays.bind();
+			kinect_drawer.draw(pm, vm);
+		light_rays.unbind();	
+	#else
+		//
+		//glDepthMask(GL_FALSE);
+		glUseProgram(0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
+		bloom.begin();		
+			glDepthMask(GL_FALSE);
+			glDisable(GL_DEPTH_TEST);
+			kinect_drawer.draw(pm, vm);
+			glDepthMask(GL_TRUE);
+			glEnable(GL_DEPTH_TEST);
+		bloom.end();
+
+		
+	#endif
+	
+	ofSetupScreen();
+		bloom.getOutput()->draw(200, ofGetHeight(), ofGetWidth(), -ofGetHeight());	
+	glDepthMask(GL_TRUE);
+
+	//return ;
+	#ifdef USE_LIGHT_RAYS
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
+	light_rays.draw();
+	#endif	
 	
 	glDepthMask(GL_FALSE);
 	if(settings.boid_draw_glows) {
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_ONE, GL_ONE);
 		drawGlows(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
 
 	trails_drawer.draw(pm, vm);
 	glDepthMask(GL_TRUE);
-
 	
 	if(settings.draw_flock) {
+		
 		drawBoids(flock_ps.begin(), flock_ps.end(), pm, vm, nm, rightVec, upVec);
 	}
+	
+
 	
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_CULL_FACE);
@@ -199,13 +242,21 @@ void Visualizer::debugDraw() {
 	trails_drawer.debugDraw();
 	
 	// draw interactive points
-	glPointSize(5.0f);
-	glColor3f(1,0,0);
+	glPointSize(15.0f);
+	glColor3f(0,1,0.2);
 	glBegin(GL_POINTS);
 	for(int i = 0; i < kinect_input.interactive_points.size(); ++i) {
 		Vec3& p = kinect_input.interactive_points[i];
 		glVertex3f(p.x, p.y, p.z);
 	}
 	glEnd();
-	
+}
+
+void Visualizer::resize(int w, int h) {
+	this->w = w;
+	this->h = h;
+	#ifdef USE_LIGHT_RAYS
+	light_rays.resize(w,h);
+	#endif
+	bloom.resize(w,h);
 }

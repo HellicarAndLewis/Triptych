@@ -41,9 +41,9 @@ void Brush::draw() {
 		ofSetHexColor(0xffffff);
 		
 		
-		if (enlargeImage) vel = ofMap(vel, 0, 3, minImageSize, maxImageSize, true);
+		/*if (enlargeImage) vel = ofMap(vel, 0, 3, minImageSize, maxImageSize, true);
 		else vel = 55;
-		thing.draw(point, vel, vel);
+		thing.draw(point, vel, vel);*/
 		
 	}
 }

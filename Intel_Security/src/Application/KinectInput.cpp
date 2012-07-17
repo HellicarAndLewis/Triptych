@@ -15,7 +15,8 @@
  */
 KinectInput::KinectInput()
 	:is_updated(false)
-	,input_mode(K_INPUT_KINECT)
+	,input_mode(KINECT_INPUT_MODE)
+	,num_blobs(0)
 {
 }
 
@@ -45,7 +46,7 @@ void KinectInput::setup() {
 void KinectInput::setupInputFromKinect() {
 	kinect.setup();
 	kinect.setupGui();
-	kinect.setListener(this);
+	kinect.addListener(this);
 }
 
 bool KinectInput::update() {
@@ -76,6 +77,9 @@ bool KinectInput::update() {
 			if(!kinect.update()) {
 				return false;
 			}
+
+			
+
 			interactive_points.clear();
 			kinect.trackBlobs();
 			contours.findContours(kinect.getOutline(), 30*30, 480*480, 20, false);
@@ -86,7 +90,7 @@ bool KinectInput::update() {
 				kmeshes.push_back(km);
 				
 				if(settings.must_record_kinect) {
-					recorder.addFrame(km.vertices, km.outline);
+					//recorder.addFrame(km.vertices, km.outline);
 				}
 			}
 			
@@ -114,11 +118,14 @@ bool KinectInput::update() {
 
 
 void KinectInput::boundBlobEntered(const BoundBlob &blob) {
+	num_blobs++;
 }
 
 void KinectInput::boundBlobMoved(const BoundBlob &blob) {
-	float x = -0.5 + blob.left.x/640;
-	float y = 0.5 + -blob.left.y/480;
+//	printf("left: %f, %f\n", blob.left.x, blob.left.y);
+//	printf("right: %f, %f\n", blob.right.x, blob.right.y);
+	float x = -0.5 + blob.right.x/640;
+	float y = 0.5 + -blob.right.y/480;
 	
 	x *= settings.kinect_scale;
 	y *= settings.kinect_scale;
@@ -127,7 +134,7 @@ void KinectInput::boundBlobMoved(const BoundBlob &blob) {
 }
 
 void KinectInput::boundBlobExited(const BoundBlob &blob) {
-	
+	num_blobs--;
 }
 
 

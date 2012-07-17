@@ -32,6 +32,7 @@ class testApp : public ofBaseApp{
 		
 		bool show_gui;
 		bool debug;
+		bool must_take_screenshot;
 		
 		EasyCam cam;
 		Axis ax;
@@ -43,5 +44,11 @@ class testApp : public ofBaseApp{
 #ifdef USE_FLOCK_GUI		
 		buttons::Buttons flock_gui;
 #endif
+
+#ifdef USE_LIGHT_RAYS
+		buttons::Buttons rays_gui;
+#endif
+		buttons::Buttons ia_gui; // InterAction gui
+		buttons::Buttons bloom_gui; // Bloom settings.
 		Room room;
 };

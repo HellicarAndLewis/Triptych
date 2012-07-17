@@ -17,7 +17,7 @@
     </SliderFloat_Edge_Colour_Sharpening>
     <SliderFloat_bloom_amount>
         <name>bloom amount</name>
-        <value>0.64</value>
+        <value>0.737305</value>
     </SliderFloat_bloom_amount>
     <SliderFloat_bloom_brightness>
         <name>bloom brightness</name>
@@ -39,10 +39,10 @@
         <name>image alpha</name>
         <value>0.005</value>
     </SliderFloat_image_alpha>
-    <SliderFloat_max_image_size>
-        <name>max image size</name>
-        <value>64</value>
-    </SliderFloat_max_image_size>
+    <SliderFloat_max_ribbon_length>
+        <name>max ribbon length</name>
+        <value>558.4</value>
+    </SliderFloat_max_ribbon_length>
     <SliderFloat_min_image_size>
         <name>min image size</name>
         <value>8.5</value>
@@ -51,32 +51,52 @@
         <name>use additive</name>
         <value>0</value>
     </Toggle_use_additive>
-    <Toggle_enlarge_image>
-        <name>enlarge image</name>
-        <value>1</value>
-    </Toggle_enlarge_image>
+    <Toggle_drawWireframe>
+        <name>drawWireframe</name>
+        <value>0</value>
+    </Toggle_drawWireframe>
     <SliderFloat_trail_width>
         <name>trail width</name>
-        <value>6.5</value>
+        <value>14.5</value>
     </SliderFloat_trail_width>
     <Toggle_variabe_width>
         <name>variabe width</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_variabe_width>
     <SliderFloat_variable_factor>
         <name>variable factor</name>
-        <value>0.33</value>
+        <value>0.56</value>
     </SliderFloat_variable_factor>
     <Toggle_use_gravity>
         <name>use gravity</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_use_gravity>
     <SliderFloat_gravity_factor>
         <name>gravity factor</name>
-        <value>0.04</value>
+        <value>0.0055</value>
     </SliderFloat_gravity_factor>
     <Toggle_use_fade>
         <name>use fade</name>
         <value>1</value>
     </Toggle_use_fade>
+    <SliderFloat_front_taper>
+        <name>front taper</name>
+        <value>62</value>
+    </SliderFloat_front_taper>
+    <SliderFloat_back_taper>
+        <name>back taper</name>
+        <value>22</value>
+    </SliderFloat_back_taper>
+    <Toggle_draw_pink>
+        <name>draw pink</name>
+        <value>0</value>
+    </Toggle_draw_pink>
+    <SliderInt_ribbon_length>
+        <name>ribbon length</name>
+        <value>127</value>
+    </SliderInt_ribbon_length>
+    <Toggle_fade_in_z>
+        <name>fade in z</name>
+        <value>1</value>
+    </Toggle_fade_in_z>
 </controls>

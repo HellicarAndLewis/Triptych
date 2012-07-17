@@ -16,6 +16,7 @@ public:
 	void update();
 	void draw(const float* pm, const float* vm, const float* nm, const float* rightVec, const float* upVec);
 	void debugDraw();
+	void resize(int w, int h);
 	
 	KinectInput kinect;
 	Boids flock_ps;
