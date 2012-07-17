@@ -85,6 +85,6 @@
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.12</value>
+        <value>0.07</value>
     </SliderFloat_aoAmount>
 </controls>

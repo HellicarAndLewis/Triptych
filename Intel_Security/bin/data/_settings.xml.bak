@@ -13,7 +13,7 @@
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_learnBackground>
     <SliderInt_erosions>
         <name>erosions</name>
@@ -85,6 +85,6 @@
     </SliderFloat_Diffuse>
     <SliderFloat_aoAmount>
         <name>aoAmount</name>
-        <value>0.12</value>
+        <value>0.07</value>
     </SliderFloat_aoAmount>
 </controls>

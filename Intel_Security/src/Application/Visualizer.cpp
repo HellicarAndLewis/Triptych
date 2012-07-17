@@ -72,6 +72,10 @@ void Visualizer::draw(
 	#else
 		//
 		//glDepthMask(GL_FALSE);
+		glUseProgram(0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		
 		bloom.begin();		
 			glDepthMask(GL_FALSE);
 			glDisable(GL_DEPTH_TEST);

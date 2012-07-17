@@ -1,3 +1,4 @@
+
 /**
  *  Bloom.cpp
  *
@@ -11,8 +12,6 @@ void tricks::gl::effects::Bloom::setup(bool drawToFbo) {
 	blurY = ofVec2f( 0.0, 0.001953125 );
 	resize(ofGetWidth(), ofGetHeight());
 	loadShader();
-	amount = 0.5;
-	brightness = 0.8;
 }
 
 void tricks::gl::effects::Bloom::resize(int w, int h) {
@@ -31,28 +30,30 @@ void tricks::gl::effects::Bloom::end() {
 	
 	
 	out1.begin();
-	ofClear(0, 0, 0, 0);
+	ofClear(0, 0, 0, 255);
 	// convolution 1
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
 	shader.setUniform2f("uImageIncrement", blurX.x*ofGetWidth(), blurX.y*ofGetHeight());
+//	shader.setUniform2f("uImageIncrement", 5.f/blurX.x, 5.f/blurX.y);
+
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
-	output.draw(0, 0); 
+	output.draw(0, 0);
 	shader.end();
 	out1.end();
 	
 	
 	out2.begin();
-	ofClear(0, 0, 0, 0);
+	ofClear(0, 0, 0, 255);
 	// convolution 2
 	shader.begin();
 	shader.setUniformTexture("tDiffuse", output.getTextureReference(0), 0);
 	shader.setUniform2f("uImageIncrement", blurY.x*ofGetWidth(), blurY.y*ofGetHeight());
+	
 	//	shader.setUniform1fv("cKernel", values);
 	ofSetHexColor(0xFFFFFF);
-	
-	out1.draw(0, 0); 
+	out1.draw(0, 0);
 	shader.end();
 	out2.end();
 	
@@ -65,11 +66,11 @@ void tricks::gl::effects::Bloom::end() {
 	ofSetHexColor(0xFFFFFF);	
 	//out1.draw(0, 0);
 	//out1.draw(0, 0);
-	
-	glColor4f(1, 1, 1, amount);
+	glColor4f(1, 1, 1, 1.0);
 	out2.draw(0, 0);
 	//// draw over
-	glColor4f(1,1,1, brightness);
+	ofSetHexColor(0xFFFFFF);
+	
 	output.draw(0, 0);
 	if(drawToFbo) {
 		out1.end();
@@ -182,8 +183,8 @@ void tricks::gl::effects::Bloom::loadShader() {
 		
 "		sum += texture2DRect( tDiffuse, imageCoord ) * 0.001110*t;\n"
 		
-"		gl_FragColor = sum;\n"
-//"		if(sum.r>0.0) gl_FragColor.a = 1.0; \n"
+"		gl_FragColor = texture2DRect( tDiffuse, imageCoord ) + sum * 0.1;\n"
+		
 	"}\n";
 	
 	//printf("%s\n", frag.c_str());
@@ -192,4 +193,4 @@ void tricks::gl::effects::Bloom::loadShader() {
 	shader.setupShaderFromSource(GL_FRAGMENT_SHADER, frag);
 	shader.linkProgram();
 
-}
+}	
