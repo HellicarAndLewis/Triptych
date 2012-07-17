@@ -13,7 +13,7 @@
     </SliderInt_hysteresis>
     <Toggle_learnBackground>
         <name>learnBackground</name>
-        <value>0</value>
+        <value>1</value>
     </Toggle_learnBackground>
     <SliderInt_erosions>
         <name>erosions</name>
