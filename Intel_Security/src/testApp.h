@@ -32,6 +32,8 @@ class testApp : public ofBaseApp{
 		
 		void operator()(const int n);
 		
+		bool show_mouse;
+		bool show_fps;
 		bool show_gui;
 		bool debug;
 		bool must_take_screenshot;

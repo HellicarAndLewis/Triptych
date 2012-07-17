@@ -30,6 +30,8 @@ void testApp::setup(){
 	ofEnableNormalizedTexCoords();
 	show_gui = false;
 	debug = false;
+	show_mouse = true;
+	show_fps = false;
 	must_take_screenshot = false;
 
 #ifdef USE_APP
@@ -170,8 +172,10 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
-	ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20); // crashes in msvc++
+	if(show_fps) {
+		ofDrawBitmapString("Particles: " +ofToString(app.fx_ps.size()), 10, ofGetHeight()-40);
+		ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, ofGetHeight()-20); // crashes in msvc++
+	}
 
 	if(settings.draw_room) {
 		room.draw();
@@ -283,7 +287,18 @@ void testApp::keyPressed(int key){
 	else if(key == 't') {
 		printf("Width: %d Height: %d\n", ofGetWidth(), ofGetHeight());
 	}
-	
+	else if(key == 'm') {
+		show_mouse = !show_mouse;
+		if(!show_mouse) {
+			ofHideCursor();
+		}
+		else {
+			ofShowCursor();
+		}
+	}
+	else if(key == 'i') {
+		show_fps = !show_fps;
+	}
 }
 
 //--------------------------------------------------------------
