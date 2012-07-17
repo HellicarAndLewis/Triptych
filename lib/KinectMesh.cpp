@@ -94,23 +94,27 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		delete delaunay;
 	}
 	
-	vector<p2t::Point*> bounding;
-	bounding.push_back(new p2t::Point(0,0));
-	bounding.push_back(new p2t::Point(640,0));
-	bounding.push_back(new p2t::Point(640,480));
-	bounding.push_back(new p2t::Point(0,480));
+	vector<p2t::Point*> b;
+	b.reserve(4+outline.size()+insides.size()+4);
+	b.push_back(new p2t::Point(0,0));
+	b.push_back(new p2t::Point(640,0));
+	b.push_back(new p2t::Point(640,480));
+	b.push_back(new p2t::Point(0,480));
 	
 	video_w = 640;
 	video_h = 480;
 		
-	delaunay = new p2t::CDT(bounding);
+	delaunay = new p2t::CDT(b);
 	
 	for(int i = 0; i < outline.size(); i++) {
-		delaunay->AddPoint(new p2t::Point(outline[i].x, outline[i].y));
+		b.push_back(new p2t::Point(outline[i].x, outline[i].y));
+		delaunay->AddPoint(b.back());
 	}
 	for(int i = 0; i < insides.size(); i++) {
-		delaunay->AddPoint(new p2t::Point(insides[i].x, insides[i].y));
+		b.push_back(new p2t::Point(insides[i].x, insides[i].y));
+		delaunay->AddPoint(b.back());
 	}
+	
 	
 	delaunay->Triangulate();
 	
@@ -167,6 +171,11 @@ bool KinectMesh::setup(const ofxCvBlob &blob, KinectThresholder &thresholder) {
 		if(!triangles[i].hollow) {
 			addTriangle(triangles[i]);
 		}
+	}
+	vector<p2t::Point*>::iterator it = b.begin();
+	while(it!=b.end()) {
+		delete (*it);
+		it++;
 	}
 	return true;
 }
